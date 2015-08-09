@@ -1,0 +1,68 @@
+.bar.bar-positive {
+	background-color: #000000;
+}
+
+.button.button-calm {
+	background-color: #f05a28 !important;
+	font-weight: Bold !important;
+	font-size: 15px !important;
+}
+
+.listElement {
+	border-bottom-width: 1px !important;
+	border-style: solid !important;
+	border-color: #c8c7cc !important;
+	padding-left: 0px !important;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+	border-left-width: 0px !important;
+	border-right-width: 0px !important;
+	border-top-width: 1px !important;
+}
+
+.spanSearcBar {
+	padding-top: 10px !important;
+	line-height: 0px !important;
+}
+
+#mariginContainer {
+	padding-left: 15px !important;
+}
+
+.iconRightCss {
+	padding-right: 10px !important;
+}
+
+.selectionDetailHeader {
+	font-weight: bold !important;
+	font-size: 15px !important;
+}
+
+.searchBarCss {
+	/*font-family : "Helvetica Neue LT Std 65"  !important;*/
+	margin-bottom: 0px !important;
+	margin-top: 0px !important;
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+	height: 35px !important;
+	text-align: left !important;
+	background-color: #f05a28 !important;
+	min-height: 35px !important;
+	font-weight: bold !important;
+	font-size: 15px !important;
+	color: #FFFFFF !important;
+}
+
+#advanceSearch {
+	/*font-family : "Helvetica Neue LT Std 65"  !important;*/
+	font-weight: Bold !important;
+	font-size: 15px !important;
+	color: #555555 !important;
+}
+
+.selectionDetail {
+	color: #c8c7cc !important;
+	font-weight: bold !important;
+	font-size: 15px !important;
+}
+

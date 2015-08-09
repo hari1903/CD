@@ -1,0 +1,98 @@
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+element.style {
+    border-bottom-width: 0;
+    border-top-width: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+.item {
+	border-width: 0;
+}
+
+
+
+/*
+ * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
+ */
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+
+.outAnchor{
+	color: #ffffff !important;
+}
+
+.inAnchor{
+	color: #C3C3C3 !important;
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;;
+}
+
+.innerMenu{
+	background-color:  #474747 !important;
+}
+.outMenu{
+	background-color:  #2B2B2B !important;
+}
+
+hr {
+	margin-top: 10px !important;
+	margin-bottom: 4px !important;
+}
+span.usedCarHomeTitle {
+	font-size: 120% !important;
+}
+
+.button.button-icon.input-button {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #bbb;
+}
+
+.my-item.item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 16px 49px 16px 16px;
+    border-bottom: solid;
+    background-color: #FFF;
+}
+
+.iconRight {
+    font-size: 18px !important;
+}
+
+.has-subheader {
+  top: 74px;
+}
+
+.item-icon-left {
+    padding-left: 42px;
+}
+.footerText{
+	
+}

@@ -1,0 +1,756 @@
+<html ng-app="ionicApp">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport"
+         content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+      <title>Side Menus</title>
+      <link href="css/ionic.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+      <script src="js/ionic_bundle.js"></script>
+      <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
+      <script src="js/main.js"></script>
+   </head>
+   <body ng-controller="MainCtrl">
+      <ion-nav-view></ion-nav-view>
+      <script id="templates/event-menu.html" type="text/ng-template">
+         <ion-side-menus enable-menu-with-back-views="false">
+         
+             <ion-side-menu-content>
+                 <ion-nav-bar class="bar-positive">
+                     <ion-nav-back-button>
+                     </ion-nav-back-button>
+                     <ion-nav-buttons side="right">
+                         <button class="button button-icon button-clear ion-navicon" menu-toggle="'right'">
+                         </button>
+                     </ion-nav-buttons>
+                 </ion-nav-bar>
+                 <ion-nav-view name="menuContent"></ion-nav-view>
+             </ion-side-menu-content>
+         
+             <ion-side-menu side="right"  >
+                 <ion-content class="outMenu">
+                     <ion-list >
+                             <a href="#/event/check-in" menu-close class="item item-icon-left outMenu outAnchor" >
+                                 <i class="icon ion-home inAnchor"></i>Home
+                             </a>
+                              <a class="item item-icon-left item-icon-right outMenu outAnchor"
+                                       ng-click="OpenUpNewCar()"
+                                       ng-class="{active: shown}">
+                                 <i class="icon ion-key inAnchor"></i>
+                                 New Cars
+                                 <i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !shown, 'ion-ios-arrow-up': shown}"></i>
+                             </a>
+                             <div class="item-accordion innerMenu"
+                                       ng-show="shown">
+                                      <ion-list>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Search Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Upcoming Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Latest Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Popular Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Offers and Discounts<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Videos<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Feel The Car</a>
+                                      </ion-list>
+                             </div>
+                             <a  class="item item-icon-left item-icon-right outMenu outAnchor"  
+         			ng-click="OpenUpUsedCar()" ng-class="{active: shownUsed}" >
+         			<i class="icon ion-key inAnchor"></i>
+                                 Used Cars
+         			<i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !shownUsed, 'ion-ios-arrow-up': shownUsed}"></i>
+                             </a>
+         		<div class="item-accordion innerMenu"
+                                       ng-show="shownUsed">
+                                      <ion-list>
+                                          <a href="#/event/used-car-home" class="item item-icon-left innerMenu inAnchor"  menu-close><i class="icon"></i>Search Used Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Search Trustmark Cars<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car Validation</a>
+                                      </ion-list>
+                             </div>
+         
+                             <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                                 <i class="icon ion-arrow-swap inAnchor"></i>
+                                 Compare Cars
+                             </a>
+         
+                             <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                                 <i class="icon ion-cash inAnchor"></i>
+                                 Sell a Car
+                             </a>
+         
+                             <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                                 <i class="icon ion-ios-paper-outline inAnchor"></i> Auto News
+                             </a>
+         
+                             <a  class="item item-icon-left item-icon-right outMenu outAnchor" 
+         		ng-click="OpenUpReviews()" ng-class="{active: shownReview}" >
+                                 <i class="icon ion-star inAnchor"></i>Reviews
+         			<i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !shownReview, 'ion-ios-arrow-up': shownReview}"></i>
+                             </a>
+         		<div class="item-accordion innerMenu"
+                                       ng-show="shownReview">
+                                      <ion-list>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road Test<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>User Review<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Accessories</a>
+                                      </ion-list>
+                             </div>	
+         
+                             <a  class="item item-icon-left item-icon-right outMenu outAnchor" 
+         		ng-click="OpenUpUtilities()" ng-class="{active: shownUtility}" >
+                                 <i class="icon ion-android-call inAnchor"></i>  Utilities
+         			<i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !shownUtility, 'ion-ios-arrow-up': shownUtility}"></i>
+                             </a>
+         		<div class="item-accordion innerMenu"
+                                       ng-show="shownUtility">
+                                      <ion-list>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Dealers<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline<hr></a>
+         					 <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Roadside Assistance<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Loan<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Insurance</a>
+                                      </ion-list>
+                             </div>	
+         
+                             <a  class="item item-icon-left item-icon-right outMenu outAnchor" 
+         		ng-click="OpenUpFeedback()" ng-class="{active: shownFeedBack}" >
+                                 <i class="icon ion-android-chat inAnchor"></i>
+                                 Feedback/Share
+         			<i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !shownFeedBack, 'ion-ios-arrow-up': shownFeedBack}"></i>
+                             </a>
+         		<div class="item-accordion innerMenu"
+                                       ng-show="shownFeedBack">
+                                      <ion-list>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Rating<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Feedback<hr></a>
+                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Share</a>
+                                      </ion-list>
+                             </div>	
+         
+                     </ion-list>
+                 </ion-content>
+             </ion-side-menu>
+         </ion-side-menus>
+      </script>
+      <script id="templates/home.html" type="text/ng-template">
+         <ion-view view-title="Welcome">
+             <ion-content class="padding">
+                 <p>Welcome To CarDekho App version 0.2 </p>
+             </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/check-in.html" type="text/ng-template">
+         <ion-view view-title="Event Check-in">
+             <ion-content>
+                 <form class="list" ng-show="showForm">
+                     <div class="item item-divider">
+                         Attendee Info
+                     </div>
+                     <label class="item item-input">
+                         <input type="text" placeholder="First Name" ng-model="attendee.firstname">
+                     </label>
+                     <label class="item item-input">
+                         <input type="text" placeholder="Last Name" ng-model="attendee.lastname">
+                     </label>
+         
+                     <div class="item item-divider">
+                         Shirt Size
+                     </div>
+                     <ion-radio ng-repeat="shirtSize in shirtSizes"
+                                ng-value="shirtSize.value"
+                                ng-model="attendee.shirtSize">
+                         {{ shirtSize.text }}
+                     </ion-radio>
+                     <div class="item item-divider">
+                         Lunch
+                     </div>
+                     <ion-toggle ng-model="attendee.vegetarian">
+                         Vegetarian
+                     </ion-toggle>
+                     <div class="padding">
+                         <button class="button button-block" ng-click="submit()">Checkin</button>
+                     </div>
+                 </form>
+         
+                 <div ng-hide="showForm">
+                     <pre ng-bind="attendee | json"></pre>
+                     <a href="#/event/attendees">View attendees</a>
+                 </div>
+             </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/price-range.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item.displayPriceRange}} ng-model="price" ng-change='newPrice(price)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item.displayPriceRange}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/city.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="city" ng-change='newValue(city)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/used-car-home.html" type="text/ng-template">
+         <ion-view view-title="" ng-controller="usedCarHomeCtrl">
+         <ion-content style="margin-top: -2px; ">
+            <div class="list">
+               <button class="button button-full button-left button-positive searchBarCss" style="">
+               	<span class="spanSearcBar"> Search Used Cars </span>
+               </button>
+               <div id="mariginContainer">
+                  <a href="#/event/city" class="item item-icon-right listElement" style=";" menu-close>
+                  <span class="selectionDetailHeader">City</span> <i class="icon  selectionDetail">{{cityObj.city}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                  </a>
+                  <button id="advanceSearch" class="button button-clear button-full button-positive "  style="margin-top: 0px;" ng-show="!isAdvanceSerach" ng-click="advanceSeach()">
+                  Advance Search
+                  </button>
+                  <div ng-show="isAdvanceSerach">
+                     <a href="#/event/price-range" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close ng-show="isAdvanceSerach">
+                     <span class="selectionDetailHeader">Price Range</span> <i class="icon selectionDetail">{{cityObj.price}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;"  ng-click="toggleCertified()" menu-close>
+                     <span class="selectionDetailHeader">Certified by Trustmark </span><i class="icon selectionDetail"> <i ng-class="{'ion-ios-circle-outline':!isCertified, 'ion-ios-checkmark':isCertified} "> </i></i>
+                     </a>
+                     <a href="#/event/brand" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Brand </span><i class="icon selectionDetail">{{cityObj.brand}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/model" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Model </span><i class="icon selectionDetail">{{cityObj.model}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/fuel" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Fuel Type </span><i class="icon selectionDetail">{{cityObj.fuel}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/km" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">KMs driven</span> <i class="icon selectionDetail">{{cityObj.km}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/vehicle-type" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Vehicle Type </span><i class="icon selectionDetail">{{cityObj.vehicleType}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/model-year" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Model Year </span><i class="icon selectionDetail">{{cityObj.modelYear}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/transmission" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Transmission </span><i class="icon selectionDetail">{{cityObj.transmission}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="#/event/seller-type" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                     <span class="selectionDetailHeader">Seller Type </span><i class="icon selectionDetail">{{cityObj.sellerType}} &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"></img> </i></i>
+                     </a>
+                     <a href="" class="item item-icon-right listElement" style="padding-bottom: 10px; padding-top: 10px;" ng-click="togglePicture()" menu-close>
+                     <span class="selectionDetailHeader">With Picture </span><i class="icon selectionDetail"><i ng-class="{'ion-ios-circle-outline':!isPicture, 'ion-ios-checkmark':isPicture}"> </i></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </ion-content>
+         <div class="bar bar-footer" style="padding: 0px;">
+            <button class="button button-full button-calm" style=" margin-bottom: 0px; margin-top: 0px; border-bottom-width: 0px; border-top-width: 0px; font-size: 120%; " ng-click="searchCar()">Search</button>
+         </div>
+         </ion-view>
+         
+      </script>
+      <script id="templates/attendees.html" type="text/ng-template">
+         <ion-view view-title="Event Attendees">
+             <ion-content>
+                 <div class="list">
+                     <ion-toggle ng-repeat="attendee in attendees | orderBy:'firstname' | orderBy:'lastname'"
+                                 ng-model="attendee.arrived"
+                                 ng-change="arrivedChange(attendee)">
+                         {{ attendee.firstname }}
+                         {{ attendee.lastname }}
+                     </ion-toggle>
+                     <div class="item item-divider">
+                         Activity
+                     </div>
+                     <div class="item" ng-repeat="msg in activity">
+                         {{ msg }}
+                     </div>
+                 </div>
+             </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/brand.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item.oemname}} ng-model="brand" ng-change='newBrand(brand)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item.oemname}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/model.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item.displayCarModelName}} ng-model="model" ng-change='newModel(model)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item.displayCarModelName}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/fuel.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="fuel" ng-change='newFuel(fuel)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/km.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="km" ng-change='newKM(km)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/vehicle-type.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="vehicleType" ng-change='newVehichleType(vehicleType)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/model-year.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="modelYear" ng-change='newModelYear(modelYear)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/transmission.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="transmission" ng-change='newTransmission(transmission)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/seller-type.html" type="text/ng-template">
+         <ion-view view-title="">
+             <ion-header-bar class="bar-light bar-subheader">
+         <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true" ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+         <button ng-if="search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()">
+         </button>
+         </ion-header-bar>
+         <ion-content>
+         <ion-list>  
+           <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+             <label class="item item-radio"> 
+             <input type="radio" name="group" value={{item}} ng-model="seller" ng-change='newSellerType(seller)'>
+             <div class="item-content" style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;" >
+             {{item}}
+              </div>
+             <i class="radio-icon ion-checkmark"></i>
+                </label>
+           </ion-item>       
+         </ion-list>
+         </ion-content>
+         </ion-view>
+      </script>
+      <script id="templates/used-car-detail1.html" type="text/ng-template">
+         <div class="list card">
+         <ion-scroll width="300px; height: 200px" direction="xy">
+            <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-1!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card-2!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-3!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card-4!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-5!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-11!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+          <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-21!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-31!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-41!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-51!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+          <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-61!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-61!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-71!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         <div class="card">
+           <div class="item item-divider">
+             I'm a Header in a Card-81!
+           </div>
+           <div class="item item-text-wrap">
+             This is a basic Card with some text.
+           </div>
+           <div class="item item-divider">
+             I'm a Footer in a Card!
+           </div>
+         </div>
+         </ion-scroll>
+         </div>
+      </script>
+	   <script id="templates/used-car-detail.html" type="text/ng-template">
+         <ion-view class="bgColor">  
+          	<ion-header-bar class="bar-light bar-subheader barHeight" style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
+             	<label class="item usedCarDetailTitle">{{detailedObj.usedCarSearchResult.data.count}} Used Cars in {{detailedObj.city}}</label>
+         		<label class="item usedCarDetailSort ">Sorted by : Relevence </label>
+          	</ion-header-bar>
+            
+         	<ion-content style="padding-top: 22px !important;">     
+          		 <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result" ng-click="usedCarDetailPerCar(detailedItem)" style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+                		<div class="list card " style="margin-top: 1px;margin-bottom: 1px;">
+                     	<div class="item item-thumbnail-left cardHeaderHight">
+                         	<img class="thumnailImgCss" ng-src={{detailedItem.imageUrl}}>
+                          	<h2 class="usedCarDetailCarName">{{detailedItem.carVariantId}}</h2>
+                          	<h3 class="usedCarDetailPrice">Rs <span class="usedCarDetailPriceSpan">{{detailedItem.expectedPrice | formatPrice }}</span> Lac</h3>
+                          	<h4><span class="usedCarDetailModel" style="padding-right: 15px;"> KMs </span> <span style="padding-right: 20px;" class="usedCarDetailModel1">{{detailedItem.driven}} </span> <span class="usedCarDetailModel" style="padding-right: 15px;">Model</span> <span class="usedCarDetailModel1">{{detailedItem.modelYear}}  </span></h4>
+                     	</div>
+          				<div class="item item-divider item-icon-left footerLine cardFooterHight">
+            					 <i class="icon"><img src="images/icons/hdpi/location_icon.png">  </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
+           				</div>
+         			</div>
+         		</ion-item> 
+             </ion-content>
+         	<ion-footer-bar class="bar-light footerBar">
+          		 <a class="button footerLeft icon-left "> <i class="icon"><img src="images/icons/hdpi/scroll_top_.png">  </i>Scroll View</a>
+           		 <a class="button footerRight icon-right"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i> Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
+         </ion-footer-bar>
+         </ion-view>
+      </script>
+      <script id="templates/used-single-car-detail.html" type="text/ng-template">
+         <ion-view>  
+         	<ion-content>
+         		<ion-slide-box  class="imgContainer" show-pager="false" on-slide-changed="slideHasChanged($index)"  >
+           			<ion-slide ng-repeat="imgObj in singleCarObj.usedCarDetailResult.data.pictures">
+            				 <img  ng-src="{{imgObj.imageUrl}}"></img>
+           			</ion-slide>          
+         		</ion-slide-box>
+         		<div class="bar bar-positive1">
+         			<div class="buttons">
+              			 <span class="lCarVal">Rs <span class="iCarValNum">{{featureList.Price | formatPrice }}</span> Lacs</span>
+             		</div>
+            			 <h1 class="title"></h1>
+            			 <div class="buttons">
+             			 <span class="rSlideNum">{{currentSlide}}/{{totalSlide}}</span>	 
+            			 </div>
+         		</div>
+                 <div id="sdCarInfo">
+         			<div id="sdCarBrand">
+         			<span>{{singleCarObj.usedCarDetailResult.data.Brand}}</span>
+         			</div>
+         			<div id="sdCarVarient">
+         			<span>{{singleCarObj.usedCarDetailResult.data.CarVariantId}}</span>
+         			</div>
+         			<div id="sdCarLocation">
+         			<i class="icon"><img src="images/icons/hdpi/location_icon.png">  </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
+         			</div>
+         		</div>
+         		<div id="sdCarMileage">
+                     <table width="100%"><tr id="sdCarImageRow"><td class="tdClassInfo1" >
+         					<i class="icon"><img src="images/icons/hdpi/km_normal.png">  </i> </td><td class="tdClassInfo1">
+         					<i class="icon"><img src="images/icons/hdpi/model.png">  </i></td><td class="tdClassInfo1">
+         					<i class="icon"><img src="images/icons/hdpi/diesel.png">  </i></td>
+         				</tr>
+         				<tr id="sdCarMileageInfo"> <td class="tdClassInfo1 sdFontBold" >
+         					<span>{{featureList.KM}} Kms</span> </td><td class="tdClassInfo1 sdFontBold">
+         					<span>{{featureList.ModelYear}} Model</span> </td><td class="tdClassInfo1 sdFontBold">
+         					<span>{{featureList.FuelType}}</span> </td>		
+         			</td></tr></table>
+         		</div>
+                 <div class="sdFeatureList">
+                    <table width="100%"><tr><td class="tdClass1">
+         			<span class="sdSpanFeatureDetails"><span class="sdFontBold">{{featureList.Color}}</span> Color</span></td><td class="tdClass2">
+         			<span>|</span></td><td class="tdClass1">
+         			<span><span class="sdFontBold">{{featureList.NoofOwners}}</span> Owner</span></td></tr></table>
+         		</div>
+         		<div class="sdFeatureList">
+         			<table width="100%"><tr><td class="tdClass1">
+         			<span class="sdSpanFeatureDetails"><span class="sdFontBold">{{featureList.Color}}</span> Color</span></td><td class="tdClass2">
+         			<span>|</span></td><td class="tdClass1">
+         			<span><span class="sdFontBold">{{featureList.Seller}}</span> Seller</span></td></tr></table>
+         		</div>
+         		<div class="sdFeatureList">
+         			<table width="100%"><tr><td class="tdClass1">
+         			<span class="sdSpanFeatureDetails"><span class="sdFontBold">{{featureList.Insurance}}</span> Insurance </span></td><td class="tdClass2">
+         			<span>|</span></td><td class="tdClass1">
+         			<span><span class="sdFontBold">{{featureList.CityofRegistration}}</span> Registration</span></td></tr></table>
+         		</div>
+         		<div class="bar sdBarColor" >
+          			 <h1 class="left" style="font-size:18px !important;">Recommedded cars for you</h1>
+         		</div>  
+         		<div id="sdCardSuggested"> 
+          		 <ion-item class="item" ng-repeat="detailedItem in singleCarObj.usedCarDetailResult.data.recommendedCars" ng-click="usedCarDetailPerCar(detailedItem)" style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;padding-left: 5px;padding-right: 5px;">
+                		<div class="list card " style="margin-top: 1px;margin-bottom: 1px;">
+                     	<div class="item item-thumbnail-left cardHeaderHight">
+                         	<img class="thumnailImgCss" ng-src={{detailedItem.imageUrl}}>
+                          	<h2 class="usedCarDetailCarName">{{detailedItem.carVariantId}}</h2>
+                          	<h3 class="usedCarDetailPrice">Rs <span class="usedCarDetailPriceSpan">{{detailedItem.expectedPrice | formatPrice }}</span> Lac</h3>
+                          	<h4><span class="usedCarDetailModel" style="padding-right: 15px;"> KMs </span> <span style="padding-right: 20px;" class="usedCarDetailModel1">{{detailedItem.driven}} </span> <span class="usedCarDetailModel" style="padding-right: 15px;">Model</span> <span class="usedCarDetailModel1">{{detailedItem.modelYear}}  </span></h4>
+                     	</div>
+          				<div class="item item-divider item-icon-left footerLine cardFooterHight">
+            					 <i class="icon"><img src="images/icons/hdpi/location_icon.png">  </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
+           				</div>
+         			</div>
+         		</ion-item> 
+         		</div>
+         
+             </ion-content>
+         </ion-view>
+      </script>
+   </body>
+</html>
