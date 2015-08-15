@@ -1,6 +1,4 @@
-.bar.bar-positive {
-	background-color: #000000;
-}
+
 
 .button.button-calm {
 	background-color: #f05a28 !important;
@@ -34,7 +32,7 @@
 }
 
 .selectionDetailHeader {
-	font-weight: bold !important;
+	/*font-weight: bold !important;*/
 	font-size: 15px !important;
 }
 
@@ -66,3 +64,28 @@
 	font-size: 15px !important;
 }
 
+.footerTabSingleWidth {
+	width: 25% !important;
+}
+.footerTabSingleCar{
+	height: 10px !important;
+	padding-top: 10px !important;
+}
+
+.footerTabSingleCarPadding {
+	padding-top: 10px !important;
+}
+
+.footerTabBarder {
+	border-bottom-width: 0px !important;
+	border-top-width: 0px !important;
+	border-left-width: 0px !important;
+	border-right-width: 0px !important;
+}
+
+.buttonAfter {
+	border-left: 1px !important;
+	border-width: 1px !important;
+	border-color: #c8c7cc !important;
+	border-style: solid !important;
+}

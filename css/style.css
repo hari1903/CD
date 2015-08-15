@@ -1,6 +1,11 @@
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
+
+.bar.bar-positive {
+    background-color: #000000;
+}
+
 element.style {
     border-bottom-width: 0;
     border-top-width: 0;

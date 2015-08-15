@@ -1,0 +1,47 @@
+.filterImageRow {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+    border-bottom-width: 1px !important;
+    border-left-width: 1px !important;
+    border-top-width: 1px !important;
+    border-right-width: 1px !important;
+    border-style: solid !important;
+    border-color: #000000 !important;
+    height: 73px !important;
+    padding-top: 10px !important;
+}
+.filterImageRow > div > img {
+    height: 38px !important;
+}
+
+.rowPadding{
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+}
+
+
+.theroot {
+    height: 100%;
+}
+
+.scrollView {
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+}
+
+.popup-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+
+
+
