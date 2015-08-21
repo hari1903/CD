@@ -7,6 +7,8 @@
       <link href="css/ionic.css" rel="stylesheet">
       <link href="css/style.css" rel="stylesheet">
       <script src="js/ionic_bundle.js"></script>
+       <!--<script type="text/javascript" src="js/ionic-ratings.js"></script>-->
+        <!--<script type="text/javascript" src="js/ionic-ratings.min.js"></script>-->
       <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
       <script src="js/main.js"></script>
    </head>
@@ -89,7 +91,7 @@
          		<div class="item-accordion innerMenu"
                                        ng-show="shownReview">
                                       <ion-list>
-                                          <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road Test<hr></a>
+                                          <a href="#/event/user-review-home" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road Test<hr></a>
                                           <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>User Review<hr></a>
                                           <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Accessories</a>
                                       </ion-list>
@@ -750,6 +752,70 @@
          		</div>
          
              </ion-content>
+         </ion-view>
+      </script>
+   <script id="templates/user-review-home.html" type="text/ng-template">
+         
+<ion-view view-title="" ng-controller="userReviewHomeCtl">
+         <ion-content style="margin-top: -2px; ">
+            <div class="list">
+               <button class="button button-full button-left button-positive searchBarCss" style="">
+               	<span class="spanSearcBar"> User Review </span>
+               </button>
+               <div id="mariginContainer">
+                  
+<div class="item item-icon-right listElement" style=";" menu-close>
+<span class="selectionDetailHeader">Brand</span>
+         <select class="icon  selectionDetail" data-ng-model="brand" ng-change='newBrand(brand)'
+                data-ng-options="item.oemname for item in getContacts()">                
+        </select></div>
+                  <div class="item item-icon-right listElement" style=";" menu-close>
+<span class="selectionDetailHeader">Model</span>
+         <select class="icon  selectionDetail"  data-ng-model="model" ng-change='newModel(model)'
+                data-ng-options="item.displayCarModelName for item in Modelcontact">                
+        </select></div>
+                  
+               </div>
+            </div>
+         </ion-content>
+         <div class="bar bar-footer" style="padding: 0px;">
+            <button class="button button-full button-calm" style=" margin-bottom: 0px; margin-top: 0px; border-bottom-width: 0px; border-top-width: 0px; font-size: 120%; " ng-click="getReview()">Search</button>
+         </div>
+         </ion-view>
+
+
+
+
+
+
+
+
+    
+      </script>
+   <script id="templates/user-car-review.html" type="text/ng-template">
+         <ion-view class="bgColor" ng-controller="userCarReviewCtl">  
+          	<ion-header-bar class="bar-light bar-subheader barHeight" style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
+             	<label class="item usedCarDetailTitle">{{detailedObj.modelName}} Reviews Overall rating: <rating ng-model="rate" max="max"></rating></label>
+         		<label class="item usedCarDetailSort ">Most Helpful</label>
+          	</ion-header-bar>
+            
+         	<ion-content style="padding-top: 22px !important;">     
+          		 <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.reviews.data.review"  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+                		<div class="list card " style="margin-top: 1px;margin-bottom: 1px;">
+                     	<div class="item item-thumbnail-left cardHeaderHight">
+                         	
+                          	<h2 class="usedCarDetailCarName">{{detailedItem.reviewTitle}}</h2>
+                          	<h3 class="usedCarDetailPrice">{{detailedItem.reviewText }}</h3>
+                          	
+                     	</div>
+          				
+         			</div>
+         		</ion-item> 
+             </ion-content>
+         	<ion-footer-bar class="bar-light footerBar">
+          		 <a class="button footerLeft icon-left "> <i class="icon"><img src="images/icons/hdpi/scroll_top_.png">  </i>Scroll View</a>
+           		 <a class="button footerRight icon-right"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i> Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
+         </ion-footer-bar>
          </ion-view>
       </script>
    </body>

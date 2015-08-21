@@ -134,7 +134,24 @@ angular
 						controller : "usedsingleCarDetailCtl"
 					}
 				}
+			}).state('eventmenu.user-review-home', {
+				url : "/user-review-home",
+				views : {
+					'menuContent' : {
+						templateUrl : "templates/user-review-home.html",
+						controller : "userReviewHomeCtl"
+					}
+				}
+			}).state('eventmenu.user-car-review', {
+				url : "/user-car-review",
+				views : {
+					'menuContent' : {
+						templateUrl : "templates/user-car-review.html",
+						controller : "userCarReviewCtl"
+					}
+				}
 			})
+			
 			$urlRouterProvider.otherwise("/event/home");
 		})
 
@@ -237,6 +254,7 @@ angular
 							objectValue.modelObj = [];
 							objectValue.usedCarSearchResult = [];
 							objectValue.usedCarDetailResult = {};
+							objectValue.reviews = [];
 							
 							$http
 									.post(
@@ -318,10 +336,11 @@ angular
 											})
 									
 								},
-								setBrand : function(brand) {
+								setBrand : function(brand,callback) {
 									objectValue.brand = brand;
+									console.log(objectValue.brand.oemname);
 									var url = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getModelFeedsWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds&oem="
-											+ objectValue.brand;
+											+ objectValue.brand.oemname;
 									console.log("URL :" + url);
 									$http
 											.post(url)
@@ -330,10 +349,49 @@ angular
 														// console.log("Model :
 														// "+
 														// JSON.stringify(data1));
-														objectValue.modelObj = data1.data.modelList;
+														//console.log(data1);
+														objectValue.modelObj = data1;
+														//console.log("obj:" + objectValue.modelObj);
+														callback(objectValue)
 													})
+													
 								},
-								getUsedCarSearchResult : function() {
+								getReviews : function(model,callback) {
+									objectValue.brand = model;
+									console.log(objectValue.model.displayCarModelName);
+									var url ="http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getReviewsWithStatus&sortedBy=mostHelpful&ModelName="+ encodeURIComponent(objectValue.model.displayCarModelName) +"&startLimit=1&endLimit=20&authenticateKey=14@89cardekho66feeds"
+											;
+									console.log("URL :" + url);
+									$http
+											.post(url)
+											.success(
+													function(data1, status) {
+														// console.log("Model :
+														// "+
+														// JSON.stringify(data1));
+														//console.log(data1);
+														objectValue.reviews = data1;
+														//console.log("obj:" + objectValue.modelObj);
+														callback(objectValue)
+													})
+													
+								},
+								getBrand : function(callback){
+							         
+							         $http
+							         .post(
+							           "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getOemFeedsWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
+							         .success(
+							           function(data1, status) {
+							            // console.log("brand : "+
+							            // JSON.stringify(data1));
+							            objectValue.brandObj = data1.data.oemList;
+							            
+							            callback(objectValue);
+							           })
+							         
+							        },
+							     getUsedCarSearchResult : function() {
 									var serachString = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getUsedCarSearchResultDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds";
 									
 									if(objectValue.city !== 'All India'){
@@ -641,15 +699,31 @@ angular
 								$rootScope, $state) {
 							$scope.brand = "...";
 
-							$scope.brandTempObj = sharedProperties.getObject();
+						//	$scope.brandTempObj = sharedProperties.getObject();
 							// console.log("brand :"+
 							// JSON.stringify($scope.brandTempObj));
-							$scope.contact1 = $scope.brandTempObj.brandObj;
+							
+							
+							
+							sharedProperties.getBrand(function( data){
+							       $scope.brandTempObj = data;
+							       console.log("brand :"+
+							       JSON.stringify($scope.brandTempObj));
+							       $scope.contact1 = $scope.brandTempObj.brandObj;
+							       
+							    $scope.getContacts = function() {
+							        letterHasMatch = {};
 
-							$scope.getContacts = function() {
-								letterHasMatch = {};
+							        return $scope.contact1
+							
+							
+							
+						//	$scope.contact1 = $scope.brandTempObj.brandObj;
 
-								return $scope.contact1
+						//	$scope.getContacts = function() {
+							//	letterHasMatch = {};
+
+							//	return $scope.contact1
 										.filter(
 												function(item) {
 													var itemDoesMatch = !$scope.search
@@ -689,9 +763,11 @@ angular
 							$scope.newBrand = function(brand) {
 								console.log(brand);
 								sharedProperties.setBrand(brand);
-								$state.go('eventmenu.used-car-home');
+								//$state.go('eventmenu.used-car-home');
 							}
-						} ])
+							})
+							   
+							} ])
 		.controller(
 				'modelCtrl',
 				[
@@ -709,7 +785,7 @@ angular
 							// console.log("model :"+
 							// JSON.stringify($scope.modelTempObj));
 							$scope.contact1 = $scope.modelTempObj.modelObj;
-
+                             console.log("modelCtrl");
 							$scope.getContacts = function() {
 								letterHasMatch = {};
 
@@ -1244,4 +1320,119 @@ angular
 							}
 							
 							
+						} ])
+						
+						
+						.controller(
+				'userReviewHomeCtl',
+				[
+'$scope',
+'sharedProperties',
+'$window',
+'$location',
+'$rootScope',
+'$state',
+function($scope, sharedProperties, $window, $location,
+		$rootScope, $state) {
+	$scope.brand = "...";
+    $scope.model="...";
+//	$scope.brandTempObj = sharedProperties.getObject();
+	// console.log("brand :"+
+	// JSON.stringify($scope.brandTempObj));
+	
+	
+	
+	sharedProperties.getBrand(function( data){
+	       $scope.brandTempObj = data;
+	       //console.log("brand :"+ JSON.stringify($scope.brandTempObj));
+	       $scope.contact1 = $scope.brandTempObj.brandObj;
+	       
+	    $scope.getContacts = function() {
+	        letterHasMatch = {};
+//console.log($scope.contact1);
+	        return $scope.contact1
+	
+	};
+	$scope.clearSearch = function() {
+		$scope.search = '';
+	};
+
+	/*$scope.newBrand = function(brand) {
+		console.log(brand);
+		
+	}*/
+	$scope.newBrand = function(brand) {	
+		sharedProperties.setBrand(brand,function(data){
+				$scope.modelTempObj =	data;
+				////$scope.modelTempObj = sharedProperties.getObject();
+					//console.log("obj"+$scope.modelTempObj.modelObj);
+					//console.log("Model :"+ JSON.stringify($scope.modelTempObj));
+				$scope.Modelcontact = $scope.modelTempObj.modelObj.data.modelList;
+		            console.log("modelCtrl");
+		        // $scope.model=   $scope.Modelcontact ;
+					/*$scope.getModelContacts = function() {
+						letterHasMatch = {};
+		             console.log($scope.Modelcontact);
+						return $scope.Modelcontact
+								
+					};*/
+		          console.log( $scope.Modelcontact);
+					$scope.clearSearch = function() {
+						$scope.search = '';
+					};
+
+					$scope.newModel = function(model) {
+						// console.log(model);
+						$rootScope.model=model;
+						sharedProperties.setModel(model);
+						//$state.go('eventmenu.used-car-home');
+					}
+				})
+			}
+	
+	$scope.getReview = function(){
+		sharedProperties.getReviews($rootScope.model,function(data){
+			$scope.reviewTempObj =	data.reviews.data.review;
+			$scope.rate = 3;
+			  $scope.max = 5;
+			  $state.go('eventmenu.user-car-review');
+			//console.log("review"+JSON.stringify($scope.reviewTempObj));
+		})
+		
+	}
+
+	});
+	
+
+	}  
+
+])
+
+.controller(
+				'userCarReviewCtl',
+				[
+						'$scope',
+						'sharedProperties',
+						'$window',
+						'$location',
+						'$rootScope',
+						'$state',
+						'cssInjector',
+						function($scope, sharedProperties, $window, $location,
+								$rootScope, $state, cssInjector) {
+
+							cssInjector.add("css/usedCarDetail.css");
+							console.log("userCarReviewCtl");
+							var reviewCarSearchResultObj = sharedProperties
+									.getObject();
+							//console.log("Used Car Search Result :"
+								//	+ JSON.stringify(usedCarSearchResultObj));
+							$scope.detailedObj = reviewCarSearchResultObj;
+							$scope.reviewCarDetailPerCar = function(item) {
+								//sharedProperties.getUsedCarDetailPerCar(item.usedcarid);
+								//$state.go('eventmenu.user-single-car-review-detail');
+							}
+
 						} ]);
+							
+						
