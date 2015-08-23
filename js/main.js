@@ -206,6 +206,22 @@ angular
                     controller: "nc_feelTheCars"
                 }
             }
+        }).state('eventmenu.auto-news', {
+            url: "/auto-news",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/auto-news.html",
+                    controller: "autoNewsCtrl"
+                }
+            }
+        }).state('eventmenu.auto-detailed-news', {
+            url: "/auto-detailed-news/:newsId",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/auto-detailed-news.html",
+                    controller: "autoDetailedNewsCtrl"
+                }
+            }
         })
         $urlRouterProvider.otherwise("/event/home");
     })
@@ -2270,19 +2286,38 @@ angular
         'sharedProperties',
         '$state',
         'cssInjector',
-        function ($scope, sharedProperties, $state, cssInjector) {
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector,$stateParams) {
             console.log("in nc_latestCars");
+            cssInjector.add("css/nc-latest-cars.css");
 
-        }])
-    .controller(
+            var searchString = "getLatestCarListDataWithStatus&startLimit=1&endLimit=40";
+
+            sharedProperties.getData( searchString, function(latestCars){
+
+                $scope.latestCars = latestCars;
+
+            });
+
+        }]).controller(
     'nc_popularCars',
     [
         '$scope',
         'sharedProperties',
         '$state',
         'cssInjector',
-        function ($scope, sharedProperties, $state, cssInjector) {
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector,$stateParams) {
             console.log("in nc_popularCars");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            var searchString = "getPopularCarListDataWithStatus&startLimit=1&endLimit=40";
+
+            sharedProperties.getData( searchString, function(popularCars){
+
+                $scope.popularCars = popularCars;
+
+            });
 
         }])
     .controller(
@@ -2316,5 +2351,53 @@ angular
         'cssInjector',
         function ($scope, sharedProperties, $state, cssInjector) {
             console.log("in nc_feelTheCars");
+
+        }]).controller(
+    'autoNewsCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector,$stateParams) {
+            console.log("in nc_popularCars");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
+
+            sharedProperties.getData( searchString, function(autoNews){
+
+                $scope.autoNews = autoNews;
+
+            });
+            $scope.fnDetailedNews = function(singeAutoNews){
+                console.log("get detailed car news"+ singeAutoNews.carNewsId);
+                $state.go('eventmenu.auto-detailed-news',{newsId:singeAutoNews.carNewsId});
+            }
+
+        }]).controller(
+    'autoDetailedNewsCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector,$stateParams, $sce) {
+            console.log("in nc_popularCars");
+            cssInjector.add("css/nc-popular-cars.css");
+
+
+            var carNewsID = $stateParams.newsId;
+            console.log("car news id :"+ carNewsID);
+            var searchString = "getDetailAutoNewsHtmlWithStatus&CarNewsId="+carNewsID;
+
+            sharedProperties.getData( searchString, function(autoDetailedNews){
+                $scope.autoDetailedNews = $sce.trustAsHtml(autoDetailedNews);
+
+            });
+
 
         }])

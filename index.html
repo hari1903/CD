@@ -100,7 +100,7 @@
                         Sell a Car
                     </a>
 
-                    <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                    <a href="#/event/auto-news" class="item item-icon-left outMenu outAnchor" menu-close>
                         <i class="icon ion-ios-paper-outline inAnchor"></i> Auto News
                     </a>
 
@@ -1455,12 +1455,94 @@
     </ion-footer-bar>
 </script>
 <script id="templates/nc-latest-cars.html" type="text/ng-template">
-    <ion-view view-title="">
-    </ion-view>
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Latest Cars
+            </div>
+        </div>
+
+    </ion-header-bar>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="latestCar in latestCars.data.latestCarSet.latestCarList"
+                  ng-click="fnUpcomingCar(latestCar)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{latestCar.mobileimage}}>
+
+                    <h2 class="">{{latestCar.displayCarModelName}}</h2>
+
+                    <h3 class="">Rs <span class="">{{latestCar.minexshowroomprice | formatPrice  }} - {{latestCar.maxexshowroomprice | formatPrice  }}</span>
+                        Lac</h3>
+                </div>
+                <div class="item item-divider item-icon-left ">
+                    <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span class="footerText">{{latestCar.rating}}/5</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+        <div class="row">
+            <div class="col-25 nc_lc_alignCenter">
+                Search
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Upcoming
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Latest
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Popuar
+            </div>
+        </div>
+    </ion-footer-bar>
 </script>
 <script id="templates/nc-popular-cars.html" type="text/ng-template">
-    <ion-view view-title="">
-    </ion-view>
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Popular Cars
+            </div>
+        </div>
+
+    </ion-header-bar>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="popularCar in popularCars.data"
+                  ng-click="fnUpcomingCar(popularCar)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{popularCar.mobileimage}}>
+
+                    <h2 class="">{{popularCar.displayCarModelName}}</h2>
+
+                    <h3 class="">Rs <span class="">{{popularCar.minexshowroomprice | formatPrice  }} - {{popularCar.maxexshowroomprice | formatPrice  }}</span>
+                        Lac</h3>
+                </div>
+                <div class="item item-divider item-icon-left ">
+                    <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span class="footerText">{{popularCar.rating}}/5</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+        <div class="row">
+            <div class="col-25 nc_lc_alignCenter">
+                Search
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Upcoming
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Latest
+            </div>
+            <div class="col-25 nc_lc_alignCenter">
+                Popuar
+            </div>
+        </div>
+    </ion-footer-bar>
 </script>
 <script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
     <ion-view view-title="">
@@ -1473,6 +1555,35 @@
 <script id="templates/nc-feel-the-cars.html" type="text/ng-template">
     <ion-view view-title="">
     </ion-view>
+</script>
+<script id="templates/auto-news.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Auto News
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="singeAutoNews in autoNews.data['Auto News']"
+                  ng-click="fnDetailedNews(singeAutoNews)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{singeAutoNews.carImageThumb}}>
+
+                    <h2 class="">{{singeAutoNews.newsTitle}}</h2>
+
+                    <h3 class="">{{singeAutoNews.datePublished}}</h3>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+</script>
+<script id="templates/auto-detailed-news.html" type="text/ng-template">
+    <ion-content >
+        <div ng-bind-html="autoDetailedNews"></div>
+    </ion-content>
 </script>
 </body>
 </html>
