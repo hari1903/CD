@@ -1,5 +1,4 @@
 .filterImageRow {
-    padding-top: 0px !important;
     padding-right: 0px !important;
     padding-bottom: 0px !important;
     padding-left: 0px !important;
@@ -17,28 +16,31 @@
 }
 
 .rowPadding{
-    padding-top: 0px !important;
+    padding-top: 20px !important;
     padding-right: 0px !important;
     padding-bottom: 0px !important;
     padding-left: 0px !important;
+
 }
 
 
 .theroot {
-    height: 100%;
+    height: 90%;
 }
 
 .scrollView {
     padding-left: 0px !important;
     padding-bottom: 0px !important;
     padding-right: 0px !important;
-    padding-top: 0px !important;
+    padding-top: 60px !important;
 }
 
 .popup-container {
     width: 100% !important;
     height: 100% !important;
 }
+
+
 
 
 

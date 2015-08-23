@@ -45,26 +45,26 @@
                     <div class="item-accordion innerMenu"
                          ng-show="shown">
                         <ion-list>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Search
+                            <a href="#/event/nc-search-cars" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Search
                                 Cars
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Upcoming Cars
+                            <a href="#/event/nc-upcoming-cars" class="item item-icon-left innerMenu inAnchor" menu-close>Upcoming Cars
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Latest Cars
+                            <a href="#/event/nc-latest-cars" class="item item-icon-left innerMenu inAnchor" menu-close>Latest Cars
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Popular Cars
+                            <a href="#/event/nc-popular-cars" class="item item-icon-left innerMenu inAnchor" menu-close>Popular Cars
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Offers and Discounts
+                            <a href="#/event/nc-offers-and-dicounts" class="item item-icon-left innerMenu inAnchor" menu-close>Offers and Discounts
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Videos
+                            <a href="#/event/nc-car-videos" class="item item-icon-left innerMenu inAnchor" menu-close>Car Videos
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Feel The Car</a>
+                            <a href="#/event/nc-feel-the-cars" class="item item-icon-left innerMenu inAnchor" menu-close>Feel The Car</a>
                         </ion-list>
                     </div>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
@@ -284,7 +284,7 @@
     </ion-view>
 </script>
 <script id="templates/used-car-home.html" type="text/ng-template">
-    <ion-view view-title="" ng-controller="usedCarHomeCtrl">
+    <ion-view view-title="" >
         <ion-content style="margin-top: -2px; ">
             <div class="list">
                 <button class="button button-full button-left button-positive searchBarCss" style="">
@@ -1053,7 +1053,7 @@
             </ion-item>
         </ion-content>
         <ion-footer-bar class="bar-light footerBar">
-            <a class="button footerLeft icon-left "> <i class="icon"><img src="images/icons/hdpi/scroll_top_.png"> </i>Scroll
+            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <i class="icon"><img src="images/icons/hdpi/scroll_top_.png"> </i>Scroll
                 View</a>
             <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i>
                 Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
@@ -1189,6 +1189,289 @@
                 <a class="button  icon-right right footerTabSingleWidth footerTabBarder"><div><div class="footerTabSingleCar"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i></div><div class="footerTabSingleCarPadding">
                     Sort </div></div></a>
         </ion-footer-bar>
+    </ion-view>
+</script>
+<script id="templates/used-single-car-card-view.html" type="text/ng-template">
+    <ion-view class="bgColor">
+        <ion-content>
+            <div class="cvInfoHeader">
+                <span class="cvInfoHeaderText"> {{detailedObj.usedCarSearchResult.data.count }} Used Cars In {{detailedObj.city}}</span>
+            </div>
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result">
+                    <div class="list card cvCardProp">
+                        <div class="item item-thumbnail cvitemPadding">
+                            <img class="cvImg_1" ng-src="{{detailedItem.imageUrl}}">
+                            <div id="cvBarOnTop" >
+                                <div class="row">
+                                    <div class="col-10 cvLocationColumnHeight">
+                                        <img class="cvLocationImageAndText cvLocationImg" src="images/icons/hdpi/location_icon.png" >
+                                    </div>
+                                    <div class="col cvLocationColumnHeight">
+                                        <span class="footerText cvLocationImageAndText cvLocationText">{{detailedItem.city}}, {{detailedItem.state}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item item-body cvItemBodyProp">
+                                <div id="cvBrand">
+                                    <span>{{detailedItem.Brand}}</span>
+                                </div>
+                                <div id="cvItemVariant">
+                                    <span>{{detailedItem.carVariantId}}</span>
+                                </div>
+                                <div id="cvItemPrice">
+                                    <span> Rs <span class="cvItemPriceValue">{{detailedItem.expectedPrice | formatPrice }}</span> Lac</span>
+                                </div>
+                                <div id="cvKMandModel">
+                                    <span class="">KMs <span class="cvModelProp">{{detailedItem.driven}}</span></span>
+                                    <span class="cvKMandModelPadding">Model <span class="cvModelProp">{{detailedItem.modelYear}}</span></span>
+                                </div>
+                        </div>
+
+                        <div class="item cvSellerProp">
+                            <botton class="cvSeller">
+                               Get Seller Details
+                            </botton>
+                        </div>
+
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+            <div class="cvInfoFooter">
+                <span class="cvInfoFooterText"> Sorted by : {{detailedObj.city}}</span>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="bar-light footerBar">
+            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <img class="cvListViewImg" src="images/icons/hdpi/list_view_icon.png"> <span>List
+                View</span></a>
+            <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i>
+                Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
+        </ion-footer-bar>
+    </ion-view>
+</script>
+<script id="templates/nc-search-cars.html" type="text/ng-template">
+         <ion-header-bar  class=" bar-subheader">
+            <div class="row ">
+                <div class="col nc_sc_alignCenter">
+                    BY BRAND
+                </div>
+                <div class="col nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
+                    BY PRICE
+                </div>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <div class="row nc_sc_rowRightPadding">
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter" >
+                        <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Maruthi</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Hyundai</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Honda</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row nc_sc_rowRightPadding">
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Toyota</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/mahindra_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Mahindra</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Tata</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row nc_sc_rowRightPadding">
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Ford</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/chevrolet_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Chevrolet</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Renault</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row nc_sc_rowRightPadding">
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/volkswagen_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Volkswagen</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Audi</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Nissan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row nc_sc_rowRightPadding">
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>BMW</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border">
+                    <div class="nc_sc_alignCenter">
+                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
+                    </div>
+                    <div class="nc_sc_alignCenter">
+                        <span>Datsun</span>
+                    </div>
+                </div>
+                <div class="col-33 nc_sc_colom_border nc_sc_alignCenter" ng-click="nc_sc_getMoreBrand()">
+                    <span>MORE BRANDS</span>
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar align-title="left" class="bar-assertive">
+            <div class="row">
+                <div class="col-25 nc_sc_alignCenter">
+                    Search
+                </div>
+                <div class="col-25 nc_sc_alignCenter">
+                    Upcoming
+                </div>
+                <div class="col-25 nc_sc_alignCenter">
+                    Latest
+                </div>
+                <div class="col-25 nc_sc_alignCenter">
+                    Popuar
+                </div>
+            </div>
+        </ion-footer-bar>
+</script>
+<script id="templates/nc-upcoming-cars.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_uc_header_info">
+            <div class="col ">
+                Upcoming Cars
+            </div>
+        </div>
+        <div class="row nc_uc_header_info">
+            <div class="col ">
+                Sep 2015
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
+                  ng-click="fnUpcomingCar(upcomingCar)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{upcomingCar.imageUrl}}>
+
+                    <h2 class="">{{upcomingCar.carModelName}}</h2>
+
+                    <h3 class="">Rs <span class="">{{upcomingCar.expectedExShowRoomPrice | formatPrice  }}</span>
+                        Lac</h3>
+                    <img src="images/icons/hdpi/upcoming_bell.png">
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+        <div class="row">
+            <div class="col-25 nc_uc_alignCenter">
+                Search
+            </div>
+            <div class="col-25 nc_uc_alignCenter">
+                Upcoming
+            </div>
+            <div class="col-25 nc_uc_alignCenter">
+                Latest
+            </div>
+            <div class="col-25 nc_uc_alignCenter">
+                Popuar
+            </div>
+        </div>
+    </ion-footer-bar>
+</script>
+<script id="templates/nc-latest-cars.html" type="text/ng-template">
+    <ion-view view-title="">
+    </ion-view>
+</script>
+<script id="templates/nc-popular-cars.html" type="text/ng-template">
+    <ion-view view-title="">
+    </ion-view>
+</script>
+<script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
+    <ion-view view-title="">
+    </ion-view>
+</script>
+<script id="templates/nc-car-videos.html" type="text/ng-template">
+    <ion-view view-title="">
+    </ion-view>
+</script>
+<script id="templates/nc-feel-the-cars.html" type="text/ng-template">
+    <ion-view view-title="">
     </ion-view>
 </script>
 </body>

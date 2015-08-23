@@ -38,7 +38,15 @@ angular
                     controller: "usedCarHomeCtrl"
                 }
             }
-        }).state('eventmenu.city', {
+        }).state('eventmenu.used-single-car-card-view', {
+        url: "/used-single-car-card-view",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/used-single-car-card-view.html",
+                controller: "usedSingleCarCardViewCtrl"
+            }
+        }
+    }).state('eventmenu.city', {
             url: "/city",
             views: {
                 'menuContent': {
@@ -140,6 +148,62 @@ angular
                 'menuContent': {
                     templateUrl: "templates/used-car-filter.html",
                     controller: "usedCarFilterCtl"
+                }
+            }
+        }).state('eventmenu.nc-search-cars', {
+            url: "/nc-search-cars",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-search-cars.html",
+                    controller: "nc_searchCars"
+                }
+            }
+        }).state('eventmenu.nc-upcoming-cars', {
+            url: "/nc-upcoming-cars",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-upcoming-cars.html",
+                    controller: "nc_upcomingCars"
+                }
+            }
+        }).state('eventmenu.nc-latest-cars', {
+            url: "/nc-latest-cars",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-latest-cars.html",
+                    controller: "nc_latestCars"
+                }
+            }
+        }).state('eventmenu.nc-popular-cars', {
+            url: "/nc-popular-cars",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-popular-cars.html",
+                    controller: "nc_popularCars"
+                }
+            }
+        }).state('eventmenu.nc-offers-and-dicounts', {
+            url: "/nc-offers-and-dicounts",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-offers-and-dicounts.html",
+                    controller: "nc_offersAndDiscounts"
+                }
+            }
+        }).state('eventmenu.nc-car-videos', {
+            url: "/nc-car-videos",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-car-videos.html",
+                    controller: "nc_carVideos"
+                }
+            }
+        }).state('eventmenu.nc-feel-the-cars', {
+            url: "/nc-feel-the-cars",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/nc-feel-the-cars.html",
+                    controller: "nc_feelTheCars"
                 }
             }
         })
@@ -395,13 +459,22 @@ angular
                         })
                 },
                 getObject: function () {
-                    // console.log("Obj Value
-                    // Called"+objectValue);
+                    console.log("objectValue"+ JSON.stringify(objectValue));
                     return objectValue;
                 },
                 setModel: function (model) {
                     objectValue.model = model;
-                }
+                },
+                getData : function (searchString, callBackFun) {
+                    var urlToSearch = url + searchString;
+                    console.log("get data url : " + urlToSearch);
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            callBackFun(data);
+                        })
+                },
             }
         }])
     // .factory('dataFactory', ['$http', function($http) {
@@ -426,6 +499,10 @@ angular
     'formatPrice',
     function () {
         return function (originalPrice) {
+            console.log("original price :" + originalPrice);
+            if(!isNaN(originalPrice)){
+                originalPrice = originalPrice.toString();
+            }
             var formatedPrice = "";
             formatedPrice = originalPrice.substring(0,
                     originalPrice.length - 5)
@@ -617,6 +694,7 @@ angular
         '$state',
         'cssInjector',
         function ($scope, sharedProperties, $rootScope, $state, cssInjector) {
+            console.log("in used car home control");
 
             cssInjector.add("css/SearchUsedCarHomeScreen.css");
             $scope.isAdvanceSerach = false;
@@ -1185,6 +1263,7 @@ angular
                   $rootScope, $state, cssInjector, $ionicPopup, $timeout) {
 
             cssInjector.add("css/usedCarDetail.css");
+            cssInjector.add("css/usedCarFilter.css");
             var usedCarSearchResultObj = sharedProperties
                 .getObject();
             $scope.detailedObj = usedCarSearchResultObj;
@@ -1194,6 +1273,11 @@ angular
                 $state.go('eventmenu.used-single-car-detail');
             }
 
+            $scope.fnCardView =function(){
+                console.log("call single card view")
+                $state.go('eventmenu.used-single-car-card-view');
+            }
+
             $scope.fnUCFilter = function () {
                 //$state.go('eventmenu.used-car-filter');
                     $scope.data = {}
@@ -1201,403 +1285,373 @@ angular
                     var html = "";
                 cssInjector.add("css/usedCarFilter.css");
 
-                    html = '<ion-view>'+
-                '        <ion-header-bar class="bar bar-subheader" >'+
-                '            <table style="width: 100%; ">'+
-                '                <tr >'+
-                '                    <td style="width: 50%; height: 20px !important; padding-top: 10px;!important;">'+
-                '                        <label style="font-size: 16px; !important; padding-left: 5px !important;"> Used Cars Result'+
-                '                            by</label>'+
-                '                    </td>'+
-                '                    <td style="width: 50%; height: 20px !important; text-align: right; padding-top: 10px;!important;">'+
-                '                        <a class="right"> <img src="images/Icons/hdpi/cross.png" height="16" width="16"> </a>'+
-                '                    </td>'+
-                '                </tr>'+
-                '            </table>'+
-                '        </ion-header-bar>'+
-                ''+
-                '        <ion-content scroll="false">'+
-                '            <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
-                '                <span style="color: #FFFFFF">SORT BY</span>'+
-                '            </div>'+
-                '            <div class="row rowPadding" align="center" valign="center">'+
-                '                <div class="col filterImageRow col-center" style="height: 73px;">'+
-                '                    <div>'+
-                '                        <img src="images/Icons/hdpi/price_normal.png">'+
-                '                    </div>'+
-                '                    <div>'+
-                '                        <span>Price</span>'+
-                '                    </div>'+
-                '                </div>'+
-                '                <div class="col filterImageRow">'+
-                '                    <div>'+
-                '                        <img src="images/Icons/hdpi/km_normal.png">'+
-                '                    </div>'+
-                '                    <div>'+
-                '                        <span>Kilometer</span>'+
-                '                    </div>'+
-                '                </div>'+
-                '                <div class="col filterImageRow">'+
-                '                    <div>'+
-                '                        <img src="images/Icons/hdpi/model_normal.png">'+
-                '                    </div>'+
-                '                    <div>'+
-                '                        <span>Model Year</span>'+
-                '                    </div>'+
-                '                </div>'+
-                '                <div class="col filterImageRow">'+
-                '                    <div>'+
-                '                        <img src="images/Icons/hdpi/relevence_normal.png">'+
-                '                    </div>'+
-                '                    <div>'+
-                '                        <span>Relevance</span>'+
-                '                    </div>'+
-                '                </div>'+
-                '            </div>'+
-                '            <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
-                '                <span style="color: #FFFFFF">FILTER BY</span>'+
-                '            </div>'+
-                '            <div class="row scrollView scrollView">'+
-                '                <div class="col scrollView">'+
-                '                    <ion-scroll direction="y" class="theroot">'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik1234'+
-                '                        </button>'+
-                '                    </ion-scroll>'+
-                '                </div>'+
-                ''+
-                '                <div class="col scrollView">'+
-                '                    <ion-scroll direction="y" class="theroot">'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik'+
-                '                        </button>'+
-                '                        <button class="backbutton">'+
-                '                            Karthik1234'+
-                '                        </button>'+
-                '                    </ion-scroll>'+
-                '                </div>'+
-                '            </div>'+
-                '        </ion-content>'+
-                '        <ion-footer-bar align-title="left" class="bar-assertive">'+
-                '            <div class="buttons">'+
-                '                <button class="button">Left Button</button>'+
-                '            </div>'+
-                '            <h1 class="title">Title!</h1>'+
-                '            <div class="buttons" ng-click="doSomething()">'+
-                '                <button class="button">Right Button</button>'+
-                '            </div>'+
-                '        </ion-footer-bar>'+
-                '        </ion-view>'
-
-
+                    html = '<div style="position: absolute !important; width: 100% !important; z-index: 95 !important;"><div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
+                           ' <span style="color: #FFFFFF">SORT BY</span> </div>'+
+                        ' <div class="row rowPadding" align="center" valign="center">'+
+                        '                <div class="col filterImageRow col-center" style="height: 73px;">'+
+                        '                    <div>'+
+                        '                        <img src="images/Icons/hdpi/price_normal.png">'+
+                        '                    </div>'+
+                        '                    <div>'+
+                        '                        <span>Price</span>'+
+                        '                    </div>'+
+                        '                </div>'+
+                        '                <div class="col filterImageRow">'+
+                        '                    <div>'+
+                        '                        <img src="images/Icons/hdpi/km_normal.png">'+
+                        '                    </div>'+
+                        '                    <div>'+
+                        '                        <span>Kilometer</span>'+
+                        '                    </div>'+
+                        '                </div>'+
+                        '                <div class="col filterImageRow">'+
+                        '                    <div>'+
+                        '                        <img src="images/Icons/hdpi/model_normal.png">'+
+                        '                    </div>'+
+                        '                    <div>'+
+                        '                        <span>Model Year</span>'+
+                        '                    </div>'+
+                        '                </div>'+
+                        '                <div class="col filterImageRow">'+
+                        '                    <div>'+
+                        '                        <img src="images/Icons/hdpi/relevence_normal.png">'+
+                        '                    </div>'+
+                        '                    <div>'+
+                        '                        <span>Relevance</span>'+
+                        '                    </div>'+
+                        '                </div>'+
+                        '</div>'+
+                        '            <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
+                        '                <span style="color: #FFFFFF">FILTER BY</span>'+
+                        '            </div> </div>'+
+                        ' <div class="row scrollView ">'+
+                        '                <div class="col scrollView">'+
+                        '                    <ion-scroll direction="y" class="theroot">'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik1234'+
+                        '                        </button>'+
+                        '                    </ion-scroll>'+
+                        '                </div>'+
+                        '                <div class="col scrollView">'+
+                        '                    <ion-scroll direction="y" class="theroot">'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik'+
+                        '                        </button>'+
+                        '                        <button class="backbutton">'+
+                        '                            Karthik1234'+
+                        '                        </button>'+
+                        '                    </ion-scroll>'+
+                        '                </div>'+
+                        '            </div> ';
 
                     // An elaborate, custom popup
                     var myPopup = $ionicPopup.show({
                         template: html,
                         scope: $scope,
+                        title: '<div class="row filterTopBar"> <div class="col-75 resultLeft"> <label class="fResultHeadFont">Used Car <span class="fResultFont"> Result</span> by</label> </label></div><div class="col-25 resultRight"><img class="resultImageRight" src="images/Icons/hdpi/cross.png"></div></div>',
                         buttons: [
                             { text: 'Cancel' },
                             {
@@ -1683,6 +1737,434 @@ angular
                 return x.replace(/\s+|\./gm, '');
             }
 
+        }]).controller(
+    'usedSingleCarCardViewCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        'cssInjector',
+        '$ionicPopup',
+        '$timeout',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, cssInjector, $ionicPopup, $timeout) {
+
+            cssInjector.add("css/usedCarDetail.css");
+            cssInjector.add("css/UsedSingleCarCardView.css");
+            console.log("in card view");
+            var usedCarSearchResultObj = sharedProperties
+                .getObject();
+            $scope.detailedObj = usedCarSearchResultObj;
+            $scope.usedCarDetailPerCar = function (item) {
+                sharedProperties
+                    .setUsedCarDetailPerCar(item);
+                $state.go('eventmenu.used-single-car-detail');
+            }
+
+
+
+            $scope.fnUCFilter = function () {
+                //$state.go('eventmenu.used-car-filter');
+                $scope.data = {}
+
+                var html = "";
+                cssInjector.add("css/usedCarFilter.css");
+
+                html = '<div style="position: absolute !important; width: 100% !important; z-index: 95 !important;"><div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
+                    ' <span style="color: #FFFFFF">SORT BY</span> </div>'+
+                    ' <div class="row rowPadding" align="center" valign="center">'+
+                    '                <div class="col filterImageRow col-center" style="height: 73px;">'+
+                    '                    <div>'+
+                    '                        <img src="images/Icons/hdpi/price_normal.png">'+
+                    '                    </div>'+
+                    '                    <div>'+
+                    '                        <span>Price</span>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '                <div class="col filterImageRow">'+
+                    '                    <div>'+
+                    '                        <img src="images/Icons/hdpi/km_normal.png">'+
+                    '                    </div>'+
+                    '                    <div>'+
+                    '                        <span>Kilometer</span>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '                <div class="col filterImageRow">'+
+                    '                    <div>'+
+                    '                        <img src="images/Icons/hdpi/model_normal.png">'+
+                    '                    </div>'+
+                    '                    <div>'+
+                    '                        <span>Model Year</span>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '                <div class="col filterImageRow">'+
+                    '                    <div>'+
+                    '                        <img src="images/Icons/hdpi/relevence_normal.png">'+
+                    '                    </div>'+
+                    '                    <div>'+
+                    '                        <span>Relevance</span>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '</div>'+
+                    '            <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">'+
+                    '                <span style="color: #FFFFFF">FILTER BY</span>'+
+                    '            </div> </div>'+
+                    ' <div class="row scrollView ">'+
+                    '                <div class="col scrollView">'+
+                    '                    <ion-scroll direction="y" class="theroot">'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik1234'+
+                    '                        </button>'+
+                    '                    </ion-scroll>'+
+                    '                </div>'+
+                    '                <div class="col scrollView">'+
+                    '                    <ion-scroll direction="y" class="theroot">'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik'+
+                    '                        </button>'+
+                    '                        <button class="backbutton">'+
+                    '                            Karthik1234'+
+                    '                        </button>'+
+                    '                    </ion-scroll>'+
+                    '                </div>'+
+                    '            </div> ';
+
+                // An elaborate, custom popup
+                var myPopup = $ionicPopup.show({
+                    template: html,
+                    scope: $scope,
+                    title: '<div class="row filterTopBar"> <div class="col-75 resultLeft"> <label class="fResultHeadFont">Used Car <span class="fResultFont"> Result</span> by</label> </label></div><div class="col-25 resultRight"><img class="resultImageRight" src="images/Icons/hdpi/cross.png"></div></div>',
+                    buttons: [
+                        { text: 'Cancel' },
+                        {
+                            text: '<b>Save</b>',
+                            type: 'button-positive',
+                            onTap: function(e) {
+                                if (!$scope.data.wifi) {
+                                    //don't allow the user to close unless he enters wifi password
+                                    e.preventDefault();
+                                } else {
+                                    return $scope.data.wifi;
+                                }
+                            }
+                        },
+                    ]
+                });
+                myPopup.then(function(res) {
+                    console.log('Tapped!', res);
+                });
+                //$timeout(function() {
+                //    myPopup.close(); //close the popup after 3 seconds for some reason
+                //}, 3000);
+            };
+
+
         }])
     .controller('usedCarFilterCtl', ['$scope', 'cssInjector', function ($scope, cssInjector) {
         console.log("");
@@ -1723,4 +2205,116 @@ angular
 
 
 
-    }]);
+    }])
+    .controller(
+    'nc_searchCars',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_searchCars");
+            cssInjector.add("css/nc-search-cars.css");
+            $scope.brand = sharedProperties
+                .getObject();
+
+            $scope.nc_sc_getMoreBrand = function(){
+                $state.go('eventmenu.brand');
+            }
+
+            $scope.nc_sc_getByPrice = function(){
+                $state.go('eventmenu.brand');
+            }
+
+            $scope.nc_sc_getUpComing = function(){
+                $state.go('eventmenu.nc-upcoming-cars');
+            }
+
+            $scope.nc_sc_getLatest = function(){
+                $state.go('eventmenu.nc-latest-cars');
+            }
+
+            $scope.nc_sc_getPopuar = function(){
+                $state.go('eventmenu.nc-popular-cars');
+            }
+
+
+        }])
+    .controller(
+    'nc_upcomingCars',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_upcomingCars");
+            cssInjector.add("css/nc-upcoming-cars.css");
+
+            var searchString = "getUpcomingCarListDataWithStatus&startLimit=1&endLimit=40";
+
+           sharedProperties.getData( searchString, function(upcomingCars){
+
+               $scope.upcomingCars = upcomingCars;
+
+           });
+
+
+
+        }])
+    .controller(
+    'nc_latestCars',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_latestCars");
+
+        }])
+    .controller(
+    'nc_popularCars',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_popularCars");
+
+        }])
+    .controller(
+    'nc_offersAndDiscounts',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_offersAndDiscounts");
+
+        }])
+    .controller(
+    'nc_carVideos',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_carVideos");
+
+        }])
+    .controller(
+    'nc_feelTheCars',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_feelTheCars");
+
+        }])

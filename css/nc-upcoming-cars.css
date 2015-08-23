@@ -1,0 +1,22 @@
+.nc_uc_header_prop{
+    height: 85px !important;
+}
+
+.nc_uc_header_info {
+    border-bottom-width: 1px;
+    border-bottom-color: #F05A28 !important;
+    border-style: solid !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.nc_uc_header_info_title {
+
+}
+
+.nc_uc_header_info_year {
+
+}
+
+.nc_uc_alignCenter {
+    text-align: center !important;
+}

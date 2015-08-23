@@ -1,0 +1,19 @@
+.nc_sc_alignCenter {
+    text-align: center !important;
+}
+
+.nc_sc_logoSige {
+    width: 45px !important;
+    height: 35px !important;
+}
+
+.nc_sc_rowRightPadding {
+    padding-right: 10px !important;
+}
+
+.nc_sc_colom_border {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #c8c7cc !important;
+    margin: 1px !important;
+}
