@@ -2338,8 +2338,25 @@ angular
         'sharedProperties',
         '$state',
         'cssInjector',
-        function ($scope, sharedProperties, $state, cssInjector) {
+        '$sce',
+        '$ionicPopup',
+        function ($scope, sharedProperties, $state, cssInjector,$sce, $ionicPopup) {
             console.log("in nc_carVideos");
+
+            cssInjector.add("css/nc-car-videos.css");
+            var searchString = "getModelCarVideoList&carmodelname=Maruti+Swift";
+
+            sharedProperties.getData( searchString, function(carVideos){
+
+                $scope.carVideos = carVideos;
+
+                //$scope.carVideo = $sce.trustAsHtml("<iframe width='650' height='420' src='https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>");
+
+            });
+
+            $scope.fnPlayVideo = function() {
+
+            }
 
         }])
     .controller(

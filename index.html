@@ -1549,8 +1549,22 @@
     </ion-view>
 </script>
 <script id="templates/nc-car-videos.html" type="text/ng-template">
-    <ion-view view-title="">
-    </ion-view>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="carVideo in carVideos.data.carVideoList"
+                  ng-click="fnPlayVideo(carVideo)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{carVideo.thumbnailImage}}>
+
+                    <h2 class="">{{carVideo.title}}</h2>
+
+                    <h3 class="">{{carVideo.date}}</h3>
+
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
 </script>
 <script id="templates/nc-feel-the-cars.html" type="text/ng-template">
     <ion-view view-title="">
