@@ -7,7 +7,7 @@ angular
             url: "/event",
             abstract: true,
             templateUrl: "templates/event-menu.html"
-        }).state('eventmenu.home', {
+        }).state('eventmenu.home',  {
             url: "/home",
             views: {
                 'menuContent': {
@@ -337,6 +337,9 @@ angular
                     // JSON.stringify(data1));
                     objectValue.contact = data1.data.CarDiscountCities;
                 })
+                .error(function () {
+
+                });
             $http
                 .post(
                 "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getNewCarPriceRangeDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
@@ -550,6 +553,17 @@ angular
             return formatedPrice;
         };
     })
+    .directive('ngNcFooterOption', function() {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/nc-footer-options-CD.html"
+        }
+    }).directive('ngPriceRange', function() {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/price-range-CD.html"
+        }
+    })
     .controller('AttendeesCtrl', function ($scope) {
 
         $scope.activity = [];
@@ -578,24 +592,32 @@ angular
                   $rootScope, $state, $http) {
             // $scope.contact1 =
             // [{'name':'KK'},{'name':'abcd'},{'name':'zxcv'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'},{'name':'KK'},{'name':'KK1'}];
-            $scope.city = "All Inida";
+            $scope.city = "";
 
             // $http.post("http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter=getOfferCityList").success(function(data1,
             // status) {
             // console.log("Data : "+ JSON.stringify(data1));
             // $scope.contact1 = data1.data.CarDiscountCities;
             // })
+            
+            //console.log("before city");
 
             $scope.contactObj = sharedProperties.getObject();
+            
+            
+            //console.log("After city");
+            
             // console.log("Contact :"+
             // JSON.stringify($scope.contactObj));
             $scope.contact1 = $scope.contactObj.contact;
 
             $scope.getContacts = function () {
                 letterHasMatch = {};
+                //console.log("After 1");
                 return $scope.contact1
                     .filter(
                     function (item) {
+                    	 //console.log("After 2");
                         var itemDoesMatch = !$scope.search
                             || item.isLetter
                             || item
@@ -615,6 +637,7 @@ angular
                             }
                             letterHasMatch[letter] = true;
                         }
+                        //console.log("After 3");
                         return itemDoesMatch;
                     })
                     .filter(
@@ -657,10 +680,11 @@ angular
 
             $scope.getContacts = function () {
                 letterHasMatch = {};
-
+                console.log("After 1");
                 return $scope.contact1
                     .filter(
                     function (item) {
+                    	console.log("After 2");
                         var itemDoesMatch = !$scope.search
                             || item.isLetter
                             || item.displayPriceRange
@@ -668,6 +692,8 @@ angular
                                 .indexOf(
                                 $scope.search
                                     .toLowerCase()) > -1;
+                                    
+                                    console.log("After 3");
 
                         if (!item.isLetter
                             && itemDoesMatch) {
@@ -680,14 +706,17 @@ angular
                             }
                             letterHasMatch[letter] = true;
                         }
+                        console.log("After 4");
                         return itemDoesMatch;
                     })
                     .filter(
                     function (item) {
                         if (item.isLetter
                             && !letterHasMatch[item.letter]) {
+                        	console.log("After 5");
                             return false;
                         }
+                        console.log("After 6");
                         return true;
                     })
             };
@@ -1730,7 +1759,7 @@ angular
                             //console.log("Karthik"+JSON.stringify($scope.featureList));
                         }
 
-                        $scope.$on('$ionicView.enter', function () {
+                        $scope.$on('ionicView.afterEnter', function () {
                             $ionicSlideBoxDelegate.update();
                             console.log("$scope.totalSlide" + $scope.totalSlide + "$ionicSlideBoxDelegate.slidesCount()" + $ionicSlideBoxDelegate.slidesCount());
                         });
@@ -2350,11 +2379,15 @@ angular
 
                 $scope.carVideos = carVideos;
 
-                //$scope.carVideo = $sce.trustAsHtml("<iframe width='650' height='420' src='https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>");
+                $scope.carVideo = $sce.trustAsHtml("<iframe width='650' height='420' src='https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>");
 
             });
 
-            $scope.fnPlayVideo = function() {
+            $scope.fnPlayVideo = function(carVideo) {
+                console.log("play selected car video");
+                $scope.carVideoToPa = "https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0";
+                //$scope.carVideo = $sce.trustAsHtml(carVideo.videoURL);
+                //$scope.showModal('templates/nc-car-play-video.html');
 
             }
 
@@ -2415,6 +2448,41 @@ angular
                 $scope.autoDetailedNews = $sce.trustAsHtml(autoDetailedNews);
 
             });
+
+
+        }]).controller(
+    'nc_footerOptionController',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        function ($scope, sharedProperties, cssInjector, $state) {
+            console.log("in nc_footerOptionController");
+
+
+            $scope.fn_ncFooterOptions_selectTab = function(tabOption) {
+                console.log("selected tab option : "+ tabOption);
+                var eventToCall = "";
+                switch (tabOption){
+                    case 'search' :
+                        eventToCall = "eventmenu.nc-search-cars";
+                        break;
+                    case 'upcoming' :
+                        eventToCall = "eventmenu.nc-upcoming-cars";
+                        break;
+                    case 'latest' :
+                        eventToCall = "eventmenu.nc-latest-cars";
+                        break;
+                    case 'popular' :
+                        eventToCall = "eventmenu.nc-popular-cars";
+                        break;
+                }
+
+                $state.go(eventToCall);
+
+            }
+
 
 
         }])
