@@ -5,7 +5,8 @@
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
-    <name>SampleIonic</name>
+    <name>CarDekho</name>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/fullscreen"/>    
     <tizen:profile name="mobile"/>
 </widget>

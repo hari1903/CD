@@ -12,6 +12,68 @@
 </head>
 <body ng-controller="MainCtrl">
 <ion-nav-view></ion-nav-view>
+
+<script id="templates/check-in.html" type="text/ng-template">
+    <ion-view view-title="Event Check-in">
+        <ion-content>
+            <form class="list" ng-show="showForm">
+                <div class="item item-divider">
+                    Attendee Info
+                </div>
+                <label class="item item-input">
+                    <input type="text" placeholder="First Name" ng-model="attendee.firstname">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Last Name" ng-model="attendee.lastname">
+                </label>
+
+                <div class="item item-divider">
+                    Shirt Size
+                </div>
+                <ion-radio ng-repeat="shirtSize in shirtSizes"
+                           ng-value="shirtSize.value"
+                           ng-model="attendee.shirtSize">
+                    {{ shirtSize.text }}
+                </ion-radio>
+                <div class="item item-divider">
+                    Lunch
+                </div>
+                <ion-toggle ng-model="attendee.vegetarian">
+                    Vegetarian
+                </ion-toggle>
+                <div class="padding">
+                    <button class="button button-block" ng-click="submit()">Checkin</button>
+                </div>
+            </form>
+
+            <div ng-hide="showForm">
+                <pre ng-bind="attendee | json"></pre>
+                <a href="#/event/attendees">View attendees</a>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="templates/attendees.html" type="text/ng-template">
+    <ion-view view-title="Event Attendees">
+        <ion-content>
+            <div class="list">
+                <ion-toggle ng-repeat="attendee in attendees | orderBy:'firstname' | orderBy:'lastname'"
+                            ng-model="attendee.arrived"
+                            ng-change="arrivedChange(attendee)">
+                    {{ attendee.firstname }}
+                    {{ attendee.lastname }}
+                </ion-toggle>
+                <div class="item item-divider">
+                    Activity
+                </div>
+                <div class="item" ng-repeat="msg in activity">
+                    {{ msg }}
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
 <script id="templates/event-menu.html" type="text/ng-template">
     <ion-side-menus enable-menu-with-back-views="false">
         <ion-side-menu-content>
@@ -177,6 +239,7 @@
         </ion-side-menu>
     </ion-side-menus>
 </script>
+
 <script id="templates/home.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-content >
@@ -184,254 +247,29 @@
         </ion-content>
     </ion-view>
 </script>
-<script id="templates/check-in.html" type="text/ng-template">
-    <ion-view view-title="Event Check-in">
-        <ion-content>
-            <form class="list" ng-show="showForm">
-                <div class="item item-divider">
-                    Attendee Info
-                </div>
-                <label class="item item-input">
-                    <input type="text" placeholder="First Name" ng-model="attendee.firstname">
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Last Name" ng-model="attendee.lastname">
-                </label>
-
-                <div class="item item-divider">
-                    Shirt Size
-                </div>
-                <ion-radio ng-repeat="shirtSize in shirtSizes"
-                           ng-value="shirtSize.value"
-                           ng-model="attendee.shirtSize">
-                    {{ shirtSize.text }}
-                </ion-radio>
-                <div class="item item-divider">
-                    Lunch
-                </div>
-                <ion-toggle ng-model="attendee.vegetarian">
-                    Vegetarian
-                </ion-toggle>
-                <div class="padding">
-                    <button class="button button-block" ng-click="submit()">Checkin</button>
-                </div>
-            </form>
-
-            <div ng-hide="showForm">
-                <pre ng-bind="attendee | json"></pre>
-                <a href="#/event/attendees">View attendees</a>
-            </div>
-        </ion-content>
-    </ion-view>
+<script id="templates/city.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-city></ng-city>
+    </ion-content>
 </script>
 <script id="templates/price-range.html" type="text/ng-template">
-    <ion-view view-title="">
-        <ion-header-bar class="bar-light bar-subheader">
-            <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
-                   ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
-            <button ng-if="search.length" class="button button-icon ion-android-close input-button"
-                    ng-click="clearSearch()">
-            </button>
-        </ion-header-bar>
-        <ion-content>
-           <ng-price-range></ng-price-range>
-        </ion-content>
-    </ion-view>
-</script>
-<script id="templates/city.html" type="text/ng-template">
-    <ion-view view-title="">
-        <ion-header-bar class="bar-light bar-subheader">
-            <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
-                   ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
-            <button ng-if="search.length" class="button button-icon ion-android-close input-button"
-                    ng-click="clearSearch()">
-            </button>
-        </ion-header-bar>
-        <ion-content>
-            <ion-list>
-                <ion-item class="my-item item" collection-repeat="item in contact1 | filter:search" style="
-         padding-left: 0px;
-         border-left-width: 0px;
-         margin-left: 0px;">
-                    <label class="item item-radio">
-                        <input type="radio" name="group" value={{item}} ng-model="city" ng-change='newValue(city)'>
-
-                        <div class="item-content"
-                             style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
-                            {{item}}
-                        </div>
-                        <i class="radio-icon ion-checkmark"></i>
-                    </label>
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-view>
-</script>
-<script id="templates/used-car-home.html" type="text/ng-template">
-    <ion-view view-title="" >
-        <ion-content style="margin-top: -2px; ">
-            <div class="list">
-                <button class="button button-full button-left button-positive searchBarCss" style="">
-                    <span class="spanSearcBar"> Search Used Cars </span>
-                </button>
-                <div id="mariginContainer">
-                    <a href="#/event/city" class="item item-icon-right listElement" style=";" menu-close>
-                        <span class="selectionDetailHeader">City</span> <i class="icon  selectionDetail">{{cityObj.city}}
-                        &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                    </a>
-                    <button id="advanceSearch" class="button button-clear button-full button-positive "
-                            style="margin-top: 0px;" ng-show="!isAdvanceSerach" ng-click="advanceSeach()">
-                        Advance Search
-                    </button>
-                    <div ng-show="isAdvanceSerach">
-                        <a href="#/event/price-range" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close ng-show="isAdvanceSerach">
-                            <span class="selectionDetailHeader">Price Range</span> <i class="icon selectionDetail">{{cityObj.price}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" ng-click="toggleCertified()" menu-close>
-                            <span class="selectionDetailHeader">Certified by Trustmark </span><i
-                                class="icon selectionDetail"> <i
-                                ng-class="{'ion-ios-circle-outline':!isCertified, 'ion-ios-checkmark':isCertified} "> </i></i>
-                        </a>
-                        <a href="#/event/brand" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Brand </span><i class="icon selectionDetail">{{cityObj.brand}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/model" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Model </span><i class="icon selectionDetail">{{cityObj.model}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/fuel" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Fuel Type </span><i class="icon selectionDetail">{{cityObj.fuel}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/km" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">KMs driven</span> <i class="icon selectionDetail">{{cityObj.km}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/vehicle-type" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Vehicle Type </span><i class="icon selectionDetail">{{cityObj.vehicleType}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/model-year" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Model Year </span><i class="icon selectionDetail">{{cityObj.modelYear}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/transmission" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Transmission </span><i class="icon selectionDetail">{{cityObj.transmission}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="#/event/seller-type" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
-                            <span class="selectionDetailHeader">Seller Type </span><i class="icon selectionDetail">{{cityObj.sellerType}}
-                            &nbsp;<i class="iconRightCss"><img src="images/icons/hdpi/edit_enable.png"> </i></i>
-                        </a>
-                        <a href="" class="item item-icon-right listElement"
-                           style="padding-bottom: 10px; padding-top: 10px;" ng-click="togglePicture()" menu-close>
-                            <span class="selectionDetailHeader">With Picture </span><i class="icon selectionDetail"><i
-                                ng-class="{'ion-ios-circle-outline':!isPicture, 'ion-ios-checkmark':isPicture}"> </i></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </ion-content>
-        <ion-footer-bar class="bar-light footerBar" style="padding: 0px;">
-            <button class="button button-full button-calm"
-                    style=" margin-bottom: 0px; margin-top: 0px; border-bottom-width: 0px; border-top-width: 0px; font-size: 120%; "
-                    ng-click="searchCar()">Search
-            </button>
-        </ion-footer-bar
-    </ion-view>
-
-</script>
-<script id="templates/attendees.html" type="text/ng-template">
-    <ion-view view-title="Event Attendees">
-        <ion-content>
-            <div class="list">
-                <ion-toggle ng-repeat="attendee in attendees | orderBy:'firstname' | orderBy:'lastname'"
-                            ng-model="attendee.arrived"
-                            ng-change="arrivedChange(attendee)">
-                    {{ attendee.firstname }}
-                    {{ attendee.lastname }}
-                </ion-toggle>
-                <div class="item item-divider">
-                    Activity
-                </div>
-                <div class="item" ng-repeat="msg in activity">
-                    {{ msg }}
-                </div>
-            </div>
-        </ion-content>
-    </ion-view>
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-price-range></ng-price-range>
+    </ion-content>
 </script>
 <script id="templates/brand.html" type="text/ng-template">
-    <ion-view view-title="">
-        <ion-header-bar class="bar-light bar-subheader">
-            <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
-                   ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
-            <button ng-if="search.length" class="button button-icon ion-android-close input-button"
-                    ng-click="clearSearch()">
-            </button>
-        </ion-header-bar>
-        <ion-content>
-            <ion-list>
-                <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
-         padding-left: 0px;
-         border-left-width: 0px;
-         margin-left: 0px;">
-                    <label class="item item-radio">
-                        <input type="radio" name="group" value={{item.oemname}} ng-model="brand"
-                               ng-change='newBrand(brand)'>
-
-                        <div class="item-content"
-                             style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
-                            {{item.oemname}}
-                        </div>
-                        <i class="radio-icon ion-checkmark"></i>
-                    </label>
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-view>
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-brand></ng-brand>
+    </ion-content>
 </script>
 <script id="templates/model.html" type="text/ng-template">
-    <ion-view view-title="">
-        <ion-header-bar class="bar-light bar-subheader">
-            <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
-                   ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
-            <button ng-if="search.length" class="button button-icon ion-android-close input-button"
-                    ng-click="clearSearch()">
-            </button>
-        </ion-header-bar>
-        <ion-content>
-            <ion-list>
-                <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
-         padding-left: 0px;
-         border-left-width: 0px;
-         margin-left: 0px;">
-                    <label class="item item-radio">
-                        <input type="radio" name="group" value={{item.displayCarModelName}} ng-model="model"
-                               ng-change='newModel(model)'>
-
-                        <div class="item-content"
-                             style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
-                            {{item.displayCarModelName}}
-                        </div>
-                        <i class="radio-icon ion-checkmark"></i>
-                    </label>
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-view>
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-brand-model></ng-brand-model>
+    </ion-content>
 </script>
 <script id="templates/fuel.html" type="text/ng-template">
     <ion-view view-title="">
@@ -611,6 +449,93 @@
         </ion-content>
     </ion-view>
 </script>
+
+<script id="templates/used-car-home.html" type="text/ng-template">
+    <ion-view view-title="" >
+        <ion-content style="margin-top: -2px; ">
+            <div class="list">
+                <button class="button button-full button-left button-positive searchBarCss" style="">
+                    <span class="spanSearcBar"> Search Used Cars </span>
+                </button>
+                <div id="mariginContainer">
+                    <a href="#/event/city" class="item item-icon-right listElement" style=";" menu-close>
+                        <span class="selectionDetailHeader">City</span> <i class="icon  selectionDetail">{{cityObj.city}}
+                        &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                    </a>
+                    <button id="advanceSearch" class="button button-clear button-full button-positive "
+                            style="margin-top: 0px;" ng-show="!isAdvanceSerach" ng-click="advanceSeach()">
+                        Advance Search
+                    </button>
+                    <div ng-show="isAdvanceSerach">
+                        <a href="#/event/price-range" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close ng-show="isAdvanceSerach">
+                            <span class="selectionDetailHeader">Price Range</span> <i class="icon selectionDetail">{{cityObj.price}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" ng-click="toggleCertified()" menu-close>
+                            <span class="selectionDetailHeader">Certified by Trustmark </span><i
+                                class="icon selectionDetail"> <i
+                                ng-class="{'ion-ios-circle-outline':!isCertified, 'ion-ios-checkmark':isCertified} "> </i></i>
+                        </a>
+                        <a href="#/event/brand/used-car-home" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Brand </span><i class="icon selectionDetail">{{cityObj.brand}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/model" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Model </span><i class="icon selectionDetail">{{cityObj.model}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/fuel" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Fuel Type </span><i class="icon selectionDetail">{{cityObj.fuel}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/km" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">KMs driven</span> <i class="icon selectionDetail">{{cityObj.km}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/vehicle-type" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Vehicle Type </span><i class="icon selectionDetail">{{cityObj.vehicleType}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/model-year" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Model Year </span><i class="icon selectionDetail">{{cityObj.modelYear}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/transmission" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Transmission </span><i class="icon selectionDetail">{{cityObj.transmission}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="#/event/seller-type" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                            <span class="selectionDetailHeader">Seller Type </span><i class="icon selectionDetail">{{cityObj.sellerType}}
+                            &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+                        </a>
+                        <a href="" class="item item-icon-right listElement"
+                           style="padding-bottom: 10px; padding-top: 10px;" ng-click="togglePicture()" menu-close>
+                            <span class="selectionDetailHeader">With Picture </span><i class="icon selectionDetail"><i
+                                ng-class="{'ion-ios-circle-outline':!isPicture, 'ion-ios-checkmark':isPicture}"> </i></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="bar-light footerBar" style="padding: 0px;">
+            <button class="button button-full button-calm"
+                    style=" margin-bottom: 0px; margin-top: 0px; border-bottom-width: 0px; border-top-width: 0px; font-size: 120%; "
+                    ng-click="searchCar()">Search
+            </button>
+        </ion-footer-bar
+    </ion-view>
+
+</script>
 <script id="templates/used-car-filter.html" type="text/ng-template">
     <ion-view>
         <ion-header-bar class="bar bar-subheader" >
@@ -621,7 +546,7 @@
                             by</label>
                     </td>
                     <td style="width: 50%; height: 20px !important; text-align: right; padding-top: 10px;!important;">
-                        <a class="right"> <img src="images/Icons/hdpi/cross.png" height="16" width="16"> </a>
+                        <a class="right"> <img src="images/cross.png" height="16" width="16"> </a>
                     </td>
                 </tr>
             </table>
@@ -634,7 +559,7 @@
             <div class="row rowPadding" align="center" valign="center">
                 <div class="col filterImageRow col-center" style="height: 73px;">
                     <div>
-                        <img src="images/Icons/hdpi/price_normal.png">
+                        <img src="images/price_normal.png">
                     </div>
                     <div>
                         <span>Price</span>
@@ -642,7 +567,7 @@
                 </div>
                 <div class="col filterImageRow">
                     <div>
-                        <img src="images/Icons/hdpi/km_normal.png">
+                        <img src="images/km_normal.png">
                     </div>
                     <div>
                         <span>Kilometer</span>
@@ -650,7 +575,7 @@
                 </div>
                 <div class="col filterImageRow">
                     <div>
-                        <img src="images/Icons/hdpi/model_normal.png">
+                        <img src="images/model_normal.png">
                     </div>
                     <div>
                         <span>Model Year</span>
@@ -658,7 +583,7 @@
                 </div>
                 <div class="col filterImageRow">
                     <div>
-                        <img src="images/Icons/hdpi/relevence_normal.png">
+                        <img src="images/relevence_normal.png">
                     </div>
                     <div>
                         <span>Relevance</span>
@@ -1031,22 +956,23 @@
                                     class="usedCarDetailModel1">{{detailedItem.modelYear}}  </span></h4>
                     </div>
                     <div class="item item-divider item-icon-left footerLine cardFooterHight">
-                        <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
+                        <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
                     </div>
                 </div>
             </ion-item>
         </ion-content>
         <ion-footer-bar class="bar-light footerBar">
-            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <i class="icon"><img src="images/icons/hdpi/scroll_top_.png"> </i>Scroll
+            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <i class="icon"><img src="images/scroll_top_.png"> </i>Scroll
                 View</a>
-            <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i>
-                Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
+            <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/green_led.png"></i>
+                Sort / Filter<i class="icon "><img class="img2" src="images/fillter.png"></i></a>
         </ion-footer-bar>
     </ion-view>
 </script>
 <script id="templates/used-single-car-detail.html" type="text/ng-template">
     <ion-view>
-        <ion-content>
+        <ion-content >
+
             <ion-slide-box class="imgContainer" show-pager="false" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="imgObj in usedCarDetailResult.data.pictures">
                     <img ng-src="{{imgObj.imageUrl}}">
@@ -1071,7 +997,7 @@
                     <span>{{usedCarDetailResult.data.CarVariantId}}</span>
                 </div>
                 <div id="sdCarLocation">
-                        <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i>
+                        <i class="icon"><img src="images/location_icon.png"> </i>
                         <span class="footerText">{{selectedCarItem.city}}, {{selectedCarItem.state}}</span>
                 </div>
             </div>
@@ -1079,11 +1005,11 @@
                 <table width="100%">
                     <tr id="sdCarImageRow">
                         <td class="tdClassInfo1">
-                            <i class="icon"><img src="images/icons/hdpi/km_normal.png"> </i></td>
+                            <i class="icon"><img src="images/km_normal.png"> </i></td>
                         <td class="tdClassInfo1">
-                            <i class="icon"><img src="images/icons/hdpi/model.png"> </i></td>
+                            <i class="icon"><img src="images/model.png"> </i></td>
                         <td class="tdClassInfo1">
-                            <i class="icon"><img src="images/icons/hdpi/diesel.png"> </i></td>
+                            <i class="icon"><img src="images/diesel.png"> </i></td>
                     </tr>
                     <tr id="sdCarMileageInfo">
                         <td class="tdClassInfo1 sdFontBold">
@@ -1157,7 +1083,7 @@
                                     class="usedCarDetailModel1">{{detailedItem.modelYear}}  </span></h4>
                         </div>
                         <div class="item item-divider item-icon-left footerLine cardFooterHight">
-                            <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span
+                            <i class="icon"><img src="images/location_icon.png"> </i><span
                                 class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
                         </div>
                     </div>
@@ -1167,10 +1093,10 @@
         </ion-content>
         <ion-footer-bar class="bar-light footerBar ">
 
-            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;"> <i class="icon"><img style="padding-top: 6px !important;" src="images/icons/hdpi/scroll_top_.png"> </i> Get Seller Details</a>
-                <a class="button footerTabSingleWidth footerTabBarder"><div><div class="footerTabSingleCar"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i></div><div class="footerTabSingleCarPadding">
+            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;"> <i class="icon"><img style="padding-top: 6px !important;" src="images/scroll_top_.png"> </i> Get Seller Details</a>
+                <a class="button footerTabSingleWidth footerTabBarder"><div><div class="footerTabSingleCar"><i class="icon"><img src="images/green_led.png"></i></div><div class="footerTabSingleCarPadding">
                     Sort </div></div></a>
-                <a class="button  icon-right right footerTabSingleWidth footerTabBarder"><div><div class="footerTabSingleCar"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i></div><div class="footerTabSingleCarPadding">
+                <a class="button  icon-right right footerTabSingleWidth footerTabBarder"><div><div class="footerTabSingleCar"><i class="icon"><img src="images/green_led.png"></i></div><div class="footerTabSingleCarPadding">
                     Sort </div></div></a>
         </ion-footer-bar>
     </ion-view>
@@ -1189,7 +1115,7 @@
                             <div id="cvBarOnTop" >
                                 <div class="row">
                                     <div class="col-10 cvLocationColumnHeight">
-                                        <img class="cvLocationImageAndText cvLocationImg" src="images/icons/hdpi/location_icon.png" >
+                                        <img class="cvLocationImageAndText cvLocationImg" src="images/location_icon.png" >
                                     </div>
                                     <div class="col cvLocationColumnHeight">
                                         <span class="footerText cvLocationImageAndText cvLocationText">{{detailedItem.city}}, {{detailedItem.state}}</span>
@@ -1229,13 +1155,14 @@
             </div>
         </ion-content>
         <ion-footer-bar class="bar-light footerBar">
-            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <img class="cvListViewImg" src="images/icons/hdpi/list_view_icon.png"> <span>List
+            <a class="button footerLeft icon-left " ng-click="fnCardView()"> <img class="cvListViewImg" src="images/list_view_icon.png"> <span>List
                 View</span></a>
-            <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/icons/hdpi/green_led.png"></i>
-                Sort / Filter<i class="icon "><img class="img2" src="images/icons/hdpi/fillter.png"></i></a>
+            <a class="button footerRight icon-right" ng-click="fnUCFilter()"><i class="icon"><img src="images/green_led.png"></i>
+                Sort / Filter<i class="icon "><img class="img2" src="images/fillter.png"></i></a>
         </ion-footer-bar>
     </ion-view>
 </script>
+
 <script id="templates/nc-search-cars.html" type="text/ng-template">
          <ion-header-bar  class=" bar-subheader">
             <div class="row ">
@@ -1248,131 +1175,7 @@
             </div>
         </ion-header-bar>
         <ion-content>
-            <div class="row nc_sc_rowRightPadding">
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter" >
-                        <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Maruthi</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Hyundai</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Honda</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row nc_sc_rowRightPadding">
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Toyota</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/mahindra_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Mahindra</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Tata</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row nc_sc_rowRightPadding">
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Ford</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/chevrolet_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Chevrolet</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Renault</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row nc_sc_rowRightPadding">
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/volkswagen_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Volkswagen</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Audi</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Nissan</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row nc_sc_rowRightPadding">
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>BMW</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border">
-                    <div class="nc_sc_alignCenter">
-                        <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
-                    </div>
-                    <div class="nc_sc_alignCenter">
-                        <span>Datsun</span>
-                    </div>
-                </div>
-                <div class="col-33 nc_sc_colom_border nc_sc_alignCenter" ng-click="nc_sc_getMoreBrand()">
-                    <span>MORE BRANDS</span>
-                </div>
-            </div>
+
         </ion-content>
          <ng-nc-footer-option></ng-nc-footer-option>
 </script>
@@ -1401,7 +1204,7 @@
 
                     <h3 class="">Rs <span class="">{{upcomingCar.expectedExShowRoomPrice | formatPrice  }}</span>
                         Lac</h3>
-                    <img src="images/icons/hdpi/upcoming_bell.png">
+                    <img src="images/upcoming_bell.png">
                 </div>
             </div>
         </ion-item>
@@ -1431,7 +1234,7 @@
                         Lac</h3>
                 </div>
                 <div class="item item-divider item-icon-left ">
-                    <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span class="footerText">{{latestCar.rating}}/5</span>
+                    <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{latestCar.rating}}/5</span>
                 </div>
             </div>
         </ion-item>
@@ -1462,7 +1265,7 @@
                         Lac</h3>
                 </div>
                 <div class="item item-divider item-icon-left ">
-                    <i class="icon"><img src="images/icons/hdpi/location_icon.png"> </i><span class="footerText">{{popularCar.rating}}/5</span>
+                    <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{popularCar.rating}}/5</span>
                 </div>
             </div>
         </ion-item>
@@ -1516,6 +1319,7 @@
     <ion-view view-title="">
     </ion-view>
 </script>
+
 <script id="templates/auto-news.html" type="text/ng-template">
     <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
         <div class="row nc_lc_header_info">
@@ -1545,6 +1349,7 @@
         <div ng-bind-html="autoDetailedNews"></div>
     </ion-content>
 </script>
+
 <script id="templates/nc-footer-options-CD.html" type="text/ng-template" >
     <ion-footer-bar align-title="left" class="bar-assertive" ng-controller="nc_footerOptionController">
         <div class="row">
@@ -1563,16 +1368,15 @@
         </div>
     </ion-footer-bar>
 </script>
-
 <script id="templates/price-range-CD.html" type="text/ng-template" >
     <ion-list>
-        <ion-item class="my-item item" ng-repeat="item in getContacts()" style="
+        <ion-item class="my-item item" ng-repeat="item in priceRange.priceRanageObj.newCarFilterPriceRange | filter:search" style="
          padding-left: 0px;
          border-left-width: 0px;
          margin-left: 0px;">
             <label class="item item-radio">
                 <input type="radio" name="group" value={{item.displayPriceRange}} ng-model="price"
-                       ng-change='newPrice(price)'>
+                       ng-change='newPrice(item)'>
 
                 <div class="item-content"
                      style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
@@ -1583,5 +1387,212 @@
         </ion-item>
     </ion-list>
 </script>
+<script id="templates/city-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" collection-repeat="item in contactObj.contact | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item}} ng-model="city" ng-change='newCity(city)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/brand-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" ng-repeat="item in brandTempObj.brandObj | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item.oemname}} ng-model="brand"
+                       ng-change='newBrand(brand)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item.oemname}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/model-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" ng-repeat="item in modelTempObj.modelObj | filter:search " style="
+    padding-left: 0px;
+    border-left-width: 0px;
+    margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item.displayCarModelName}} ng-model="model"
+                       ng-change='newModel(model)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item.displayCarModelName}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/search-header-bar-CD.html" type="text/ng-template">
+        <ion-header-bar class="bar-light bar-subheader" >
+            <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
+                   ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+            <button ng-if="search.length" class="button button-icon ion-android-close input-button"
+                    ng-click="clearSearch()">
+            </button>
+        </ion-header-bar>
+</script>
+
+<script id="templates/nc-car-brand-CD.html" type="text/ng-template">
+    <div class="row nc_sc_rowRightPadding">
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter" >
+                <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Maruthi</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Hyundai</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Honda</span>
+            </div>
+        </div>
+    </div>
+    <div class="row nc_sc_rowRightPadding">
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Toyota</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/mahindra_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Mahindra</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Tata</span>
+            </div>
+        </div>
+    </div>
+    <div class="row nc_sc_rowRightPadding">
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Ford</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/chevrolet_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Chevrolet</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Renault</span>
+            </div>
+        </div>
+    </div>
+    <div class="row nc_sc_rowRightPadding">
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/volkswagen_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Volkswagen</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Audi</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Nissan</span>
+            </div>
+        </div>
+    </div>
+    <div class="row nc_sc_rowRightPadding">
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>BMW</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border">
+            <div class="nc_sc_alignCenter">
+                <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
+            </div>
+            <div class="nc_sc_alignCenter">
+                <span>Datsun</span>
+            </div>
+        </div>
+        <div class="col-33 nc_sc_colom_border nc_sc_alignCenter" ng-click="nc_sc_getMoreBrand()">
+            <span>MORE BRANDS</span>
+        </div>
+    </div>
+</script>
+
+
+
+<!-- TODO Incomplete -->
+<script id="templates/is-loading-CD.html" type="text/ng-template">
+    <ion-header-bar class="bar-light bar-subheader" >
+        <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
+               ng-blur="searchFocused = false" ng-change="scrollTop()" class="full-width">
+        <button ng-if="search.length" class="button button-icon ion-android-close input-button"
+                ng-click="clearSearch()">
+        </button>
+    </ion-header-bar>
+</script>
+
 </body>
 </html>
