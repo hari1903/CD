@@ -1,14 +1,10 @@
 angular
     .module('ionicApp', ['ionic', 'angular.css.injector'])
 
+    // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('eventmenu', {
-                url: "/event",
-                abstract: true,
-                templateUrl: "templates/event-menu.html"
-            })
 
             .state('eventmenu.home', {
                 url: "/home",
@@ -28,7 +24,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.attendees', {
                 url: "/attendees",
                 views: {
@@ -38,26 +33,12 @@ angular
                     }
                 }
             })
-
-            .state('eventmenu.used-car-home', {
-                url: "/used-car-home",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/used-car-home.html",
-                        controller: "usedCarHomeCtrl"
-                    }
-                }
+            .state('eventmenu', {
+                url: "/event",
+                abstract: true,
+                templateUrl: "templates/event-menu.html"
             })
 
-            .state('eventmenu.used-single-car-card-view', {
-                url: "/used-single-car-card-view",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/used-single-car-card-view.html",
-                        controller: "usedSingleCarCardViewCtrl"
-                    }
-                }
-            })
 
             .state('eventmenu.city', {
                 url: "/city",
@@ -68,7 +49,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.price-range', {
                 url: "/price-range",
                 views: {
@@ -78,7 +58,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.brand', {
                 url: "/brand/:retunEvent",
                 views: {
@@ -88,7 +67,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.model', {
                 url: "/model",
                 views: {
@@ -98,7 +76,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.fuel', {
                 url: "/fuel",
                 views: {
@@ -108,7 +85,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.km', {
                 url: "/km",
                 views: {
@@ -118,7 +94,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.vehicle-type', {
                 url: "/vehicle-type",
                 views: {
@@ -128,7 +103,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.model-year', {
                 url: "/model-year",
                 views: {
@@ -138,7 +112,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.transmission', {
                 url: "/transmission",
                 views: {
@@ -148,7 +121,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.seller-type', {
                 url: "/seller-type",
                 views: {
@@ -159,6 +131,25 @@ angular
                 }
             })
 
+
+            .state('eventmenu.used-car-home', {
+                url: "/used-car-home",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/used-car-home.html",
+                        controller: "usedCarHomeCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.used-single-car-card-view', {
+                url: "/used-single-car-card-view",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/used-single-car-card-view.html",
+                        controller: "usedSingleCarCardViewCtrl"
+                    }
+                }
+            })
             .state('eventmenu.used-car-detail', {
                 url: "/used-car-detail",
                 views: {
@@ -168,7 +159,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.used-single-car-detail', {
                 url: "/used-single-car-detail",
                 views: {
@@ -178,7 +168,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.used-car-filter', {
                 url: "/used-car-filter",
                 views: {
@@ -189,6 +178,7 @@ angular
                 }
             })
 
+
             .state('eventmenu.nc-search-cars', {
                 url: "/nc-search-cars",
                 views: {
@@ -198,7 +188,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-upcoming-cars', {
                 url: "/nc-upcoming-cars",
                 views: {
@@ -208,7 +197,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-latest-cars', {
                 url: "/nc-latest-cars",
                 views: {
@@ -218,7 +206,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-popular-cars', {
                 url: "/nc-popular-cars",
                 views: {
@@ -228,7 +215,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-offers-and-dicounts', {
                 url: "/nc-offers-and-dicounts",
                 views: {
@@ -238,7 +224,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-car-videos', {
                 url: "/nc-car-videos",
                 views: {
@@ -248,13 +233,59 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.nc-feel-the-cars', {
                 url: "/nc-feel-the-cars",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/nc-feel-the-cars.html",
                         controller: "nc_feelTheCars"
+                    }
+                }
+            })
+            .state('eventmenu.nc-brand-details', {
+                url: "/nc-brand-details/:paramName",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-brand-detail.html",
+                        controller: "nc_brandDetails"
+                    }
+                }
+            })
+            .state('eventmenu.nc-model-details', {
+                url: "/nc-model-details/:paramName",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-model-detail.html",
+                        controller: "nc_modelDetails"
+                    }
+                }
+            })
+            .state('eventmenu.nc-get-on-road-price-form', {
+                url: "/nc-get-on-road-price-form/:oem/:carModel",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-get-on-road-price-form.html",
+                        controller: "nc_getOnRoadPriceFormCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.nc-get-on-road-price-detail', {
+                url: "/nc-get-on-road-price-detail",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-get-on-road-price-detail.html",
+                        controller: "nc_getOnRoadPriceDetailCtrl"
+                    }
+                }
+            })
+
+
+            .state('eventmenu.gbl-temp-page', {
+                url: "/gbl-temp-page/:paramName/:paramValue/:apiOption/:urlToCall",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/gbl-temp-page.html",
+                        controller: "gbl_tempPageCtrl"
                     }
                 }
             })
@@ -268,7 +299,6 @@ angular
                     }
                 }
             })
-
             .state('eventmenu.auto-detailed-news', {
                 url: "/auto-detailed-news/:newsId",
                 views: {
@@ -282,13 +312,14 @@ angular
             $urlRouterProvider.otherwise("/event/home");
     })
 
-
+    // *************  Service ********************
     .service(
     'sharedProperties',
     [
         '$http',
         '$ionicLoading',
-        function ($http, $ionicLoading) {
+        '$q',
+        function ($http, $ionicLoading, $q) {
 
             function callApi(url) {
                 $http.post(url).success(function (data, status) {
@@ -323,6 +354,11 @@ angular
             objectValue.modelObj = [];
             objectValue.usedCarSearchResult = [];
             objectValue.usedCarDetailResult = {};
+
+            objectValue.ncBrandDetailsObj = {};
+            objectValue.ncModelDetailsObj = {};
+
+            var onRoadDetailRequestObj = {};
 
 
             $http
@@ -493,27 +529,86 @@ angular
                             callBackFun(data);
                         })
                 },
-                shoLoading: function () {
-                    $ionicLoading.show({
-
-                        // The text to display in the loading indicator
-                        template: "<img src ='images/Home_Screen_Updated_15_jul_2014.png'>",
-
-                        // The animation to use
-                        animation: 'fade-in',
-
-                        // Will a dark overlay or backdrop cover the entire view
-                        showBackdrop: true,
-
-                        // The maximum width of the loading indicator
-                        // Text will be wrapped if longer than maxWidth
-                        maxWidth: 200,
-
-                        // The delay in showing the indicator
-                        showDelay: 100
-                    });
+                getNCBrandDetails : function(brandName, callBackFun){
+                    var urlToSearch = url
+                        + "getModelFeedsWithStatus&oem="
+                        + brandName;
+                    console.log("getNCBrandDetail : " + urlToSearch);
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            console.log("get NC brand detail" + data);
+                            objectValue.ncBrandDetailsObj = data;
+                            callBackFun(data);
+                        })
                 },
+                getNCModelDetails : function(modelName, callBackFn){
+                var urlToSearch = url
+                    + "getModelFeedsWithStatus&ModelName="
+                    + modelName;
+                console.log("getNCModelDetails : " + urlToSearch);
+                $http
+                    .post(urlToSearch)
+                    .success(
+                    function (data, status) {
+                        console.log("get NC brand detail" + data);
+                        callBackFun(data);
+                    })
+                },
+                getDataFromApi : function(apiOption, paramValue, callBackFun){
+                    var urlToSearch = url;
+                    switch(apiOption){
+                        case 'ncBrandDetailsObj':
+                            urlToSearch += "getModelFeedsWithStatus&oem="+paramValue;
+                            break;
+                        case 'ncModelDetailsObj':
+                            urlToSearch += "getModelDetailsWithStatus&ModelName="+paramValue;
+                            break;
+                    }
 
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            console.log("get data from api" + data);
+                            objectValue[apiOption] = data;
+                            callBackFun(data);
+                        })
+                },
+                getCityAndPing : function(callBackFun) {
+                    var urlToSearch = url;
+
+                    var cityUrl = urlToSearch + "getDataForOnRoadPriceWithStatus1";
+                    var pinUrl = urlToSearch + "getPincodesForCity&city=New%20Delhi";
+
+                    var cityPost = $http.post(cityUrl);
+                    var pingPost = $http.post(pinUrl);
+                    $q.all([cityPost, pingPost]).then(function(cityAndPingObjs) {
+                        console.log("city and pin "+ JSON.stringify(cityAndPingObjs));
+                        callBackFun(cityAndPingObjs);
+                    });
+
+                },
+                setOnRoadRequestObj : function(onRoadDetailRequest){
+                    console.log("request obj "+ JSON.stringify(onRoadDetailRequest));
+                    onRoadDetailRequestObj = onRoadDetailRequest;
+                },
+                getOnRoadDetailsObj : function(callBackFun){
+                    var urlToSearch = url
+                        + "getOnRoadPriceWithStatus&MobileNo="+onRoadDetailRequestObj.userMobile+"&BuyingTime=7&"
+                        + "UserName="+onRoadDetailRequestObj.name+"&ModelName="+onRoadDetailRequestObj.carModel +"&PinCode="+onRoadDetailRequestObj.userPinCode
+                        + "&EmailId="+onRoadDetailRequestObj.userEmail+"&OemName="+onRoadDetailRequestObj.oem+"&City="+onRoadDetailRequestObj.userCity;
+                    console.log("getNCModelDetails : " + urlToSearch);
+
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            console.log("get data from api" + data);
+                            callBackFun(data, onRoadDetailRequestObj);
+                        })
+                }
 
             }
 
@@ -563,6 +658,7 @@ angular
         };
     })
 
+    // *************  Directive  ********************
     //Used Car
     .directive('ngCity', function () {
         return {
@@ -602,6 +698,18 @@ angular
             templateUrl: "templates/nc-footer-options-CD.html"
         }
     })
+    .directive('ngNcCarBrand', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/nc-car-brand-CD.html"
+        }
+    })
+    .directive('ngNcSearchCarHeader', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/nc-search-car-header-CD.html"
+        }
+    })
 
     //TODO incomplete
     .directive('ngIsLoading', function () {
@@ -611,8 +719,9 @@ angular
         }
     })
 
-
-    .controller('AttendeesCtrl', function ($scope) {
+    // *************  Controllers ********************
+    .controller(
+    'AttendeesCtrl', function ($scope) {
 
         $scope.activity = [];
         $scope.arrivedChange = function (attendee) {
@@ -626,8 +735,8 @@ angular
         };
 
     })
-
-    .controller('MainCtrl', function ($scope, $ionicSideMenuDelegate) {
+    .controller(
+    'MainCtrl', function ($scope, $ionicSideMenuDelegate) {
         $scope.attendees = [{
             firstname: 'Nicolas',
             lastname: 'Cage'
@@ -667,7 +776,8 @@ angular
         };
 
     })
-    .controller('CheckinCtrl', function ($scope) {
+    .controller(
+    'CheckinCtrl', function ($scope) {
         $scope.showForm = true;
 
         $scope.shirtSizes = [{
@@ -692,6 +802,10 @@ angular
         };
 
     })
+
+
+
+
     .controller(
     'cityCtrl',
     [
@@ -738,7 +852,6 @@ angular
                 $state.go('eventmenu.used-car-home');
             }
         }])
-
     .controller(
     'brandCtrl',
     [
@@ -1158,6 +1271,7 @@ angular
                 $state.go('eventmenu.used-car-home');
             }
         }])
+
     .controller(
     'usedCarHomeCtrl',
     [
@@ -1695,7 +1809,7 @@ angular
                             //console.log("Karthik"+JSON.stringify($scope.featureList));
                         }
 
-                        $scope.$on('ionicView.afterEnter', function () {
+                        $scope.$on('ionicView.enter', function () {
                             $ionicSlideBoxDelegate.update();
                             console.log("$scope.totalSlide" + $scope.totalSlide + "$ionicSlideBoxDelegate.slidesCount()" + $ionicSlideBoxDelegate.slidesCount());
                         });
@@ -1718,7 +1832,8 @@ angular
                 return x.replace(/\s+|\./gm, '');
             }
 
-        }]).controller(
+        }])
+    .controller(
     'usedSingleCarCardViewCtrl',
     [
         '$scope',
@@ -2146,7 +2261,9 @@ angular
 
 
         }])
-    .controller('usedCarFilterCtl', ['$scope', 'cssInjector', function ($scope, cssInjector) {
+    .controller(
+    'usedCarFilterCtl',
+    ['$scope', 'cssInjector', function ($scope, cssInjector) {
         console.log("");
         cssInjector.add("css/usedCarFilter.css");
         $scope.check = "Karthik";
@@ -2185,6 +2302,9 @@ angular
 
 
     }])
+
+
+
     .controller(
     'nc_searchCars',
     [
@@ -2192,11 +2312,20 @@ angular
         'sharedProperties',
         '$state',
         'cssInjector',
+
         function ($scope, sharedProperties, $state, cssInjector) {
             console.log("in nc_searchCars");
             cssInjector.add("css/nc-search-cars.css");
+
+
             $scope.brand = sharedProperties
                 .getObject();
+
+            $scope.fn_ncSearchSetBrand = function(brandName){
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+            }
+
+
 
             $scope.nc_sc_getMoreBrand = function () {
                 $state.go('eventmenu.brand', {"retunEvent":"nc-search-cars"});
@@ -2220,6 +2349,173 @@ angular
 
 
         }])
+    .controller(
+    'nc_brandDetails',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        '$ionicSlideBoxDelegate',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading, $ionicSlideBoxDelegate) {
+            console.log("in nc_brandDetails");
+
+            var brandName = $stateParams.paramName;
+
+            var usedCarSearchResultObj = sharedProperties
+                .getObject();
+            $scope.ncBrandDetails = usedCarSearchResultObj;
+
+            $scope.fn_ncSearchCar = function () {
+                $state.go('eventmenu.nc-search-cars');
+            }
+
+            $scope.fn_ncBrandDetail = function (ncBrandDetail) {
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":ncBrandDetail.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+            }
+
+
+        }])
+    .controller(
+    'nc_modelDetails',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
+            console.log("in nc_modelDetails");
+            var brandName = $stateParams.paramName;
+            cssInjector.add("css/nc-model-details.css");
+            $scope.ncModelDetails = sharedProperties
+                .getObject();
+
+            $scope.imageUrl = $scope.ncModelDetails.ncModelDetailsObj.data.defaultimageUrl;
+
+            $scope.fn_ncSearchCar = function () {
+                $state.go('eventmenu.nc-search-cars');
+            }
+
+            $scope.fn_ncSelectedColor = function (colorObj) {
+                console.log(colorObj.colorImageUrl)
+                $scope.imageUrl = colorObj.colorImageUrl;
+            }
+
+            $scope.fnGetOnRoadPrice = function() {
+                console.log("go to on road price")
+                $state.go('eventmenu.nc-get-on-road-price-form');
+            }
+
+        }])
+    .controller(
+    'nc_getOnRoadPriceFormCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
+            console.log("in nc_modelDetails");
+            $scope.oem = $stateParams.oem;
+            $scope.carModel = $stateParams.carModel;
+            $scope.isUserAgreed = false;
+
+            $scope.loading = $ionicLoading.show({
+                template: 'loading'
+            });
+
+           sharedProperties.getCityAndPing(function(cityAndPingObjs){
+               $ionicLoading.hide();
+
+           });
+
+            $scope.fn_isUserAgreed = function() {
+                $scope.isUserAgreed = !$scope.isUserAgreed;
+            }
+
+            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
+                console.log("userName"+ onRoadDetailsObj.name);
+                console.log("userEmail"+ onRoadDetailsObj.userEmail);
+                console.log("userMobile"+ onRoadDetailsObj.userMobile);
+                console.log("userCity"+ onRoadDetailsObj.userCity);
+                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
+                $scope.onRoadDetailsObj = onRoadDetailsObj;
+                onRoadDetailsObj.oem = $scope.oem;
+                onRoadDetailsObj.carModel = $scope.carModel;
+                sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail')
+
+            }
+
+        }])
+    .controller(
+    'nc_getOnRoadPriceDetailCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
+            console.log("in nc_getOnRoadPriceDetailCtrl");
+
+
+            $scope.loading = $ionicLoading.show({
+                template: 'loading'
+            });
+
+            sharedProperties.getOnRoadDetailsObj(function(onRoadDetailsObj, onRoadDetailRequestObj){
+                $ionicLoading.hide();
+
+                $scope.carModel = onRoadDetailRequestObj.carModel;
+
+
+
+            });
+
+            $scope.fn_isUserAgreed = function() {
+                $scope.isUserAgreed = !$scope.isUserAgreed;
+            }
+
+        }])
+    .controller(
+    'gbl_tempPageCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
+            console.log("in nc_modelDetails");
+            var paramValue = $stateParams.paramValue;
+            var paramName  = $stateParams.paramName;
+            var apiOption  = $stateParams.apiOption;
+            var urlToCall  = $stateParams.urlToCall;
+            console.log("KK param name"+ paramName +paramValue);
+
+            $scope.loading = $ionicLoading.show({
+                template: 'loading'
+            });
+
+            sharedProperties
+                .getDataFromApi(apiOption, paramValue, function () {
+                    console.log("in temp");
+                    $ionicLoading.hide();
+                    $state.go('eventmenu.'+urlToCall, {paramName:paramValue});
+
+             })
+        }])
+
+
     .controller(
     'nc_upcomingCars',
     [
@@ -2261,7 +2557,8 @@ angular
 
             });
 
-        }]).controller(
+        }])
+    .controller(
     'nc_popularCars',
     [
         '$scope',
@@ -2335,55 +2632,8 @@ angular
         function ($scope, sharedProperties, $state, cssInjector) {
             console.log("in nc_feelTheCars");
 
-        }]).controller(
-    'autoNewsCtrl',
-    [
-        '$scope',
-        'sharedProperties',
-        '$state',
-        'cssInjector',
-        '$stateParams',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
-            console.log("in nc_popularCars");
-            cssInjector.add("css/nc-popular-cars.css");
-
-            var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
-
-            sharedProperties.getData(searchString, function (autoNews) {
-
-                $scope.autoNews = autoNews;
-
-            });
-            $scope.fnDetailedNews = function (singeAutoNews) {
-                console.log("get detailed car news" + singeAutoNews.carNewsId);
-                $state.go('eventmenu.auto-detailed-news', {newsId: singeAutoNews.carNewsId});
-            }
-
-        }]).controller(
-    'autoDetailedNewsCtrl',
-    [
-        '$scope',
-        'sharedProperties',
-        '$state',
-        'cssInjector',
-        '$stateParams',
-        '$sce',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
-            console.log("in nc_popularCars");
-            cssInjector.add("css/nc-popular-cars.css");
-
-
-            var carNewsID = $stateParams.newsId;
-            console.log("car news id :" + carNewsID);
-            var searchString = "getDetailAutoNewsHtmlWithStatus&CarNewsId=" + carNewsID;
-
-            sharedProperties.getData(searchString, function (autoDetailedNews) {
-                $scope.autoDetailedNews = $sce.trustAsHtml(autoDetailedNews);
-
-            });
-
-
-        }]).controller(
+        }])
+    .controller(
     'nc_footerOptionController',
     [
         '$scope',
@@ -2418,7 +2668,59 @@ angular
 
 
         }])
-    .controller('LoadingCtrl', ['$scope', '$ionicLoading', function ($scope, $ionicLoading) {
+
+    .controller(
+    'autoNewsCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+            console.log("in nc_popularCars");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
+
+            sharedProperties.getData(searchString, function (autoNews) {
+
+                $scope.autoNews = autoNews;
+
+            });
+            $scope.fnDetailedNews = function (singeAutoNews) {
+                console.log("get detailed car news" + singeAutoNews.carNewsId);
+                $state.go('eventmenu.auto-detailed-news', {newsId: singeAutoNews.carNewsId});
+            }
+
+        }])
+    .controller(
+    'autoDetailedNewsCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in nc_popularCars");
+            cssInjector.add("css/nc-popular-cars.css");
+
+
+            var carNewsID = $stateParams.newsId;
+            console.log("car news id :" + carNewsID);
+            var searchString = "getDetailAutoNewsHtmlWithStatus&CarNewsId=" + carNewsID;
+
+            sharedProperties.getData(searchString, function (autoDetailedNews) {
+                $scope.autoDetailedNews = $sce.trustAsHtml(autoDetailedNews);
+
+            });
+
+
+        }])
+    .controller(
+    'LoadingCtrl', ['$scope', '$ionicLoading', function ($scope, $ionicLoading) {
 
         // Trigger the loading indicator
         $scope.show = function () {

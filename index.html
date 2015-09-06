@@ -6,12 +6,17 @@
     <title>Side Menus</title>
     <link href="css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="js/ionic_bundle.js"></script>
     <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body ng-controller="MainCtrl">
 <ion-nav-view></ion-nav-view>
+
+<script id="templates/gbl-temp-page.html" type="text/ng-template">
+
+</script>
 
 <script id="templates/check-in.html" type="text/ng-template">
     <ion-view view-title="Event Check-in">
@@ -532,7 +537,7 @@
                     style=" margin-bottom: 0px; margin-top: 0px; border-bottom-width: 0px; border-top-width: 0px; font-size: 120%; "
                     ng-click="searchCar()">Search
             </button>
-        </ion-footer-bar
+        </ion-footer-bar>
     </ion-view>
 
 </script>
@@ -1164,50 +1169,294 @@
 </script>
 
 <script id="templates/nc-search-cars.html" type="text/ng-template">
-         <ion-header-bar  class=" bar-subheader">
-            <div class="row ">
-                <div class="col nc_sc_alignCenter">
-                    BY BRAND
-                </div>
-                <div class="col nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
-                    BY PRICE
-                </div>
-            </div>
-        </ion-header-bar>
-        <ion-content>
-
-        </ion-content>
-         <ng-nc-footer-option></ng-nc-footer-option>
+    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-content>
+        <ng-nc-car-brand></ng-nc-car-brand>
+    </ion-content>
+    <ng-nc-footer-option></ng-nc-footer-option>
 </script>
-<script id="templates/nc-upcoming-cars.html" type="text/ng-template">
-    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
-        <div class="row nc_uc_header_info">
-            <div class="col ">
-                Upcoming Cars
+<script id="templates/nc-brand-detail.html" type="text/ng-template">
+    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-content>
+        <div>
+            <div class="row">
+                <img ng-src=" {{ncBrandDetails.ncBrandDetailsObj.data.oemImageUrl}}">
+            </div>
+            <div class="row">
+                <span>{{ncBrandDetails.ncBrandDetailsObj.data.oemName}}</span>
+            </div>
+            <div class="row" ng-click="fn_ncSearchCar()">
+                <span>tap to choose another brand</span>
+            </div>
+            <div class="bar bar-calm">
+                <h1 class="title">Model</h1>
             </div>
         </div>
-        <div class="row nc_uc_header_info">
-            <div class="col ">
-                Sep 2015
+
+        <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)" style="height: 80% !important;">
+            <ion-slide ng-repeat="ncBrandDetail in ncBrandDetails.ncBrandDetailsObj.data.modelList">
+                <div class="list card cvCardProp" style="height: 70% !important;" ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                    <div class="item item-thumbnail cvitemPadding">
+                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}">
+                    </div>
+                    <div class="item item-body cvItemBodyProp">
+                        <div id="ccvBrand">
+                            <span>{{ncBrandDetail.displayCarModelName}}</span>
+                        </div>
+                        <div id="c1cvBrand">
+                            <span>RS. {{ncBrandDetail.minexshowroomprice | formatPrice}} - {{ncBrandDetail.maxexshowroomprice | formatPrice}} Lac</span>
+                        </div>
+
+                    </div>
+
+                    <div class="bar bar-calm">
+                        <h1 class="title">View Details</h1>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+    </ion-content>
+    <ng-nc-footer-option></ng-nc-footer-option>
+</script>
+<script id="templates/nc-model-detail.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-content>
+            <div class="row">
+                <span>{{ncModelDetails.ncModelDetailsObj.data.displayCarModelName}}</span>
             </div>
-        </div>
-    </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
-        <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
-                  ng-click="fnUpcomingCar(upcomingCar)"
-                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-            <div class="list card " >
-                <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{upcomingCar.imageUrl}}>
+            <div class="row">
+                <img ng-src="images/sort_rs_orange.png"> <span>{{ncModelDetails.ncModelDetailsObj.data.modelminexshowroomprice | formatPrice }} - {{ncModelDetails.ncModelDetailsObj.data.modelmaxexshowroomprice | formatPrice}}</span>
+            </div>
+            <div class="row">
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <span> {{ncModelDetails.ncModelDetailsObj.data.modelrating.rating}} / {{ncModelDetails.ncModelDetailsObj.data.modelrating.totalreviews}} Reviews</span>
+            </div>
 
-                    <h2 class="">{{upcomingCar.carModelName}}</h2>
+            <div class="row">
+                <img src="{{imageUrl}}">
+            </div>
 
-                    <h3 class="">Rs <span class="">{{upcomingCar.expectedExShowRoomPrice | formatPrice  }}</span>
-                        Lac</h3>
-                    <img src="images/upcoming_bell.png">
+            <div class="row">
+                <div ng-repeat="colorObj in ncModelDetails.ncModelDetailsObj.data.colors">
+                    <i class="fa fa-circle" style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
+                       ng-click="fn_ncSelectedColor(colorObj)"></i>
                 </div>
             </div>
-        </ion-item>
+
+            <div class="row">
+                <div class="col">
+                    <div><span>Mileage</span></div>
+                    <div><span>{{ncModelDetails.ncModelDetailsObj.data.minMilage}} {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
+                    </div>
+                    <div><span>Upto</span></div>
+
+                </div>
+                <div class="col">
+                    <div><span>Engine</span></div>
+                    <div><span>{{ncModelDetails.ncModelDetailsObj.data.maxEngineCapacity}}</span></div>
+                    <div><span>Upto</span></div>
+                </div>
+                <div class="col">
+                    <div><span>EMI</span></div>
+                    <div><img ng-src="images/sort_rs.png">
+                        <span>{{ncModelDetails.ncModelDetailsObj.data.emipermonth}}/m</span></div>
+                    <div><span>Upto</span></div>
+                </div>
+            </div>
+
+            <div class="bar bar-calm">
+                <h1 class="title">Experience {{ncModelDetails.ncModelDetailsObj.data.modelname}}</h1>
+            </div>
+            <ion-scroll direction="x" class="wide-as-needed">
+                <a class="button inline-button">
+                    <div><img src="images/feel_the_car_icon.png"></div>
+                    <div><span>Feel the car</span></div>
+                </a>
+
+                <a class="button inline-button">
+                    <div><img src="images/video_footer_tab_icon.png"></div>
+                    <div><span>Videos</span></div>
+                </a>
+
+                <a class="button inline-button">
+                    <div><i class="fa fa-picture-o"></i></div>
+                    <div><span>Pictures</span></div>
+                </a>
+                <a class="button inline-button">
+                    <div><img src="images/threesixty.png"></div>
+                    <div><span>360 View</span></div>
+                </a>
+            </ion-scroll>
+            <div class="bar bar-calm">
+                <h1 class="title">Variants</h1>
+            </div>
+            <div class="row" style="padding-top: 50px !important;">
+                <div class="col">
+                    <div>
+                        <spam>Diesel</spam>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <spam>Petrol</spam>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <spam>All</spam>
+                    </div>
+                </div>
+            </div>
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
+                    <div class="list card cvCardProp" style="height: 70% !important;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div id="c4vBrand">
+                                <span>{{modelVarient.displayVariantId}}</span>
+                            </div>
+                            <div id="c5cvBrand">
+                                <span>{{modelVarient.variantsHighWayAverage }} kmpl . {{modelVarient.variantsdisplacement }} cc</span>
+                            </div>
+                            <div id="c4cvBrand">
+                                <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
+                            </div>
+
+                        </div>
+
+                        <div class="bar bar-calm">
+                            <h1 class="title">Compare</h1>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+            <div class="bar bar-calm">
+                <h1 class="title">Recommended cars for you</h1>
+            </div>
+
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)" style="padding-top: 50px !important;">
+                <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
+                    <div class="list card cvCardProp" style="height: 70% !important;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div >
+                                <img src="{{recommendedCars.mobileimage}}">
+                            </div>
+                            <div id="">
+                                <span>{{recommendedCars.displayCarModelName}}</span>
+                            </div>
+                            <div id="">
+                                <img src="images/sort_rs_orange.png"> <span> {{recommendedCars.minexshowroomprice | formatPrice }} - {{recommendedCars.maxexshowroomprice | formatPrice }} Lac*</span>
+                            </div>
+                            <div class="row">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                             </div>
+
+                        </div>
+
+                        <div class="item">
+                            <h1 class="title">Compare</h1>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+        <div class="bar bar-footer ">
+            <div class="row">
+                <div class="col-50" ng-click="fnGetOnRoadPrice()">
+                    <span> Get On Road Price</span>
+                </div>
+                <div class="col-30">
+                    <img src="images/list_view.png"> <span>Overview</span>
+                </div>
+                <div class="col-20">
+                    <div><i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div ng-click="fn_ncMoreCarFeatures()"><span>More</span></div>
+                </div>
+            </div>
+        </div>
+    </ion-view>
+</script>
+<script id="templates/nc-get-on-road-price-form.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <h1 >Get On Road Price of {{carModel}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form novalidate class="simple-form">
+    <div class="row">
+        <div class="col-25">
+            <span>Name</span>
+        </div>
+        <div class="col">
+            <input   ng-model="user.name">
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-25">
+                <span>Email</span>
+            </div>
+            <div class="col">
+                <input type="email"  ng-model="user.userEmail">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
+            </div>
+            <div class="col">
+                <input type="text"  ng-model="user.userMobile">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <span>City</span>
+            </div>
+            <div class="col" ng-click="">
+                <input type="text" ng-model="user.userCity">
+            </div>
+            <div class="col-5" ng-click="">
+                <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <span>Area/Pin Code</span>
+            </div>
+            <div class="col">
+                <input type="text"  ng-model="user.userPinCode">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img ng-src="{{isUserAgreed && 'images/tick_selected.png' || 'images/tick_unselected.png'}}" ng-click="fn_isUserAgreed()"> <span>I Agree to <a> Terms & Conditions</a></span>
+            </div>
+        </div>
+            <input type="submit" ng-click="fn_getOnRoadPriceDetails(user)" value="Save" />
+            </form>
+    </ion-content>
+    <div class="bar bar-footer bar-balanced" >
+        <div class="title">Footer</div>
+    </div>
+</script>
+<script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <h1 >{{carModel}}</h1>
+    </ion-header-bar>
+    <ion-content>
+
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
@@ -1319,6 +1568,7 @@
     <ion-view view-title="">
     </ion-view>
 </script>
+
 
 <script id="templates/auto-news.html" type="text/ng-template">
     <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
@@ -1452,10 +1702,9 @@
             </button>
         </ion-header-bar>
 </script>
-
 <script id="templates/nc-car-brand-CD.html" type="text/ng-template">
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Maruti')">
             <div class="nc_sc_alignCenter" >
                 <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
             </div>
@@ -1463,7 +1712,7 @@
                 <span>Maruthi</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Hyundai')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
             </div>
@@ -1471,7 +1720,7 @@
                 <span>Hyundai</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Honda')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
             </div>
@@ -1481,7 +1730,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Toyota')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
             </div>
@@ -1489,7 +1738,7 @@
                 <span>Toyota</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Mahindra')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/mahindra_logo.jpg">
             </div>
@@ -1497,7 +1746,7 @@
                 <span>Mahindra</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Tata')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
             </div>
@@ -1507,7 +1756,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Ford')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
             </div>
@@ -1515,7 +1764,7 @@
                 <span>Ford</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Chevrolet')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/chevrolet_logo.jpg">
             </div>
@@ -1523,7 +1772,7 @@
                 <span>Chevrolet</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Renault')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
             </div>
@@ -1533,7 +1782,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Volkswagen')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/volkswagen_logo.jpg">
             </div>
@@ -1541,7 +1790,7 @@
                 <span>Volkswagen</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Audi')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
             </div>
@@ -1549,7 +1798,7 @@
                 <span>Audi</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Nissan')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
             </div>
@@ -1559,7 +1808,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('BMW')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
             </div>
@@ -1567,7 +1816,7 @@
                 <span>BMW</span>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border">
+        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Datsun')">
             <div class="nc_sc_alignCenter">
                 <img class="nc_sc_logoSige"  src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
             </div>
@@ -1581,6 +1830,18 @@
     </div>
 </script>
 
+<script id="templates/nc-search-car-header-CD.html" type="text/ng-template">
+    <ion-header-bar class=" bar-subheader">
+            <div class="row ">
+            <div class="col nc_sc_alignCenter">
+            BY BRAND
+    </div>
+    <div class="col nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
+            BY PRICE
+    </div>
+    </div>
+    </ion-header-bar>
+</script>
 
 
 <!-- TODO Incomplete -->
