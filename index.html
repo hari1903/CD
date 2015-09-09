@@ -10,6 +10,8 @@
     <script src="js/ionic_bundle.js"></script>
     <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="node_modules/angular-youtube-embed.js"></script>
 </head>
 <body ng-controller="MainCtrl">
 <ion-nav-view></ion-nav-view>
@@ -472,7 +474,7 @@
                         Advance Search
                     </button>
                     <div ng-show="isAdvanceSerach">
-                        <a href="#/event/price-range" class="item item-icon-right listElement"
+                        <a href="#/event/price-range/used-car-home" class="item item-icon-right listElement"
                            style="padding-bottom: 10px; padding-top: 10px;" menu-close ng-show="isAdvanceSerach">
                             <span class="selectionDetailHeader">Price Range</span> <i class="icon selectionDetail">{{cityObj.price}}
                             &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
@@ -1175,6 +1177,17 @@
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
+<script id="templates/nc-search-cars-by-price.html" type="text/ng-template">
+    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-content>
+        <ng-price-range></ng-price-range>
+        <div><img ng-src="images/price_car.png">{{selectedRangeCarsCount}} Cars found</div>
+        <div class="bar  bar-light">
+            <h1 class="title">View All</h1>
+        </div>
+    </ion-content>
+    <ng-nc-footer-option></ng-nc-footer-option>
+</script>
 <script id="templates/nc-brand-detail.html" type="text/ng-template">
     <ng-nc-search-car-header></ng-nc-search-car-header>
     <ion-content>
@@ -1453,10 +1466,78 @@
 </script>
 <script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
     <ion-header-bar class="bar bar-subheader">
-        <h1 >{{carModel}}</h1>
+        <div><span>{{carModel}}</span></div>
+        <div class="row">
+            <div class="col-40"> On Road Price </div>
+            <div class="col-10">In</div>
+            <div class="col">
+                <div class="list">
+                    <div>{{cityItem.city}}</div>
+                    <label class="item item-input item-select">
+                        <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList">
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
     </ion-header-bar>
     <ion-content>
+        <ion-list>
+            <div ng-repeat="onRoadDetail in onRoadDetailsObj.data['On Road Price']">
+                <ion-item class="item-stable item-icon-right active"
+                          ng-init="status.open = $first"
+                          is-open="status.open"
+                          ng-click="toggleGroup(onRoadDetail)"
+                          ng-class="{active: isGroupShown(onRoadDetail)}">
+                    <i class="icon " ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
+                    &nbsp;
+                    Group {{onRoadDetail.variantName}}
+                </ion-item>
+                <ion-item class="item-accordion"
+                          ng-show="isGroupShown(onRoadDetail)">
+                    <div class="row"><div class="col-90">Ex-showroom Price</div> <div >{{onRoadDetail.exShowRoomPrice}}</div></div>
+                    <div class="row"><div class="col-90">RTO</div> <div >{{onRoadDetail.rto}}</div></div>
+                    <div class="row"><div class="col-90">Insurance</div> <div >{{onRoadDetail.insurance}}</div></div>
+                    <div class="row"><div class="col-90">Handling Charges</div> <div >{{onRoadDetail.handlingCharges}}</div></div>
+                    <div class="row"><div class="col-90">Logistics</div> <div >{{onRoadDetail.logistics}}</div></div>
+                    <div class="row"><div class="col-90">MCD Charges</div> <div >{{onRoadDetail.mcd}}</div></div>
+                    <div class="row"><div class="col-90">Others</div> <div >{{onRoadDetail.others}}</div></div>
+                    <div class="row"><div class="col-90">MCD Charges</div> <div >{{onRoadDetail.totalOnRoadPrice}}</div></div>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-content>
 
+</script>
+<script id="templates/nc-upcoming-cars.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_uc_header_info">
+            <div class="col ">
+                Upcoming Cars
+            </div>
+        </div>
+        <div class="row nc_uc_header_info">
+            <div class="col ">
+                Sep 2015
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content style="padding-top: 22px !important;">
+        <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
+                  ng-click="fnUpcomingCar(upcomingCar)"
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+            <div class="list card " >
+                <div class="item item-thumbnail-left ">
+                    <img class="" ng-src={{upcomingCar.imageUrl}}>
+
+                    <h2 class="">{{upcomingCar.carModelName}}</h2>
+
+                    <h3 class="">Rs <span class="">{{upcomingCar.expectedExShowRoomPrice | formatPrice  }}</span>
+                        Lac</h3>
+                    <img src="images/icons/hdpi/upcoming_bell.png">
+                </div>
+            </div>
+        </ion-item>
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
@@ -1527,42 +1608,29 @@
 </script>
 <script id="templates/nc-car-videos.html" type="text/ng-template">
     <ion-content has-header="true" padding="true">
-        <div ng-model="carVideo">
+        <div >
+            <div ng-repeat="videoUrlObj in carVideos.data.carVideoList" >
+                <div ng-click="fn_playVideo($event, videoUrlObj)">
+                    <span>{{videoUrlObj.date}}</span>
+                </div>
 
+            </div>
 
-        </div>
-    </ion-content>
+        </div></ion-content>
 </script>
 <script id="templates/nc-car-play-video.html" type="text/ng-template">
+    <ion-popover-view >
+        <ion-header-bar>
+            <h1 class="title">My Popover Title</h1>
+            <button ng-click="fnDestroyPO()">Stop</button>
+        </ion-header-bar>
+    <ion-content has-header="true" padding="true">
+        <div  class="video-container" >
+            <button ng-click="fnDestroyPO()">Stop</button>
+            <youtube-video video-id="code" player="bestPlayer"></youtube-video>
 
-    <div class="item item-divider">
-        <i class="ion-videocamera"></i>
-        Video
-    </div>
-    <div class="padding">
-        <object width="100%" height="150">
-            <param name="movie" value="https://www.youtube.com/v/WzhW20hLp6M?version=3&amp;hl=uk_UA&amp;rel=0"></param>
-            <param name="allowFullScreen" value="true"></param
-            <param name="allowscriptaccess" value="always"></param>
-            <embed src="https://www.youtube.com/v/WzhW20hLp6M?version=3&amp;hl=uk_UA&amp;rel=0" type="application/x-shockwave-flash" width="100%" height="150" allowscriptaccess="always" allowfullscreen="true"></embed>
-        </object>
-    </div>
-    <ion-content style="padding-top: 22px !important;">
-        <ion-item class="item modal transparent fullscreen-player" ng-repeat="carVideo in carVideos.data.carVideoList"
-                  ng-click="fnPlayVideo(carVideo)"
-                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-
-
-            <div ng-model="carVideoToPa" ><label>Karthik</label></div>
-
-        </ion-item>
-
-    </ion-content>
-
-    <div class="item modal transparent fullscreen-player" ng-click="closeModal()">
-        <video  ng-src="{{carVideoToPa}}" class="centerme" controls="controls"
-               autoplay></video>
-    </div>
+        </div></ion-content>
+    </ion-popover-view>
 </script>
 <script id="templates/nc-feel-the-cars.html" type="text/ng-template">
     <ion-view view-title="">
@@ -1619,21 +1687,20 @@
     </ion-footer-bar>
 </script>
 <script id="templates/price-range-CD.html" type="text/ng-template" >
-    <ion-list>
-        <ion-item class="my-item item" ng-repeat="item in priceRange.priceRanageObj.newCarFilterPriceRange | filter:search" style="
+    <ion-list ng-controller="priceRangeCtrl">
+        <ion-item class="my-item item" ng-repeat="item in priceRange.data.newCarFilterPriceRange | filter:search" style="
          padding-left: 0px;
          border-left-width: 0px;
          margin-left: 0px;">
-            <label class="item item-radio">
-                <input type="radio" name="group" value={{item.displayPriceRange}} ng-model="price"
-                       ng-change='newPrice(item)'>
-
+            <div class="item " ng-click="newPrice(item)">
                 <div class="item-content"
                      style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
-                    {{item.displayPriceRange}}
+                    <div class="row">
+                        <div class="col">{{item.displayPriceRange}}</div>
+                    <div class="col"> <i ng-show="item.isSelected" class=" ion-checkmark"></i></div>
+                    </div>
                 </div>
-                <i class="radio-icon ion-checkmark"></i>
-            </label>
+            </div>
         </ion-item>
     </ion-list>
 </script>
@@ -1829,7 +1896,6 @@
         </div>
     </div>
 </script>
-
 <script id="templates/nc-search-car-header-CD.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader">
             <div class="row ">

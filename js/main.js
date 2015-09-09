@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector'])
+    .module('ionicApp', ['ionic', 'angular.css.injector', 'youtube-embed'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -50,7 +50,7 @@ angular
                 }
             })
             .state('eventmenu.price-range', {
-                url: "/price-range",
+                url: "/price-range/:urlToCaller",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/price-range.html",
@@ -185,6 +185,15 @@ angular
                     'menuContent': {
                         templateUrl: "templates/nc-search-cars.html",
                         controller: "nc_searchCars"
+                    }
+                }
+            })
+            .state('eventmenu.nc-search-cars-by-price', {
+                url: "/nc-search-cars-by-price",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-search-cars-by-price.html",
+                        controller: "nc_searchCarsByPriceCtrl"
                     }
                 }
             })
@@ -358,6 +367,8 @@ angular
             objectValue.ncBrandDetailsObj = {};
             objectValue.ncModelDetailsObj = {};
 
+            objectValue.cityObj = {};
+            objectValue.pinCodeObj = {};
             var onRoadDetailRequestObj = {};
 
 
@@ -366,30 +377,28 @@ angular
                 "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter=getOfferCityList")
                 .success(
                 function (data1, status) {
-                    // console.log("Data : "+
-                    // JSON.stringify(data1));
                     objectValue.contact = data1.data.CarDiscountCities;
                 })
                 .error(function () {
 
                 });
+
             $http
                 .post(
                 "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getNewCarPriceRangeDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
                 .success(
                 function (data1, status) {
-                    // console.log("Data : "+
-                    // JSON.stringify(data1));
-                    objectValue.priceRanageObj = data1.data;
+                    objectValue.priceRanageObj = data1;
                 })
+
 
             $http
                 .post(
                 "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getOemFeedsWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
                 .success(
                 function (data1, status) {
-                    console.log("brand : " +
-                        JSON.stringify(data1));
+                    //console.log("brand : " +
+                    //    JSON.stringify(data1));
                     objectValue.brandObj = data1.data.oemList;
                 })
 
@@ -512,7 +521,7 @@ angular
                         })
                 },
                 getObject: function () {
-                    console.log("objectValue" + JSON.stringify(objectValue));
+                    //console.log("objectValue" + JSON.stringify(objectValue));
                     return objectValue;
                 },
                 setModel: function (model) {
@@ -576,16 +585,18 @@ angular
                             callBackFun(data);
                         })
                 },
-                getCityAndPing : function(callBackFun) {
+                getCityAndPin : function(callBackFun) {
                     var urlToSearch = url;
 
-                    var cityUrl = urlToSearch + "getDataForOnRoadPriceWithStatus1";
+                    var cityUrl = urlToSearch + "getDataForOnRoadPriceWithStatus";
                     var pinUrl = urlToSearch + "getPincodesForCity&city=New%20Delhi";
 
                     var cityPost = $http.post(cityUrl);
                     var pingPost = $http.post(pinUrl);
                     $q.all([cityPost, pingPost]).then(function(cityAndPingObjs) {
                         console.log("city and pin "+ JSON.stringify(cityAndPingObjs));
+                        objectValue.cityObj = cityAndPingObjs[0];
+                        objectValue.pinCodeObj = cityAndPingObjs[1];
                         callBackFun(cityAndPingObjs);
                     });
 
@@ -608,7 +619,34 @@ angular
                             console.log("get data from api" + data);
                             callBackFun(data, onRoadDetailRequestObj);
                         })
+                },
+                getCity : function(){
+                    return objectValue.cityObj;
+                },
+                getPriceRange : function(callBackFun){
+                    $http
+                        .post(
+                        "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getNewCarPriceRangeDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
+                        .success(
+                        function (data1, status) {
+                            objectValue.priceRanageObj = data1;
+                            callBackFun(data1);
+                        })
+
+                },
+                getHttpData : function(urlForCount, callBackFun){
+                    var urlToSearch = url + urlForCount;
+                    console.log("getHttpData URL : " + urlToSearch);
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            console.log("get data from api" + data);
+                            callBackFun(data);
+                        })
+
                 }
+
 
             }
 
@@ -660,6 +698,37 @@ angular
 
     // *************  Directive  ********************
     //Used Car
+    .directive('myYoutube', function($sce) {
+        return {
+            restrict: 'EA',
+            scope: { code:'=' },
+            replace: true,
+            template: '<div style="height:90% !important; width: 90% !important;"><iframe style="overflow:hidden;height:100%;width:100%" width="100%" height="100%" src="{{url}}" frameborder="0" allowfullscreen></iframe></div>',
+            link: function (scope) {
+                console.log('here');
+                scope.$watch('code', function (newVal) {
+                    if (newVal) {
+                        scope.url = $sce.trustAsResourceUrl(newVal);
+                    }
+                });
+            }
+        };
+    })
+    .directive('embedSrc', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var current = element;
+                scope.$watch(function() { return attrs.embedSrc; }, function () {
+                    var clone = element
+                        .clone()
+                        .attr('src', attrs.embedSrc);
+                    current.replaceWith(clone);
+                    current = clone;
+                });
+            }
+        };
+    })
     .directive('ngCity', function () {
         return {
             restrict: 'AEC',
@@ -737,19 +806,6 @@ angular
     })
     .controller(
     'MainCtrl', function ($scope, $ionicSideMenuDelegate) {
-        $scope.attendees = [{
-            firstname: 'Nicolas',
-            lastname: 'Cage'
-        }, {
-            firstname: 'Jean-Claude',
-            lastname: 'Van Damme'
-        }, {
-            firstname: 'Keanu',
-            lastname: 'Reeves'
-        }, {
-            firstname: 'Steven',
-            lastname: 'Seagal'
-        }];
         // StatusBar.hide();
 
         $scope.toggleLeft = function () {
@@ -833,23 +889,46 @@ angular
     [
         '$scope',
         'sharedProperties',
-        '$window',
-        '$location',
-        '$rootScope',
+        '$stateParams',
         '$state',
-        function ($scope, sharedProperties, $window, $location,
-                  $rootScope, $state) {
+        function ($scope, sharedProperties, $stateParams, $state) {
+            var urlToCaller = $stateParams.urlToCaller;
             $scope.price = "...";
-            $scope.priceRange = sharedProperties.getObject();
+            $scope.priceRange = sharedProperties.getPriceRange(function(priceRange){
+                $scope.priceRange = priceRange;
+                console.log(JSON.stringify(priceRange));
+                for(var i=0; i< $scope.priceRange.data.newCarFilterPriceRange.length; i++){
+                    $scope.priceRange.data.newCarFilterPriceRange[i].isSelected = false;
+                }
+            });
+
             $scope.clearSearch = function () {
                 $scope.search = '';
             };
+            $scope.selectedPrice = [];
 
             $scope.newPrice = function (priceSelected) {
-                console.log("price selected " + JSON.stringify(priceSelected))
-                sharedProperties.setPrice(priceSelected.displayPriceRange);
+
+
+                if(priceSelected.isSelected){
+                    priceSelected.isSelected = false;
+                    $scope.selectedPrice.splice($scope.selectedPrice.indexOf(priceSelected.linkRewrite), 1);
+                }else {
+                    priceSelected.isSelected = true;
+                    $scope.selectedPrice.push(priceSelected.linkRewrite);
+                }
+                console.log("price selected " + JSON.stringify($scope.selectedPrice));
+
+                sharedProperties.setPrice($scope.selectedPrice.join("+"));
+                var urlToCount = "getNewCarSearchResultDataCount&PriceRange="+$scope.selectedPrice.join("+");
+                sharedProperties.getHttpData(urlToCount, function(data){
+                    $scope.$emit('priceRangeCarCount', data);
+                })
+
                 $scope.search = '';
-                $state.go('eventmenu.used-car-home');
+                if(urlToCaller) {
+                    $state.go('eventmenu.' + urlToCaller);
+                }
             }
         }])
     .controller(
@@ -2303,8 +2382,6 @@ angular
 
     }])
 
-
-
     .controller(
     'nc_searchCars',
     [
@@ -2317,7 +2394,6 @@ angular
             console.log("in nc_searchCars");
             cssInjector.add("css/nc-search-cars.css");
 
-
             $scope.brand = sharedProperties
                 .getObject();
 
@@ -2325,27 +2401,47 @@ angular
                 $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
             }
 
-
-
             $scope.nc_sc_getMoreBrand = function () {
                 $state.go('eventmenu.brand', {"retunEvent":"nc-search-cars"});
             }
-
             $scope.nc_sc_getByPrice = function () {
-                $state.go('eventmenu.brand');
+                $state.go('eventmenu.nc-search-cars-by-price');
             }
-
             $scope.nc_sc_getUpComing = function () {
                 $state.go('eventmenu.nc-upcoming-cars');
             }
-
             $scope.nc_sc_getLatest = function () {
                 $state.go('eventmenu.nc-latest-cars');
             }
-
             $scope.nc_sc_getPopuar = function () {
                 $state.go('eventmenu.nc-popular-cars');
             }
+        }])
+    .controller(
+    'nc_searchCarsByPriceCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+
+        function ($scope, sharedProperties, $state, cssInjector) {
+            console.log("in nc_searchCars");
+            cssInjector.add("css/nc-search-cars.css");
+
+            //$scope.priceRange = sharedProperties.getObject();
+
+            $scope.selectedRangeCarsCount;
+            $scope.brand = sharedProperties
+                .getObject();
+
+            $scope.fn_ncSearchSetBrand = function(brandName){
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+            }
+
+            $scope.$on('priceRangeCarCount', function(event, dataObj) {
+                $scope.selectedRangeCarsCount = dataObj.data.Count;
+            });
 
 
         }])
@@ -2406,8 +2502,8 @@ angular
             }
 
             $scope.fnGetOnRoadPrice = function() {
-                console.log("go to on road price")
-                $state.go('eventmenu.nc-get-on-road-price-form');
+                console.log("go to on road price"+JSON.stringify($scope.ncModelDetails.ncModelDetailsObj));
+                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname});
             }
 
         }])
@@ -2430,8 +2526,9 @@ angular
                 template: 'loading'
             });
 
-           sharedProperties.getCityAndPing(function(cityAndPingObjs){
+           sharedProperties.getCityAndPin(function(cityAndPingObjs){
                $ionicLoading.hide();
+               console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
 
            });
 
@@ -2440,6 +2537,8 @@ angular
             }
 
             $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
+                console.log("oem"+ $scope.oem );
+                console.log("carModel"+ $scope.carModel  );
                 console.log("userName"+ onRoadDetailsObj.name);
                 console.log("userEmail"+ onRoadDetailsObj.userEmail);
                 console.log("userMobile"+ onRoadDetailsObj.userMobile);
@@ -2471,14 +2570,34 @@ angular
                 template: 'loading'
             });
 
+            $scope.cityItem ={"city": "New Delhi"};
+
+            $scope.cityObj = sharedProperties.getCity();
+            console.log("city obj"+ JSON.stringify($scope.cityObj));
+
+
             sharedProperties.getOnRoadDetailsObj(function(onRoadDetailsObj, onRoadDetailRequestObj){
                 $ionicLoading.hide();
 
+                console.log("onRoadDetailRequestObj"+ JSON.stringify(onRoadDetailsObj));
+                $scope.onRoadDetailsObj = onRoadDetailsObj;
+
                 $scope.carModel = onRoadDetailRequestObj.carModel;
 
-
-
             });
+
+
+            $scope.toggleGroup = function(group) {
+                if ($scope.isGroupShown(group)) {
+                    $scope.shownGroup = null;
+                } else {
+                    $scope.shownGroup = group;
+                }
+            };
+            $scope.isGroupShown = function(group) {
+                return $scope.shownGroup === group;
+            };
+
 
             $scope.fn_isUserAgreed = function() {
                 $scope.isUserAgreed = !$scope.isUserAgreed;
@@ -2599,27 +2718,38 @@ angular
         'cssInjector',
         '$sce',
         '$ionicPopup',
-        function ($scope, sharedProperties, $state, cssInjector, $sce, $ionicPopup) {
+        '$ionicPopover',
+        'youtubeEmbedUtils',
+        function ($scope, sharedProperties, $state, cssInjector, $sce, $ionicPopup, $ionicPopover, youtubeEmbedUtils) {
             console.log("in nc_carVideos");
 
             cssInjector.add("css/nc-car-videos.css");
             var searchString = "getModelCarVideoList&carmodelname=Maruti+Swift";
 
             sharedProperties.getData(searchString, function (carVideos) {
-
-                $scope.carVideos = carVideos;
-
-                $scope.carVideo = $sce.trustAsHtml("<iframe width='650' height='420' src='https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>");
-
+                  $scope.carVideos = carVideos;
             });
 
-            $scope.fnPlayVideo = function (carVideo) {
-                console.log("play selected car video");
-                $scope.carVideoToPa = "https://www.youtube-nocookie.com/embed/ottkHgfhm1U?rel=0&amp;controls=0&amp;showinfo=0";
-                //$scope.carVideo = $sce.trustAsHtml(carVideo.videoURL);
-                //$scope.showModal('templates/nc-car-play-video.html');
+            $scope.fn_playVideo =  function($event, videoUrlFrame){
+                $scope.code = videoUrlFrame.youTubeVideoId;
+                $scope.popover.show($event);
+            }
+
+            $scope.fnDestroyPO = function(){
+                $scope.popover.hide();
 
             }
+
+            $scope.closePopover = function() {
+                $scope.bestPlayer.stopVideo()
+                $scope.popover.hide();
+            };
+
+            $ionicPopover.fromTemplateUrl('templates/nc-car-play-video.html', {
+                scope: $scope
+            }).then(function(popover) {
+                $scope.popover = popover;
+            });
 
         }])
     .controller(
