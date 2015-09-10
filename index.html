@@ -1391,13 +1391,13 @@
                 <div class="col-30">
                     <img src="images/list_view.png"> <span>Overview</span>
                 </div>
-                <div class="col-20">
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
                     <div><i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                     </div>
-                    <div ng-click="fn_ncMoreCarFeatures()"><span>More</span></div>
+                    
                 </div>
             </div>
         </div>
@@ -1636,7 +1636,17 @@
     <ion-view view-title="">
     </ion-view>
 </script>
-
+<script id="templates/nc-new-car-more-option-popup-CD.html" type="text/ng-template">
+<ion-content ng-controller="nc_newCarMoreOptionPopupCtrl">
+  <ion-item>
+        <span>Karthik</span>
+      <span>Karthik</span>
+      <span>Karthik</span>
+      <span>Karthik</span>
+      <span>Karthik</span>
+  </ion-item>
+</ion-content>
+</script>
 
 <script id="templates/auto-news.html" type="text/ng-template">
     <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
@@ -1704,6 +1714,7 @@
         </ion-item>
     </ion-list>
 </script>
+
 <script id="templates/city-CD.html" type="text/ng-template">
     <ion-list>
         <ion-item class="my-item item" collection-repeat="item in contactObj.contact | filter:search" style="

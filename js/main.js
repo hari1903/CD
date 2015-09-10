@@ -741,6 +741,12 @@ angular
             templateUrl: "templates/price-range-CD.html"
         }
     })
+    .directive('ngNcMoreOption', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/nc-new-car-more-option-popup-CD.html"
+        }
+    })
     .directive('ngBrand', function () {
         return {
             restrict: 'AEC',
@@ -2487,6 +2493,7 @@ angular
             console.log("in nc_modelDetails");
             var brandName = $stateParams.paramName;
             cssInjector.add("css/nc-model-details.css");
+            $scope.isMore = false;
             $scope.ncModelDetails = sharedProperties
                 .getObject();
 
@@ -2504,6 +2511,13 @@ angular
             $scope.fnGetOnRoadPrice = function() {
                 console.log("go to on road price"+JSON.stringify($scope.ncModelDetails.ncModelDetailsObj));
                 $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname});
+            }
+
+
+            $scope.fn_ncGetMoreOptionPopup = function(){
+                console.log("in fn_ncGetMoreOptionPopup")
+                $scope.isMore = true;
+
             }
 
         }])
@@ -2602,6 +2616,46 @@ angular
             $scope.fn_isUserAgreed = function() {
                 $scope.isUserAgreed = !$scope.isUserAgreed;
             }
+
+        }])
+
+    .controller(
+    'nc_newCarMoreOptionPopupCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        'cssInjector',
+        '$state',
+        '$stateParams',
+        '$ionicLoading',
+        '$ionicPopup',
+        function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading, $ionicPopup) {
+            console.log("in nc_getOnRoadPriceDetailCtrl");
+
+
+            var myPopup = $ionicPopup.show({
+                templateURL: 'templates/nc-new-car-more-option-popup-CD.html',
+                title: 'Enter Wi-Fi Password',
+                subTitle: 'Please use normal things',
+                scope: $scope,
+                buttons: [
+                    { text: 'Cancel' },
+                    {
+                        text: '<b>Save</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            if (!$scope.data.wifi) {
+                                //don't allow the user to close unless he enters wifi password
+                                e.preventDefault();
+                            } else {
+                                return $scope.data.wifi;
+                            }
+                        }
+                    }
+                ]
+            });
+
+
 
         }])
     .controller(
