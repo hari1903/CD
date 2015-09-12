@@ -299,6 +299,33 @@ angular
                 }
             })
 
+            .state('eventmenu.sell-a-car', {
+                url: "/sell-a-car",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/sell-a-car.html",
+                        controller: "sellACarCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.compare-cars', {
+                url: "/compare-cars",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/compare-cars.html",
+                        controller: "compareCarsCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.show-compare', {
+                url: "/show-compare",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/show-compare.html",
+                        controller: "showCompareCtrl"
+                    }
+                }
+            })
             .state('eventmenu.auto-news', {
                 url: "/auto-news",
                 views: {
@@ -370,6 +397,7 @@ angular
             objectValue.cityObj = {};
             objectValue.pinCodeObj = {};
             var onRoadDetailRequestObj = {};
+            var compareDataObj = {};
 
 
             $http
@@ -645,6 +673,19 @@ angular
                             callBackFun(data);
                         })
 
+                },
+                getMultipleHttpData : function(urlArrayForData, callBackFun){
+                    console.log("URL To Search "+ JSON.stringify(urlArrayForData));
+                    $q.all(urlArrayForData).then(function(httpCallBackData) {
+                        callBackFun(httpCallBackData);
+                    });
+                },
+                setCompareData : function(compareData){
+                    compareDataObj = compareData;
+                },
+                getCompareData : function() {
+                    console.log("compareDataObj" + JSON.stringify(compareDataObj));
+                    return compareDataObj;
                 }
 
 
@@ -714,6 +755,7 @@ angular
             }
         };
     })
+
     .directive('embedSrc', function () {
         return {
             restrict: 'A',
@@ -733,6 +775,15 @@ angular
         return {
             restrict: 'AEC',
             templateUrl: "templates/city-CD.html"
+        }
+    })
+    .directive('ngCompareCarsSelectCar', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/compare-cars-select-car-CD.html",
+            scope: {
+                customerInfo: '=info'
+            },
         }
     })
     .directive('ngPriceRange', function () {
@@ -2876,6 +2927,94 @@ angular
                 console.log("get detailed car news" + singeAutoNews.carNewsId);
                 $state.go('eventmenu.auto-detailed-news', {newsId: singeAutoNews.carNewsId});
             }
+
+        }])
+    .controller(
+    'sellACarCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+            console.log("in sellACarCtrl");
+
+        }])
+    .controller(
+    'compareCarsCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$http',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams,$http) {
+            console.log("in sellACarCtrl");
+            cssInjector.add("css/compare-cars.css");
+            $scope.car1Src = "images/select_car_1.png";
+            $scope.car2Src = "images/select_car_2.png";
+            $scope.isCompare = "images/compare_btn_disable.png";
+            $scope.vsImage = "images/vs_grey.png";
+
+            var urlForData = "getPopularCompareCarListWithStatus&startLimit=1&endLimit=5"
+
+            sharedProperties.getHttpData(urlForData, function (popularCarsWithStatus){
+                $scope.popularCarsWithStatus =  popularCarsWithStatus;
+            })
+
+            $scope.comparePopularModel = function(compareCarsObj) {
+                var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
+                var urlToSearch = baseUrl + "getCarVariantDetailByCarModelName&ModelName=";
+
+                var model1 = urlToSearch + compareCarsObj.Model1.name;
+                var model2 = urlToSearch + compareCarsObj.Model2.name;
+
+                urlArryaToSearch = [];
+                urlArryaToSearch.push($http.post(model1));
+                urlArryaToSearch.push($http.post(model2));
+
+                sharedProperties.getMultipleHttpData(urlArryaToSearch, function (httpCallBackData) {
+                    console.log("Varient Ids " + JSON.stringify(httpCallBackData));
+                    var getUrlForComparison = "getPopularCompareCarListVariantDataWithStatus&variant1=" +
+                        httpCallBackData[0].data.data.carVariantsList[0].carVariantId + "&variant2=" + httpCallBackData[1].data.data.carVariantsList[0].carVariantId;
+
+                    sharedProperties.getHttpData(getUrlForComparison, function (comparisonData) {
+                        console.log("comparisonData" + JSON.stringify(comparisonData));
+                        showCompare(comparisonData);
+                    })
+                });
+
+                var showCompare = function(compareDate){
+                    sharedProperties.setCompareData(compareDate);
+                    $state.go("eventmenu.show-compare");
+                }
+            }
+        }])
+    .controller(
+    'showCompareCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in showCompareCtrl");
+            cssInjector.add("css/show-compare.css");
+
+            $scope.vsImage = "images/vs_grey.png";
+            $scope.isOverView = true;
+            $scope.isCommonShow = true;
+            $scope.compareDataObj = sharedProperties.getCompareData();
+
+            $scope.fn_changeOverAndFeatures = function (isOverView) {
+                $scope.isOverView = isOverView;
+            }
+
+
 
         }])
     .controller(

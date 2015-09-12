@@ -1,0 +1,22 @@
+div.background
+{
+    background: url("../images/compare_btn_disable.png") no-repeat ;
+    background-size: 100% 100%;
+}
+
+
+
+div.transbox p
+{
+    margin: 5px !important;
+    color: #000000;
+}
+
+.imageSize {
+    width: 60px !important;
+    height: 40px !important;
+}
+
+.popularCompareProp {
+    height: 100px !important;
+}

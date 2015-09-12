@@ -159,12 +159,12 @@
                         </ion-list>
                     </div>
 
-                    <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                    <a href="#/event/compare-cars" class="item item-icon-left outMenu outAnchor" menu-close>
                         <i class="icon ion-arrow-swap inAnchor"></i>
                         Compare Cars
                     </a>
 
-                    <a href="#/event/check-in" class="item item-icon-left outMenu outAnchor" menu-close>
+                    <a href="#/event/sell-a-car" class="item item-icon-left outMenu outAnchor" menu-close>
                         <i class="icon ion-cash inAnchor"></i>
                         Sell a Car
                     </a>
@@ -1397,7 +1397,7 @@
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -1672,6 +1672,349 @@
         </ion-item>
     </ion-content>
 </script>
+<script id="templates/sell-a-car.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Sell Car
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content >
+        <iframe height="100% !important" width="100% !importat" src="http://m.cardekho.com/sell-used-car?utm_source=primary_nav&utm_medium=navigation&utm_campaign=Sell_Car?gcm_id=APA91bGvlYWyR1ZQFwufcAuTABbM-MQ2ZCip5M4zmiAwFLzJLGIJXLyVXWrPQriugNKlwNUBBrGWjwzECZ2KWCpjSE_tABaVYc7SgC31Jb4kkiAIptU7bAB-Lu1LHWK_hc4HIDucHuyS">
+
+        </iframe>
+    </ion-content>
+</script>
+<script id="templates/compare-cars.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+               Compare Cars
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <img ng-src="{{ car1Src}}" alt="images/ic_error.png"></div>
+            <div class="col">
+                Select Car 1
+            </div>
+        </div>
+        <div class="row">
+            <div style="width: 45% !important;padding-top: 10px;">
+                <hr>
+            </div>
+            <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+                <img ng-src="{{vsImage}}">
+            </div>
+            <div style="width: 46% !important;padding-top: 10px;">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                Select Car 2
+            </div>
+            <div>
+                <img ng-src="{{ car2Src}}" alt="images/ic_error.png">
+            </div>
+        </div>
+        <div class="row" >
+            <div class="background" style="width: 100% !important; height: 32px !important;">
+                <div class="transbox" >
+                    <p>Compare</p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="bar bar-stable">
+            <h1 >Popular Cars Comparison</h1>
+        </div>
+        <div ng-repeat=" compareCarsObj in popularCarsWithStatus.data">
+            <div ng-click="comparePopularModel(compareCarsObj)">
+                <div class="row" class="popularCompareProp">
+                    <div style="width: 45% !important;padding-top: 10px;">
+                        <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+                    </div>
+                    <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+                        <img ng-src="{{vsImage}}">
+                    </div>
+                    <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
+                </div>
+
+                <div class="row">
+                    <div style="width: 40% !important;padding-top: 10px;">
+                        {{compareCarsObj.Model1.name}}
+                    </div>
+                    <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+
+                    </div>
+                    <div style="width: 40% !important;padding-top: 10px;">
+                        {{compareCarsObj.Model2.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</script>
+<script id="templates/show-compare.html" type="text/ng-template">
+    <ion-view>
+        <ion-content>
+            <div class="bar bar-header bar-light">
+                <h1>Compare Cars</h1>
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div style="width: 45% !important; text-align: center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}"
+                         alt="images/ic_error.png"></div>
+                <div class="col">
+                    <span>{{ compareDataObj.data.variantname.first}}</span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div style="width: 45% !important;padding-top: 10px;">
+                    <hr>
+                </div>
+                <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+                    <img ng-src="{{vsImage}}">
+                </div>
+                <div style="width: 46% !important;padding-top: 10px;">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="word-wrap: break-word;">
+                    <span>{{ compareDataObj.data.variantname.second}} </span>
+
+                </div>
+                <div style="width: 45% !important;text-align: center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}"
+                         alt="images/ic_error.png">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <span>{{compareDataObj.data.variantname.first}}</span>
+                </div>
+                <div class="col-50">
+                    <span>{{compareDataObj.data.variantname.second}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50" ng-click="fn_changeOverAndFeatures(true)">
+                    <span>Overview</span>
+                </div>
+                <div class="col-50" ng-click="fn_changeOverAndFeatures(false)">
+                    <span>Features</span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-50">
+                    <img ng-src="{{ isShowFirst &&  'images/review_unselected_header.png' || 'images/review_selected_header.png'}}">
+                </div>
+                <div class="col-50">
+                    <img ng-src="{{ isShowFirst && 'images/review_selected_header.png' || 'images/review_unselected_header.png' }}">
+                </div>
+            </div>
+
+            <div ng-show="!isOverView" class="ng-hide">
+            </div>
+
+            <div ng-show="isOverView" class="ng-hide">
+                <div class="bar  bar-light">
+                    <h1 class="title">Dimensions</h1>
+                </div>
+
+                <div ng-repeat=" dimensionObj in compareDataObj.data.dimensions">
+                    <div class="row">
+                        <div class="col">
+                            <span> {{dimensionObj.featureValue.first}}</span>
+                        </div>
+                        <div class="col">
+                            <span> {{dimensionObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <span> {{dimensionObj.featureValue.second}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Mileage and Specifications</h1>
+                </div>
+                <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
+                    <div class="row">
+                        <div class="col">
+                            <span> {{mileageandSpecificationsObj.featureValue.first}}</span>
+                        </div>
+                        <div class="col">
+                            <span> {{mileageandSpecificationsObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <span> {{mileageandSpecificationsObj.featureValue.second}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Standard Features</h1>
+                </div>
+                <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
+                    <div class="row">
+                        <div class="col">
+                            <img ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} " >
+                        </div>
+                        <div class="col">
+                            <span> {{standardFeaturesObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <img ng-src="{{standardFeaturesObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} " >
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Colors</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <img ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png"></div>
+                    <div class="col">
+                        <span>{{ compareDataObj.data.variantname.first}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-33">
+
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="width: 45% !important;padding-top: 10px;">
+                        <hr>
+                    </div>
+                    <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+                        <img ng-src="{{vsImage}}">
+                    </div>
+                    <div style="width: 46% !important;padding-top: 10px;">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <span>{{ compareDataObj.data.variantname.second}}</span>
+                    </div>
+                    <div>
+                        <img ng-src="{{ compareDataObj.data.imageurl.second}}" alt="images/ic_error.png">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-33">
+
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Explore</h1>
+                </div>
+                <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
+                    <div class="row">
+                        <div class="col">
+                            <span> {{standardFeaturesObj.featureValue.first}}</span>
+                        </div>
+                        <div class="col">
+                            <span> {{standardFeaturesObj.featureName}}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!isOverView" class="ng-hide">
+                <div class="bar  bar-light">
+                    <h1 class="title">interior</h1>
+                </div>
+                <div ng-repeat=" interiorObj in compareDataObj.data.features.interior">
+                    <div class="row">
+                        <div class="col">
+                            <img ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                        </div>
+                        <div class="col">
+                            <span> {{interiorObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <img ng-src="{{interiorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">exterior</h1>
+                </div>
+                <div ng-repeat=" interiorObj in compareDataObj.data.features.exterior">
+                    <div class="row">
+                        <div class="col">
+                            <img ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                        </div>
+                        <div class="col">
+                            <span> {{interiorObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <img ng-src="{{interiorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Comfort & Convenience</h1>
+                </div>
+                <div ng-repeat=" comfortandConvenienceObj in compareDataObj.data.features.comfortandConvenience">
+                    <div class="row">
+                        <div class="col">
+                            <img ng-src="{{comfortandConvenienceObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                        </div>
+                        <div class="col">
+                            <span> {{comfortandConvenienceObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <img ng-src="{{comfortandConvenienceObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bar  bar-light">
+                    <h1 class="title">Entertainment</h1>
+                </div>
+                <div ng-repeat=" entertainmentObj in compareDataObj.data.features.entertainment">
+                    <div class="row ng-hide" ng-hide="!isCommonShow" >
+                        <div class="col">
+                            <img ng-src="{{entertainmentObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                        </div>
+                        <div class="col">
+                            <span> {{entertainmentObj.featureName}}</span>
+                        </div>
+                        <div class="col">
+                            <img ng-src="{{entertainmentObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer">
+            <button class="button button-clear pull-right">Right</button>
+        </div>
+    </ion-view>
+</script>
 <script id="templates/auto-detailed-news.html" type="text/ng-template">
     <ion-content >
         <div ng-bind-html="autoDetailedNews"></div>
@@ -1918,6 +2261,13 @@
     </div>
     </div>
     </ion-header-bar>
+</script>
+<script id="templates/compare-cars-select-car-CD.html" type="text/ng-template">
+    <div class="card">
+        <div class="item ">
+            <This is a basic Card which contains an item that has wrapping text.
+        </div>
+    </div>
 </script>
 
 
