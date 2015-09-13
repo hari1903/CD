@@ -335,6 +335,15 @@ angular
                     }
                 }
             })
+            .state('eventmenu.review-user-and-road-test', {
+                url: "/review-user-and-road-test/:reviewType",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/review-user-and-road-test.html",
+                        controller: "reviewUserAndRoadTestCtrl"
+                    }
+                }
+            })
             .state('eventmenu.auto-detailed-news', {
                 url: "/auto-detailed-news/:newsId",
                 views: {
@@ -398,6 +407,7 @@ angular
             objectValue.pinCodeObj = {};
             var onRoadDetailRequestObj = {};
             var compareDataObj = {};
+            var reviewReturnEvent = {};
 
 
             $http
@@ -686,7 +696,14 @@ angular
                 getCompareData : function() {
                     console.log("compareDataObj" + JSON.stringify(compareDataObj));
                     return compareDataObj;
-                }
+                },
+
+                setReviewReturnEvent : function(reviewReturnEventParam){
+                    reviewReturnEvent = reviewReturnEventParam;
+                },
+                getReviewReturnEvent : function(){
+                    return reviewReturnEvent ;
+                },
 
 
             }
@@ -3013,7 +3030,45 @@ angular
             $scope.fn_changeOverAndFeatures = function (isOverView) {
                 $scope.isOverView = isOverView;
             }
+            $scope.fn_isCommonShow = function (isCommonShow) {
+                console.log("isOverView"+ isCommonShow);
+                $scope.isCommonShow = isCommonShow;
+            }
 
+        }])
+    .controller(
+    'reviewUserAndRoadTestCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestCtrl");
+            cssInjector.add("css/review-user-and-road-test.css");
+
+            $scope.reviewType =  $stateParams.reviewType;
+            console.log("$scope.reviewType "+ $scope.reviewType );
+
+
+            $scope.brand = "Select Brand";
+            $scope.model = "Select Model";
+
+            $scope.fn_changeUserAndRoadReview = function(reviewType){
+                $scope.reviewType = reviewType;
+            }
+
+            $scope.fn_getBrand = function(){
+
+                sharedProperties.setReviewReturnEvent({"reviewType":$scope.reviewType});
+                $state.go("eventmenu.brand",{'retunEvent':'review-user-and-road-test'});
+            }
+
+            $scope.fn_getModel = function(){
+                $state.go("eventmenu.show-compare");
+            }
 
 
         }])

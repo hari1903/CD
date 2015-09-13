@@ -183,15 +183,13 @@
                     <div class="item-accordion innerMenu"
                          ng-show="shownReview">
                         <ion-list>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road
+                            <a href="#/event/review-user-and-road-test/road" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road
                                 Test
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>User Review
-                                <hr>
+                            <a href="#/event/review-user-and-road-test/user" class="item item-icon-left innerMenu inAnchor" menu-close>User Review
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Accessories</a>
-                        </ion-list>
+                            </ion-list>
                     </div>
 
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
@@ -1832,7 +1830,7 @@
                 </div>
 
                 <div ng-repeat=" dimensionObj in compareDataObj.data.dimensions">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && dimensionObj.featureValue.first == dimensionObj.featureValue.second" >
                         <div class="col">
                             <span> {{dimensionObj.featureValue.first}}</span>
                         </div>
@@ -1848,7 +1846,7 @@
                     <h1 class="title">Mileage and Specifications</h1>
                 </div>
                 <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && mileageandSpecificationsObj.featureValue.first == mileageandSpecificationsObj.featureValue.second" >
                         <div class="col">
                             <span> {{mileageandSpecificationsObj.featureValue.first}}</span>
                         </div>
@@ -1864,7 +1862,7 @@
                     <h1 class="title">Standard Features</h1>
                 </div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second" >
                         <div class="col">
                             <img ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} " >
                         </div>
@@ -1928,7 +1926,7 @@
                     <h1 class="title">Explore</h1>
                 </div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second" >
                         <div class="col">
                             <span> {{standardFeaturesObj.featureValue.first}}</span>
                         </div>
@@ -1944,7 +1942,7 @@
                     <h1 class="title">interior</h1>
                 </div>
                 <div ng-repeat=" interiorObj in compareDataObj.data.features.interior">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && interiorObj.featureValue.first == interiorObj.featureValue.second" >
                         <div class="col">
                             <img ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
@@ -1958,18 +1956,18 @@
                     </div>
                 </div>
                 <div class="bar  bar-light">
-                    <h1 class="title">exterior</h1>
+                    <h1 class="title">Exterior</h1>
                 </div>
-                <div ng-repeat=" interiorObj in compareDataObj.data.features.exterior">
-                    <div class="row">
+                <div ng-repeat=" exteriorObj in compareDataObj.data.features.exterior">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && exteriorObj.featureValue.first == exteriorObj.featureValue.second" >
                         <div class="col">
-                            <img ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <img ng-src="{{exteriorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
                         <div class="col">
-                            <span> {{interiorObj.featureName}}</span>
+                            <span> {{exteriorObj.featureName}}</span>
                         </div>
                         <div class="col">
-                            <img ng-src="{{interiorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <img ng-src="{{exteriorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
 
                         </div>
                     </div>
@@ -1978,7 +1976,7 @@
                     <h1 class="title">Comfort & Convenience</h1>
                 </div>
                 <div ng-repeat=" comfortandConvenienceObj in compareDataObj.data.features.comfortandConvenience">
-                    <div class="row">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && comfortandConvenienceObj.featureValue.first == comfortandConvenienceObj.featureValue.second" >
                         <div class="col">
                             <img ng-src="{{comfortandConvenienceObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
@@ -1995,7 +1993,7 @@
                     <h1 class="title">Entertainment</h1>
                 </div>
                 <div ng-repeat=" entertainmentObj in compareDataObj.data.features.entertainment">
-                    <div class="row ng-hide" ng-hide="!isCommonShow" >
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && entertainmentObj.featureValue.first == entertainmentObj.featureValue.second" >
                         <div class="col">
                             <img ng-src="{{entertainmentObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
@@ -2011,7 +2009,12 @@
             </div>
         </ion-content>
         <div class="bar bar-footer">
-            <button class="button button-clear pull-right">Right</button>
+            <div ng-show="isCommonShow">
+                <button class="button button-clear pull-right"  ng-click="fn_isCommonShow(false)">Hide Common Features</button>
+                </div>
+            <div ng-show="!isCommonShow">
+                <button class="button button-clear pull-right" ng-switch when="false" ng-click="fn_isCommonShow(true)">Show Common Features </button>
+            </div>
         </div>
     </ion-view>
 </script>
@@ -2019,6 +2022,57 @@
     <ion-content >
         <div ng-bind-html="autoDetailedNews"></div>
     </ion-content>
+</script>
+<script id="templates/review-user-and-road-test.html" type="text/ng-template">
+    <ion-view>
+    <div class="bar bar-subheader bar-light">
+        <div ng-show="reviewType == 'user'">
+        <h1 class="title">Search User Review </h1>
+            </div>
+        <div ng-show="reviewType != 'user'">
+            <h1 class="title">Search Road Test </h1>
+        </div>
+    </div>
+    <ion-content class="topPadding">
+        <div class="row">
+            <div class="col-50" ng-class="reviewType == 'user' ? 'tabBackGroundAndFontColor' : '' " ng-click="fn_changeUserAndRoadReview('user')">
+                <span ng-class="reviewType == 'user' ? 'fontColor' : '' "> USER REVIEW</span>
+            </div>
+            <div class="col-50" ng-class="reviewType == 'user' ? '' : 'tabBackGroundAndFontColor'  " ng-click="fn_changeUserAndRoadReview('road')">
+                <span ng-class="reviewType == 'user' ? '' : 'fontColor'  "> ROAD TEST</span>
+            </div>
+        </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <span>Brand</span>
+                </div>
+                <div class="col" ng-click="fn_getBrand()">
+                    <span> {{brand}}</span>
+                </div>
+                <div class="col" ng-click="fn_getBrand()">
+                    <img ng-src="images/down_arrow.png">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span> Model</span>
+                </div>
+                <div class="col" ng-click="fn_getModel()" >
+                    {{model}}
+                </div>
+                <div class="col" ng-click="fn_getModel()">
+                    <img ng-src="images/down_arrow.png">
+                </div>
+            </div>
+
+
+    </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-clear pull-right">Search</button>
+    </div>
+    </ion-view>
 </script>
 
 <script id="templates/nc-footer-options-CD.html" type="text/ng-template" >
@@ -2057,7 +2111,6 @@
         </ion-item>
     </ion-list>
 </script>
-
 <script id="templates/city-CD.html" type="text/ng-template">
     <ion-list>
         <ion-item class="my-item item" collection-repeat="item in contactObj.contact | filter:search" style="
