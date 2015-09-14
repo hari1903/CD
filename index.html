@@ -202,19 +202,19 @@
                     <div class="item-accordion innerMenu"
                          ng-show="shownUtility">
                         <ion-list>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Dealers
+                            <a href="#/event/car-dealers" class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Dealers
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
+                            <a href="#/event/car-healp-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Roadside Assistance
+                            <a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor" menu-close>Roadside Assistance
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Car Loan
+                            <a href="#/event/car-loan" class="item item-icon-left innerMenu inAnchor" menu-close>Car Loan
                                 <hr>
                             </a>
-                            <a href="#" class="item item-icon-left innerMenu inAnchor" menu-close>Insurance</a>
+                            <a href="#/event/car-insurance" class="item item-icon-left innerMenu inAnchor" menu-close>Insurance</a>
                         </ion-list>
                     </div>
 
@@ -488,7 +488,7 @@
                             <span class="selectionDetailHeader">Brand </span><i class="icon selectionDetail">{{cityObj.brand}}
                             &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
                         </a>
-                        <a href="#/event/model" class="item item-icon-right listElement"
+                        <a href="#/event/model/used-car-home" class="item item-icon-right listElement"
                            style="padding-bottom: 10px; padding-top: 10px;" menu-close>
                             <span class="selectionDetailHeader">Model </span><i class="icon selectionDetail">{{cityObj.model}}
                             &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
@@ -2049,7 +2049,8 @@
                     <span>Brand</span>
                 </div>
                 <div class="col" ng-click="fn_getBrand()">
-                    <span> {{brand}}</span>
+                    <span ng-show="brandAndObject.brand == '' "> Select Brand </span>
+                    <span ng-show="brandAndObject.brand != '' "> {{brandAndObject.brand}} </span>
                 </div>
                 <div class="col" ng-click="fn_getBrand()">
                     <img ng-src="images/down_arrow.png">
@@ -2060,7 +2061,8 @@
                     <span> Model</span>
                 </div>
                 <div class="col" ng-click="fn_getModel()" >
-                    {{model}}
+                    <span ng-show="brandAndObject.model == '' "> Select Model </span>
+                    <span ng-show="brandAndObject.model != '' "> {{brandAndObject.model}} </span>
                 </div>
                 <div class="col" ng-click="fn_getModel()">
                     <img ng-src="images/down_arrow.png">
@@ -2069,11 +2071,227 @@
 
 
     </ion-content>
-    <div class="bar bar-footer">
-        <button class="button button-clear pull-right">Search</button>
+    <div class="bar bar-footer " ng-click="fn_getReview()">
+        <span class="text-center"> Search </span>
     </div>
     </ion-view>
 </script>
+<script id="templates/review-user-and-road-test-detail.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content class="topPadding">
+            <div ng-repeat="reviewDataObj in reviewData.reviewUserAndRoadTestDetailObj.data.expertReview">
+                <div class="list card" ng-click="fn_getDetailedExpertReview(reviewDataObj)">
+                    <div class="item item-avatar">
+                        <img ng-src="{{reviewDataObj.carImageThumb}}">
+
+                        <h2>{{reviewDataObj.expertReviewTitle}}</h2>
+
+                        <p>{{reviewDataObj.datePublished}}</p>
+
+                        <p>{{reviewDataObj.expertReviewText}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+    </ion-view>
+</script>
+<script id="templates/expert-review.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content>
+            <div ng-bind-html="autoDetailedNews"></div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+        <div>
+            {{}}
+        </div>
+        <div>
+            Overall Rating
+        </div>
+    </ion-view>
+</script>
+<script id="templates/user-review.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <div class="row">
+                <div class="col-50" ng-class="reviewType == 'mostHelpful' ? 'tabBackGroundAndFontColor' : '' " ng-click="fn_changeType('mostHelpful')">
+                    <span ng-class="reviewType == 'mostHelpful' ? 'fontColor' : '' "> MOST HELPFUL</span>
+                </div>
+                <div class="col-50" ng-class="reviewType == 'mostHelpful' ? '' : 'tabBackGroundAndFontColor'  " ng-click="fn_changeType('recentReview')">
+                    <span ng-class="reviewType == 'mostHelpful' ? '' : 'fontColor'  "> RECENT REVIEWS</span>
+                </div>
+            </div>
+            <div>
+                <span>{{modelDetailObject.model }} Reviews </span>
+
+                <div class="row"><span>Overall Rating:</span>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <span> {{reviewData[0].data.data.overAllRating }} </span>
+                </div>
+            </div>
+        </div>
+        <ion-content class="topPadding">
+            <div ng-show="reviewType != 'mostHelpful' ">
+            <div ng-repeat="reviewDataObj in reviewData[0].data.data.review">
+                <div class="list card" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                    <div class="item ">
+
+                        <h2>{{reviewDataObj.reviewTitle}}</h2>
+
+                        <div class="row">
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
+                        {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div ng-show="reviewType == 'mostHelpful' ">
+                <div ng-repeat="reviewDataObj in reviewData[1].data.data.review">
+                    <div class="list card" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                        <div class="item ">
+
+                            <h2>{{reviewDataObj.reviewTitle}}</h2>
+
+                            <div class="row">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
+                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+    </ion-view>
+</script>
+<script id="templates/car-insurance.html" type="text/ng-template">
+    <ion-header-bar  class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Insurance
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content >
+        <iframe height="100% !important" width="100% !importat" src="http://m.cardekho.com/car-insurance.htm">
+
+        </iframe>
+    </ion-content>
+</script>
+<script id="templates/car-dealers.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content>
+            <div ng-bind-html="autoDetailedNews"></div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+        <div>
+            {{}}
+        </div>
+        <div>
+            Overall Rating
+        </div>
+    </ion-view>
+</script>
+<script id="templates/car-healp-line.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content>
+            <div ng-bind-html="autoDetailedNews"></div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+        <div>
+            {{}}
+        </div>
+        <div>
+            Overall Rating
+        </div>
+    </ion-view>
+</script>
+<script id="templates/car-road-side-assitance.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content>
+            <div ng-bind-html="autoDetailedNews"></div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+        <div>
+            {{}}
+        </div>
+        <div>
+            Overall Rating
+        </div>
+    </ion-view>
+</script>
+<script id="templates/car-loan.html" type="text/ng-template">
+    <ion-view>
+        <div class="bar bar-subheader bar-light">
+            <span>{{reviewType}}</span>
+        </div>
+        <ion-content>
+            <div ng-bind-html="autoDetailedNews"></div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
+        </div>
+        <div>
+            {{}}
+        </div>
+        <div>
+            Overall Rating
+        </div>
+    </ion-view>
+</script>
+
+
 
 <script id="templates/nc-footer-options-CD.html" type="text/ng-template" >
     <ion-footer-bar align-title="left" class="bar-assertive" ng-controller="nc_footerOptionController">

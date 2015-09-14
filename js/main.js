@@ -68,7 +68,7 @@ angular
                 }
             })
             .state('eventmenu.model', {
-                url: "/model",
+                url: "/model/:retunEvent",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/model.html",
@@ -344,6 +344,79 @@ angular
                     }
                 }
             })
+            .state('eventmenu.review-user-and-road-test-detail', {
+                url: "/review-user-and-road-test-detail/:reviewtype",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/review-user-and-road-test-detail.html",
+                        controller: "reviewUserAndRoadTestDetailCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.expert-review', {
+                url: "/expert-review/:reviewId",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/expert-review.html",
+                        controller: "expertReviewCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.user-review', {
+                url: "/user-review/:reviewType",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user-review.html",
+                        controller: "userReviewCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.car-insurance', {
+                url: "/car-insurance",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/car-insurance.html",
+                        controller: "carInsuranceCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.car-loan', {
+                url: "/car-loan",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/car-loan.html",
+                        controller: "carLoanCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.car-dealers', {
+                url: "/car-dealers",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/car-dealers.html",
+                        controller: "carDealersCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.car-healp-line', {
+                url: "/car-healp-line",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/car-healp-line.html",
+                        controller: "carHealpLineCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.car-road-side-assitance', {
+                url: "/car-road-side-assitance",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/car-road-side-assitance.html",
+                        controller: "carRoadSideAssitanceCtrl"
+                    }
+                }
+            })
+
             .state('eventmenu.auto-detailed-news', {
                 url: "/auto-detailed-news/:newsId",
                 views: {
@@ -402,9 +475,11 @@ angular
 
             objectValue.ncBrandDetailsObj = {};
             objectValue.ncModelDetailsObj = {};
+            objectValue.reviewUserAndRoadTestDetailObj = {};
 
             objectValue.cityObj = {};
             objectValue.pinCodeObj = {};
+            objectValue.reviewType = "";
             var onRoadDetailRequestObj = {};
             var compareDataObj = {};
             var reviewReturnEvent = {};
@@ -576,7 +651,7 @@ angular
                             callBackFun(data);
                         })
                 },
-                getNCBrandDetails : function(brandName, callBackFun){
+                getNCBrandDetails: function (brandName, callBackFun) {
                     var urlToSearch = url
                         + "getModelFeedsWithStatus&oem="
                         + brandName;
@@ -590,40 +665,45 @@ angular
                             callBackFun(data);
                         })
                 },
-                getNCModelDetails : function(modelName, callBackFn){
-                var urlToSearch = url
-                    + "getModelFeedsWithStatus&ModelName="
-                    + modelName;
-                console.log("getNCModelDetails : " + urlToSearch);
-                $http
-                    .post(urlToSearch)
-                    .success(
-                    function (data, status) {
-                        console.log("get NC brand detail" + data);
-                        callBackFun(data);
-                    })
+                getNCModelDetails: function (modelName, callBackFn) {
+                    var urlToSearch = url
+                        + "getModelFeedsWithStatus&ModelName="
+                        + modelName;
+                    console.log("getNCModelDetails : " + urlToSearch);
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            console.log("get NC brand detail" + data);
+                            callBackFun(data);
+                        })
                 },
-                getDataFromApi : function(apiOption, paramValue, callBackFun){
+                getDataFromApi: function (apiOption, paramValue, callBackFun) {
                     var urlToSearch = url;
-                    switch(apiOption){
+                    switch (apiOption) {
                         case 'ncBrandDetailsObj':
-                            urlToSearch += "getModelFeedsWithStatus&oem="+paramValue;
+                            urlToSearch += "getModelFeedsWithStatus&oem=" + paramValue;
                             break;
                         case 'ncModelDetailsObj':
-                            urlToSearch += "getModelDetailsWithStatus&ModelName="+paramValue;
+                            urlToSearch += "getModelDetailsWithStatus&ModelName=" + paramValue;
+                            break;
+                        case 'reviewUserAndRoadTestDetailObj':
+                            urlToSearch += "getExpertReviewsWithStatus&startLimit=1&endLimit=2&ModelName="+objectValue.model;
                             break;
                     }
+
+                    console.log("get data from api" + urlToSearch);
 
                     $http
                         .post(urlToSearch)
                         .success(
                         function (data, status) {
-                            console.log("get data from api" + data);
+                            console.log("get data from api" + JSON.stringify(data));
                             objectValue[apiOption] = data;
                             callBackFun(data);
                         })
                 },
-                getCityAndPin : function(callBackFun) {
+                getCityAndPin: function (callBackFun) {
                     var urlToSearch = url;
 
                     var cityUrl = urlToSearch + "getDataForOnRoadPriceWithStatus";
@@ -631,23 +711,23 @@ angular
 
                     var cityPost = $http.post(cityUrl);
                     var pingPost = $http.post(pinUrl);
-                    $q.all([cityPost, pingPost]).then(function(cityAndPingObjs) {
-                        console.log("city and pin "+ JSON.stringify(cityAndPingObjs));
+                    $q.all([cityPost, pingPost]).then(function (cityAndPingObjs) {
+                        console.log("city and pin " + JSON.stringify(cityAndPingObjs));
                         objectValue.cityObj = cityAndPingObjs[0];
                         objectValue.pinCodeObj = cityAndPingObjs[1];
                         callBackFun(cityAndPingObjs);
                     });
 
                 },
-                setOnRoadRequestObj : function(onRoadDetailRequest){
-                    console.log("request obj "+ JSON.stringify(onRoadDetailRequest));
+                setOnRoadRequestObj: function (onRoadDetailRequest) {
+                    console.log("request obj " + JSON.stringify(onRoadDetailRequest));
                     onRoadDetailRequestObj = onRoadDetailRequest;
                 },
-                getOnRoadDetailsObj : function(callBackFun){
+                getOnRoadDetailsObj: function (callBackFun) {
                     var urlToSearch = url
-                        + "getOnRoadPriceWithStatus&MobileNo="+onRoadDetailRequestObj.userMobile+"&BuyingTime=7&"
-                        + "UserName="+onRoadDetailRequestObj.name+"&ModelName="+onRoadDetailRequestObj.carModel +"&PinCode="+onRoadDetailRequestObj.userPinCode
-                        + "&EmailId="+onRoadDetailRequestObj.userEmail+"&OemName="+onRoadDetailRequestObj.oem+"&City="+onRoadDetailRequestObj.userCity;
+                        + "getOnRoadPriceWithStatus&MobileNo=" + onRoadDetailRequestObj.userMobile + "&BuyingTime=7&"
+                        + "UserName=" + onRoadDetailRequestObj.name + "&ModelName=" + onRoadDetailRequestObj.carModel + "&PinCode=" + onRoadDetailRequestObj.userPinCode
+                        + "&EmailId=" + onRoadDetailRequestObj.userEmail + "&OemName=" + onRoadDetailRequestObj.oem + "&City=" + onRoadDetailRequestObj.userCity;
                     console.log("getNCModelDetails : " + urlToSearch);
 
                     $http
@@ -658,10 +738,10 @@ angular
                             callBackFun(data, onRoadDetailRequestObj);
                         })
                 },
-                getCity : function(){
+                getCity: function () {
                     return objectValue.cityObj;
                 },
-                getPriceRange : function(callBackFun){
+                getPriceRange: function (callBackFun) {
                     $http
                         .post(
                         "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getNewCarPriceRangeDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds")
@@ -672,7 +752,7 @@ angular
                         })
 
                 },
-                getHttpData : function(urlForCount, callBackFun){
+                getHttpData: function (urlForCount, callBackFun) {
                     var urlToSearch = url + urlForCount;
                     console.log("getHttpData URL : " + urlToSearch);
                     $http
@@ -684,31 +764,46 @@ angular
                         })
 
                 },
-                getMultipleHttpData : function(urlArrayForData, callBackFun){
-                    console.log("URL To Search "+ JSON.stringify(urlArrayForData));
-                    $q.all(urlArrayForData).then(function(httpCallBackData) {
+                getMultipleHttpData: function (urlArrayForData, callBackFun) {
+                    console.log("URL To Search " + JSON.stringify(urlArrayForData));
+                    $q.all(urlArrayForData).then(function (httpCallBackData) {
                         callBackFun(httpCallBackData);
                     });
                 },
-                setCompareData : function(compareData){
+                setCompareData: function (compareData) {
                     compareDataObj = compareData;
                 },
-                getCompareData : function() {
+                getCompareData: function () {
                     console.log("compareDataObj" + JSON.stringify(compareDataObj));
                     return compareDataObj;
                 },
 
-                setReviewReturnEvent : function(reviewReturnEventParam){
+                setReviewReturnEvent: function (reviewReturnEventParam) {
                     reviewReturnEvent = reviewReturnEventParam;
                 },
-                getReviewReturnEvent : function(){
-                    return reviewReturnEvent ;
+                getReviewReturnEvent: function () {
+                    return reviewReturnEvent;
                 },
+                cleanBrandAndModel: function () {
+                    objectValue.brand = "";
+                    objectValue.model = "";
+                },
+                getBrand: function () {
+                    return objectValue.brand;
+                },
+                getModel: function () {
+                    return objectValue.model;
+                },
+                setReviewType : function( reviewTypeParam) {
+                    objectValue.reviewType = reviewTypeParam;
+                },
+                getReviewType : function( ) {
+                    return objectValue.reviewType ;
+                }
+
 
 
             }
-
-
         }])
 
 
@@ -751,6 +846,25 @@ angular
             }
 
             return formatedPrice;
+        };
+    })
+    .filter('cut', function () {
+        return function (value, wordwise, max, tail) {
+            if (!value) return '';
+
+            max = parseInt(max, 10);
+            if (!max) return value;
+            if (value.length <= max) return value;
+
+            value = value.substr(0, max);
+            if (wordwise) {
+                var lastspace = value.lastIndexOf(' ');
+                if (lastspace != -1) {
+                    value = value.substr(0, lastspace);
+                }
+            }
+
+            return value + (tail || ' …');
         };
     })
 
@@ -1023,7 +1137,14 @@ angular
                 console.log(brand);
                 sharedProperties.setBrand(brand);
                 $scope.search = '';
-                $state.go('eventmenu.'+retunEvent);
+                if(retunEvent == 'review-user-and-road-test'){
+                    var reviewType = sharedProperties.getReviewType();
+                    console.log("reviewType"+ reviewType);
+                    $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
+                }else {
+                    $state.go('eventmenu.'+retunEvent);
+                }
+
             }
         }])
     .controller(
@@ -1035,9 +1156,11 @@ angular
         '$location',
         '$rootScope',
         '$state',
+        '$stateParams',
         function ($scope, sharedProperties, $window, $location,
-                  $rootScope, $state) {
+                  $rootScope, $state, $stateParams) {
             $scope.model = "...";
+            var retunEvent = $stateParams.retunEvent;
             $scope.modelTempObj = sharedProperties.getObject();
 
             $scope.clearSearch = function () {
@@ -1046,7 +1169,13 @@ angular
 
             $scope.newModel = function (model) {
                 sharedProperties.setModel(model);
-                $state.go('eventmenu.used-car-home');
+                if(retunEvent == 'review-user-and-road-test'){
+                    var reviewType = sharedProperties.getReviewType();
+                    $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
+                }else {
+                    $state.go('eventmenu.'+retunEvent);
+                }
+
             }
         }])
     .controller(
@@ -2736,12 +2865,12 @@ angular
         '$stateParams',
         '$ionicLoading',
         function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
-            console.log("in nc_modelDetails");
+            console.log("in gbl_tempPageCtrl");
             var paramValue = $stateParams.paramValue;
             var paramName  = $stateParams.paramName;
             var apiOption  = $stateParams.apiOption;
             var urlToCall  = $stateParams.urlToCall;
-            console.log("KK param name"+ paramName +paramValue);
+            console.log("KK param name "+ paramName +paramValue+urlToCall);
 
             $scope.loading = $ionicLoading.show({
                 template: 'loading'
@@ -2749,9 +2878,9 @@ angular
 
             sharedProperties
                 .getDataFromApi(apiOption, paramValue, function () {
-                    console.log("in temp");
+                    console.log("in temp "+ urlToCall + paramName + paramValue+ JSON.stringify({paramName:paramValue}));
                     $ionicLoading.hide();
-                    $state.go('eventmenu.'+urlToCall, {paramName:paramValue});
+                    $state.go('eventmenu.'+urlToCall, { paramName :paramValue});
 
              })
         }])
@@ -3052,24 +3181,143 @@ angular
             $scope.reviewType =  $stateParams.reviewType;
             console.log("$scope.reviewType "+ $scope.reviewType );
 
-
-            $scope.brand = "Select Brand";
-            $scope.model = "Select Model";
+            $scope.brandAndObject = sharedProperties.getObject();
 
             $scope.fn_changeUserAndRoadReview = function(reviewType){
                 $scope.reviewType = reviewType;
             }
 
             $scope.fn_getBrand = function(){
-
-                sharedProperties.setReviewReturnEvent({"reviewType":$scope.reviewType});
+                sharedProperties.setReviewType($scope.reviewType);
                 $state.go("eventmenu.brand",{'retunEvent':'review-user-and-road-test'});
             }
 
             $scope.fn_getModel = function(){
-                $state.go("eventmenu.show-compare");
+                console.log("In Model");
+                sharedProperties.setReviewType($scope.reviewType);
+                if($scope.brandAndObject.brand == ''){
+                    alert("Please Select Brand First");
+                }else {
+                    $state.go("eventmenu.model", {'retunEvent': 'review-user-and-road-test'});
+                }
             }
 
+            $scope.fn_getReview = function () {
+                console.log("get review");
+                if ($scope.brandAndObject.brand == '') {
+                    alert("Please Select Brand First");
+                } else if ($scope.brandAndObject.model == '') {
+                    alert("Please Select Model First");
+                } else {
+                    console.log('$scope.brandAndObject.model' + $scope.reviewType);
+                    if ($scope.reviewType == "user") {
+                        $state.go('eventmenu.user-review',{"reviewType":"mostHelpful"});
+                    } else {
+                        $state.go('eventmenu.gbl-temp-page', {
+                            "paramName": "reviewtype",
+                            "paramValue": $scope.reviewType,
+                            "apiOption": "reviewUserAndRoadTestDetailObj",
+                            "urlToCall": "review-user-and-road-test-detail"
+                        });
+                    }
+                }
+            }
+
+
+        }])
+    .controller(
+    'reviewUserAndRoadTestDetailCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.reviewType = sharedProperties.getReviewType();
+
+
+            $scope.reviewData = sharedProperties.getObject();
+            //console.log("car news id :" + JSON.stringify($scope.reviewData ));
+
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+                $state.go("eventmenu.expert-review", {'reviewId':modelObj.expertReviewId});
+            }
+
+
+
+        }])
+    .controller(
+    'userReviewCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        '$http',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce,$http) {
+            console.log("in userReviewCtrl");
+            cssInjector.add("css/user-review.css");
+            var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
+            $scope.modelDetailObject = sharedProperties.getObject();
+
+
+            var urlToSearch = baseUrl + "getReviewsWithStatus&startLimit=1&endLimit=20&ModelName="+$scope.modelDetailObject.model+"&sortedBy=";
+
+            var recentReviews = urlToSearch + "recentReview";
+            var mostHelpFul = urlToSearch + "mostHelpful";
+
+            urlArryaToSearch = [];
+            urlArryaToSearch.push($http.post(recentReviews));
+            urlArryaToSearch.push($http.post(mostHelpFul));
+            $scope.reviewType = $stateParams.reviewType;
+
+
+            sharedProperties.getMultipleHttpData(urlArryaToSearch, function (httpCallBackData) {
+
+                $scope.reviewData = httpCallBackData;
+                console.log("userReviewCtrl"+ JSON.stringify($scope.reviewData));
+
+            });
+
+            $scope.fn_changeType = function(reviewTypeParam){
+                $scope.reviewType = reviewTypeParam;
+            }
+            $scope.fn_getDetailedUserReview = function (reviewDataObj){
+                $state.go("eventmenu.expert-review", {'reviewId':reviewDataObj.reviewId});
+            }
+
+
+        }])
+    .controller(
+    'expertReviewCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                   console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
 
         }])
     .controller(
@@ -3087,7 +3335,7 @@ angular
 
 
             var carNewsID = $stateParams.newsId;
-            console.log("car news id :" + carNewsID);
+            //console.log("car news id :" + carNewsID);
             var searchString = "getDetailAutoNewsHtmlWithStatus&CarNewsId=" + carNewsID;
 
             sharedProperties.getData(searchString, function (autoDetailedNews) {
@@ -3129,3 +3377,128 @@ angular
             $scope.loading.hide();
         };
     }])
+    .controller(
+    'carInsuranceCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in carInsuranceCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
+
+        }])
+    .controller(
+    'carLoanCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
+
+        }])
+    .controller(
+    'carDealersCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
+
+        }])
+    .controller(
+    'carHealpLineCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
+
+        }])
+    .controller(
+    'carRoadSideAssitanceCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in reviewUserAndRoadTestDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+
+            var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(expertReviewData){
+                console.log("expertReviewData"+ JSON.stringify(expertReviewData));
+                $scope.autoDetailedNews = $sce.trustAsHtml(expertReviewData);
+            });
+            $scope.fn_getDetailedExpertReview = function(modelObj){
+
+            }
+
+        }])
