@@ -76,6 +76,16 @@ angular
                     }
                 }
             })
+            .state('eventmenu.varient', {
+                url: "/varient/:retunEvent",
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/varient-id.html",
+                        controller: "varientIdCtrl"
+                    }
+                }
+            })
             .state('eventmenu.fuel', {
                 url: "/fuel",
                 views: {
@@ -151,7 +161,7 @@ angular
                 }
             })
             .state('eventmenu.used-car-detail', {
-                url: "/used-car-detail",
+                url: "/used-car-detail/:isTrusted",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/used-car-detail.html",
@@ -371,6 +381,15 @@ angular
                     }
                 }
             })
+            .state('eventmenu.user-review-detail', {
+                url: "/user-review-detail/:reviewId",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user-review-detail.html",
+                        controller: "userReviewDetailCtrl"
+                    }
+                }
+            })
             .state('eventmenu.car-insurance', {
                 url: "/car-insurance",
                 views: {
@@ -483,6 +502,18 @@ angular
             var onRoadDetailRequestObj = {};
             var compareDataObj = {};
             var reviewReturnEvent = {};
+            objectValue.currentModel = "";
+            objectValue.varientDetailObj = {};
+            objectValue.varientDetailObj.first ={};
+            objectValue.varientDetailObj.second={};
+
+            objectValue.varientDetailObj.first.imageUrlList = "images/select_car_1.png";
+            objectValue.varientDetailObj.first.displayVariantId = "Select Car 1";
+            objectValue.varientDetailObj.first.OnRoadPrice = "";
+
+            objectValue.varientDetailObj.second.imageUrlList = "images/select_car_2.png";
+            objectValue.varientDetailObj.second.displayVariantId = "Select Car 2";
+            objectValue.varientDetailObj.second.OnRoadPrice = "";
 
 
             $http
@@ -638,6 +669,7 @@ angular
                     return objectValue;
                 },
                 setModel: function (model) {
+                    console.log("model "+ model);
                     objectValue.model = model;
                 },
                 getData: function (searchString, callBackFun) {
@@ -792,6 +824,7 @@ angular
                     return objectValue.brand;
                 },
                 getModel: function () {
+                    console.log("get model "+ objectValue.model);
                     return objectValue.model;
                 },
                 setReviewType : function( reviewTypeParam) {
@@ -799,6 +832,24 @@ angular
                 },
                 getReviewType : function( ) {
                     return objectValue.reviewType ;
+                },
+                setVarientID : function(varientObj){
+
+                    objectValue.varientDetailObj[objectValue.currentModel] = varientObj;
+                },
+                setCurrentModelNumber : function(modelNumber){
+                    objectValue.currentModel = modelNumber;
+                },
+                setUsedTrustedCar : function(urlToSearch){
+                    var urlToSearch = url + urlToSearch;
+                    console.log("getHttpData URL : " + urlToSearch);
+                    $http
+                        .post(urlToSearch)
+                        .success(
+                        function (data, status) {
+                            //console.log("get data from api" + data);
+                            objectValue.usedCarSearchResult = data;
+                        })
                 }
 
 
@@ -915,6 +966,12 @@ angular
             scope: {
                 customerInfo: '=info'
             },
+        }
+    })
+    .directive('ngReviewStars', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/review-stars-CD.html",
         }
     })
     .directive('ngPriceRange', function () {
@@ -1141,7 +1198,10 @@ angular
                     var reviewType = sharedProperties.getReviewType();
                     console.log("reviewType"+ reviewType);
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
-                }else {
+                }else if(retunEvent == 'compare-cars'){
+                    $state.go('eventmenu.model',{"retunEvent":retunEvent});
+                }
+                else {
                     $state.go('eventmenu.'+retunEvent);
                 }
 
@@ -1172,12 +1232,51 @@ angular
                 if(retunEvent == 'review-user-and-road-test'){
                     var reviewType = sharedProperties.getReviewType();
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
+                }else if(retunEvent == 'compare-cars'){
+                    console.log("in compare cars")
+                    $state.go('eventmenu.varient',{"retunEvent":"compare-cars"});
                 }else {
                     $state.go('eventmenu.'+retunEvent);
                 }
 
             }
         }])
+    .controller(
+    'varientIdCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            $scope.model = "...";
+
+            var retunEvent = $stateParams.retunEvent;
+
+            var selectedModel = sharedProperties.getModel();
+            console.log("get model "+ selectedModel);
+
+            var urlToSerach = "getCarVariantDetailByCarModelName&ModelName="+selectedModel;
+
+            sharedProperties.getHttpData(urlToSerach, function(varientData){
+                $scope.varientObj = varientData;
+
+            });
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            $scope.fn_setVarient = function (model) {
+                sharedProperties.setVarientID(model);
+                $state.go('eventmenu.'+retunEvent);
+            }
+        }])
+
     .controller(
     'fuelCtrl',
     [
@@ -1625,11 +1724,19 @@ angular
         'cssInjector',
         '$ionicPopup',
         '$timeout',
+        '$stateParams',
         function ($scope, sharedProperties, $window, $location,
-                  $rootScope, $state, cssInjector, $ionicPopup, $timeout) {
+                  $rootScope, $state, cssInjector, $ionicPopup, $timeout, $stateParams) {
+
+            $scope.isTrusted = $stateParams.isTrusted;
 
             cssInjector.add("css/usedCarDetail.css");
             cssInjector.add("css/usedCarFilter.css");
+
+            if($scope.isTrusted == 'trusted'){
+                sharedProperties.setUsedTrustedCar("getUsedCarSearchResultDataWithStatus&City=Chennai&certificationid=1&startLimit=1&endLimit=20");
+            }
+
             var usedCarSearchResultObj = sharedProperties
                 .getObject();
             $scope.detailedObj = usedCarSearchResultObj;
@@ -3060,7 +3167,7 @@ angular
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
             console.log("in nc_popularCars");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/auto-news.css");
 
             var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
 
@@ -3099,10 +3206,15 @@ angular
         function ($scope, sharedProperties, $state, cssInjector, $stateParams,$http) {
             console.log("in sellACarCtrl");
             cssInjector.add("css/compare-cars.css");
-            $scope.car1Src = "images/select_car_1.png";
-            $scope.car2Src = "images/select_car_2.png";
+
+            var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
+            var urlToSearch = baseUrl + "getCarVariantDetailByCarModelName&ModelName=";
+
             $scope.isCompare = "images/compare_btn_disable.png";
             $scope.vsImage = "images/vs_grey.png";
+
+            $scope.compDataObj = sharedProperties.getObject();
+
 
             var urlForData = "getPopularCompareCarListWithStatus&startLimit=1&endLimit=5"
 
@@ -3110,10 +3222,34 @@ angular
                 $scope.popularCarsWithStatus =  popularCarsWithStatus;
             })
 
-            $scope.comparePopularModel = function(compareCarsObj) {
-                var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
-                var urlToSearch = baseUrl + "getCarVariantDetailByCarModelName&ModelName=";
+            $scope.fn_modelSelect = function(modelIndex){
+                console.log("fn_selectModel "+ modelIndex);
+                sharedProperties.setCurrentModelNumber(modelIndex);
+                $state.go("eventmenu.brand",{"retunEvent": "compare-cars"});
+            }
 
+            $scope.fn_selectCompare = function(){
+                getDataToCompare($scope.compDataObj.varientDetailObj.first.carVariantId, $scope.compDataObj.varientDetailObj.second.carVariantId);
+
+            }
+
+            var showCompare = function(compareDate){
+                sharedProperties.setCompareData(compareDate);
+                $state.go("eventmenu.show-compare");
+            }
+
+            var getDataToCompare = function(model1Id, model2Id){
+                //console.log("Varient Ids " + JSON.stringify(httpCallBackData));
+                var getUrlForComparison = "getPopularCompareCarListVariantDataWithStatus&variant1=" +
+                    model1Id + "&variant2=" + model2Id;
+
+                sharedProperties.getHttpData(getUrlForComparison, function (comparisonData) {
+                    console.log("comparisonData" + JSON.stringify(comparisonData));
+                    showCompare(comparisonData);
+                })
+            }
+
+            $scope.comparePopularModel = function(compareCarsObj) {
                 var model1 = urlToSearch + compareCarsObj.Model1.name;
                 var model2 = urlToSearch + compareCarsObj.Model2.name;
 
@@ -3122,20 +3258,8 @@ angular
                 urlArryaToSearch.push($http.post(model2));
 
                 sharedProperties.getMultipleHttpData(urlArryaToSearch, function (httpCallBackData) {
-                    console.log("Varient Ids " + JSON.stringify(httpCallBackData));
-                    var getUrlForComparison = "getPopularCompareCarListVariantDataWithStatus&variant1=" +
-                        httpCallBackData[0].data.data.carVariantsList[0].carVariantId + "&variant2=" + httpCallBackData[1].data.data.carVariantsList[0].carVariantId;
-
-                    sharedProperties.getHttpData(getUrlForComparison, function (comparisonData) {
-                        console.log("comparisonData" + JSON.stringify(comparisonData));
-                        showCompare(comparisonData);
-                    })
+                    getDataToCompare(httpCallBackData[0].data.data.carVariantsList[0].carVariantId, httpCallBackData[1].data.data.carVariantsList[0].carVariantId);
                 });
-
-                var showCompare = function(compareDate){
-                    sharedProperties.setCompareData(compareDate);
-                    $state.go("eventmenu.show-compare");
-                }
             }
         }])
     .controller(
@@ -3290,9 +3414,35 @@ angular
                 $scope.reviewType = reviewTypeParam;
             }
             $scope.fn_getDetailedUserReview = function (reviewDataObj){
-                $state.go("eventmenu.expert-review", {'reviewId':reviewDataObj.reviewId});
+                $state.go("eventmenu.user-review-detail", {'reviewId':reviewDataObj.reviewId});
             }
 
+
+        }])
+    .controller(
+    'userReviewDetailCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+            console.log("in userReviewDetailCtrl");
+            cssInjector.add("css/nc-popular-cars.css");
+
+            $scope.expertReviewId = $stateParams.reviewId;
+            $scope.modelName = sharedProperties.getModel();
+            console.log("$scope.expertReviewId"+ $scope.expertReviewId);
+
+            var urlForData = "getMoreReviewsWithStatus&startLimit=1&endLimit=5&carUserReviewId="+  $scope.expertReviewId;
+            sharedProperties.getHttpData(urlForData, function(userDetailReviewData){
+                console.log("expertReviewData"+ JSON.stringify(userDetailReviewData));
+
+                $scope.autoDetailedNews =userDetailReviewData;
+
+            });
 
         }])
     .controller(
@@ -3309,6 +3459,7 @@ angular
             cssInjector.add("css/nc-popular-cars.css");
 
             $scope.expertReviewId = $stateParams.reviewId;
+
 
             var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
             sharedProperties.getHttpData(urlForData, function(expertReviewData){
