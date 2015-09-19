@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector', 'youtube-embed'])
+    .module('ionicApp', ['ionic', 'angular.css.injector'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -3167,7 +3167,7 @@ angular
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
             console.log("in nc_popularCars");
-            cssInjector.add("css/auto-news.css");
+            cssInjector.add("css/auto.css");
 
             var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
 
@@ -3482,7 +3482,7 @@ angular
         '$sce',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
             console.log("in nc_popularCars");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/autoDnews.css");
 
 
             var carNewsID = $stateParams.newsId;

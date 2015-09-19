@@ -1,0 +1,75 @@
+.col{
+	font-family: 'Roboto-Regular';
+  font-style: normal;
+  font-weight: 700;
+	font-size: 14px;
+	color:#FFFFFF;
+	 line-height:17.32px;
+	 text-align:center;
+	 padding:0;
+}
+
+.bar-subheader{
+	max-height:33px;
+	background-color:#EF5A28;
+}
+
+.item h2{
+	font-family: 'Roboto-Bold';
+  font-style: normal;
+  font-weight: 700;
+	font-size: 12px;
+	color: #0E0E0E; 
+	 text-align:left; 
+	 letter-spacing:0.24px;
+	 line-height:15.99px; 
+	 white-space:normal;
+}
+
+.item h3{
+font-family: 'Roboto-Regular';
+  font-style: normal;
+  font-weight: 700;
+	font-size: 9.99px;
+	color: #9D9D9D; 
+	 text-align:left; 
+	 letter-spacing:0.2px;
+	 line-height:17.32px;
+	 white-space:nowrap;
+}
+
+.item-thumbnail-left > img:first-child{
+	max-width:78px;
+	max-height:56px;
+}
+
+.has-subheader {
+    top: 56px;
+  
+}
+
+.item {
+    max-height: 74px;
+    overflow: inherit;
+}
+
+.list:last-child.card{
+	margin-bottom:0;
+	padding:0;
+}
+
+.card, .list-inset {
+  overflow: hidden;
+  margin: 0px 0px;
+  border-radius: 2px;
+  background-color: #fff; }
+
+.card{
+	margin-top: 0;
+    margin-right: 0;
+}
+
+.item-thumbnail-left, .item-thumbnail-left .item-content{
+	min-height:74px;
+}
+
