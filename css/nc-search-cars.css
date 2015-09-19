@@ -79,7 +79,31 @@ div.bar.bar-light h1.title{
 	font-weight: bold;
 	color: #fff;
 }
-ion-footer-bar {
+ion-footer-bar.bar.bar-assertive.bar-footer{
+	border:none;
+	background: #f5f5f5;
+	background-image: none!important;
+	text-transform: uppercase;
 	max-width: 95%;
 	margin: 0 auto;
+	bottom: 20px;
 }
+ion-footer-bar.bar.bar-assertive.bar-footer div.row{
+	padding-bottom:10px;
+	border-bottom: 2px solid #ccc;
+	height: 50px;
+}
+ion-footer-bar .col-25{
+	border-top: 1px solid #DF5426;
+	border-style: inset;
+	color: #000;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 10px;
+}
+ion-footer-bar .col-25.active{
+	border-top: 5px solid #DF5426;
+	margin-top: -5px;
+	color: #DF5426x;
+}
+

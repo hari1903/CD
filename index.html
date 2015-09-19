@@ -1524,15 +1524,16 @@
         <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
                   ng-click="fnUpcomingCar(upcomingCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-            <div class="list card " >
+            <div class="list" >
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{upcomingCar.imageUrl}}>
+                    <div class="detail">
 
-                    <h2 class="">{{upcomingCar.carModelName}}</h2>
+                        <h2 class="">{{upcomingCar.carModelName}}</h2>
 
-                    <h3 class="">Rs <span class="">{{upcomingCar.expectedExShowRoomPrice | formatPrice  }}</span>
-                        Lac</h3>
-                    <img src="images/icons/hdpi/upcoming_bell.png">
+                        <h3 class="">Estimated Price: <span class="">Rs.{{upcomingCar.expectedExShowRoomPrice | formatPrice  }} Lac</span></h3>
+                        <img src="images/icons/hdpi/upcoming_bell.png">
+                    </div>
                 </div>
             </div>
         </ion-item>
@@ -2296,7 +2297,7 @@
 <script id="templates/nc-footer-options-CD.html" type="text/ng-template" >
     <ion-footer-bar align-title="left" class="bar-assertive" ng-controller="nc_footerOptionController">
         <div class="row">
-            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("search")'>
+            <div class="col-25 nc_lc_alignCenter active" ng-click='fn_ncFooterOptions_selectTab("search")'>
                 Search
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("upcoming")'>
@@ -2306,7 +2307,7 @@
                 Latest
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("popular")'>
-                Popuar
+                Popular
             </div>
         </div>
     </ion-footer-bar>
