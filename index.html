@@ -2523,14 +2523,16 @@
 </script>
 <script id="templates/nc-search-car-header-CD.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader">
-            <div class="row ">
-            <div class="col nc_sc_alignCenter">
-            BY BRAND
-    </div>
-    <div class="col nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
-            BY PRICE
-    </div>
-    </div>
+            <div class="row">
+            <div class="col-25"></div>
+            <div class="col-25 nc_sc_alignCenter active">
+                    BY BRAND
+            </div>
+            <div class="col-25 nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
+                    BY PRICE
+            </div>
+            <div class="col-25"></div>
+        </div>
     </ion-header-bar>
 </script>
 <script id="templates/compare-cars-select-car-CD.html" type="text/ng-template">
