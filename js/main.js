@@ -141,7 +141,6 @@ angular
                 }
             })
 
-
             .state('eventmenu.used-car-home', {
                 url: "/used-car-home",
                 views: {
@@ -151,6 +150,17 @@ angular
                     }
                 }
             })
+
+            .state('eventmenu.used-car-valuation', {
+                url: "/used-car-valuation",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/used-car-valuation.html",
+                        controller: "usedCarValuationCtrl"
+                    }
+                }
+            })
+
             .state('eventmenu.used-single-car-card-view', {
                 url: "/used-single-car-card-view",
                 views: {
@@ -514,6 +524,7 @@ angular
             objectValue.varientDetailObj.second.imageUrlList = "images/select_car_2.png";
             objectValue.varientDetailObj.second.displayVariantId = "Select Car 2";
             objectValue.varientDetailObj.second.OnRoadPrice = "";
+            objectValue.usedCarValuation = {};
 
 
             $http
@@ -850,6 +861,12 @@ angular
                             //console.log("get data from api" + data);
                             objectValue.usedCarSearchResult = data;
                         })
+                },
+                setCurrentModelNumber : function(modelNumber){
+                    objectValue.currentModel = modelNumber;
+                },
+                setUsedCarValuation : function(multiData){
+                    objectValue.usedCarValuation
                 }
 
 
@@ -1006,6 +1023,12 @@ angular
     })
 
     //New Car
+    .directive('ngUsedCarValuation', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/used-car-valuation-CD.html"
+        }
+    })
     .directive('ngNcFooterOption', function () {
         return {
             restrict: 'AEC',
@@ -1053,8 +1076,9 @@ angular
     'MainCtrl', function ($scope, $ionicSideMenuDelegate) {
         // StatusBar.hide();
 
-        $scope.toggleLeft = function () {
-            $ionicSideMenuDelegate.toggleLeft();
+        $scope.toggleRight = function () {
+            console.log("toggle right");
+            $ionicSideMenuDelegate.toggleRight();
         };
 
         $scope.OpenUpNewCar = function () {
@@ -1801,320 +1825,320 @@ angular
                     '                <div class="col scrollView">' +
                     '                    <ion-scroll direction="y" class="theroot">' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik1234' +
+                    '                            CarDekho1234' +
                     '                        </button>' +
                     '                    </ion-scroll>' +
                     '                </div>' +
                     '                <div class="col scrollView">' +
                     '                    <ion-scroll direction="y" class="theroot">' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik1234' +
+                    '                            CarDekho1234' +
                     '                        </button>' +
                     '                    </ion-scroll>' +
                     '                </div>' +
@@ -2195,7 +2219,7 @@ angular
 
                         for (var i = 0; i < featureLength; i++) {
                             $scope.featureList[myTrim(objFeat[i].featureName)] = objFeat[i].featureValue;
-                            //console.log("Karthik"+JSON.stringify($scope.featureList));
+                            //console.log("CarDekho"+JSON.stringify($scope.featureList));
                         }
 
                         $scope.$on('ionicView.enter', function () {
@@ -2300,320 +2324,320 @@ angular
                     '                <div class="col scrollView">' +
                     '                    <ion-scroll direction="y" class="theroot">' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik1234' +
+                    '                            CarDekho1234' +
                     '                        </button>' +
                     '                    </ion-scroll>' +
                     '                </div>' +
                     '                <div class="col scrollView">' +
                     '                    <ion-scroll direction="y" class="theroot">' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik' +
+                    '                            CarDekho' +
                     '                        </button>' +
                     '                        <button class="backbutton">' +
-                    '                            Karthik1234' +
+                    '                            CarDekho1234' +
                     '                        </button>' +
                     '                    </ion-scroll>' +
                     '                </div>' +
@@ -2655,7 +2679,7 @@ angular
     ['$scope', 'cssInjector', function ($scope, cssInjector) {
         console.log("");
         cssInjector.add("css/usedCarFilter.css");
-        $scope.check = "Karthik";
+        $scope.check = "CarDekho";
 
         $scope.showPopup = function () {
             $scope.data = {}
@@ -3653,3 +3677,29 @@ angular
             }
 
         }])
+    .controller(
+    'usedCarValuationCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        '$ionicLoading',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicLoading) {
+            console.log("in usedCarValuationCtrl");
+            cssInjector.add("css/used-car-valuation.css");
+
+            $scope.loading = $ionicLoading.show({
+                template: 'loading'
+            });
+
+            sharedProperties.getMultipleHttpData(urlForMultiData, function (multiData){
+                $scope.loading.hide();
+                sharedProperties.setUsedCarValuation(multiData);
+;            })
+
+        }])
+
+
