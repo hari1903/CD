@@ -1207,20 +1207,89 @@
 <script id="templates/used-car-valuation.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-content style="margin-top: -2px; ">
+            <div>
+                <img ng-src="images/used_car_valuation_logo.png">
+            </div>
+            <div>
+                <span>Used Car Valuation</span>
+            </div>
+            <div>
+               <span>Find Value of Your Used Car</span>
+            </div>
+            <div>
+                <img ng-src="images/ibb_logo.png">
+            </div>
 
         </ion-content>
-        <ion-footer-bar class="bar-light " style="padding: 0px;">
+        <ion-footer-bar class="bar-light " style="padding: 0px;" ng-click="fn_getDetailsForValuation()">
             <div class="row">
                 <div class="col-33">
                 </div>
                 <div class="col-33">
+                    Proceed
                 </div>
                 <div class="col-33">
+                    <i class="fa fa-arrow-right"></i>
                 </div>
             </div>
         </ion-footer-bar>
     </ion-view>
+</script>
 
+<script id="templates/used-car-valuation-get-detail.html" type="text/ng-template">
+
+    <ion-view view-title="">
+        <div class="bar bar-header">
+            <h1 >Valuation Information</h1>
+        </div>
+
+        <ion-content style="margin-top: -2px; ">
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div ng-click="fn_selectYear()">
+                <span> {{usedCarValuationGetDetailObj.selectedYear}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedBrand}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedModel}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedVariant}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedCity}}</span>
+            </div>
+
+        </ion-content>
+        <ion-footer-bar class="bar-light " style="padding: 0px;" >
+            <div class="row">
+                <div class="col-33">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+                <div class="col-33">
+                    Proceed
+                </div>
+                <div class="col-33">
+                    <i class="fa fa-arrow-right" ng-click="fn_getDetailsForValuation()"></i>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-view>
 </script>
 
 <script id="templates/nc-search-cars.html" type="text/ng-template">
