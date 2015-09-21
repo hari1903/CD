@@ -1207,20 +1207,89 @@
 <script id="templates/used-car-valuation.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-content style="margin-top: -2px; ">
+            <div>
+                <img ng-src="images/used_car_valuation_logo.png">
+            </div>
+            <div>
+                <span>Used Car Valuation</span>
+            </div>
+            <div>
+               <span>Find Value of Your Used Car</span>
+            </div>
+            <div>
+                <img ng-src="images/ibb_logo.png">
+            </div>
 
         </ion-content>
-        <ion-footer-bar class="bar-light " style="padding: 0px;">
+        <ion-footer-bar class="bar-light " style="padding: 0px;" ng-click="fn_getDetailsForValuation()">
             <div class="row">
                 <div class="col-33">
                 </div>
                 <div class="col-33">
+                    Proceed
                 </div>
                 <div class="col-33">
+                    <i class="fa fa-arrow-right"></i>
                 </div>
             </div>
         </ion-footer-bar>
     </ion-view>
+</script>
 
+<script id="templates/used-car-valuation-get-detail.html" type="text/ng-template">
+
+    <ion-view view-title="">
+        <div class="bar bar-header">
+            <h1 >Valuation Information</h1>
+        </div>
+
+        <ion-content style="margin-top: -2px; ">
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div ng-click="fn_selectYear()">
+                <span> {{usedCarValuationGetDetailObj.selectedYear}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedBrand}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedModel}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedVariant}}</span>
+            </div>
+            <div>
+                <span> Model Year</span>
+            </div>
+            <div>
+                <span> {{usedCarValuationGetDetailObj.selectedCity}}</span>
+            </div>
+
+        </ion-content>
+        <ion-footer-bar class="bar-light " style="padding: 0px;" >
+            <div class="row">
+                <div class="col-33">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+                <div class="col-33">
+                    Proceed
+                </div>
+                <div class="col-33">
+                    <i class="fa fa-arrow-right" ng-click="fn_getDetailsForValuation()"></i>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-view>
 </script>
 
 <script id="templates/nc-search-cars.html" type="text/ng-template">
@@ -1607,16 +1676,14 @@
         <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
                   ng-click="fnUpcomingCar(upcomingCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-            <div class="list" >
+            <div class="list ">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{upcomingCar.imageUrl}}>
-                    <div class="detail">
+		   <div class="detail">		
 
-                        <h2 class="">{{upcomingCar.carModelName}}</h2>
-
-                        <h3 class="">Estimated Price: <span class="">Rs.{{upcomingCar.expectedExShowRoomPrice | formatPrice  }} Lac</span></h3>
-                        <img src="images/icons/hdpi/upcoming_bell.png">
-                    </div>
+                    <h2 class="">{{upcomingCar.carModelName}}</h2>
+		    <h3 class="">Estimated Price: <span class="">Rs.{{upcomingCar.expectedExShowRoomPrice | formatPrice  }} Lac</span></h3>
+                    <img src="images/icons/hdpi/upcoming_bell.png">
                 </div>
             </div>
         </ion-item>
@@ -1743,10 +1810,10 @@
     <ion-content style="padding-top: 22px !important;">
         <ion-item class="item " ng-repeat="singeAutoNews in autoNews.data['Auto News']"
                   ng-click="fnDetailedNews(singeAutoNews)"
-                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;padding-left: 0px;padding-right: 0px;">
             <div class="list card ">
                 <div class="item item-thumbnail-left ">
-                    <img class="imageProp" ng-src={{singeAutoNews.carImageThumb}}>
+                    <img class="" ng-src={{singeAutoNews.carImageThumb}}>
 
                     <h2 class="">{{singeAutoNews.newsTitle}}</h2>
 
@@ -2629,7 +2696,7 @@
                 Latest
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("popular")'>
-                Popular
+		Popular
             </div>
         </div>
     </ion-footer-bar>
@@ -2880,15 +2947,15 @@
 </script>
 <script id="templates/nc-search-car-header-CD.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader">
-            <div class="row">
-            <div class="col-25"></div>
-            <div class="col-25 nc_sc_alignCenter active">
-                    BY BRAND
+        <div class="row ">
+		<div class="col-25"></div>
+		<div class="col-25 nc_sc_alignCenter active">
+                BY BRAND
             </div>
-            <div class="col-25 nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
-                    BY PRICE
+		<div class="col-25 nc_sc_alignCenter" ng-click="nc_sc_getByPrice()">
+                BY PRICE
             </div>
-            <div class="col-25"></div>
+	    <div class="col-25"></div>	
         </div>
     </ion-header-bar>
 </script>
@@ -2928,3 +2995,4 @@
 
 </body>
 </html>
+

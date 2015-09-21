@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector', 'youtube-embed'])
+    .module('ionicApp', ['ionic', 'angular.css.injector'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -157,6 +157,15 @@ angular
                     'menuContent': {
                         templateUrl: "templates/used-car-valuation.html",
                         controller: "usedCarValuationCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.used-car-valuation-get-detail', {
+                url: "/used-car-valuation-get-detail",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/used-car-valuation-get-detail.html",
+                        controller: "usedCarValuationGetDetailCtrl"
                     }
                 }
             })
@@ -525,6 +534,16 @@ angular
             objectValue.varientDetailObj.second.displayVariantId = "Select Car 2";
             objectValue.varientDetailObj.second.OnRoadPrice = "";
             objectValue.usedCarValuation = {};
+            objectValue.usedCarValuation.getIbbCityList = {};
+            objectValue.usedCarValuation.getUsedCarValuationOemByYear ={};
+            objectValue.usedCarValuation.getUsedCarSearchResultDataWithStatus = {};
+            objectValue.usedCarValuationGetDetail = {};
+            objectValue.usedCarValuationGetDetail.selectedYear = '2015';
+            objectValue.usedCarValuationGetDetail.selectedBrand = "Select a Brand";
+            objectValue.usedCarValuationGetDetail.selectedModel = "Select Model";
+            objectValue.usedCarValuationGetDetail.selectedVariant = "Select Variant";
+            objectValue.usedCarValuationGetDetail.selectedCity = "Select City";
+
 
 
             $http
@@ -866,8 +885,16 @@ angular
                     objectValue.currentModel = modelNumber;
                 },
                 setUsedCarValuation : function(multiData){
-                    objectValue.usedCarValuation
+                    objectValue.usedCarValuation.getIbbCityList = multiData[0].data;
+                    objectValue.usedCarValuation.getUsedCarValuationOemByYear = multiData[1].data;
+                    objectValue.usedCarValuation.getUsedCarSearchResultDataWithStatus =  multiData[2].data;
+
+                    console.log("setUsedCarValuation :"+ JSON.stringify(objectValue.usedCarValuation)) ;
+                },
+                getUsedCarValuation : function(){
+                    return objectValue.usedCarValuationGetDetail;
                 }
+
 
 
 
@@ -3191,7 +3218,7 @@ angular
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
             console.log("in nc_popularCars");
-            cssInjector.add("css/auto-news.css");
+            cssInjector.add("css/auto.css");
 
             var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
 
@@ -3506,7 +3533,7 @@ angular
         '$sce',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
             console.log("in nc_popularCars");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/autoDnews.css");
 
 
             var carNewsID = $stateParams.newsId;
@@ -3687,7 +3714,8 @@ angular
         '$stateParams',
         '$sce',
         '$ionicLoading',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicLoading) {
+        '$http',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicLoading,$http) {
             console.log("in usedCarValuationCtrl");
             cssInjector.add("css/used-car-valuation.css");
 
@@ -3695,10 +3723,72 @@ angular
                 template: 'loading'
             });
 
-            sharedProperties.getMultipleHttpData(urlForMultiData, function (multiData){
-                $scope.loading.hide();
+            var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
+
+            var ibbCity = baseUrl + "getIbbCityList";
+            var valuationOemByYear  = baseUrl + "getUsedCarValuationOemByYear&modelYear=2015";
+            var usedCarSearchResultDataWithStatus  = baseUrl + "getUsedCarSearchResultDataWithStatus&certificationid=1&startLimit=1&endLimit=20&isCached= false&City=Chennai";
+
+            urlArryaToSearch = [];
+            urlArryaToSearch.push($http.post(ibbCity));
+            urlArryaToSearch.push($http.post(valuationOemByYear));
+            urlArryaToSearch.push($http.post(usedCarSearchResultDataWithStatus));
+
+            sharedProperties.getMultipleHttpData(urlArryaToSearch, function (multiData){
+                $ionicLoading.hide()
+                console.log("setUsedCarValuation :"+ JSON.stringify(multiData)) ;
+
                 sharedProperties.setUsedCarValuation(multiData);
 ;            })
+
+            $scope.fn_getDetailsForValuation= function (){
+                $state.go('eventmenu.used-car-valuation-get-detail');
+            }
+
+        }])
+    .controller(
+    'usedCarValuationGetDetailCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        '$ionicPopup',
+        '$http',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicPopup,$http) {
+            console.log("in usedCarValuationCtrl");
+            cssInjector.add("css/used-car-valuation.css");
+
+            $scope.usedCarValuationGetDetailObj = sharedProperties.getUsedCarValuation();
+            $scope.selectedYear = '';
+
+
+            $scope.fn_selectYear = function(){
+                var myPopup = $ionicPopup.show({
+                    template: '<input type="password" ng-model="usedCarValuationGetDetailObj.selectedYear">',
+                    title: 'Choose Model Year',
+                    scope: $scope,
+                    buttons: [
+                        { text: 'OK' },
+                        {
+                            text: '<b>Save</b>',
+                            type: 'button-positive',
+                            onTap: function(e) {
+                                e.preventDefault();
+                                $scope.selectedYear = $scope.usedCarValuationGetDetailObj.selectedYear;
+                                console.log('$scope.usedCarValuationGetDetailObj.selectedYear'+ $scope.selectedYear);
+
+                            }
+                        }
+                    ]
+                });
+            }
+
+
+
+
 
         }])
 
