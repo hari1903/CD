@@ -3,9 +3,9 @@
 }
 
 .nc_uc_header_info {
-    border-bottom-width: 1px;
+    border-bottom-width: 2px;
     border-bottom-color: #F05A28 !important;
-    border-style: solid !important;
+    border-style: outset !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
@@ -19,4 +19,76 @@
 
 .nc_uc_alignCenter {
     text-align: center !important;
+}
+
+
+ ion-header-bar div.row.nc_uc_header_info:first-child{
+ 	text-align:center;
+ 	background:#DF5426;
+ 	font-size: 200%;
+ 	font-weight: bold;
+ 	color: #fff;
+ 	padding: 15px;
+ }
+  ion-header-bar div.row.nc_uc_header_info:nth-child(2) div.col{
+  	background: #f5f5f5;
+  	padding: 10px 30px;
+  	font-size: 150%;
+  }
+
+  ion-content div.scroll div.list{
+  	border-bottom: 2px solid #ccc;
+  }
+  ion-content div.scroll div.list:first-child{
+  	padding-top: 20px;
+  }
+  ion-content div.scroll div.list img{
+  	max-width: 100px;
+  	max-height: 80px;
+  }
+  ion-content div.scroll div.list div.detail{
+  	margin-left: 50px;
+   }
+   ion-content div.scroll div.list div.item.item-thumbnail-left{
+   		min-height: 90px;
+   }
+  ion-content div.scroll div.list h2 {
+  	font: 15px "roboto bold" bold;
+  	color: #0E0E0E;
+  }
+  ion-content div.scroll div.list h3{
+  	color: #9D9D9D;
+  	font: 11px "Roboto Regular" normal;
+  }
+   ion-content div.scroll div.list h3 span{
+   	font-size: 13px;
+   	color: #F05A28;
+   }
+
+   ion-footer-bar.bar.bar-assertive.bar-footer{
+	border:none;
+	background: #f5f5f5;
+	background-image: none!important;
+	text-transform: uppercase;
+	max-width: 95%;
+	margin: 0 auto;
+	bottom: 20px;
+}
+ion-footer-bar.bar.bar-assertive.bar-footer div.row{
+	padding-bottom:10px;
+	border-bottom: 2px solid #ccc;
+	height: 50px;
+}
+ion-footer-bar .col-25{
+	border-top: 1px solid #DF5426;
+	border-style: inset;
+	color: #000;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 10px;
+}
+ion-footer-bar .col-25.active{
+	border-top: 5px solid #DF5426;
+	margin-top: -5px;
+	color: #DF5426x;
 }
