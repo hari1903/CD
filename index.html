@@ -6,12 +6,30 @@
     <title>Side Menus</title>
     <link href="css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="js/ionic_bundle.js"></script>
     <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
     <script src="js/main.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="node_modules/angular-youtube-embed.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/ion.rangeSlider.js"></script>
+    <script>
+        $(function () {
+            $("#range").ionRangeSlider({
+                grid: true,
+                min: 0,
+                max: 100000,
+                from: 0,
+                prefix: "",
+                max_postfix: "Kms"
+            });
+
+        });
+    </script>
 </head>
 <body ng-controller="MainCtrl">
 <ion-nav-view></ion-nav-view>
@@ -248,6 +266,27 @@
         <ng-city></ng-city>
     </ion-content>
 </script>
+<script id="templates/offer-and-discount-city.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item class="my-item item" collection-repeat="city in offerCityListObj.data.CarDiscountCities | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+                <label class="item item-radio">
+                    <input type="radio" name="group" value={{city}} ng-model="city" ng-click="newCity(city)">
+
+                    <div class="item-content"
+                         style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                        {{city}}
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</script>
 <script id="templates/price-range.html" type="text/ng-template">
     <ng-search-header-bar></ng-search-header-bar>
     <ion-content>
@@ -260,10 +299,60 @@
         <ng-brand></ng-brand>
     </ion-content>
 </script>
+<script id="templates/offer-and-discount-brand.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ion-list>
+            <div ng-repeat="item in offerBrandListObj.data.oemModelList | filter:search">
+            <ion-item class="my-item item" ng-repeat=" (key, val) in item" style="
+    padding-left: 0px;
+    border-left-width: 0px;
+    margin-left: 0px;">
+                <label class="item item-radio">
+                    <input type="radio" name="group" value={{key}} ng-model="model"
+                           ng-click='newBrand(key)'>
+
+                    <div class="item-content"
+                         style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                        {{key}}
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+            </ion-item>
+            </div>
+    </ion-content>
+</script>
+<script id="templates/offer-and-discount-model.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item class="my-item item" collection-repeat="model in modelObj | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+                <label class="item item-radio">
+                    <input type="radio" name="group" value={{model}} ng-model="model" ng-click="newModel(model)">
+
+                    <div class="item-content"
+                         style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                        {{model}}
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</script>
 <script id="templates/model.html" type="text/ng-template">
     <ng-search-header-bar></ng-search-header-bar>
     <ion-content>
         <ng-brand-model></ng-brand-model>
+    </ion-content>
+</script>
+<script id="templates/valuation-model.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-valuation-model></ng-valuation-model>
     </ion-content>
 </script>
 <script id="templates/varient-id.html" type="text/ng-template">
@@ -281,6 +370,28 @@
                     <div class="item-content"
                          style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
                         {{item.displayVariantId}}
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</script>
+<script id="templates/valuation-varient-id.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item class="my-item item" ng-repeat="item in varientObj.data.usedCarValuationVariantList | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+                <label class="item item-radio">
+                    <input type="radio" name="group" value={{item.variant}} ng-model="brand"
+                           ng-change='fn_setVarient(item.variant)'>
+
+                    <div class="item-content"
+                         style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                        {{item.variant}}
                     </div>
                     <i class="radio-icon ion-checkmark"></i>
                 </label>
@@ -475,7 +586,7 @@
                     <span class="spanSearcBar"> Search Used Cars </span>
                 </button>
                 <div id="mariginContainer">
-                    <a href="#/event/city" class="item item-icon-right listElement" style=";" menu-close>
+                    <a href="#/event/city/used-car-home" class="item item-icon-right listElement" style=";" menu-close>
                         <span class="selectionDetailHeader">City</span> <i class="icon  selectionDetail">{{cityObj.city}}
                         &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
                     </a>
@@ -1219,6 +1330,11 @@
             <div>
                 <img ng-src="images/ibb_logo.png">
             </div>
+            <div>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
+            </div>
 
         </ion-content>
         <ion-footer-bar class="bar-light " style="padding: 0px;" ng-click="fn_getDetailsForValuation()">
@@ -1239,57 +1355,214 @@
 <script id="templates/used-car-valuation-get-detail.html" type="text/ng-template">
 
     <ion-view view-title="">
-        <div class="bar bar-header">
-            <h1 >Valuation Information</h1>
+        <div class="bar bar-header" style="padding-top: 50px !important;">
+            <h1 style="font-size: 15px !important;">Valuation Information</h1>
         </div>
 
-        <ion-content style="margin-top: -2px; ">
+        <ion-content style="padding-top: 20px !important; ">
             <div>
-                <span> Model Year</span>
+                <span> MODEL YEAR </span>
             </div>
             <div ng-click="fn_selectYear()">
                 <span> {{usedCarValuationGetDetailObj.selectedYear}}</span>
             </div>
-            <div>
-                <span> Model Year</span>
+            <div >
+                <span> BRAND </span>
             </div>
-            <div>
+            <div ng-click="fn_selectBrand()">
                 <span> {{usedCarValuationGetDetailObj.selectedBrand}}</span>
             </div>
-            <div>
-                <span> Model Year</span>
+            <div >
+                <span> MODEL </span>
             </div>
-            <div>
+            <div ng-click="fn_selectModel()">
                 <span> {{usedCarValuationGetDetailObj.selectedModel}}</span>
             </div>
-            <div>
-                <span> Model Year</span>
+            <div >
+                <span> VARIANT </span>
             </div>
-            <div>
+            <div ng-click="fn_selectVariat()">
                 <span> {{usedCarValuationGetDetailObj.selectedVariant}}</span>
             </div>
             <div>
-                <span> Model Year</span>
+                <span> CITY </span>
+            </div>
+            <div ng-click="fn_selectCity()">
+                <span> {{usedCarValuationGetDetailObj.selectedCity}}</span>
             </div>
             <div>
-                <span> {{usedCarValuationGetDetailObj.selectedCity}}</span>
+                <span> KMs DRIVEN </span>
+            </div>
+
+            <div style="position: relative; padding: 200px;">
+
+                <div>
+                    <input type="text" id="range" value="" name="range" />
+                </div>
+
+            </div>
+            <div>
+                <img ng-src="images/ibb_logo.png">
+            </div>
+            <div>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
             </div>
 
         </ion-content>
         <ion-footer-bar class="bar-light " style="padding: 0px;" >
             <div class="row">
                 <div class="col-33">
-                    <i class="fa fa-arrow-right"></i>
+                    <i class="fa fa-arrow-left" ng-click="fn_getValuationForCarLeft()"></i>
                 </div>
                 <div class="col-33">
                     Proceed
                 </div>
                 <div class="col-33">
-                    <i class="fa fa-arrow-right" ng-click="fn_getDetailsForValuation()"></i>
+                    <i class="fa fa-arrow-right" ng-click="fn_getValuationForCar()"></i>
                 </div>
             </div>
         </ion-footer-bar>
     </ion-view>
+</script>
+
+<script id="templates/used-car-valuation-show.html" type="text/ng-template">
+    <ion-view view-title="">
+        <div class="bar bar-header" style="padding-top: 50px !important;">
+            <h1 style="font-size: 15px !important;">Valuation Report</h1>
+            <div class="row">
+                <div class="col" ng-click="fn_changeDelerOrIndividual(true)">
+                    <span>DEALER</span>
+                </div>
+                <div class="col" ng-click="fn_changeDelerOrIndividual(false)">
+                    <span>INDIVIDUAL</span>
+                </div>
+            </div>
+        </div>
+        <ion-content style="margin-top: -2px; padding-top: 35px !important;">
+            <div class="row">
+                <div class="col" ng-click="fn_changeType(true)">
+                    <i ng-class="isSellerOrBuyer ? 'fa fa-circle' : 'fa fa-circle-o' "></i>
+                </div>
+                <div class="col">
+                    <span>I'am Seller</span>
+                </div>
+                <div class="col" ng-click="fn_changeType(false)">
+                    <i ng-class="isSellerOrBuyer ?  'fa fa-circle-o' : 'fa fa-circle' "></i>
+                </div>
+                <div class="col">
+                    <span>I'am Buyer</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>Fair</span>
+                </div>
+                <div class="col">
+                    <div ng-show="!isSellerOrBuyer">
+                        {{valutionObj.data.dealerfairprice}}
+                    </div>
+                    <div ng-show="isSellerOrBuyer">
+                        {{valutionObj.data.individualfairprice}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>Good</span>
+                </div>
+                <div class="col">
+                    <div ng-show="!isSellerOrBuyer">
+                        {{valutionObj.data.dealergoodPrice}}
+                    </div>
+                    <div ng-show="isSellerOrBuyer">
+                        {{valutionObj.data.individualgoodPrice}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>Excellent</span>
+                </div>
+                <div class="col">
+                    <div ng-show="!isSellerOrBuyer">
+                        {{valutionObj.data.dealerexcellentprice}}
+                    </div>
+                    <div ng-show="isSellerOrBuyer">
+                        {{valutionObj.data.individualexcellentprice}}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span>Terms & Conditions Apply*</span>
+                <span> Refers to the condition of the car on which the valuation price is based**</span>
+                <span> YOUR CAR INFORMATION</span>
+            </div>
+            <div>
+                <span>
+                    {{getUsedCarValuationObj.selectedVariant}}
+                </span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>
+                        Model
+                    </span>
+                </div>
+                <div class="col">
+                    <span>
+                        {{getUsedCarValuationObj.selectedYear}}
+                    </span>
+                </div>
+                <div class="col">
+                    <span>
+                        KMs
+                    </span>
+                </div>
+                <div class="col">
+                    <span>
+                        {{getUsedCarValuationObj.mileage}}
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Location
+                </div>
+                <div class="col">
+                    {{getUsedCarValuationObj.selectedCity}}
+                </div>
+            </div>
+            <div>
+                <img ng-src="images/ibb_logo.png">
+            </div>
+            <div>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
+                <i class="fa fa-circle"></i>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="bar-light " style="padding: 0px;" ng-click="fn_getDetailsForValuation()">
+            <div class="row">
+                <div class="col-33">
+                </div>
+                <div class="col-33">
+                    Proceed
+                </div>
+                <div class="col-33">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-view>
+</script>
+
+<script id="templates/year.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-year></ng-year>
+    </ion-content>
 </script>
 
 <script id="templates/nc-search-cars.html" type="text/ng-template">
@@ -1753,6 +2026,47 @@
 </script>
 <script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
     <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1>Get Offers and Discounts</h1>
+        </ion-header-bar>
+        <ion-content>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement" style=";" menu-close>
+                <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-brand/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Brand* </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedBrand}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-model/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <button  class="button button-clear button-full button-positive "
+                    style="margin-top: 0px;" ng-show="!isAdvanceSerach" ng-click="fn_getOffers()">
+                 SEARCH            </button>
+
+            <div>
+                Find Offers by Brand
+            </div>
+
+            <div>
+                Latest Discount Offers
+            </div>
+            <div ng-repeat="">
+                <div class="row">
+                    <div class="col-33">
+
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+            </div>
+
+        </ion-content>
     </ion-view>
 </script>
 <script id="templates/nc-car-videos.html" type="text/ng-template">
@@ -2145,7 +2459,7 @@
                         <span>{{ compareDataObj.data.variantname.second}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
                             <div class="row">
-                                <div class="card cardSize" >
+                                <div class="card cardSize">
                                     <div class="item">
                                         <img ng-src="images/on_road_price_new.png">
                                     </div>
@@ -2263,6 +2577,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </ion-content>
         <div class="bar bar-footer">
             <div ng-show="isCommonShow">
@@ -2738,7 +3053,45 @@
         </ion-item>
     </ion-list>
 </script>
+<script id="templates/year-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" ng-repeat="year in yearObj.usedCarValuationGetDetail.yearList | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{year}} ng-model="brand"
+                       ng-change='newBrand(year)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{year}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
 <script id="templates/brand-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" ng-repeat="item in brandTempObj.brandObj | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item.oemname}} ng-model="brand"
+                       ng-change='newBrand(brand)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item.oemname}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/varient-id-CD.html" type="text/ng-template">
     <ion-list>
         <ion-item class="my-item item" ng-repeat="item in brandTempObj.brandObj | filter:search" style="
          padding-left: 0px;
@@ -2770,6 +3123,25 @@
                 <div class="item-content"
                      style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
                     {{item.displayCarModelName}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/valuation-model-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" ng-repeat="item in modelObj.data.usedCarValuationModelList | filter:search " style="
+    padding-left: 0px;
+    border-left-width: 0px;
+    margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item.model}} ng-model="model"
+                       ng-change='newModel(model)'>
+
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item.model}}
                 </div>
                 <i class="radio-icon ion-checkmark"></i>
             </label>
