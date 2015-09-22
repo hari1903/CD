@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="js/ionic_bundle.js"></script>
     <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="node_modules/angular-youtube-embed.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/ion.rangeSlider.js"></script>
+    <script src="js/range_selector.js"></script>
+    <script src="js/main.js"></script>
     <script>
         $(function () {
             $("#range").ionRangeSlider({
@@ -1394,13 +1395,15 @@
                 <span> KMs DRIVEN </span>
             </div>
 
-            <div style="position: relative; padding: 200px;">
+            <!--<div style="position: relative; padding: 200px;">-->
 
-                <div>
-                    <input type="text" id="range" value="" name="range" />
-                </div>
+                <!--<div>-->
+                    <!--<input type="text" id="range" value="" name="range" />-->
+                <!--</div>-->
 
-            </div>
+            <!--</div>-->
+            <ionslider min='0' max='100000' grid=true   postfix="Kms"  on-change='change()'></ionslider>
+
             <div>
                 <img ng-src="images/ibb_logo.png">
             </div>
@@ -2041,7 +2044,8 @@
             <h1>Get Offers and Discounts</h1>
         </ion-header-bar>
         <ion-content>
-            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement" style=";" menu-close>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style=";" menu-close>
                 <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
                 &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
             </a>
@@ -2055,29 +2059,90 @@
                 <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
                 &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
             </a>
-            <button  class="button button-clear button-full button-positive "
-                    style="margin-top: 0px;" ng-show="!isAdvanceSerach" ng-click="fn_getOffers()">
-                 SEARCH            </button>
+            <button class="button button-clear button-full button-positive "
+                    style="margin-top: 0px;" ng-click="fn_getOffers()">
+                SEARCH
+            </button>
 
             <div>
                 Find Offers by Brand
+            </div>
+            <div ng-repeat="oem in oemObj.data.carOemList">
+                <div>
+                    <img ng-src={{oem.image_url}}>
+                    <span>{{oem.oemname}}</span>
+                </div>
+
             </div>
 
             <div>
                 Latest Discount Offers
             </div>
-            <div ng-repeat="">
+            <div>
+            <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
+                <div>
+                    <span>{{offObj.carModelVersion}}</span>
+                </div>
                 <div class="row">
-                    <div class="col-33">
-
+                    <div class="col">
+                        <img ng-src="images/offer_petrol.png">
                     </div>
                     <div class="col">
-
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col">
+                        <span>{{offObj.exShowRoomPrice}}</span>
                     </div>
                 </div>
+                <div>
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+                <div>
+                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                </div>
             </div>
-
+            </div>
         </ion-content>
+    </ion-view>
+</script>
+<script id="templates/nc-offers-and-dicounts-show.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1>Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
+        </ion-header-bar>
+        <ion-content>
+            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
+                <div>
+                    <span>{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div>
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+                <div>
+                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                </div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
+            <span class="text-center"> View More Offers </span>
+        </div>
     </ion-view>
 </script>
 <script id="templates/nc-car-videos.html" type="text/ng-template">
