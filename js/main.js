@@ -3267,10 +3267,30 @@ angular
 
             $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
 
+
+            var urlToCountOem = "getOffersOemListForCity&city="+$scope.offerAndDiscountObj.selectedCity;
+
+            sharedProperties.getHttpData(urlToCountOem, function(data){
+                console.log("data "+ JSON.stringify(data));
+                $scope.oemObj = data;
+
+            })
+
+
+            var urlToCount = "getLatestDiscountOffers&city="+$scope.offerAndDiscountObj.selectedCity;
+
+            sharedProperties.getHttpData(urlToCount, function(data){
+                console.log("data "+ JSON.stringify(data));
+                $scope.offerObj1 = data;
+
+            })
+
             $scope.fn_getOffers = function() {
                 console.log("in get offers");
                 $state.go('eventmenu.nc-offers-and-dicounts-show');
             }
+
+
 
         }])
     .controller(
