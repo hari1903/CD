@@ -3,7 +3,9 @@ div.background
     background: url("../images/compare_btn_disable.png") no-repeat ;
     background-size: 100% 100%;
 }
-
+.bar-subheader {
+    height: 23px;
+}
 
 
 div.transbox p
@@ -19,4 +21,28 @@ div.transbox p
 
 .popularCompareProp {
     height: 100px !important;
+}
+.row {
+   padding: 0px; 
+}
+body, .ionic-body {
+  font-size: 17px;
+  font-family: "Roboto Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  line-height: 10px;
+  color: #a3a3a3;
+}
+.has-subheader {
+  top: 66px;
+}
+.select-car1{
+  padding-right:32%;
+  float:right;
+}
+.col {  
+  font-size:10px;
+  color:#ffffff;
+  padding: 0px;
+}	
+.bar{
+  background-color: orange;
 }
