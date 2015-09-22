@@ -4,6 +4,9 @@
 	background-color: #f05a28 !important;
 	font-weight: Bold !important;
 	font-size: 15px !important;
+	height:45px;
+	font-family:'Helvetica Neue LT Std 65 Medium';
+	color:#FFFFFF;
 }
 
 .listElement {
@@ -21,6 +24,9 @@
 .spanSearcBar {
 	padding-top: 10px !important;
 	line-height: 0px !important;
+	font-family:'Helvetica Neue LT Std 75 Bold';
+	font-size:15px;
+	color:#FFFFFF;
 }
 
 #mariginContainer {
@@ -34,6 +40,8 @@
 .selectionDetailHeader {
 	/*font-weight: bold !important;*/
 	font-size: 15px !important;
+	font-family:'Helvetica Neue LT Std 65 Medium';
+	color:#555555;
 }
 
 .searchBarCss {
@@ -52,10 +60,10 @@
 }
 
 #advanceSearch {
-	/*font-family : "Helvetica Neue LT Std 65"  !important;*/
+	font-family : "Helvetica Neue LT Std 65 Medium";
 	font-weight: Bold !important;
 	font-size: 15px !important;
-	color: #555555 !important;
+	color: #555555;
 }
 
 .selectionDetail {
