@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector'])
+    .module('ionicApp', ['ionic', 'angular.css.injector', 'ionSlider'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -41,11 +41,38 @@ angular
 
 
             .state('eventmenu.city', {
-                url: "/city",
+                url: "/city/:retunEvent",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/city.html",
                         controller: "cityCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.offer-and-discount-city', {
+                url: "/offer-and-discount-city/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/offer-and-discount-city.html",
+                        controller: "offerAndDiscountCityCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.offer-and-discount-brand', {
+                url: "/offer-and-discount-brand/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/offer-and-discount-brand.html",
+                        controller: "offerAndDiscountBrandCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.offer-and-discount-model', {
+                url: "/offer-and-discount-model/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/offer-and-discount-model.html",
+                        controller: "offerAndDiscountModelCtrl"
                     }
                 }
             })
@@ -67,6 +94,26 @@ angular
                     }
                 }
             })
+            .state('eventmenu.varient-id', {
+                url: "/varient-id/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/varient-id.html",
+                        controller: "varientIdCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.valuation-varient-id', {
+                url: "/valuation-varient-id/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/valuation-varient-id.html",
+                        controller: "valuationVarientIdCtrl"
+                    }
+                }
+            })
+
+
             .state('eventmenu.model', {
                 url: "/model/:retunEvent",
                 views: {
@@ -76,16 +123,16 @@ angular
                     }
                 }
             })
-            .state('eventmenu.varient', {
-                url: "/varient/:retunEvent",
-                cache: false,
+            .state('eventmenu.valuation-model', {
+                url: "/valuation-model/:retunEvent",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/varient-id.html",
-                        controller: "varientIdCtrl"
+                        templateUrl: "templates/valuation-model.html",
+                        controller: "valuationModelCtrl"
                     }
                 }
             })
+
             .state('eventmenu.fuel', {
                 url: "/fuel",
                 views: {
@@ -160,12 +207,30 @@ angular
                     }
                 }
             })
+            .state('eventmenu.used-car-valuation-show', {
+                url: "/used-car-valuation-show",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/used-car-valuation-show.html",
+                        controller: "usedCarValuationShowCtrl"
+                    }
+                }
+            })
             .state('eventmenu.used-car-valuation-get-detail', {
                 url: "/used-car-valuation-get-detail",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/used-car-valuation-get-detail.html",
                         controller: "usedCarValuationGetDetailCtrl"
+                    }
+                }
+            })
+            .state('eventmenu.year', {
+                url: "/year/:returnEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/year.html",
+                        controller: "yearCtrl"
                     }
                 }
             })
@@ -259,6 +324,15 @@ angular
                     'menuContent': {
                         templateUrl: "templates/nc-offers-and-dicounts.html",
                         controller: "nc_offersAndDiscounts"
+                    }
+                }
+            })
+            .state('eventmenu.nc-offers-and-dicounts-show', {
+                url: "/nc-offers-and-dicounts-show",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-offers-and-dicounts-show.html",
+                        controller: "nc_offersAndDiscountsShow"
                     }
                 }
             })
@@ -543,7 +617,13 @@ angular
             objectValue.usedCarValuationGetDetail.selectedModel = "Select Model";
             objectValue.usedCarValuationGetDetail.selectedVariant = "Select Variant";
             objectValue.usedCarValuationGetDetail.selectedCity = "Select City";
-
+            objectValue.usedCarValuationGetDetail.yearList = ['1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015'];
+            objectValue.usedCarValuationGetDetail.mileage = "55000";
+            objectValue.offersAndDiscountObj = {};
+            objectValue.offersAndDiscountObj.selectedCity = "New Delhi";
+            objectValue.offersAndDiscountObj.selectedBrand = "Select Brand";
+            objectValue.offersAndDiscountObj.selectedModel = "Select Model";
+            objectValue.offersAndDiscountObj.OfferAndDiscountBrandAndModelObj = {};
 
 
             $http
@@ -579,6 +659,7 @@ angular
             return {
                 setCity: function (cityVal) {
                     // console.log("Service"+cityVal);
+                    objectValue.usedCarValuationGetDetail.selectedCity = cityVal;
                     objectValue.city = cityVal;
                 },
                 setPrice: function (price) {
@@ -626,6 +707,7 @@ angular
                     objectValue.usedCardToSearch = selectedCarITem;
                 },
                 setBrand: function (brand) {
+                    objectValue.usedCarValuationGetDetail.selectedBrand = brand;
                     objectValue.brand = brand;
                     var url = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getModelFeedsWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds&oem="
                         + objectValue.brand;
@@ -700,7 +782,12 @@ angular
                 },
                 setModel: function (model) {
                     console.log("model "+ model);
+                    objectValue.usedCarValuationGetDetail.selectedModel = model;
                     objectValue.model = model;
+                },
+                setValuationModel: function (model) {
+                    console.log("model "+ model);
+                    objectValue.usedCarValuationGetDetail.selectedModel = model;
                 },
                 getData: function (searchString, callBackFun) {
                     var urlToSearch = url + searchString;
@@ -864,8 +951,12 @@ angular
                     return objectValue.reviewType ;
                 },
                 setVarientID : function(varientObj){
-
+                    console.log("set varient "+ JSON.stringify(varientObj));
+                    objectValue.usedCarValuationGetDetail.selectedVariant = varientObj.carVariantId
                     objectValue.varientDetailObj[objectValue.currentModel] = varientObj;
+                },
+                setValuationVarientID : function(varient){
+                    objectValue.usedCarValuationGetDetail.selectedVariant = varient
                 },
                 setCurrentModelNumber : function(modelNumber){
                     objectValue.currentModel = modelNumber;
@@ -893,11 +984,25 @@ angular
                 },
                 getUsedCarValuation : function(){
                     return objectValue.usedCarValuationGetDetail;
+                },
+                setUsedCarValuationYear : function(modelYear){
+                     objectValue.usedCarValuationGetDetail.selectedYear = modelYear;
+                },
+                getOfferAndDiscountObj : function(){
+                       return objectValue.offersAndDiscountObj;
+                },
+                setOfferAndDiscountCity : function (city) {
+                       objectValue.offersAndDiscountObj.selectedCity = city;
+                },
+                   setOfferAndDiscountBrand : function (brand) {
+                       objectValue.offersAndDiscountObj.selectedBrand = brand;
+                },
+                setOfferAndDiscountModel : function (model) {
+                       objectValue.offersAndDiscountObj.selectedModel = model;
+                },
+                setOfferAndDiscountBrandAndModelObj : function(OfferAndDiscountBrandAndModelObj){
+                    objectValue.offersAndDiscountObj.OfferAndDiscountBrandAndModelObj = OfferAndDiscountBrandAndModelObj;
                 }
-
-
-
-
             }
         }])
 
@@ -1036,10 +1141,22 @@ angular
             templateUrl: "templates/brand-CD.html"
         }
     })
+    .directive('ngYear', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/year-CD.html"
+        }
+    })
     .directive('ngBrandModel', function () {
         return {
             restrict: 'AEC',
             templateUrl: "templates/model-CD.html"
+        }
+    })
+    .directive('ngValuationModel', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/valuation-model-CD.html"
         }
     })
     .directive('ngSearchHeaderBar', function () {
@@ -1164,10 +1281,12 @@ angular
         '$scope',
         'sharedProperties',
         '$state',
+        '$stateParams',
 
-        function ($scope, sharedProperties, $state) {
+        function ($scope, sharedProperties, $state,$stateParams) {
 
             $scope.city = "All India";
+            var retunEvent = $stateParams.retunEvent;
             $scope.contactObj = sharedProperties.getObject();
 
             $scope.clearSearch = function () {
@@ -1177,7 +1296,11 @@ angular
             $scope.newCity = function (selectedCity) {
                 sharedProperties.setCity(selectedCity);
                 $scope.search = '';
-                $state.go('eventmenu.used-car-home');
+                if(retunEvent == 'used-car-valuation-get-detail'){
+                    $state.go('eventmenu.used-car-valuation-get-detail');
+                } else {
+                    $state.go('eventmenu.used-car-home');
+                }
             }
         }])
     .controller(
@@ -1237,6 +1360,7 @@ angular
         function ($scope, sharedProperties, $state, $stateParams) {
             $scope.brand = "...";
             var retunEvent = $stateParams.retunEvent;
+
             $scope.brandTempObj = sharedProperties.getObject();
             $scope.clearSearch = function () {
                 $scope.search = '';
@@ -1247,7 +1371,6 @@ angular
                 $scope.search = '';
                 if(retunEvent == 'review-user-and-road-test'){
                     var reviewType = sharedProperties.getReviewType();
-                    console.log("reviewType"+ reviewType);
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
                 }else if(retunEvent == 'compare-cars'){
                     $state.go('eventmenu.model',{"retunEvent":retunEvent});
@@ -1256,6 +1379,31 @@ angular
                     $state.go('eventmenu.'+retunEvent);
                 }
 
+            }
+        }])
+    .controller(
+    'yearCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, $stateParams) {
+            $scope.brand = "...";
+            var retunEvent = $stateParams.returnEvent;
+            console.log('year obj');
+            $scope.yearObj = sharedProperties.getObject();
+            console.log('year obj'+ JSON.stringify($scope.yearObj.usedCarValuationGetDetail.yearList));
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            $scope.newBrand = function (modelYear) {
+                console.log(modelYear);
+                sharedProperties.setUsedCarValuationYear(modelYear);
+                $scope.search = '';
+                $state.go('eventmenu.'+retunEvent);
             }
         }])
     .controller(
@@ -1272,6 +1420,7 @@ angular
                   $rootScope, $state, $stateParams) {
             $scope.model = "...";
             var retunEvent = $stateParams.retunEvent;
+
             $scope.modelTempObj = sharedProperties.getObject();
 
             $scope.clearSearch = function () {
@@ -1293,7 +1442,7 @@ angular
             }
         }])
     .controller(
-    'varientIdCtrl',
+    'valuationModelCtrl',
     [
         '$scope',
         'sharedProperties',
@@ -1305,28 +1454,27 @@ angular
         function ($scope, sharedProperties, $window, $location,
                   $rootScope, $state, $stateParams) {
             $scope.model = "...";
-
             var retunEvent = $stateParams.retunEvent;
-
-            var selectedModel = sharedProperties.getModel();
-            console.log("get model "+ selectedModel);
-
-            var urlToSerach = "getCarVariantDetailByCarModelName&ModelName="+selectedModel;
-
-            sharedProperties.getHttpData(urlToSerach, function(varientData){
-                $scope.varientObj = varientData;
-
-            });
 
             $scope.clearSearch = function () {
                 $scope.search = '';
             };
 
-            $scope.fn_setVarient = function (model) {
-                sharedProperties.setVarientID(model);
+            var usedCarValuationGetDetailObj = sharedProperties.getUsedCarValuation();
+            urlToSerach = "getUsedCarValuationModelByOem&oem="+usedCarValuationGetDetailObj.selectedBrand+"&modelYear="+usedCarValuationGetDetailObj.selectedYear
+            sharedProperties.getHttpData(urlToSerach, function(modelData){
+                console.log("varient detail "+ JSON.stringify(modelData));
+                $scope.modelObj = modelData;
+
+            });
+
+            $scope.newModel = function (model) {
+                sharedProperties.setValuationModel(model);
                 $state.go('eventmenu.'+retunEvent);
             }
+
         }])
+
 
     .controller(
     'fuelCtrl',
@@ -3117,6 +3265,13 @@ angular
         function ($scope, sharedProperties, $state, cssInjector) {
             console.log("in nc_offersAndDiscounts");
 
+            $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
+
+            $scope.fn_getOffers = function() {
+                console.log("in get offers");
+                $state.go('eventmenu.nc-offers-and-dicounts-show');
+            }
+
         }])
     .controller(
     'nc_carVideos',
@@ -3747,6 +3902,61 @@ angular
 
         }])
     .controller(
+    'usedCarValuationShowCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        '$sce',
+        '$ionicLoading',
+        '$http',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicLoading,$http) {
+            console.log("in usedCarValuationCtrl");
+            cssInjector.add("css/used-car-valuation.css");
+
+            $scope.isSellerOrBuyer = true;
+            $scope.isDellerOrIndividual = true;
+
+            $scope.getUsedCarValuationObj = sharedProperties.getUsedCarValuation();
+
+
+            getData($scope.isDellerOrIndividual);
+
+            $scope.fn_changeType = function(userType){
+                $scope.isSellerOrBuyer = userType;
+            }
+
+            $scope.fn_changeDelerOrIndividual = function(dType){
+                console.log("dType"+ dType);
+                $scope.isDellerOrIndividual = dType;
+                getData($scope.isDellerOrIndividual);
+            }
+
+
+            function getData(apiType){
+
+                var baseUrl = "getIbbUsedCarValuationDetails&oem="+ $scope.getUsedCarValuationObj.selectedBrand+
+                               "&modelName="+ $scope.getUsedCarValuationObj.selectedModel+"&modelYear="+$scope.getUsedCarValuationObj.selectedYear+
+                               "&city="+ $scope.getUsedCarValuationObj.selectedCity +"&CarVariantId="+$scope.getUsedCarValuationObj.selectedVariant+
+                               "&kilometer="+$scope.getUsedCarValuationObj.mileage +"&evaluationType="
+                if(apiType == true ){
+                    baseUrl = baseUrl + "1";
+                }else {
+                    baseUrl = baseUrl + "0";
+                }
+
+                sharedProperties.getHttpData(baseUrl, function(valuationDetails){
+                    console.log("expertReviewData"+ JSON.stringify(valuationDetails));
+                    $scope.valutionObj = valuationDetails;
+                });
+
+            }
+        }])
+
+
+    .controller(
     'usedCarValuationGetDetailCtrl',
     [
         '$scope',
@@ -3759,37 +3969,284 @@ angular
         '$http',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce, $ionicPopup,$http) {
             console.log("in usedCarValuationCtrl");
-            cssInjector.add("css/used-car-valuation.css");
+            cssInjector.add("css/used-car-valuation-details.css");
+
+            var isYearSelected = false;
+            var isBrandSelected = false;
+            var isModelSelected = false;
+            var isCitySelected = false;
+            var isVarientSelected = false;
 
             $scope.usedCarValuationGetDetailObj = sharedProperties.getUsedCarValuation();
-            $scope.selectedYear = '';
-
 
             $scope.fn_selectYear = function(){
-                var myPopup = $ionicPopup.show({
-                    template: '<input type="password" ng-model="usedCarValuationGetDetailObj.selectedYear">',
-                    title: 'Choose Model Year',
-                    scope: $scope,
-                    buttons: [
-                        { text: 'OK' },
-                        {
-                            text: '<b>Save</b>',
-                            type: 'button-positive',
-                            onTap: function(e) {
-                                e.preventDefault();
-                                $scope.selectedYear = $scope.usedCarValuationGetDetailObj.selectedYear;
-                                console.log('$scope.usedCarValuationGetDetailObj.selectedYear'+ $scope.selectedYear);
+                console.log('Year ');
+                $state.go('eventmenu.year',{"returnEvent":"used-car-valuation-get-detail"});
+            }
 
-                            }
-                        }
-                    ]
-                });
+            $scope.fn_selectBrand = function(){
+                $state.go('eventmenu.brand',{"retunEvent":"used-car-valuation-get-detail"});
+            }
+
+            $scope.fn_selectModel = function(){
+                if($scope.usedCarValuationGetDetailObj.selectedBrand == "Select a Brand"){
+                        alert("Please Select Brand First")
+                }else {
+                    $state.go('eventmenu.valuation-model', {"retunEvent": "used-car-valuation-get-detail"});
+                }
+            }
+            $scope.fn_selectVariat = function(){
+                if($scope.usedCarValuationGetDetailObj.selectedModel == "Select Model"){
+                    alert("Please Select Model First")
+                }else {
+                    $state.go('eventmenu.valuation-varient-id', {"retunEvent": "used-car-valuation-get-detail"});
+                }
+            }
+            $scope.fn_selectCity = function(){
+                console.log('City ');
+                if($scope.usedCarValuationGetDetailObj.selectedVariant == "Select Variant"){
+                    alert("Please Select Varient First")
+                }else {
+                    $state.go('eventmenu.city', {"retunEvent": "used-car-valuation-get-detail"});
+                }
+            }
+
+            $scope.fn_getValuationForCar = function(){
+                $state.go('eventmenu.used-car-valuation-show');
+            }
+
+            $scope.fn_getValuationForCarLeft = function(){
+                $state.go('eventmenu.used-car-valuation');
             }
 
 
 
+        }])
+    .controller(
+    'varientIdCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            $scope.model = "...";
+
+            var retunEvent = $stateParams.retunEvent;
+
+            var selectedModel = sharedProperties.getModel();
+            console.log("get model " + selectedModel);
+            var urlToSerach = '';
+
+            if (retunEvent == 'used-car-valuation-get-detail') {
+                var usedCarValuationGetDetailObj = sharedProperties.getUsedCarValuation();
+                urlToSerach = "getUsedCarValuationVariantByModel&modelName="+usedCarValuationGetDetailObj.selectedModel+"&modelYear="+usedCarValuationGetDetailObj.selectedYear
+            } else {
+                urlToSerach = "getCarVariantDetailByCarModelName&ModelName=" + selectedModel;
+            }
+
+            sharedProperties.getHttpData(urlToSerach, function(varientData){
+                console.log("varient detail "+ JSON.stringify(varientData));
+                $scope.varientObj = varientData;
+
+            });
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            $scope.fn_setVarient = function (model) {
+                sharedProperties.setVarientID(model);
+                $state.go('eventmenu.'+retunEvent);
+            }
+        }])
+
+    .controller(
+    'valuationVarientIdCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            $scope.model = "...";
+
+            var retunEvent = $stateParams.retunEvent;
+
+            var selectedModel = sharedProperties.getModel();
+            console.log("get model " + selectedModel);
+            var urlToSerach = '';
+
+
+                var usedCarValuationGetDetailObj = sharedProperties.getUsedCarValuation();
+                urlToSerach = "getUsedCarValuationVariantByModel&modelName="+usedCarValuationGetDetailObj.selectedModel+"&modelYear="+usedCarValuationGetDetailObj.selectedYear
+
+
+            sharedProperties.getHttpData(urlToSerach, function(varientData){
+                console.log("varient detail "+ JSON.stringify(varientData));
+                $scope.varientObj = varientData;
+
+            });
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            $scope.fn_setVarient = function (model) {
+                sharedProperties.setValuationVarientID(model);
+                $state.go('eventmenu.'+retunEvent);
+            }
+        }])
+    .controller(
+    'offerAndDiscountCityCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        '$stateParams',
+
+        function ($scope, sharedProperties, $state,$stateParams) {
+            console.log("city ");
+            var retunEvent = $stateParams.retunEvent;
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            var urlToCount = "getOfferCityList"
+
+            sharedProperties.getHttpData(urlToCount, function(data){
+                $scope.offerCityListObj =data;
+            })
+
+            $scope.newCity = function (selectedCity) {
+                console.log("city "+ selectedCity);
+                sharedProperties.setOfferAndDiscountCity(selectedCity);
+                $scope.search = '';
+                    $state.go('eventmenu.nc-offers-and-dicounts');
+            }
+        }])
+    .controller(
+    'offerAndDiscountBrandCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, $stateParams) {
+            $scope.brand = "...";
+            var retunEvent = $stateParams.retunEvent;
+
+            $scope.brandTempObj = sharedProperties.getOfferAndDiscountObj();
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+
+            var urlToCount = "getOfferOemModelForCity&city="+$scope.brandTempObj.selectedCity;
+
+            sharedProperties.getHttpData(urlToCount, function(data){
+                $scope.offerBrandListObj =data;
+                sharedProperties.setOfferAndDiscountBrandAndModelObj(data);
+            })
+
+            $scope.newBrand = function (brand) {
+                console.log(brand);
+                sharedProperties.setOfferAndDiscountBrand(brand);
+                $scope.search = '';
+                $state.go('eventmenu.nc-offers-and-dicounts');
+
+            }
+        }])
+    .controller(
+    'offerAndDiscountModelCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            $scope.model = "...";
+            var retunEvent = $stateParams.retunEvent;
+
+            $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
+            //$scope.
+
+            console.log('offerAndDiscountObj'+ JSON.stringify($scope.offerAndDiscountObj.selectedCity));
+            var modelListArray = angular.copy($scope.offerAndDiscountObj.OfferAndDiscountBrandAndModelObj.data.oemModelList);
+
+            for(var i=0; i< modelListArray.length; i++){
+                var obj = modelListArray[i];
+
+                for (var key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        if($scope.offerAndDiscountObj.selectedBrand == key ){
+                            console.log("key "+ key + JSON.stringify(obj));
+                            console.log("offerAndDiscountObj.selectedBrand "+ $scope.offerAndDiscountObj.selectedBrand );
+                            $scope.modelObj= obj[key];
+                        }
+                    }
+                }
+
+            }
+
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+
+            $scope.newModel = function (model) {
+                sharedProperties.setOfferAndDiscountModel(model);
+                $scope.search = '';
+                $state.go('eventmenu.nc-offers-and-dicounts');
+
+            }
+        }])
+    .controller(
+    'nc_offersAndDiscountsShow',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            //$scope.model = "...";
+            //var retunEvent = $stateParams.retunEvent;
+
+            $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
+
+            var urlToCount = "getDiscountOffersSearchResult&oem="+$scope.offerAndDiscountObj.selectedBrand +"&modelName="+$scope.offerAndDiscountObj.selectedModel +"&city="+$scope.offerAndDiscountObj.selectedCity+"&startLimit=1&endLimit=20";
+
+            sharedProperties.getHttpData(urlToCount, function(data){
+                console.log("data "+ JSON.stringify(data));
+                $scope.offerObj =data;
+                //sharedProperties.setOfferAndDiscountBrandAndModelObj(data);
+            })
+
+
+            $scope.fn_getMoreOffers = function () {
+                $state.go('eventmenu.nc-offers-and-dicounts');
+
+            }
 
 
         }])
+
+
 
 
