@@ -1228,7 +1228,7 @@
         </ion-content>
         <ion-footer-bar class="bar-light footerBar ">
 
-            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;">
+            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;" >
                 <i class="icon"><img style="padding-top: 6px !important;" src="images/scroll_top_.png"> </i> Get Seller
                 Details</a>
             <a class="button footerTabSingleWidth footerTabBarder">
@@ -2675,56 +2675,56 @@
 </script>
 <script id="templates/review-user-and-road-test.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader bar-light">
+        <div class="bar bar-subheader subHeaderAndFooter ">
             <div ng-show="reviewType == 'user'">
-                <h1 class="title">Search User Review </h1>
+                <h1 >Search User Review </h1>
             </div>
             <div ng-show="reviewType != 'user'">
-                <h1 class="title">Search Road Test </h1>
+                <h1 >Search Road Test </h1>
             </div>
         </div>
         <ion-content class="topPadding">
-            <div class="row">
-                <div class="col-50" ng-class="reviewType == 'user' ? 'tabBackGroundAndFontColor' : '' "
+            <div class="row leftRightPadding">
+                <div class=" heightAndWidth " ng-class="reviewType == 'user' ? 'tabBackGroundAndFontColor' : 'unSelectedTab' "
                      ng-click="fn_changeUserAndRoadReview('user')">
                     <span ng-class="reviewType == 'user' ? 'fontColor' : '' "> USER REVIEW</span>
                 </div>
-                <div class="col-50" ng-class="reviewType == 'user' ? '' : 'tabBackGroundAndFontColor'  "
+                <div class=" heightAndWidth" ng-class="reviewType == 'user' ? 'unSelectedTab' : 'tabBackGroundAndFontColor'  "
                      ng-click="fn_changeUserAndRoadReview('road')">
-                    <span ng-class="reviewType == 'user' ? '' : 'fontColor'  "> ROAD TEST</span>
+                    <span ng-class="reviewType == 'user' ? '' : 'fontColor' "> ROAD TEST</span>
                 </div>
             </div>
 
 
-            <div class="row">
-                <div class="col">
-                    <span>Brand</span>
-                </div>
-                <div class="col" ng-click="fn_getBrand()">
+            <ul class="rowWitdth leftRightPadding brandPaddingTop">
+                <li class="colPopWith1">
+                    Brand
+                </li>
+                <li class="colPopWith2" ng-click="fn_getBrand()">
                     <span ng-show="brandAndObject.brand == '' "> Select Brand </span>
                     <span ng-show="brandAndObject.brand != '' "> {{brandAndObject.brand}} </span>
-                </div>
-                <div class="col" ng-click="fn_getBrand()">
+                </li>
+                <li class="colPopWith3 textAlignRight" ng-click="fn_getBrand()">
                     <img ng-src="images/down_arrow.png">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                </li>
+            </ul>
+            <ul class="rowWitdth leftRightPadding modelPaddingTop">
+                <li class="colPopWith1">
                     <span> Model</span>
-                </div>
-                <div class="col" ng-click="fn_getModel()">
+                </li>
+                <li class="colPopWith2" ng-click="fn_getModel()">
                     <span ng-show="brandAndObject.model == '' "> Select Model </span>
                     <span ng-show="brandAndObject.model != '' "> {{brandAndObject.model}} </span>
-                </div>
-                <div class="col" ng-click="fn_getModel()">
+                </li>
+                <li class="colPopWith3 textAlignRight" ng-click="fn_getModel()">
                     <img ng-src="images/down_arrow.png">
-                </div>
-            </div>
+                </li>
+            </ul>
 
 
         </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
+        <div class="bar bar-footer subHeaderAndFooter " ng-click="fn_getReview()">
+            <span class="spanDivCenter"> Search </span>
         </div>
     </ion-view>
 </script>

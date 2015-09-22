@@ -723,56 +723,62 @@ angular
                         })
                 },
                 getUsedCarSearchResult: function () {
-                    var serachString = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getUsedCarSearchResultDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds";
+                    var serachString = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&parameter=getUsedCarSearchResultDataWithStatus&format=Gson&startLimit=1&endLimit=20";
 
-                    if (objectValue.city !== 'All India') {
-                        serachString += "&city=" + objectValue.city;
+                        serachString += "&City=" + objectValue.city;
+                    if (objectValue.price !== '') {
+                        console.log("objectValue.price"+objectValue.price);
+                        serachString += "&PriceRange=" + objectValue.price;
                     }
-                    if (objectValue.price !== '...') {
-                        serachString += "&pricerange=" + objectValue.price;
+                    if (objectValue.model !== '') {
+                        console.log("objectValue.model"+ objectValue.model);
+                        serachString += "&CarName=" + objectValue.model;
                     }
-                    if (objectValue.model !== '...') {
-                        serachString += "&carname=" + objectValue.model;
+                    if (objectValue.brand !== '') {
+                        console.log("objectValue.brand"+ objectValue.brand);
+                        serachString += "&Brand=" + objectValue.brand;
                     }
-                    if (objectValue.brand !== '...') {
-                        serachString += "&brand=" + objectValue.brand;
+                    if (objectValue.fuel !== '') {
+                        console.log("objectValue.fuel "+ objectValue.fuel );
+                        serachString += "&FuelType=" + objectValue.fuel;
                     }
-                    if (objectValue.fuel !== '...') {
-                        serachString += "&fueltype=" + objectValue.fuel;
+                    if (objectValue.km !== '') {
+                        console.log("objectValue.km"+ objectValue.km);
+                        serachString += "&KM_Done=" + objectValue.km;
                     }
-                    if (objectValue.km !== '...') {
-                        serachString += "&km_done=" + objectValue.km;
+                    if (objectValue.vehicleType !== '') {
+                        console.log("objectValue.vehicleType"+ objectValue.vehicleType);
+                        serachString += "&Vehicletype=" + objectValue.vehicleType;
                     }
-                    if (objectValue.vehicleType !== '...') {
-                        serachString += "&vehicletype=" + objectValue.vehicleType;
+                    if (objectValue.modelYear !== '') {
+                        console.log();
+                        serachString += "&modelYear=" + objectValue.modelYear;
                     }
-                    if (objectValue.modelYear !== '...') {
-                        serachString += "&modelyear=" + objectValue.modelYear;
+                    if (objectValue.transmission !== '') {
+                        console.log();
+                        serachString += "&Transmission=" + objectValue.transmission;
                     }
-                    if (objectValue.transmission !== '...') {
-                        serachString += "&transmission=" + objectValue.transmission;
-                    }
-                    if (objectValue.sellerType !== '...') {
-                        serachString += "&sellertype=" + objectValue.sellerType;
+                    if (objectValue.sellerType !== '') {
+                        console.log();
+                        serachString += "&sellerType=" + objectValue.sellerType;
                     }
                     if (objectValue.certifiedByTrustMaster === true) {
+                        console.log();
                         serachString += "&certificationid=1";
                     }
-                    if (objectValue.withPicture !== '...') {
+                    if (objectValue.withPicture === true) {
+                        console.log();
                         serachString += "&photo=with-photos";
                     }
 
                     console.log("Serach String " + serachString);
+
                     var url = 'http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getUsedCarSearchResultDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds&City=Pune&PriceRange=1-Lac-to-5-Lac&Brand=honda&CarName=honda_city&startLimit=10&endLimit=20';
                     //console.log("URL :" + url);
                     $http
-                        .post(url)
+                        .post(serachString)
                         .success(
                         function (data1, status) {
-//														console
-//																.log("Used Car Search Object : "
-//																		+ JSON
-//																				.stringify(data1));
                             objectValue.usedCarSearchResult = data1;
                         })
                 },
@@ -1313,13 +1319,73 @@ angular
         function ($scope, sharedProperties, $stateParams, $state) {
             var urlToCaller = $stateParams.urlToCaller;
             $scope.price = "...";
-            $scope.priceRange = sharedProperties.getPriceRange(function(priceRange){
-                $scope.priceRange = priceRange;
-                console.log(JSON.stringify(priceRange));
-                for(var i=0; i< $scope.priceRange.data.newCarFilterPriceRange.length; i++){
-                    $scope.priceRange.data.newCarFilterPriceRange[i].isSelected = false;
-                }
-            });
+            if(urlToCaller === 'used-car-home'){
+                $scope.priceRange =  {
+                    "status":"true",
+                    "data":{
+                        "newCarFilterPriceRange":[
+                            {
+                                "displayPriceRange":"Below 1 Lac",
+                                "linkRewrite":"below-1-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"1 lakh - 2 lakh",
+                                "linkRewrite":"1-lakh-to-2-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"2 lakh - 3 lakh",
+                                "linkRewrite":"2-lakh-to-3-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"3 lakh - 4 lakh",
+                                "linkRewrite":"3-lakh-to-4-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"4 lakh - 5 lakh",
+                                "linkRewrite":"4-lakh-to-5-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"5 lakh - 6 lakh",
+                                "linkRewrite":"5-lakh-to-6-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"6 lakh - 8 lakh",
+                                "linkRewrite":"6-lakh-to-7-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"8 lakh - 10 lakh",
+                                "linkRewrite":"8-lakh-to-10-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"10 lakh - 30 lakh",
+                                "linkRewrite":"10-lakh-to-30-lakh",
+                                "isSelected" : false
+                            },
+                            {
+                                "displayPriceRange":"Above 30 Crore",
+                                "linkRewrite":"above-30-crore",
+                                "isSelected" : false
+                            }
+                        ]
+                    }
+                };
+            }else {
+                $scope.priceRange = sharedProperties.getPriceRange(function (priceRange) {
+                    $scope.priceRange = priceRange;
+                    console.log(JSON.stringify(priceRange));
+                    for (var i = 0; i < $scope.priceRange.data.newCarFilterPriceRange.length; i++) {
+                        $scope.priceRange.data.newCarFilterPriceRange[i].isSelected = false;
+                    }
+                });
+            }
 
             $scope.clearSearch = function () {
                 $scope.search = '';
@@ -1336,7 +1402,18 @@ angular
                     priceSelected.isSelected = true;
                     $scope.selectedPrice.push(priceSelected.linkRewrite);
                 }
-                console.log("price selected " + JSON.stringify($scope.selectedPrice));
+                console.log("price selected " + priceSelected + JSON.stringify($scope.selectedPrice));
+
+                var priceObj = {
+                    "1-lakh-3-lakh":"1-lakh-to-3-lakh",
+                    "3-lakh-5-lakh":"3-lakh-to-5-lakh",
+                    "1-lakh-5-lakh":"1-lakh-to-5-lakh",
+                    "5-lakh-10-lakh":"5-lakh-to-10-lakh",
+                    "10-lakh-20-lakh":"10-lakh-to-20-lakh",
+                    "20-lakh-50-lakh":"20-lakh-to-50-lakh",
+                    "50-lakh-1-crore":"50-lakh-to-1-crore",
+                    "above-1-crore":"above-1-crore",
+                }
 
                 sharedProperties.setPrice($scope.selectedPrice.join("+"));
                 var urlToCount = "getNewCarSearchResultDataCount&PriceRange="+$scope.selectedPrice.join("+");
@@ -2405,6 +2482,11 @@ angular
                         $scope.slideHasChanged = function ($index) {
                             $scope.currentSlide = $index + 1;
                         };
+
+                        $scope.fnCardView = function(){
+                            console.log("used-car-detail");
+                            $state.go('eventmenu.used-car-detail');
+                        }
 
                         $scope.usedCarDetailPerCar = function (item) {
                             console.log("usedsingleCarDetailCtl item.usedcarid" + item.usedcarid);
