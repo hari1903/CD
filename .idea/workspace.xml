@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fc98d1e-17c5-4c1d-ad1f-76becc998742" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprite-skin-flat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/ion.rangeSlider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/ion.rangeSlider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/ion.rangeSlider.skinFlat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-1.11.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/normalize.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/used-car-valuation-details.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/homeTransparentCircle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/homeTransparentCircle@2x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sdk_delta.info" afterPath="$PROJECT_DIR$/.sdk_delta.info" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/.manifest.tmp" afterPath="$PROJECT_DIR$/.sign/.manifest.tmp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/author-signature.xml" afterPath="$PROJECT_DIR$/.sign/author-signature.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/signature1.xml" afterPath="$PROJECT_DIR$/.sign/signature1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -28,14 +21,14 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SampleIonic" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4744106">
+    <splitter split-orientation="horizontal" split-proportion="0.6032202">
       <split-first>
         <leaf>
           <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
@@ -66,8 +59,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5769231">
-                  <caret line="2047" column="94" selection-start-line="2047" selection-start-column="82" selection-end-line="2047" selection-end-column="94" />
+                <state vertical-scroll-proportion="0.30722892">
+                  <caret line="2032" column="68" selection-start-line="2047" selection-start-column="82" selection-end-line="2047" selection-end-column="94" />
                   <folding>
                     <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -152,11 +145,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.68341124">
-                  <caret line="3260" column="45" selection-start-line="3260" selection-start-column="45" selection-end-line="3260" selection-end-column="45" />
+                <state vertical-scroll-proportion="-10.555555">
+                  <caret line="3240" column="0" selection-start-line="3240" selection-start-column="0" selection-end-line="3240" selection-end-column="0" />
                   <folding>
                     <marker date="1442882912000" expanded="true" signature="44057:44102" placeholder="..." />
                     <marker date="1442882912000" expanded="true" signature="44119:44157" placeholder="..." />
@@ -174,6 +167,13 @@
                     <marker date="1442882912000" expanded="true" signature="105225:105239" placeholder="..." />
                   </folding>
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="homeTransparentCircle.png" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/images/homeTransparentCircle.png">
+              <provider selected="true" editor-type-id="images">
+                <state />
               </provider>
             </entry>
           </file>
@@ -362,6 +362,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SampleIonic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -385,8 +399,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/node_modules" />
       <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/node_modules" />
     </key>
   </component>
   <component name="RunManager">
@@ -524,18 +538,25 @@
       <option name="project" value="LOCAL" />
       <updated>1442793576811</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixing bugs and adding CSS">
+      <created>1442883240670</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1442883240670</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1910" height="1001" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13142292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.079407096" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.354685" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15792646" sideWeight="0.50454545" order="2" side_tool="true" content_ui="tabs" />
@@ -545,7 +566,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19960475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -568,7 +588,8 @@
     <MESSAGE value="Car Videos" />
     <MESSAGE value="Refactoring the new car code" />
     <MESSAGE value="Fixed couple of integration bugs... more to follow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed couple of integration bugs... more to follow" />
+    <MESSAGE value="Fixing bugs and adding CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing bugs and adding CSS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -577,20 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/nc-upcoming-cars.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/nc-latest-cars.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/nc-popular-cars.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1358,10 +1365,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/images/homeTransparentCircle@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68341124">
-          <caret line="3260" column="45" selection-start-line="3260" selection-start-column="45" selection-end-line="3260" selection-end-column="45" />
+        <state vertical-scroll-proportion="-10.555555">
+          <caret line="3240" column="0" selection-start-line="3240" selection-start-column="0" selection-end-line="3240" selection-end-column="0" />
           <folding>
             <marker date="1442882912000" expanded="true" signature="44057:44102" placeholder="..." />
             <marker date="1442882912000" expanded="true" signature="44119:44157" placeholder="..." />
@@ -1379,6 +1391,11 @@
             <marker date="1442882912000" expanded="true" signature="105225:105239" placeholder="..." />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/homeTransparentCircle.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
