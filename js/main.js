@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector'])
+    .module('ionicApp', ['ionic', 'angular.css.injector', 'ionSlider'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -324,6 +324,15 @@ angular
                     'menuContent': {
                         templateUrl: "templates/nc-offers-and-dicounts.html",
                         controller: "nc_offersAndDiscounts"
+                    }
+                }
+            })
+            .state('eventmenu.nc-offers-and-dicounts-show', {
+                url: "/nc-offers-and-dicounts-show",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-offers-and-dicounts-show.html",
+                        controller: "nc_offersAndDiscountsShow"
                     }
                 }
             })
@@ -3259,7 +3268,8 @@ angular
             $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
 
             $scope.fn_getOffers = function() {
-
+                console.log("in get offers");
+                $state.go('eventmenu.nc-offers-and-dicounts-show');
             }
 
         }])
@@ -4202,6 +4212,39 @@ angular
                 $state.go('eventmenu.nc-offers-and-dicounts');
 
             }
+        }])
+    .controller(
+    'nc_offersAndDiscountsShow',
+    [
+        '$scope',
+        'sharedProperties',
+        '$window',
+        '$location',
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $window, $location,
+                  $rootScope, $state, $stateParams) {
+            //$scope.model = "...";
+            //var retunEvent = $stateParams.retunEvent;
+
+            $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
+
+            var urlToCount = "getDiscountOffersSearchResult&oem="+$scope.offerAndDiscountObj.selectedBrand +"&modelName="+$scope.offerAndDiscountObj.selectedModel +"&city="+$scope.offerAndDiscountObj.selectedCity+"&startLimit=1&endLimit=20";
+
+            sharedProperties.getHttpData(urlToCount, function(data){
+                console.log("data "+ JSON.stringify(data));
+                $scope.offerObj =data;
+                //sharedProperties.setOfferAndDiscountBrandAndModelObj(data);
+            })
+
+
+            $scope.fn_getMoreOffers = function () {
+                $state.go('eventmenu.nc-offers-and-dicounts');
+
+            }
+
+
         }])
 
 
