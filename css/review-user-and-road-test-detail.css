@@ -1,0 +1,18 @@
+.subHeaderAndFooter {
+    background-color: #f05a28 !important;
+    height: 34px !important;
+}
+
+.topPaddingDetails {
+    padding-top: 32px !important;
+}
+
+.listProp {
+    border-bottom: 1px solid !important;
+    border-bottom-color: #3d3d3d !important;
+
+}
+
+.wordRapPop {
+    white-space: normal;
+}
