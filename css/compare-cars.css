@@ -1,7 +1,7 @@
 div.background
 {
     background: url("../images/compare_btn_disable.png") no-repeat ;
-    background-size: 100% 100%;
+    background-size:100%;
 }
 .bar-subheader {
     height: 23px;
@@ -13,7 +13,15 @@ div.transbox p
     margin: 5px !important;
     color: #000000;
 }
-
+.compare-button{
+  width: 95.89041% !important;
+  margin: auto 23px !important;
+  height: 35px !important;
+  border-radius: 2px !important;
+  padding-top: 5px;
+  vertical-align:middle;
+  text-align:center;
+}
 .imageSize {
     width: 60px !important;
     height: 40px !important;
@@ -23,6 +31,7 @@ div.transbox p
     height: 100px !important;
 }
 .row {
+   
    padding: 0px; 
 }
 body, .ionic-body {
@@ -35,14 +44,39 @@ body, .ionic-body {
   top: 66px;
 }
 .select-car1{
-  padding-right:32%;
-  float:right;
+  height: 61px;
+  margin-left: 32%;
+}
+.compareCars-bar{
+  margin-top:5px;
+}
+.versus-bar{
+  line-height:10px;
+  font-size:9px; 
+  margin-top:0px;
+  font-family:"Arial italic"; 
+  color:#FFFFFF; 
+  padding-left: 47%; !important
+  }
+.selectCar-align{
+  padding-top:15px;
+  padding-right:10px;
+  padding-left:10xp;
+  vertical-align:middle;
 }
 .col {  
   font-size:10px;
   color:#ffffff;
   padding: 0px;
 }	
+element.style {
+    height: 61px;
+}
 .bar{
+  color:#FFFFFF;
+  font-size:10px;
+  font-family:"Roboto Regular";
+  padding-top:0px;
+  padding-bottom:0px;
   background-color: orange;
 }
