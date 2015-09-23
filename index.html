@@ -1925,7 +1925,7 @@
             <label class="item usedCarDetailSort ">Sorted by : Relevence </label>
         </ion-header-bar>
 
-        <ion-content style="padding-top: 22px !important;">
+        <ion-content style="padding-top: 0px !important;">
             <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result"
                       ng-click="usedCarDetailPerCar(detailedItem)"
                       style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
@@ -2805,7 +2805,7 @@
             </div>
         </div>
     </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
+    <ion-content style="padding-top: 0px !important;">
         <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
                   ng-click="fnUpcomingCar(upcomingCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
@@ -2832,7 +2832,7 @@
         </div>
 
     </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
+    <ion-content style="padding-top: 0px !important;">
         <ion-item class="item " ng-repeat="latestCar in latestCars.data.latestCarSet.latestCarList"
                   ng-click="fnUpcomingCar(latestCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
@@ -2874,10 +2874,10 @@
         </div>
 
     </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
+    <ion-content style="padding-top: 0px !important;">
         <ion-item class="item " ng-repeat="popularCar in popularCars.data"
                   ng-click="fnUpcomingCar(popularCar)"
-                  style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
+                  style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;padding-right: 0px;padding-left:0px;">
             <div class="list card ">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{popularCar.mobileimage}}>
@@ -3054,7 +3054,7 @@
             </div>
         </div>
     </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
+    <ion-content style="padding-top: 0px !important;">
         <ion-item class="item " ng-repeat="singeAutoNews in autoNews.data['Auto News']"
                   ng-click="fnDetailedNews(singeAutoNews)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;padding-left: 0px;padding-right: 0px;">
