@@ -457,7 +457,7 @@ angular
                 }
             })
             .state('eventmenu.expert-review', {
-                url: "/expert-review/:reviewId",
+                url: "/expert-review/:reviewId/:reviewText",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/expert-review.html",
@@ -3668,16 +3668,16 @@ angular
         '$sce',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
             console.log("in reviewUserAndRoadTestDetailCtrl");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/review-user-and-road-test-detail.css");
 
             $scope.reviewType = sharedProperties.getReviewType();
 
 
             $scope.reviewData = sharedProperties.getObject();
-            //console.log("car news id :" + JSON.stringify($scope.reviewData ));
+            console.log("car news id :" + JSON.stringify($scope.reviewData.reviewUserAndRoadTestDetailObj.data ));
 
             $scope.fn_getDetailedExpertReview = function(modelObj){
-                $state.go("eventmenu.expert-review", {'reviewId':modelObj.expertReviewId});
+                $state.go("eventmenu.expert-review", {'reviewId':modelObj.expertReviewId,'reviewText':$scope.reviewData.model+' '+ $scope.reviewType + ' test'});
             }
 
 
@@ -3764,10 +3764,11 @@ angular
         '$sce',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
             console.log("in reviewUserAndRoadTestDetailCtrl");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/expert-review.css");
 
             $scope.expertReviewId = $stateParams.reviewId;
 
+            $scope.reviewType  = $stateParams.reviewText ;
 
             var urlForData = "getDetailExpertReviewsWithStatus&expertReviewId="+  $scope.expertReviewId;
             sharedProperties.getHttpData(urlForData, function(expertReviewData){
