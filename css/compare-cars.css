@@ -33,19 +33,37 @@ div.transbox p
   height: 28px !important;
   padding-top: 9px!important;
   vertical-align:middle;
-  padding-right:100px !important;
+  padding-right:10px !important;
 }
 .imageSize {
-    width: 60px !important;
-    height: 40px !important;
+  width: 60px !important;
+  height: 40px !important;
 }
 
 .popularCompareProp {
-    height: 100px !important;
+  height: 60px !important;
+}
+.row-style{
+font-family:"Arial";
+font-size:10px;
+color:#272727;
+}
+.compareCars-vs{
+  margin-right:auto;
+  margin-left:auto;
+  color:#ffffff;
+}
+.compareCars-leftRow{
+  float:right;
+  padding-right:10%;
+}
+.compareCars-rightRow{
+  float:left;
+  padding-left:4%;
 }
 .row {
    
-   padding: 0px; 
+  padding: 0px; 
 }
 body, .ionic-body {
   font-size: 17px;
@@ -61,6 +79,7 @@ body, .ionic-body {
   margin-left: 32%;
 }
 .compareCars-bar{
+  background-color:#FO5A28;
   margin-top:5px;
 }
 .versus-bar{
@@ -91,5 +110,5 @@ element.style {
   font-family:"Roboto Regular";
   padding-top:0px;
   padding-bottom:0px;
-  background-color: orange;
+  background-color:rgb(240,90,40);
 }

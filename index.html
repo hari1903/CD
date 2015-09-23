@@ -2251,24 +2251,32 @@
         <div ng-repeat=" compareCarsObj in popularCarsWithStatus.data">
             <div ng-click="comparePopularModel(compareCarsObj)">
                 <div class="row" class="popularCompareProp">
-                    <div style="width: 45% !important;padding-top: 10px;">
-                        <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+                    <div style="width: 48% !important;float:right !important; padding-top: 10px;">
+                        <span class="compareCars-leftRow">
+						    <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+						</span>
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
-                        <img ng-src="{{vsImage}}">
+                        <span style="align:center;"class="compareCars-vs">
+						    <img ng-src="{{vsImage}}">
+						</span>
                     </div>
-                    <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
+					<div style="width: 45% !important;float:right !important; padding-top: 10px;">
+                        <span class="compareCars-rightRow">
+						     <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
+					    </span>
+					</div>	
                 </div>
 
                 <div class="row">
-                    <div style="width: 40% !important;padding-top: 10px;">
-                        {{compareCarsObj.Model1.name}}
+                    <div style="width: 48% !important;padding-left:25%;padding-top: 10px;padding-right:10%">
+                        <span style="float:left;font-size:10px;color:#272727;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
 
                     </div>
-                    <div style="width: 40% !important;padding-top: 10px;">
-                        {{compareCarsObj.Model2.name}}
+                    <div style="width: 48% !important;padding-left:10%;padding-top: 10px;">
+                        <span  style="font-size:10px;color:#272727;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
                     </div>
                 </div>
             </div>
