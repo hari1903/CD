@@ -2730,48 +2730,38 @@
 </script>
 <script id="templates/review-user-and-road-test-detail.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader bar-light">
-            <span>{{reviewType}}</span>
+        <div class="bar bar-subheader subHeaderAndFooter">
+            <span>{{reviewData.model}} {{reviewType}} Test</span>
         </div>
-        <ion-content class="topPadding">
+        <ion-content class="topPaddingDetails">
             <div ng-repeat="reviewDataObj in reviewData.reviewUserAndRoadTestDetailObj.data.expertReview">
-                <div class="list card" ng-click="fn_getDetailedExpertReview(reviewDataObj)">
-                    <div class="item item-avatar">
+                <div class="list listProp" ng-click="fn_getDetailedExpertReview(reviewDataObj)">
+                    <div class="item item-thumbnail-left">
                         <img ng-src="{{reviewDataObj.carImageThumb}}">
 
-                        <h2>{{reviewDataObj.expertReviewTitle}}</h2>
+                        <h2 class="wordRapPop">{{reviewDataObj.expertReviewTitle | cut:true:60:' ...' }}</h2>
 
                         <p>{{reviewDataObj.datePublished}}</p>
-
-                        <p>{{reviewDataObj.expertReviewText}}</p>
+                        <div class="wordRapPop">
+                        {{reviewDataObj.expertReviewText | cut:true:60:' ...'}}
+                        </div>
                     </div>
 
                 </div>
             </div>
 
         </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
-        </div>
     </ion-view>
 </script>
 <script id="templates/expert-review.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader bar-light">
-            <span>{{reviewType}}</span>
+        <div class="bar bar-subheader subHeaderAndFooter">
+            <h1>{{reviewType}}</h1>
         </div>
-        <ion-content>
+        <ion-content style="padding-top: 40px !important;">
             <div ng-bind-html="autoDetailedNews"></div>
         </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
-        </div>
-        <div>
-            {{}}
-        </div>
-        <div>
-            Overall Rating
-        </div>
+
     </ion-view>
 </script>
 <script id="templates/user-review.html" type="text/ng-template">
