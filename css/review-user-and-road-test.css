@@ -1,10 +1,143 @@
 .tabBackGroundAndFontColor{
-    background-color: #ef473a !important;
+    background-color: #BC351A !important;
+
 }
 .fontColor {
-    color: #ffffff !important;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    font-family: 'Roboto-Regular', 'sans-serif';
+    line-height: 6.71px !important;
+
+}
+.unSelectedTab {
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #BC351A !important;
+    color: #BC351A !important;
+    font-size: 14px !important;
+    font-family: 'Roboto-Regular', 'sans-serif';
+    line-height: 6.71px !important;
 }
 
 .topPadding {
     padding-top: 50px !important;
+}
+
+.subHeaderAndFooter {
+    background-color: #f05a28 !important;
+    height: 34px !important;
+
+}
+
+.subHeaderAndFooter h1 {
+    color: #ffffff !important;
+    text-align: left !important;
+    font-family: 'Roboto-Medium', 'sans-serif';
+    font-size: 14px !important;
+    padding-top: 3px !important;
+}
+
+.subHeaderAndFooter > span {
+    color: #ffffff !important;
+    font-family: 'Roboto-Regular', 'sans-serif';
+    font-size: 12px !important;
+    padding-top: 3px !important;
+}
+.leftRightPadding {
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+}
+.spanDivCenter {
+    display:table !important;
+    margin:0 auto !important;
+}
+
+.heightAndWidth {
+    display: table !important;
+    height: 33px !important;
+    width: 154px !important;
+    text-align: center !important;
+    border-radius: 2px !important;
+}
+
+.heightAndWidth > span {
+    display:table-cell;
+    vertical-align:middle;
+}
+.brandPaddingTop {
+    padding-top: 20px !important;
+}
+
+.brandPaddingTop > .col {
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.modelPaddingTop {
+    padding-top: 14px !important;
+}
+
+.rowWitdth {
+    width: 408px !important;
+}
+.colProp {
+    display: inline-block;
+}
+
+.colPopWith1 {
+    display: inline-block;
+    width: 80px !important;
+    height: 33px !important;
+    font-size: 12px !important;
+    border:  1px solid !important;
+    vertical-align: middle;
+    padding-left: 10px !important;
+    color: #3d3d3d !important;
+    font-family: 'Arial', 'sans-serif';
+
+
+
+}
+.colPopWith2 {
+    display: inline-block;
+    width: 178px !important;
+    height: 33px !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    border-top:  1px solid !important;
+    border-bottom:  1px solid !important;
+    vertical-align: middle;
+    color: #3d3d3d !important;
+    font-family: 'Arial', 'sans-serif';
+
+
+}
+.colPopWith3 {
+    display: inline-block;
+    width: 50px !important;
+    height: 33px !important;
+    border-right: 1px solid !important;
+    border-top: 1px solid !important;
+    border-bottom: 1px solid !important;
+    font-size: 20px !important;
+    vertical-align: middle;
+}
+
+.colPopWith3 > img {
+    padding-top: 12px !important;
+    padding-right: 15px !important;
+}
+
+.modelPaddingTop > .col {
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.textAlignRight {
+    text-align: right !important;
+}
+
+ul {
+    font-size: 0;
+    line-height: 33px;
 }
