@@ -5,7 +5,7 @@ ng-nc-search-car-header ion-header-bar div{
 	padding-bottom:10px!important;
 }
 ion-content.has-subheader.scroll-content div.row{
-	max-width:99%;
+	max-width:99%;	
 	margin-top:15px;
 }
 
@@ -60,22 +60,24 @@ ion-content.has-subheader.scroll-content div.row{
 	text-align: center !important;
 	color: #1A1A1A !important;
 }
-ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter{
-	display:inline-block !important;
-	margin: 0;
-	margin-left:-10px;
-	padding: 10px 30px;
-	border: 2px solid #DF5426 !important;
-	border-radius: 3px !important;
-	border-style: outset !important;
-	text-decoration: none;
-	text-align: center;
-	vertical-align: middle;
-	color: #484848;
-	background-color: #fff;
-	font-family: 'Roboto-Bold' !important;
-	font-size:13px !important;
+
+ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
+    display: inline-block !important;
+    margin: 0;
+    margin-left: -10px;
+    padding: 5px 5px;
+    border: 2px solid #DF5426 !important;
+    border-radius: 3px !important;
+    border-style: outset !important;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    color: #484848;
+    background-color: #fff;
+    font-family: 'Roboto-Bold' !important;
+    font-size: 13px !important;
 }
+
 ng-nc-search-car-header ion-header-bar div div.active{
 	margin-left:0;
 	border: none;
@@ -113,14 +115,7 @@ ng-nc-search-car-header ion-header-bar div div.active{
 ng-price-range div.list, div.ng-binding {
 	margin-left: 30px;
 	font-family:'Roboto-Regular';
-	font-size:17px;
-	color:#7B7B7B;
-}
-
-ng-price-range div.list, div.ng-nc-binding {
-	margin-left: 30px;
-	font-family:'Roboto-Regular';
-	font-size:17px;
+	font-size:12px;
 	color:#7B7B7B;
 }
 ng-price-range div.item{ margin-left: 10px; padding:0;}
