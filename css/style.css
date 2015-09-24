@@ -81,13 +81,13 @@ span.usedCarHomeTitle {
     min-height: 100%;
     min-width: 100%;
 }
-.home_wrapper img{
+.home_wrapper object{
     display:block;
-    height: 100%;
-    min-width: auto;
-    vertical-align: middle;
-    margin-left: auto;
-    margin-right: auto;
+    width:450px;
+    height: 450px;
+    position:absolute;
+    top:40%;
+    left:20%;
 }
 .full-width {
   width: 100%;
@@ -114,4 +114,8 @@ span.usedCarHomeTitle {
 }
 .footerText{
 	
+}
+.dialer{
+  width: 200px;
+  height: 200px;
 }

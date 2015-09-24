@@ -467,7 +467,7 @@
      showgrid="false"
      inkscape:zoom="1.8730159"
      inkscape:cx="137.95387"
-     inkscape:cy="180.48013"
+     inkscape:cy="-289.35038"
      inkscape:window-x="1280"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -661,18 +661,12 @@
          id="text39">7</text>
     </symbol>
   </g>
-  <a
-     id="a3467"
-     xlink:href="#/event/compare-cars"
-     xlink:role="link"
-     xlink:title="Compare Price">
-    <path
-       style="fill:#ffffff;stroke:url(#linearGradient5923);fill-opacity:1;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-linejoin:round;stroke-linecap:round"
-       inkscape:connector-curvature="0"
-       id="path43"
-       d="m 350,250 150,0 A 250,250 0 0 0 405.87245,54.542129 L 312.34898,171.81685 A 100,100 0 0 1 350,250"
-       class="sector" />
-  </a>
+  <path
+     class="sector"
+     d="m 350,250 150,0 A 250,250 0 0 0 405.87245,54.542129 L 312.34898,171.81685 A 100,100 0 0 1 350,250"
+     id="path43"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5923);stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
   <path
      class="sector"
      d="m 312.34518,171.81492 93.522,-117.2745 A 249.99818,249.99818 0 0 0 194.36571,6.268089 l 33.37888,146.237901 a 99.999273,99.999273 0 0 1 84.60059,19.30893"
@@ -783,60 +777,95 @@
      id="path6789"
      inkscape:connector-curvature="0"
      transform="translate(-2,-2)" />
+     <a
+       xlink:href="../index.html#/event/used-car-home"
+       target="_top"
+       id="newCarLink">
   <image
      y="52.864399"
      x="237.03391"
      id="image7095"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAABCFBMVEUAAAAlJSUmJiYlJSUlJSXv RyPvRyMlJSUlJSUlJSUlJSUlJSUlJSXvRyMmJiYlJSUmJiYlJSUlJSXvRyNCKSUlJSUlJSXvRyMl JSUlJSUlJSUlJSUlJSXvRyMmJiYlJSUlJSUlJSUlJSUlJSUlJSUmJiYlJSUlJSUlJSUlJSUlJSXv RyPvRyMlJSUlJSUlJSXvRyMmJiYmJiYlJSUlJSUmJiYlJSUlJSUlJSUlJSUlJSXvRyPvRyPvRyMl JSUlJSUmJiYmJibvRyPvRyMmJiYlJSXvRyPvRyMlJSXvRyPvRyPvRyPvRyPvRyPvRyPvRyPvRyPv RyPvRyPvRyPvRyPvRyMlJSXvRyNhHei5AAAAVnRSTlMA0eIQl8DQ65BxDFEwYLuzh/jz4QLYnT8l IQSqoX9nTRTdwKdpY19ZPx0G/PHNhH5wRC4pGMjENO+tjffJnpRsPAjut7ZuUBN5Jg7bsauThUk2 G45oWlcD7SgAAAOTSURBVFjD7dfXctpAGIbhT6LIyDIggWRRQu8YML0Eg3GP09u/938n0S44mXgU Z0DkKDzDgGDgnZ1/Vwfg4ODgADiW6Dk9VcceVMmNPIBnuQm58sOzJSnZnO+ZsUyTFbyKUMd9Sll4 1DBIc/lY1b1PpEYy3BQoD4+if1jdA5ENb1p0DDcaUdnj0SPywU1cobTX+2UId2llil3ZIUeB2nCn xsUzdiGRUML+0Vo4iX9gSlzr9viJjX0Z0jMhAMHgxbdg8PObQLMZPMV10Hl/FwzOAx++bFH2kVua scArxk4DrHnGruIx5rw/Ydx8i3T3pfQVu/7I2H2MvT755KRfvWWvt0jfvpyO3Z2fP8bYGeCkzwOM bZGekWC4pt8zdnYCxFjz3fn26SNeM8cYpPhFsaZpuV/p+2vG2AfwWV/smLYBJE2iURzCU/rx/mOT sTd81qe7pU1wC6I2fk/HxMsnMevd0opYbJGogI0mm39l7HOQzZ3iHV/1d35CYlunxc5punNhaYnE AIA40GePF6x5JQbCt5NxsW3TlCrNDNowfMCX969Z8BT3F2fs7Ym4GwN3ztP83el26efScaw14MJT mqZ1cJrk94Hre0kb0m9aR5Vsxd9yLiLtjn9IXtIFuNOIO6T3k44SF/4X6X6eH5As3KkSLy9wcLAX pRq4cheutBI2cqG0VW5gC3IUnOSHq5KMtaphWmkln9h/uqZ34kAuP9otPfanonxV/VkqWgdQbxdD t5t0pBXnL9m0ikY5Lb5X6Xas3ipUTFeSf0uPjdnyZjJAzSguI4qNgTJa3ijrdFLvYCMeNh9CkqIi kjcL46IU6ihHf0u3JSfh70GyANykEDUbTmedrlMFG/VWD+jTGBF5BehVINt5MW0u0KXRQw/IkT+T yaQUDBe/Zu2jMn5Sx9UFXSJSBBCeWMcq3G32T24DNUshKdGnYZiD2QZQlSEoM3C+ii95pCvhKE/z X6qhEeltuLopPK0ql0CyK1s+8Yd0UEc4DWC5SVv5hjgwZFepBtjUFelkr4FBlNyPZIbKcaiWXodf cmY79CM8WmE1jKA0saFKm7RtFHPgO4yQrgJHlBXpnF4BulSHm2SalLxuHAMJOZ+S5ATsvJySZRvJ yGQqjzZpXMq6ZNJURUIxrdZUyYg0OhSOGDP8Qb9yu94JNZsRF41sJis+qGUuB5c/19Atl3tieNWM Bq3PH45eJdPDwcHBf+UH1dzwekdUDdIAAAAASUVORK5CYII= "
+     xlink:href="dialer_used_car_black.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+     <a
+       xlink:href="../index.html#/event/nc-search-cars"
+       target="_top"
+       id="newCarLink">
   <image
      y="73.68644"
      x="94.483047"
      id="image7176"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAABEVBMVEUAAAAmJiYmJiYmJib///8m JiYmJiYmJiYmJib///8mJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJib///8mJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJib///8mJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJib///8mJiYmJib////////////r 6+v////r6+szMzP///9dXV04ODjZ2dn///////8mJib/////QgD/598xMTH/28//zbv/cUB2dnZM TEz/8e3/7efT09P/iWD/dETu7u7/2Mr/nnz/VBj2WWAIAAAASHRSTlMAgCD5DbWH0gPLpQbhsHgM CZpwYF7XulXz59yfjjgtKh0SzL90Tzwxw6mRWjUB7WlkSUEWx3yCRRsalYhiPfvv4NnPsJ1yaiWH xZdXAAADTklEQVRYw+2X53LaQBSFD1ogIojeW+g1QCh2eq9XJCG9vv+D5O4FwkwsK2ggv6Jvxvjs WP52ObvSAHx8fHyAJDmRxAkgZ+r/xizgWBpEV6KGYOp2JDWWrK7hSFL75aU76Xh3mxdEIRyJoth+ Eqa37+n4qse/o2VZU2yxiMxgMIgNHDzTvWxxM3r/2LbtSJZzNsLh3m14o0UDOGK+tzdkkd2ERx7d RGk4cvubvXPvwlN4oX/pZt1j12q10kpJ7/j15cHHLhBIty5Vc71fVzu3Dl+4b2934RkcCYrwJ/9I 2L6BoCc1wZFXtv1J29aiXYte1IdxRkIlHrhI+qFtf2EdtyI9iz6CQyEX5Oi9Fame4N3quxyWU6g/ s/g1u9drVq9/rD7Zr98evuyai/mNbJ6wTZ72sfrv1IF/rb4OnEtINw1NMkbMkxOo4zrFZAphO9I3 42tb85GdHyXxOAIPakkTHfYQZZBl1Upg5SawOutFbchZ+XPVFVzbq+29+poXNel0seuTqOmm40l5 dqTahQ//rxqOPODH0x9qfjw98KY24IjtBE6ivu9gvu9RXYczLz7bQiQb2QUcysj9s26f3miecwwK OBzDXY3tn318LhCFd6q5BphOCJfTbSuy4iY8cpXyE/4VvuJyj6rRotZRFc9qi2a/1dEELjKmG2Bm 8q3RbG6r0VcmE+7q0KjY2KibQ0W5W7iRmyBaqgJzSzSpklRhzhO4E1OkKlGkhyEaLUOKyl1XdaKc n4i63TISHVU3qI4F5dg5hOYshh2hgZHsqgziatgdV9rLRLiYcFOjRzOt7svXxdYIuQ7CMWpMSteh ye1LztT5pXzO6oSe5w6S/airGlwJqzPUzufzpTzCebQK5et9/n/NYL9qs1BtTymMeJkHvSm1zg24 q7kSURc0C9RUQy1TlfM8hOqm6+igMGlP72bqOVbLpifnqWmx7q7mSqwrGMsRiHdhllJXULDObkCo KwkZ6vXpFk9R3KoDPEgW065qpkp6G3P9ZZrmQEqF0SR1BxvCqtqr3VQVGHQz2hjS3Y16mBs3r6ue y92Ykvc24BmaV4tUzvBoXl4AoX3FmZYiq2MCsxKVOuGruBHC5nIrg0Mx//YMMf+43MfH5//jFxl7 U+NHnZr6AAAAAElFTkSuQmCC "
+     xlink:href="new_cars_dialer.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+    <a
+       xlink:href="../index.html#/event/review-user-and-road-test/road"
+       target="_top"
+       id="reviewsLink">
   <image
      y="282.97458"
      x="365.7034"
      id="image7353"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAAAnFBMVEUAAAAmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiaZkhN4AAAAM3RSTlMA0TOIEPri3Rr361oKAvObaWQi RwbYg1Qqyrvu5nlDLMK4oT43rah0bF9PLwOyf28MkozfdPf0AAACOklEQVRYw+3W2W6jMBgF4EPY qQ1hh0DIvqdJ2v/9321sVGmQ0kqMYjS94Lsyv9CROUKyMRqNhrOdYCifOgbCaxsD2RAN1UhANFAj iUc0UCMx0VCNrIkGaiTxiQZqJCcaqpE9kcpGDtpfJrX8zuiOF4Qu/ajK8ZJFSj9YOXgRW9N33DvH 607flKIVUKJ4KkVPoAgLqMvaQKF5twwDKn12ov0ECnGLOs5QaEJdeyikU2v11cgD6thtYo6mJukN ylxIsBcAnKVcvkOZTJZhQLrKtWlAlZRIv+JL7BGFUKQgv/O/yVJmUOSWFui6ZqajquqnauMco9Fo NPrP3khw612EJ9b01ejNZLINa40/3/y2r0YbEE4kt20UTycMK55OL6dg/xIdimi2Nn1T5w8/BBAs ZSH85la0Z8zNxcR8gHtvTulW7qFf9LlpmqM3Az7sBbbeEYFYJ9VJRod+gygN8B4AthljaxofSya/ sVe0lGYPMFfuVtewIQe5z2S09iFfcVloIfLfdWQrBOmWX52+hTi7+gJEVNu27bng6UFuU0a7lRjV FDm0mK6OJbQpIo28YNO760SzDBEdTiRgrhnmpo329XbEUN53h4IuJLc7mZcU943GwlzjWt0A3HXA MfWUt9HLHYDzOsF8Vl1gzUpAPwHcynpHI6MYB/e4mJpHACtzjjY6ps9L7gVAQR7HmsRY93LxVtMj upkxCMku4AhLrwwhxDMHwP4sVktPuyXyIZPjCEh02yvH69Ro9Hv9AenJWCHz3ngbAAAAAElFTkSu QmCC "
+     xlink:href="reviews_dialer.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+   <a
+       xlink:href="../index.html#/event/review-user-and-road-test/road"
+       target="_top"
+       id="newsLink">
   <image
      y="381.21188"
      x="236.50002"
      id="image7434"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAAAllBMVEUAAAAmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiaAiFZ7AAAAMXRSTlMAgCDfQ1odDrH4cPw8Ae/ikRjMwCoFh3gw 89rQpqGemFVOFArUZGDprIppSTjkw3w000dSFQAAAbNJREFUWMPt1slu2zAAhOGJRS22rNWWV9na vDtJM+//chWFNmgduAeJBBqA/5GHDwKHB8FkMplMX9rzaUKTLFthSPxXvj7a+n/pE540nH4x9Fd6 NB8Bq9EfKaNJPjwWZfSY47/psTJ6Ek+A3ctni8k3npG6ZvwBaJpRpmtGMNY0Y0BypvyrC3nNW0pb +V0DbokZ21S/kO5EdLbadz3vjqWdUv2MSn4WyOUTuW0ovdMkSybTI4MPnXChp0SGeKABzuCqkIHa iqzPwgJghoqEhmxG1CMj53YCk0lnThijzQ1L9TQpJE1bAx1Z7m86SBo81CRZf7oMi1+0/UY/d4PN DViGDvA+aXKf62Vvenqi6Gjh37LR9oK9B8z8ExLOl5YT2Fz1puFFrqS9loRgUq2zZuztcNxgEX0A 86w/nYR7SW/OaZoeOG3G4n6wI3hXOAdG8Sv607BZSjoXshreIo5rztetGUwXG5YDaHjnlr7MAKyK Gsd0W2HrvQW4HVs93Q+hk7Clp/7CeT28B0h838WVhXwolXNfH9GrxPpAm21VwD3113kNdIMKSwDZ 9cxoGcBkMpk09RMQimenKaS/IwAAAABJRU5ErkJggg== "
+     xlink:href="news_dialer.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+   <a
+       xlink:href="../index.html#/event/car-loan"
+       target="../index.html#/event/car-loan"
+       id="carLoanLink">
   <image
      y="337.43222"
      x="97.152542"
      id="image7515"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAAAkFBMVEUAAAAmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYm JiYmJiYmJiYmJiYmJiYSE9QJAAAAL3RSTlMA8C3hCvtaQSG8EIdxMfiB5IlUmyUUBdPMR/PsppVn PBroxno3Kdmyj2G3oGxMrUf208sAAAJXSURBVFjD7dSHittAFIXhI3lUV80qtuTeu3Pe/+1yx/aS ddh4FyRBQvSBZ4Yx/IgrEDqdTlvWE6AiGaNJEweQqCw3JzSGPCMmPYz4YPhohCJ9SE8OmpU2Fw/J XNJjGNQAXCPZI9TXl1x6z8+O0wE0ahvUFUt6SmJPAw8raj3UdeAQOx6hR/4wopagLp+lZG8PD5gm NIuiQA3pbjSFyQvoSb3CliKDSMkdaqAmm70hzNvpDkLWGiypBLqCH8RSjhUfgBMz1HAb58ItnEWa q9nVL+aVc2OHfuqiDr7WYpotps320u4/mW5hIIcFNIXG0xKNA7G2m05/uG84bSMiV62kAf27tJLe cAmoNtILkBfVykB+4K2t10gXs7bSPKI+/smwp7X5Dcn/ty+fxdeAttrodDqt8l0frZivSHo5PtF7 Qx1X6xwWTpksGk+r5QSiGB0AqK2LG1f9lvZNH9og3w7uh22BL6QMoZkKg8wyrN4GJg9MntJK/3NW wHpkWIYNGOulZfXxWhzhXTDOUZQnSZeb+VP6kIQIkykqy4GaJJKWiyNDvPQ2xjtT96alpK/Psx4Y AYBZpNxK75akY7m1bLwUWAO8S7OVEQ0lbT6nF3QAbJhjPvWSiJI+QpYv0nM60LIJ3kb91O1/ki5Y AXC4SK3MNm3eql+nMVwpAGYUI+kD2O+e07/2eDnYn/RO9c10OBrOqvW4VPCG4bYfJR/Tq74IZMxB GEQBpmPHvRj0v5lGfu4Zw1gBrjfereee73ou7iaelgF2OS4l5E+WvWzrhdg7gF46nc7f6SfQI7Eb /n031AAAAABJRU5ErkJggg== "
+     xlink:href="car_loan.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+    <a
+       xlink:href="../index.html#/event/sell-a-car"
+       target="_top"
+       id="sellcarLink">
   <image
      y="210.8983"
      x="21.872885"
      id="image7970"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAAA7VBMVEUAAAAmJibvRyMmJiYmJiYm JiYmJiYmJibvRyMmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJibvRyMmJiYmJiYmJiYm JibvRyMmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJibvRyMmJiYmJiYmJibvRyMmJiYmJiYmJiYmJiYm JiYmJibvRyMmJiYmJibvRyMmJiYmJibvRyPvRyMmJiYmJiYmJiYmJiYmJibvRyPvRyMmJiYmJibv RyPvRyMmJibvRyPvRyPvRyPvRyMmJibvRyPvRyPvRyPvRyPvRyPvRyPvRyMmJibvRyMrW3evAAAA TXRSTlMA0NAhWg/xgDD6S44KUbwG6NdFG7AV43BfD8CneTox9rcsIBPexsauoYdtaGMnHtOfk3Rt YCXssptD598/Kfnyy0s1Fw3Su495VzytjtRfzJYAAAMSSURBVFjD7ddpU9pQFMbxJw1LQ0LWJmCA AGVfBEEBqVqrtXsP3//j9CQpHUphKFz7qvmNntxMnL/XO5oZkUgkEqG7mkLb5qoGcfUM7dIyIOwd 7TaAqApR30lvyyskQVSWdOygEsni59Hf88NMIaZBNMIuc9IhJkVj7FQiRYOQLqnYqUhkQ4i5L+AS 9SAioKqB3SRq4UROgXWohj3swgAnkihyjedHMa+Bf6Abt7P5tQDPRactPbz+dr+6//iITy/YxTmP 9wjnE45iKLSljPZq9YY/8GrFPr7k8RrhPDv2nffnrrny/i1/crp99XByekjbdHD2kj1x+gI4OZ2l SFWhtXdGeBDtR4CvN68uxdLzHLQpsWYqCBycXazY5/isL8TSObAJL+4QOjt7uOHSeXTWX8XS0WpJ ZCJyz1n+FfnyHGftgqV4MUPohtNtTke7vgqjn68eeV5eHZ2OXiHpMS+snCyPwEf9Jj6QEKfZ12ge nya/X27SWv3p+83qbfuB/xpD59F8Gc0j038Yu9hHNE3mIHwR1uvyLyJpaUut5EdXjyIC6Qz2KCbp 50uXKWT+i7RsEZFS3vvYIzZBIvF/M4KK89t9GmgYWKvfOjhRP0NE+sYLPpUBKLd+6oVPRziFTQVX q1jS7rSqFBoIrKaGE6hW/A1mPGV79ns6oCHYHV942hU+Js3Rbl2gsnQOn4eSR0zrVMdKR9tM937+ y8Qt+cN8XPVmSFk+H5BljpVrHKDpZHaHLq8mTQeupW6mOy1EoqUB1+OnNHFk1QdulToOWU6s6E2a KfBNwdxM13SszUZAo9XltAP0zFQaBv7GaEI5l2LaRvraQoQr6azuVTMlTvN9o6MofhEHtIbRpZlN 00AObe56SKP4aQ9+cxAYtTgdxosLGh5IL6w0T6dahNXlxbS7mda8DtiAbJdSfGv+TKtlHpJ6IF03 TXWqmi0NeVLtslLYTGOZkcqDEnHE029z+rwWp/vVKX/pEgc4PV/ypxqv7IVU471VePelALGZ6n9Y 5MMtlKRaPneNSgmsqEsLG4lEQsQPJRHY6tv71asAAAAASUVORK5CYII= "
+     xlink:href="sell_car_dialer.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
+     <a
+       xlink:href="../index.html#/event/compare-cars"
+       target="_top"
+       id="compareCars">
   <image
      y="137.22034"
      x="363.03387"
      id="image8307"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABLCAMAAADH/GAOAAAB41BMVEUAAAAiIiIiIiIlJSUiIiIi IiIlJSUkJCQmJiYlJSUmJiYmJiYlJSUkJCQlJSUmJiYlJSUjIyMkJCQkJCQlJSUmJiYlJSUkJCQk JCQmJiYmJiYkJCQlJSX///8lJSUmJiYmJiYlJSUlJSUlJSUlJSUlJSUmJiYmJiYmJiYlJSUmJiYk JCQiIiIkJCQlJSUlJSUkJCQiIiIkJCQkJCQlJSUiIiImJiYiIiIiIiImJib///8kJCQkJCQlJSX/ //8mJiYjIyMkJCTy8vIiIiL+/v4iIiL///8iIiImJiYjIyP///8mJib///////////////8iIiL/ //8mJiYiIiIjIyP///8iIiL///8kJCT///////////////////////8iIiJhYWH///+AgIA8PDyo qKj////Kysru7u7///////////////////+/v7////////////////8iIiL////vRyMmJib5uq30 gWjwUzH96eT++fjwTSpnZ2f95+LybFDxYUEkJCT/+/r+8e/9497818/6x7ybm5v4qpn3pZP1iXL0 fGLwVjXwUjD83tf70cj7zMK8vLz4r6CEhITxWzv++Pb97OixsbH5tqinp6eQkJD3n4z2m4f2k370 fGPzdVryZkg2NjadSmA/AAAAcnRSTlMAcFAR0DDiAvsz98QtKx1pPA8MCMm6lycg89ereSAY/dyl ko42I/Ds556Hg2tXQwWvlH5iWvnu7eTRy76KUk5NRzn++vPa1Lq0sa9mLREO9vbk3tPLuLWfcmtm QjcL+vXs6uLOy76npKGckIR0cVcnHQZSJyHwAAAD9UlEQVRYw+zU2U8TURTH8VMEGxMhUoiYICZu DwZQizYlBZtCW5o2WCGIuIDGuBuXeH5X0NZuUCylbOK++6d6Z6bJ1M40mcn42M/TzTx8H849c6mp qek/6vT62WB46Aw55plhUzE3OeXlBs6RQ123+Gj7HoMB5m5yKMS+TtL0tEge0vQydziexxWqGmbp GGkuMLvImb36TF3xePzsCdJ4fBwj3WRwkmzqYT5CpmLs81DV8wCACZvxq3yZzLmYQ6RZmIYiMk92 jHA/mTvJPEqaa0Ap9w24dIOs84R5jBqI5u/0aeZQEEKUZTtIVnS4JC/73dTA3XHo1mV7qYCbz8iC VlbNUAOPUCultNdTgJWZsCa/j4zmHyceApvlJd1PIf1KIUBW9LNi6uD5ljr3ocoKg3cAWdHL5t4C H4op4Lsw2EaELHD72Uz+C5DJiSyA1UXdDyEtAnNkQbt5+ROw8l6IdAG1ttLy0yowcZEsGGQTL3eA zYoQ4jNqpTZkeRsIWCqTi1Xhqbo5F2VGrL3WLQOoiI0t4F6SrKfDA13u09prOtYmRVBMm+1FprQC zC6QjfQQSQfk4RQpksCaMMhClXhBdtLtpPAzD5LqNjIVIb2qkVOubzpwnchWOlR99tlLqifafogS /jFLks10d5c8HWdpdP8hxQN1q+U9okYiaTstRQ8PjNT/ix9/y1UDdt4ongaDfUR20+a+AstZUQZ2 WdFGOqdp3oWMA+N/nKajrQZ/26ubFrWBOADjj7tsXk18TWJiSIxGE3V9QUUqu2L3JkgvSyltT6XX XsqWXPrpa6x72IKRsiu0rL/LwPyZ5zBzmK8/f2zLXx6ekT549Punb5/f5U6Q3nt16euHHe3o/O/p uz+9ziHWm3T+QeTs7OV47QonMW0kidI9RbwluTVvFhkiLy30CwDDZAlcaiV2PAtEyyNV2W+WtBo7 6fWJ7TbHNKMRKXlEqS7ZUkukoHalZBE6kuSCcBsJiks6nPsNjWKnmTgM7xXFkcl2Y/Co3rC4m08o +GbFUuwifamMMM/zVlrSE3Q8J6DoG+GdbrdGIzMuk6laZ+9SGgD9eJsuQTUAObEQ+sB4zFUIYmBQ TIrgxiJUlBmZxip7aQguknKhA6g9yCd5hCXQcxBn3WpHUbdpHbpKY0uakOmjUgYQnVwagoEvPk0P gGYVc96/0M3H9Hs5pZPJs1sAm2RYsXOAueBpOh1Xmyhuuu7TBfsyfdiQbBt/PVs1JRMm9kZ2pcEf aSUnm3YbR9U0U1n8Tpfu1WJoCCWOGK7jqDoFuF5E6gpWY6A1hZpRQ7g1YkOGq5vIcYfrkWZ4gB4I cdDmeYQCB/276WDF2dnZf+gXhv7UjHKLeWoAAAAASUVORK5CYII= "
+     xlink:href="compare_dialer.png"
      preserveAspectRatio="none"
      height="75"
      width="90" />
+   </a>
 </svg>
