@@ -6,7 +6,59 @@ ng-nc-search-car-header ion-header-bar div{
 }
 ion-content.has-subheader.scroll-content div.row{
 	max-width:99%;
-	margin-left: 10px;
+	margin-top:15px;
+}
+
+.row1{
+	margin-top:15px;
+	font-family:'Roboto-Regular';
+	font-size: 17px;
+	text-align: center;
+	color: #484848;
+}
+.row2{
+	font-family:'Roboto-Regular';
+	font-size: 13px;
+	text-align: center;
+	color: #C9C9C9;
+}
+
+.row3{
+	font-family:'Roboto-Regular';
+	font-size: 17px;
+	text-align: center;
+	color: #1A1A1A;
+}
+.row4{
+	font-family:'Roboto-Black';
+	font-size: 18px;
+	text-align: center;
+	color: #F05A27;
+}
+.row5{
+	font-family:'Roboto-Bold' !important;
+	font-size: 15px !important;
+	text-align: center !important;
+	background-color: #F05A27 !important;
+}
+
+.row6{
+	font-family:'Roboto-Bold' !important;
+	font-size: 15px !important;
+	text-align: center !important;
+	color: #ffffff !important;
+}
+.row7{
+	font-family:'Roboto-Bold' !important;
+	font-size: 15px !important;
+	text-align: center !important;
+	background-color: #f7f7f7 !important;
+}
+.row8{
+	font-family:'Roboto-Bold' !important;
+	font-size: 15px !important;
+	text-align: center !important;
+	color: #1A1A1A !important;
 }
 ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter{
 	display:inline-block !important;
@@ -19,15 +71,18 @@ ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter{
 	text-decoration: none;
 	text-align: center;
 	vertical-align: middle;
-	color: #000;
+	color: #484848;
 	background-color: #fff;
-	font: 13px "roboto Bold" bold;
+	font-family: 'Roboto-Bold' !important;
+	font-size:13px !important;
 }
 ng-nc-search-car-header ion-header-bar div div.active{
 	margin-left:0;
 	border: none;
 	background-color: #F88017;
 	color: #fff;
+	font-family:'Roboto-Bold' !important;
+	font-size:13px !important;
 
 }
 .nc_sc_alignRight {
@@ -51,11 +106,22 @@ ng-nc-search-car-header ion-header-bar div div.active{
     border-width: 1px !important;
     border-style: solid !important;
     border-color: #c8c7cc !important;
-    height: 120px !important;
-    padding: 15px;
+    height: 64px !important;
+    padding: 0;
+    width:103px;
 }
 ng-price-range div.list, div.ng-binding {
 	margin-left: 30px;
+	font-family:'Roboto-Regular';
+	font-size:17px;
+	color:#7B7B7B;
+}
+
+ng-price-range div.list, div.ng-nc-binding {
+	margin-left: 30px;
+	font-family:'Roboto-Regular';
+	font-size:17px;
+	color:#7B7B7B;
 }
 ng-price-range div.item{ margin-left: 10px; padding:0;}
 ng-price-range div.item div.item-content{ margin: 0; padding:0;}
@@ -78,6 +144,10 @@ div.bar.bar-light h1.title{
 	border-radius: 5px;
 	font-weight: bold;
 	color: #fff;
+	font-family:'Roboto-Bold';
+	font-size:15px;
+	color:#FFFFFF;
+	font-weight:700;
 }
 ion-footer-bar.bar.bar-assertive.bar-footer{
 	border:none;
@@ -104,5 +174,5 @@ ion-footer-bar .col-25{
 ion-footer-bar .col-25.active{
 	border-top: 5px solid #DF5426;
 	margin-top: -5px;
-	color: #DF5426x;
+	color: #DF5426;
 }
