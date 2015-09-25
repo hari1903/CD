@@ -1,9 +1,11 @@
 div.background
 {
     background: url("../images/compare_btn_disable.png") no-repeat ;
-    background-size: 100% 100%;
+    background-size:100%;
 }
-
+.bar-subheader {
+    height: 23px;
+}
 
 
 div.transbox p
@@ -11,12 +13,108 @@ div.transbox p
     margin: 5px !important;
     color: #000000;
 }
-
+.compare-button{
+  color:#ffffff;
+  font-size:11px;
+  font-family:"Roboto Regular";
+  width: 95.89041% !important;
+  margin: auto 23px !important;
+  height: 35px !important;
+  border-radius: 2px !important;
+  padding-top: 12px!important;
+  vertical-align:middle;
+  text-align:center;
+}
+.popular-compare{
+  background-color:#ececec;
+  color:#0e0e0e;
+  font-size:11px;
+  font-family:"Roboto Regular";
+  height: 28px !important;
+  padding-top: 9px!important;
+  vertical-align:middle;
+  padding-right:10px !important;
+}
 .imageSize {
-    width: 60px !important;
-    height: 40px !important;
+  width: 60px !important;
+  height: 40px !important;
 }
 
 .popularCompareProp {
-    height: 100px !important;
+  height: 60px !important;
 }
+.row-style{
+font-family:"Arial";
+font-size:10px;
+color:#272727;
+}
+.compareCars-vs{
+  margin-right:auto;
+  margin-left:auto;
+  color:#ffffff;
+}
+.compareCars-leftRow{
+  float:right;
+  padding-right:10%;
+}
+.compareCars-rightRow{
+  float:left;
+  padding-left:4%;
+}
+.row-overflow{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.row {   
+  padding: 0px; 
+}
+body, .ionic-body {
+  font-size: 17px;
+  font-family: "Roboto Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  line-height: 10px;
+  color: #a3a3a3;
+}
+.has-subheader {
+  top: 66px;
+}
+.select-car1{
+  height: 61px;
+  margin-left: 32%;
+}
+.compareCars-bar{
+  background-color:#FO5A28;
+  margin-top:5px;
+}
+.versus-bar{
+  line-height:10px;
+  font-size:9px; 
+  margin-top:0px;
+  font-family:"Arial italic"; 
+  color:#FFFFFF; 
+  padding-left: 47%; !important
+  }
+.selectCar-align{
+  padding-top:15px;
+  padding-right:10px;
+  padding-left:10xp;
+  vertical-align:middle;
+}
+.col {  
+  font-size:10px;
+  color:#ffffff;
+  padding: 0px;
+}	
+element.style {
+    height: 61px;
+}
+.bar{
+  color:#FFFFFF;
+  font-size:10px;
+  font-family:"Roboto Regular";
+  padding-top:0px;
+  padding-bottom:0px;
+  background-color:rgb(240,90,40);
+}
+.bar.bar-positive {
+    border-color:rgb(240,90,40)!important;

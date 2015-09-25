@@ -2085,7 +2085,7 @@
         </ion-content>
         <ion-footer-bar class="bar-light footerBar ">
 
-            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;" >
+            <a class="button  icon-left left footerTabBarder footerTabSingleCarPadding " style="width: 50% !important;">
                 <i class="icon"><img style="padding-top: 6px !important;" src="images/scroll_top_.png"> </i> Get Seller
                 Details</a>
             <a class="button footerTabSingleWidth footerTabBarder">
@@ -2901,8 +2901,7 @@
             <h1>Get Offers and Discounts</h1>
         </ion-header-bar>
         <ion-content>
-            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
-               style=";" menu-close>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement" style=";" menu-close>
                 <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
                 &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
             </a>
@@ -2916,52 +2915,28 @@
                 <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
                 &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
             </a>
-            <button class="button button-clear button-full button-positive "
-                    style="margin-top: 0px;" ng-click="fn_getOffers()">
-                SEARCH
-            </button>
+            <button  class="button button-clear button-full button-positive "
+                    style="margin-top: 0px;"  ng-click="fn_getOffers()">
+                 SEARCH            </button>
 
             <div>
                 Find Offers by Brand
-            </div>
-            <div ng-repeat="oem in oemObj.data.carOemList">
-                <div>
-                    <img ng-src={{oem.image_url}}>
-                    <span>{{oem.oemname}}</span>
-                </div>
-
             </div>
 
             <div>
                 Latest Discount Offers
             </div>
-            <div>
-            <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
-                <div>
-                    <span>{{offObj.carModelVersion}}</span>
-                </div>
+            <div ng-repeat="">
                 <div class="row">
-                    <div class="col">
-                        <img ng-src="images/offer_petrol.png">
+                    <div class="col-33">
+
                     </div>
                     <div class="col">
-                        <span>{{offObj.fueltype}}</span>
+
                     </div>
-                    <div class="col">
-                        <img ng-src="images/on_road_price_new.png">
-                    </div>
-                    <div class="col">
-                        <span>{{offObj.exShowRoomPrice}}</span>
-                    </div>
-                </div>
-                <div>
-                    <p>{{offObj.discountDescriptions}}</p>
-                </div>
-                <div>
-                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
                 </div>
             </div>
-            </div>
+
         </ion-content>
     </ion-view>
 </script>
@@ -2971,31 +2946,26 @@
             <h1>Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
         </ion-header-bar>
         <ion-content>
-            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
-                <div>
+            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList">
+                <div >
                     <span>{{offObj.carModelVersion}}</span>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <img ng-src="images/offer_petrol.png">
+
                     </div>
                     <div class="col">
-                        <span>{{offObj.fueltype}}</span>
+
                     </div>
                     <div class="col">
-                        <img ng-src="images/on_road_price_new.png">
+
                     </div>
                     <div class="col">
-                        <span>{{offObj.exShowRoomPrice}}</span>
+
                     </div>
-                </div>
-                <div>
-                    <p>{{offObj.discountDescriptions}}</p>
-                </div>
-                <div>
-                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
                 </div>
             </div>
+
         </ion-content>
         <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
             <span class="text-center"> View More Offers </span>
@@ -3088,71 +3058,82 @@
 <script id="templates/compare-cars.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader nc_uc_header_prop">
         <div class="row nc_lc_header_info">
-            <div class="col ">
+            <div class="col compareCars-bar ">
                 Compare Cars
             </div>
         </div>
     </ion-header-bar>
     <ion-content>
         <div class="row" ng-click="fn_modelSelect('first')">
-            <div class="col">
-                <img ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png"></div>
-            <div class="col">
-                {{ compDataObj.varientDetailObj.first.displayVariantId }}
+            <div class="select-car1">
+			<img ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png">
+                
             </div>
+			<div class="selectCar-align">
+			{{ compDataObj.varientDetailObj.first.displayVariantId }}
+			</div>
         </div>
-        <div class="row">
-            <div style="width: 45% !important;padding-top: 10px;">
-                <hr>
+        <div class="row ">
+            
+            <div class="versus-bar" >
+			   <span style="line-height:10px;">
+                <img  ng-src="{{vsImage}}">
+			   </span>
             </div>
-            <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
-                <img ng-src="{{vsImage}}">
-            </div>
-            <div style="width: 46% !important;padding-top: 10px;">
-                <hr>
-            </div>
+           
         </div>
 
-        <div class="row" ng-click="fn_modelSelect('second')">
-            <div>
+        <div class="row select-car1" ng-click="fn_modelSelect('second')">
+            <div class="selectCar-align">
                 {{ compDataObj.varientDetailObj.second.displayVariantId }}
             </div>
             <div>
                 <img ng-src="{{ compDataObj.varientDetailObj.second.imageUrlList }}" alt="images/ic_error.png">
             </div>
         </div>
-        <div class="row" ng-click="fn_selectCompare()">
-            <div class="background" style="width: 100% !important; height: 32px !important;">
-                <div class="transbox">
+		<div>
+		<span style="width:100%;color:#ececec;" > <hr> </span>
+		</div>
+        <div class="row" style="margin-bottom:23px;margin-top:23px;" ng-click="fn_selectCompare()">
+            <div class="background compare-button" >
+                <div>
                     <p>Compare</p>
                 </div>
             </div>
         </div>
 
-        <div class="bar bar-stable">
-            <h1>Popular Cars Comparison</h1>
+        <div class="bar-stable popular-compare">
+            <p> <span style="padding-right:10px!important;">Popular Cars Comparison</span></p>
         </div>
         <div ng-repeat=" compareCarsObj in popularCarsWithStatus.data">
             <div ng-click="comparePopularModel(compareCarsObj)">
                 <div class="row" class="popularCompareProp">
-                    <div style="width: 45% !important;padding-top: 10px;">
-                        <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+                    <div style="width: 48% !important;float:right !important; padding-top: 10px;">
+                        <span class="compareCars-leftRow">
+						    <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+						</span>
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
-                        <img ng-src="{{vsImage}}">
+                        <span style="align:center;"class="compareCars-vs">
+						    <img ng-src="{{vsImage}}">
+						</span>
                     </div>
-                    <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
+					<div style="width: 45% !important;float:right !important; padding-top: 10px;">
+                        <span class="compareCars-rightRow">
+						     <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
+					    </span>
+					</div>	
                 </div>
 
-                <div class="row">
-                    <div style="width: 40% !important;padding-top: 10px;">
-                        {{compareCarsObj.Model1.name}}
+                <div class="row row-overflow">
+                    <div style="width: 48% !important;padding-left:25%;padding-top: 10px;padding-right:10%">
+                        <span style="float:left;font-size:10px;color:#272727;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
 
                     </div>
-                    <div style="width: 40% !important;padding-top: 10px;">
-                        {{compareCarsObj.Model2.name}}
+                    <div style="width: 48% !important;padding-left:10%;padding-top: 10px;">
+                        <span  style="font-size:10px;color:#272727;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
                     </div>
                 </div>
             </div>
@@ -3532,56 +3513,56 @@
 </script>
 <script id="templates/review-user-and-road-test.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader subHeaderAndFooter ">
+        <div class="bar bar-subheader bar-light">
             <div ng-show="reviewType == 'user'">
-                <h1 >Search User Review </h1>
+                <h1 class="title">Search User Review </h1>
             </div>
             <div ng-show="reviewType != 'user'">
-                <h1 >Search Road Test </h1>
+                <h1 class="title">Search Road Test </h1>
             </div>
         </div>
         <ion-content class="topPadding">
-            <div class="row leftRightPadding">
-                <div class=" heightAndWidth " ng-class="reviewType == 'user' ? 'tabBackGroundAndFontColor' : 'unSelectedTab' "
+            <div class="row">
+                <div class="col-50" ng-class="reviewType == 'user' ? 'tabBackGroundAndFontColor' : '' "
                      ng-click="fn_changeUserAndRoadReview('user')">
                     <span ng-class="reviewType == 'user' ? 'fontColor' : '' "> USER REVIEW</span>
                 </div>
-                <div class=" heightAndWidth" ng-class="reviewType == 'user' ? 'unSelectedTab' : 'tabBackGroundAndFontColor'  "
+                <div class="col-50" ng-class="reviewType == 'user' ? '' : 'tabBackGroundAndFontColor'  "
                      ng-click="fn_changeUserAndRoadReview('road')">
-                    <span ng-class="reviewType == 'user' ? '' : 'fontColor' "> ROAD TEST</span>
+                    <span ng-class="reviewType == 'user' ? '' : 'fontColor'  "> ROAD TEST</span>
                 </div>
             </div>
 
 
-            <ul class="rowWitdth leftRightPadding brandPaddingTop">
-                <li class="colPopWith1">
-                    Brand
-                </li>
-                <li class="colPopWith2" ng-click="fn_getBrand()">
+            <div class="row">
+                <div class="col">
+                    <span>Brand</span>
+                </div>
+                <div class="col" ng-click="fn_getBrand()">
                     <span ng-show="brandAndObject.brand == '' "> Select Brand </span>
                     <span ng-show="brandAndObject.brand != '' "> {{brandAndObject.brand}} </span>
-                </li>
-                <li class="colPopWith3 textAlignRight" ng-click="fn_getBrand()">
+                </div>
+                <div class="col" ng-click="fn_getBrand()">
                     <img ng-src="images/down_arrow.png">
-                </li>
-            </ul>
-            <ul class="rowWitdth leftRightPadding modelPaddingTop">
-                <li class="colPopWith1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
                     <span> Model</span>
-                </li>
-                <li class="colPopWith2" ng-click="fn_getModel()">
+                </div>
+                <div class="col" ng-click="fn_getModel()">
                     <span ng-show="brandAndObject.model == '' "> Select Model </span>
                     <span ng-show="brandAndObject.model != '' "> {{brandAndObject.model}} </span>
-                </li>
-                <li class="colPopWith3 textAlignRight" ng-click="fn_getModel()">
+                </div>
+                <div class="col" ng-click="fn_getModel()">
                     <img ng-src="images/down_arrow.png">
-                </li>
-            </ul>
+                </div>
+            </div>
 
 
         </ion-content>
-        <div class="bar bar-footer subHeaderAndFooter " ng-click="fn_getReview()">
-            <span class="spanDivCenter"> Search </span>
+        <div class="bar bar-footer " ng-click="fn_getReview()">
+            <span class="text-center"> Search </span>
         </div>
     </ion-view>
 </script>
