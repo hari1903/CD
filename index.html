@@ -3145,13 +3145,13 @@
                 </div>
 
                 <div class="row">
-                    <div style="width: 40% !important;padding-top: 10px;">
+                    <div style="/*width: 40% !important;*/padding-top: 10px;">
                         {{compareCarsObj.Model1.name}}
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
 
                     </div>
-                    <div style="width: 40% !important;padding-top: 10px;">
+                    <div style="/*width: 40% !important;*/padding-top: 10px;">
                         {{compareCarsObj.Model2.name}}
                     </div>
                 </div>
@@ -3166,7 +3166,7 @@
                 <h1>Compare Cars</h1>
             </div>
             <div class="row" style="padding-top: 50px;">
-                <div style="width: 45% !important; text-align: center">
+                <div style="width: 45% !important; text-align: center;">
                     <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}"
                          alt="images/ic_error.png"></div>
                 <div class="col">
@@ -3187,11 +3187,12 @@
             </div>
 
             <div class="row">
-                <div class="word-wrap: break-word;">
+                <div class="word-wrap: break-word;"style="
+    padding-left: 80px;">
                     <span>{{ compareDataObj.data.variantname.second}} </span>
 
                 </div>
-                <div style="width: 45% !important;text-align: center">
+                <div style="width: 45% !important;text-align: center;padding-left:250px;">
                     <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}"
                          alt="images/ic_error.png">
                 </div>
@@ -3266,7 +3267,8 @@
                 </div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
                     <div class="row ng-hide"
-                         ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second">
+                         ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second"style="
+    padding-top: 50px;">
                         <div class="col">
                             <img ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
@@ -3283,7 +3285,7 @@
                     <h1 class="title">Colors</h1>
                 </div>
 
-                <div class="row">
+                <div class="row"style="padding-top: 50px;">
                     <div class="col">
                         <img ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png"
                              style="height: 75px !important; width: 40px !important;"></div>
@@ -3339,7 +3341,7 @@
                     <h1 class="title">Explore</h1>
                 </div>
 
-                <div class="row">
+                <div class="row"style="padding-top: 20px;">
                     <div class="col">
                         <div>
                             <span>{{ compareDataObj.data.variantname.first}}</span>
