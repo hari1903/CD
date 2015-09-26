@@ -3622,21 +3622,21 @@
 </script>
 <script id="templates/user-review.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader bar-light">
-            <div class="row">
-                <div class="col-50" ng-class="reviewType == 'mostHelpful' ? 'tabBackGroundAndFontColor' : '' "
+        <div class="bar bar-subheader subHeaderProp">
+            <div class="row rowProp">
+                <div class="col-50 colProp" ng-class="reviewType == 'mostHelpful' ? 'subHeaderColActive' : 'subHeaderRow' "
                      ng-click="fn_changeType('mostHelpful')">
-                    <span ng-class="reviewType == 'mostHelpful' ? 'fontColor' : '' "> MOST HELPFUL</span>
+                    <span ng-class="reviewType == 'mostHelpful' ? 'subHeaderActive' : '' "> MOST HELPFUL</span>
                 </div>
-                <div class="col-50" ng-class="reviewType == 'mostHelpful' ? '' : 'tabBackGroundAndFontColor'  "
+                <div class="col-50 colProp" ng-class="reviewType == 'mostHelpful' ? 'subHeaderRow' : 'subHeaderColActive'  "
                      ng-click="fn_changeType('recentReview')">
-                    <span ng-class="reviewType == 'mostHelpful' ? '' : 'fontColor'  "> RECENT REVIEWS</span>
+                    <span ng-class="reviewType == 'mostHelpful' ? '' : 'subHeaderActive'  "> RECENT REVIEWS</span>
                 </div>
             </div>
-            <div>
-                <span>{{modelDetailObject.model }} Reviews </span>
-
-                <div class="row"><span>Overall Rating:</span>
+            <div class="reviewHeaderProp">
+                <span> &nbsp; {{modelDetailObject.model }}  Reviews </span>
+                <div class="row">
+                    <span>Overall Rating: &nbsp;&nbsp;</span>
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
@@ -3646,10 +3646,10 @@
                 </div>
             </div>
         </div>
-        <ion-content class="topPadding">
+        <ion-content class="topPaddingUserView">
             <div ng-show="reviewType != 'mostHelpful' ">
                 <div ng-repeat="reviewDataObj in reviewData[0].data.data.review">
-                    <div class="list card" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                    <div class="list listHeightReview" ng-click="fn_getDetailedUserReview(reviewDataObj)">
                         <div class="item ">
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
@@ -3695,9 +3695,7 @@
             </div>
 
         </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
-        </div>
+
     </ion-view>
 </script>
 <script id="templates/user-review-detail.html" type="text/ng-template">

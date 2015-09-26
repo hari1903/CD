@@ -1,13 +1,50 @@
+.subHeaderProp{
+    height: 89px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.rowProp {
+    padding-bottom: 4px !important;
+    height: 39px !important;
+    padding-top: 0px !important;
+
+}
+
+.subHeaderRow {
+    border-bottom: 1px !important;
+    border-style: solid !important;
+    border-color: #f05a28 !important;
+}
+.subHeaderColActive  {
+    border-bottom: 5px !important;
+    margin-bottom: -4px !important;
+    border-style: solid !important;
+    border-color: #f05a28 !important;
+}
+.subHeaderActive {
+    color: #f05a28 !important;
+}
+.reviewHeaderProp {
+    background-color: #C2B9B9 !important;
+    padding-left: 15px !important;
+}
+.listHeightReview {
+    height: 40px !important;
+}
+
 .wordwrap {
     white-space: pre-wrap;      /* CSS3 */
     white-space: -moz-pre-wrap; /* Firefox */
     white-space: -o-pre-wrap;   /* Opera 7 */
     word-wrap: break-word;      /* IE */
 }
+.topPaddingUserView{
+    padding-top: 90px !important;
+}
 
-.col-50{
+.colProp{
 	font-family: 'Roboto-Medium';
-  font-style: normal;
+    font-style: normal;
 	font-size: 12px;
 	color: #262626;
 	width:143px;
