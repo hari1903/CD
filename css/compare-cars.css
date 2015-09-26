@@ -7,7 +7,6 @@ div.background
     height: 23px;
 }
 
-
 div.transbox p
 {
     margin: 5px !important;
@@ -41,12 +40,9 @@ div.transbox p
 }
 
 .popularCompareProp {
-<<<<<<< HEAD
     height: 100px !important;
 }
-=======
-  height: 60px !important;
-}
+
 .row-style{
 font-family:"Arial";
 font-size:10px;
