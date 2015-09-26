@@ -7,7 +7,6 @@ div.background
     height: 23px;
 }
 
-
 div.transbox p
 {
     margin: 5px !important;
@@ -41,8 +40,9 @@ div.transbox p
 }
 
 .popularCompareProp {
-  height: 60px !important;
+    height: 100px !important;
 }
+
 .row-style{
 font-family:"Arial";
 font-size:10px;
@@ -66,9 +66,8 @@ color:#272727;
   overflow: hidden;
   text-overflow: ellipsis; 
 }
-.row {   
-  padding: 0px; 
-}
+
+
 body, .ionic-body {
   font-size: 17px;
   font-family: "Roboto Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
@@ -118,3 +117,4 @@ element.style {
 }
 .bar.bar-positive {
     border-color:rgb(240,90,40)!important;
+}

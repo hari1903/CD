@@ -5,3 +5,39 @@
 .nc_lc_alignCenter{
     text-align: center !important;
 }
+
+.bar-subheader {
+    top: 44px;
+    display: block;
+    height: 44px;
+    background-color: #f05a28;
+    font-size: 15px;
+    font-family: 'Roboto-Bold';
+    color: #fff;
+    text-align: center;
+    padding: 0;
+}
+
+.has-subheader {
+    top: 89px;
+}
+
+.item h2{
+	font-size: 15px;
+    font-family: 'Roboto-Bold';
+    color: #0E0E0E;
+}
+
+.item h3{
+	font-size: 13px;
+    font-family: 'Roboto-Bold';
+    color: #f05a28;
+}
+
+.list:last-child.card {
+    margin-bottom: 0px;
+}
+
+.card, .list-inset{
+	    margin: 0px 0px;
+}
