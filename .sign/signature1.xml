@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>NGkDsTYKc6bFoLNo94OwZ1VfUKHkETN7re9vcF/EqFE=</DigestValue>
+<DigestValue>2mjUjny7b+1/2DO/JGjOT/KfK+vqrYdEA4ZMiPZ4W80=</DigestValue>
 </Reference>
 <Reference URI="autodetail">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -89,10 +89,6 @@
 <Reference URI="css%2Fnc-model-details.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>hTmoaub3c69L3P5ZobyLDmxNacrYWIGUh616cB23YYQ=</DigestValue>
-</Reference>
-<Reference URI="css%2Fnc-offers-and-discounts.css">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sV/c+shfivDiA4O3ChkXpjfAnDvmtP7se9xdcE/3kFc=</DigestValue>
 </Reference>
 <Reference URI="css%2Fnc-popular-cars.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5136,7 +5132,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ue3lDzbOCMN4OoGEotSHCom3U4RRMreqZRtZcecykRg=</DigestValue>
+<DigestValue>SBgqfK8IH/67977ZJxIELtQZv7erjofeAtK7iRTPRyk=</DigestValue>
 </Reference>
 <Reference URI="js%2Fangular-css-injector.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5156,7 +5152,7 @@
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>qHnI6WTY0v8dequ5+3vT+NE745RUeQpA57F18d5QbNI=</DigestValue>
+<DigestValue>oiKri5fFLjcVRl+Rb1lq2JNKqzfVbwORtHaySJfsO+E=</DigestValue>
 </Reference>
 <Reference URI="js%2Frange_selector.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5175,9 +5171,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-S/5CfjmThYxaRkfj2K+uvUk2bKBriGo+qUnYkwFTr3l1+PrVR6fT8or2VYYQOshUApxEeB3BVxps
-tFsnn2btSkMjhdKjlXdibVrUg5dTDKbRgVJUPlDINNBk+AGkmNHub9f9CmTDIn5uOF5UFoV6p5fj
-pCNCUaJAqbBqordyrO8=
+LbAliy0VslJEdkgjsqgnmvW0cMB5pKJYDcJQg/CHxed0VMqD3PYJArVk7Wy3UZA3gS7XBsLloNxd
+ZndBPkMwTLs7cY5Y9IOYIZ22Oj8JqukYeB5ZGaJ1EM5ZA5QntDZaC2zkdQtyQ0N5Drbm/W7Fmhxe
+rLz2TuA+z4tzuikz5bI=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

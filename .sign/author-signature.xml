@@ -86,10 +86,6 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>hTmoaub3c69L3P5ZobyLDmxNacrYWIGUh616cB23YYQ=</DigestValue>
 </Reference>
-<Reference URI="css%2Fnc-offers-and-discounts.css">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sV/c+shfivDiA4O3ChkXpjfAnDvmtP7se9xdcE/3kFc=</DigestValue>
-</Reference>
 <Reference URI="css%2Fnc-popular-cars.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>5LM5P3bHuL4dr+MaWlojt0REVayiUBa5jPhCkcEv3Cs=</DigestValue>
@@ -5132,7 +5128,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ue3lDzbOCMN4OoGEotSHCom3U4RRMreqZRtZcecykRg=</DigestValue>
+<DigestValue>SBgqfK8IH/67977ZJxIELtQZv7erjofeAtK7iRTPRyk=</DigestValue>
 </Reference>
 <Reference URI="js%2Fangular-css-injector.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5152,7 +5148,7 @@
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>qHnI6WTY0v8dequ5+3vT+NE745RUeQpA57F18d5QbNI=</DigestValue>
+<DigestValue>oiKri5fFLjcVRl+Rb1lq2JNKqzfVbwORtHaySJfsO+E=</DigestValue>
 </Reference>
 <Reference URI="js%2Frange_selector.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5171,9 +5167,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-To4TbUh3WL/P0x5eJCFqEVGOFsOb6LKfOJN+EC/cA9jKNg7UOj6wlJE2MZ62EmtrQEnqmmG+hH6Y
-EufdiuxvbCA/+wadQMopPJMD7Rb571RY/tFin+Kpg26qf6pckNO4fEWBYsbbn5Uru9nB+G5q4tnY
-8fBZlvjQA7t2dIUPbEs=
+GzU0qXk3ynA4tMe4XrLTpQJn5Ydtxe/ZlwJLv8Neobaz4cGzk0VDFB31QQK4mjfps7tiK6oYHoOK
+naEG/SyaIkJ/IC4gNgOfeZ/zkeaRKEQcylmEZ47qGnlI8E+b9ikCdgQRFR6KmAWdZtZTo6dLVCvr
+hvDg2bmpD0+s+eIYNJI=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

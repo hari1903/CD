@@ -1,6 +1,9 @@
 #delete
+res/wgt/SampleIonic.wgt
+res/wgt/css/nc-offers-and-discounts.css
 #add
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/css/nc-search-cars.css
+res/wgt/index.html
+res/wgt/js/main.js
