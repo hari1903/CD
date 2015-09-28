@@ -3346,7 +3346,6 @@ angular
         'cssInjector',
         function ($scope, sharedProperties, $state, cssInjector) {
             console.log("in nc_offersAndDiscounts");
-            cssInjector.add("css/nc-offers-and-discounts.css");
             $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
 
 
