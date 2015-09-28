@@ -61,6 +61,11 @@ ion-content.has-subheader.scroll-content div.row{
 	color: #1A1A1A !important;
 }
 
+.row9{
+	height: 200px !important;
+	max-width:450px !important;	
+	margin-top:5px !important;
+}
 ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     display: inline-block !important;
     margin: 0;
@@ -170,4 +175,4 @@ ion-footer-bar .col-25.active{
 	border-top: 5px solid #DF5426;
 	margin-top: -5px;
 	color: #DF5426;
-}
+	}

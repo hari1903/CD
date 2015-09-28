@@ -1,0 +1,12 @@
+.subHeaderAndFooter {
+    background-color: #f05a28 !important;
+    height: 34px !important;
+}
+
+.subHeaderAndFooter h1 {
+    color: #ffffff !important;
+    text-align: left !important;
+    font-family: 'Roboto-Medium', 'sans-serif';
+    font-size: 14px !important;
+    padding-top: 3px !important;
+}

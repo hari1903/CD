@@ -1,9 +1,10 @@
 .nc_uc_header_prop{
-    height: 85px !important;
+    
+    padding:0;
 }
 
 .nc_uc_header_info {
-    border-bottom-width: 2px;
+    border-bottom-width: 0px;
     border-bottom-color: #F05A28 !important;
     border-style: outset !important;
     padding-left: 0px !important;
@@ -25,22 +26,29 @@
  ion-header-bar div.row.nc_uc_header_info:first-child{
  	text-align:center;
  	background:#DF5426;
- 	font-size: 200%;
+ 	font-size: 15px !important;
  	font-weight: bold;
  	color: #fff;
- 	padding: 15px;
+ 	padding: 5;
+ 	font-family:'Roboto-Bold' !important;
+ 	line-height:5.68px !important;
+ 	height:33px;
  }
   ion-header-bar div.row.nc_uc_header_info:nth-child(2) div.col{
   	background: #f5f5f5;
   	padding: 10px 30px;
-  	font-size: 150%;
+  	font-size: 14px !important;
+  	font-family:'Roboto-Medium' !important;
+  	color:#393939;
+  	height:37px;
+  	width: 326px;
   }
 
   ion-content div.scroll div.list{
-  	border-bottom: 2px solid #ccc;
+  	border-bottom: 2px solid #ccc !important;
   }
   ion-content div.scroll div.list:first-child{
-  	padding-top: 20px;
+  	padding-top: 10px;
   }
   ion-content div.scroll div.list img{
   	max-width: 100px;
@@ -51,18 +59,23 @@
    }
    ion-content div.scroll div.list div.item.item-thumbnail-left{
    		min-height: 90px;
+   		padding-top: 15px !important;
    }
   ion-content div.scroll div.list h2 {
-  	font: 15px "roboto bold" bold;
+  	font-family:'Roboto-Bold' !important;
+  	font-size:15px !important;
   	color: #0E0E0E;
   }
   ion-content div.scroll div.list h3{
   	color: #9D9D9D;
-  	font: 11px "Roboto Regular" normal;
+  	font-family:'Roboto-Regular' !important;
+  	font-size:11px !important;
   }
    ion-content div.scroll div.list h3 span{
-   	font-size: 13px;
-   	color: #F05A28;
+   	font-family:'Roboto-Bold' !important;
+  	font-size:13px !important;
+  	color: #F05A28;
+  	line-height:5.68px;
    }
 
    ion-footer-bar.bar.bar-assertive.bar-footer{
