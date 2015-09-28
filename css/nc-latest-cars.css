@@ -40,13 +40,19 @@ ion-content div.scroll div.list{
   	font-size:15px !important;
   	color: #0E0E0E;
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> upstream/master
   ion-content div.scroll div.list h3{
   	font-family:'Roboto-Bold' !important;
   	font-size:13px !important;
   	color: #F05A28;
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> upstream/master
    ion-content div.scroll div.list h3 span{
    	font-size: 13px;
    	color: #F05A28;
@@ -63,13 +69,19 @@ ion-footer-bar.bar.bar-assertive.bar-footer{
 	margin: 0 auto;
 	bottom: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 ion-footer-bar.bar.bar-assertive.bar-footer div.row{
 	padding-bottom:10px;
 	border-bottom: 2px solid #ccc;
 	height: 50px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 ion-footer-bar .col-25{
 	border-top: 1px solid #DF5426;
 	border-style: inset;

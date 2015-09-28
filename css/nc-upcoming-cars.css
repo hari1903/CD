@@ -41,7 +41,10 @@
   	font-family:'Roboto-Medium' !important;
   	color:#393939;
   	height:37px;
+<<<<<<< HEAD
   	width: 326px;
+=======
+>>>>>>> upstream/master
   }
 
   ion-content div.scroll div.list{
