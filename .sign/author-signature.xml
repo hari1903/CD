@@ -62,10 +62,6 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>PqarHrwM+dhRaLu2dB8PRjixODQ5CXSK7ecyBRq+lgU=</DigestValue>
 </Reference>
-<Reference URI="css%2Findex.html">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>fOC29lisyOHZelCqqZjLXIf5GGAc+Mt0ieKfVDg5t8k=</DigestValue>
-</Reference>
 <Reference URI="css%2Fion.rangeSlider.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>+z6FV25mLSuK/hbQDZ3hkzAxhejkHpnS7nSRmYUsTQ8=</DigestValue>
@@ -100,7 +96,7 @@
 </Reference>
 <Reference URI="css%2Fnc-search-cars.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>dmbzAdZu84aTCxtzLzhn1w82vbhEXHu5rdJ5MVIJCB0=</DigestValue>
+<DigestValue>Eol0BWy/FKOY4HAhqpyHwI2aHSSJ5z8gymIb/haW3NQ=</DigestValue>
 </Reference>
 <Reference URI="css%2Fnc-upcoming-cars.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5136,7 +5132,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>r0V6gSHdCDGB3lXmN6Fxjz+TCuk7d8HUFjZctlCZWkU=</DigestValue>
+<DigestValue>Ue3lDzbOCMN4OoGEotSHCom3U4RRMreqZRtZcecykRg=</DigestValue>
 </Reference>
 <Reference URI="js%2Fangular-css-injector.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -5175,9 +5171,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-ViLBKBPlgDfWRouPbtBxQfU6Ssib8tDwveBlBVUXsh4Mb01OWXVBwVbTIbXw25VyWkwu6QgBWWq8
-+weETrwSICkj+/uD6Ebr7wV9c8yEkxc0H2+dPiSRejhB8h9tdOL3cODV/pt+p1jwAu9TpWNuDWbi
-cIMCCwNBxjU6CT4yLbM=
+To4TbUh3WL/P0x5eJCFqEVGOFsOb6LKfOJN+EC/cA9jKNg7UOj6wlJE2MZ62EmtrQEnqmmG+hH6Y
+EufdiuxvbCA/+wadQMopPJMD7Rb571RY/tFin+Kpg26qf6pckNO4fEWBYsbbn5Uru9nB+G5q4tnY
+8fBZlvjQA7t2dIUPbEs=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

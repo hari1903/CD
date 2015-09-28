@@ -1,71 +1,73 @@
 
 ng-nc-search-car-header ion-header-bar div{
-	font: 13px "Roboto Bold" !important;
-	background-color: #f5f5f5;
-	padding-bottom:10px!important;
+ font: 13px "Roboto Bold" !important;
+ background-color: #f5f5f5;
+ padding-bottom:10px!important;
 }
 ion-content.has-subheader.scroll-content div.row{
-	max-width:99%;	
-	margin-top:15px;
+ max-width:99%; 
+ margin-top:15px;
 }
 
 .row1{
-	margin-top:15px;
-	font-family:'Roboto-Regular';
-	font-size: 17px;
-	text-align: center;
-	color: #484848;
+ margin-top:15px;
+ font-family:'Roboto-Regular';
+ font-size: 17px;
+ text-align: center;
+ color: #484848;
 }
 .row2{
-	font-family:'Roboto-Regular';
-	font-size: 13px;
-	text-align: center;
-	color: #C9C9C9;
+ font-family:'Roboto-Regular';
+ font-size: 13px;
+ text-align: center;
+ color: #C9C9C9;
 }
 
 .row3{
-	font-family:'Roboto-Regular';
-	font-size: 17px;
-	text-align: center;
-	color: #1A1A1A;
+ font-family:'Roboto-Regular';
+ font-size: 17px;
+ text-align: center;
+ color: #1A1A1A;
 }
 .row4{
-	font-family:'Roboto-Black';
-	font-size: 18px;
-	text-align: center;
-	color: #F05A27;
+ font-family:'Roboto-Black';
+ font-size: 18px;
+ text-align: center;
+ color: #F05A27;
 }
 .row5{
-	font-family:'Roboto-Bold' !important;
-	font-size: 15px !important;
-	text-align: center !important;
-	background-color: #F05A27 !important;
+ font-family:'Roboto-Bold' !important;
+ font-size: 15px !important;
+ text-align: center !important;
+ background-color: #F05A27 !important;
 }
 
 .row6{
-	font-family:'Roboto-Bold' !important;
-	font-size: 15px !important;
-	text-align: center !important;
-	color: #ffffff !important;
+ font-family:'Roboto-Bold' !important;
+ font-size: 15px !important;
+ text-align: center !important;
+ color: #ffffff !important;
 }
 .row7{
-	font-family:'Roboto-Bold' !important;
-	font-size: 15px !important;
-	text-align: center !important;
-	background-color: #f7f7f7 !important;
+ font-family:'Roboto-Bold' !important;
+ font-size: 15px !important;
+ text-align: center !important;
+ background-color: #f7f7f7 !important;
 }
 .row8{
-	font-family:'Roboto-Bold' !important;
-	font-size: 15px !important;
-	text-align: center !important;
-	color: #1A1A1A !important;
+ font-family:'Roboto-Bold' !important;
+ font-size: 15px !important;
+ text-align: center !important;
+ color: #1A1A1A !important;
 }
 
 .row9{
-	height: 200px !important;
-	max-width:450px !important;	
-	margin-top:5px !important;
-	padding: 0px 0px;
+ font-family:'Roboto-Regular' !important;
+ font-size: 12px !important;
+ color: #7B7B7B !important;
+ height: 34px !important;
+ max-width:99%; 
+ margin-top:5px;
 }
 ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     display: inline-block !important;
@@ -85,12 +87,12 @@ ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
 }
 
 ng-nc-search-car-header ion-header-bar div div.active{
-	margin-left:0;
-	border: none;
-	background-color: #F88017;
-	color: #fff;
-	font-family:'Roboto-Bold' !important;
-	font-size:13px !important;
+ margin-left:0;
+ border: none;
+ background-color: #F88017;
+ color: #fff;
+ font-family:'Roboto-Bold' !important;
+ font-size:13px !important;
 
 }
 .nc_sc_alignRight {
@@ -119,61 +121,62 @@ ng-nc-search-car-header ion-header-bar div div.active{
     width:103px;
 }
 ng-price-range div.list, div.ng-binding {
-	margin-left: 30px;
-	font-family:'Roboto-Regular';
-	font-size:12px;
-	color:#7B7B7B;
+ margin-left: 30px;
+ font-family:'Roboto-Regular';
+ font-size:12px;
+ color:#7B7B7B;
 }
 ng-price-range div.item{ margin-left: 10px; padding:0;}
 ng-price-range div.item div.item-content{ margin: 0; padding:0;}
 ng-price-range div.item div.item-content div.row{
-	border-bottom: 3px solid #f5f5f5;
-	margin:0;
-	padding:0;
+ border-bottom: 3px solid #f5f5f5;
+ margin:0;
+ padding:0;
 }
 div.bar.bar-light{
-	margin-top: 80px;
-	padding: 10px;
-	border: none;
-	background:none;
+ margin-top: 80px;
+ padding: 10px;
+ border: none;
+ background:none;
 }
 div.bar.bar-light h1.title{
-	background:#DF5426;
-	display:inline-block;
-	width: 70%;
-	margin: 0 auto;
-	border-radius: 5px;
-	font-weight: bold;
-	color: #fff;
-	font-family:'Roboto-Bold';
-	font-size:15px;
-	color:#FFFFFF;
-	font-weight:700;
+ background:#DF5426;
+ display:inline-block;
+ width: 70%;
+ margin: 0 auto;
+ border-radius: 5px;
+ font-weight: bold;
+ color: #fff;
+ font-family:'Roboto-Bold';
+ font-size:15px;
+ color:#FFFFFF;
+ font-weight:700;
 }
 ion-footer-bar.bar.bar-assertive.bar-footer{
-	border:none;
-	background: #f5f5f5;
-	background-image: none!important;
-	text-transform: uppercase;
-	max-width: 95%;
-	margin: 0 auto;
-	bottom: 20px;
+ border:none;
+ background: #f5f5f5;
+ background-image: none!important;
+ text-transform: uppercase;
+ max-width: 95%;
+ margin: 0 auto;
+ bottom: 20px;
 }
 ion-footer-bar.bar.bar-assertive.bar-footer div.row{
-	padding-bottom:10px;
-	border-bottom: 2px solid #ccc;
-	height: 50px;
+ padding-bottom:10px;
+ border-bottom: 2px solid #ccc;
+ height: 50px;
 }
 ion-footer-bar .col-25{
-	border-top: 1px solid #DF5426;
-	border-style: inset;
-	color: #000;
-	font-weight: bold;
-	text-align: center;
-	padding-top: 10px;
+ border-top: 1px solid #DF5426;
+ border-style: inset;
+ color: #000;
+ font-weight: bold;
+ text-align: center;
+ padding-top: 10px;
 }
-ion-footer-bar .col-25.active{
-	border-top: 5px solid #DF5426;
-	margin-top: -5px;
-	color: #DF5426;
-	}
+ion-footer-bar .col-25.activated{
+ border-top: 5px solid #DF5426;
+ margin-top: -5px;
+ color: #DF5426;
+ background : url(images/bg_selected.png) repeat !important; 
+}
