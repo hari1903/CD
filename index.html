@@ -269,7 +269,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    style="transform-origin: 50% 50% 0px; transform: translate3d(100px, 200px, 0px); -moz-user-select: none;"
-   viewBox="0 0 675 675"
+   viewBox="-100 -200 675 775"
    id="menu"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -3064,25 +3064,21 @@
         </div>
     </ion-header-bar>
     <ion-content>
-        <div class="row" ng-click="fn_modelSelect('first')">
+        <div class="row"  style="margin-top:10px" ng-click="fn_modelSelect('first')">
             <div class="select-car1">
-			<img ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png">
-                
+			   <img ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png">                
             </div>
 			<div class="selectCar-align">
-			{{ compDataObj.varientDetailObj.first.displayVariantId }}
+			   {{ compDataObj.varientDetailObj.first.displayVariantId }}
 			</div>
         </div>
-        <div class="row ">
-            
+        <div class="row ">            
             <div class="versus-bar" >
 			   <span style="line-height:10px;">
                 <img  ng-src="{{vsImage}}">
 			   </span>
-            </div>
-           
+            </div>           
         </div>
-
         <div class="row select-car1" ng-click="fn_modelSelect('second')">
             <div class="selectCar-align">
                 {{ compDataObj.varientDetailObj.second.displayVariantId }}
@@ -3108,17 +3104,17 @@
         <div ng-repeat=" compareCarsObj in popularCarsWithStatus.data">
             <div ng-click="comparePopularModel(compareCarsObj)">
                 <div class="row" class="popularCompareProp">
-                    <div style="width: 48% !important;float:right !important; padding-top: 10px;">
+                    <div style="width: 48% !important;float:right !important; padding-top:0px;">
                         <span class="compareCars-leftRow">
 						    <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
 						</span>
                     </div>
-                    <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
+                    <div class="col" style="padding-left: 1px!important;width:5%;padding-bottom:5px;padding-right: 7px!important;">
                         <span style="align:center;"class="compareCars-vs">
 						    <img ng-src="{{vsImage}}">
 						</span>
                     </div>
-					<div style="width: 45% !important;float:right !important; padding-top: 10px;">
+					<div style="width: 47% !important;float:right !important; padding-top:0px;padding-bottom:5px;">
                         <span class="compareCars-rightRow">
 						     <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
 					    </span>
@@ -3126,18 +3122,15 @@
                 </div>
 
                 <div class="row row-overflow">
-                    <div style="width: 48% !important;padding-left:25%;padding-top: 10px;padding-right:10%">
-                        <span style="float:left;font-size:10px;color:#272727;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
+                    <div style="width: 48% !important;margin-top:5px;padding-left:15%;padding-top:1px;padding-right:10%">
+                        <span style="float:left;font-size:10px;color:#272727;overflow:hidden!important;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
                     </div>
-                    <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
-
-                    </div>
-                    <div style="width: 48% !important;padding-left:10%;padding-top: 10px;">
-                        <span  style="font-size:10px;color:#272727;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
+                    <div style="width: 48% !important;margin-top:5px;padding-left:10%; overflow:hidden!important;padding-top:1px;padding-right:10%">
+                        <span  style="font-size:10px;color:#272727;float:left;padding-right:10%!important;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
                     </div>
                 </div>
             </div>
-        </div>
+		</div>	
     </ion-content>
 </script>
 <script id="templates/show-compare.html" type="text/ng-template">

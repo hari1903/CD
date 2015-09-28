@@ -62,9 +62,8 @@ color:#272727;
   padding-left:4%;
 }
 .row-overflow{
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
+  overflow: hidden!important;
+  
 }
 .row {   
   padding: 0px; 
@@ -80,7 +79,7 @@ body, .ionic-body {
 }
 .select-car1{
   height: 61px;
-  margin-left: 32%;
+  margin-left: 26%;
 }
 .compareCars-bar{
   background-color:#FO5A28;
