@@ -7315,7 +7315,9 @@ a.button {
   -webkit-tap-highlight-color: transparent;
   -webkit-user-drag: none;
   -ms-touch-action: none;
-  -ms-content-zooming: none; }
+  -ms-content-zooming: none;
+ 
+   }
 
 .click-block {
   position: absolute;

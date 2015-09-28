@@ -3,4 +3,5 @@
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/index.html
+res/wgt/css/nc-offers-and-discounts.css
+res/wgt/js/main.js
