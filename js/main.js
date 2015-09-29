@@ -3738,7 +3738,7 @@ angular
         '$sce',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
             console.log("in userReviewDetailCtrl");
-            cssInjector.add("css/nc-popular-cars.css");
+            cssInjector.add("css/user-review-detail.css");
 
             $scope.expertReviewId = $stateParams.reviewId;
             $scope.modelName = sharedProperties.getModel();
