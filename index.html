@@ -1593,40 +1593,40 @@
     <ng-nc-search-car-header></ng-nc-search-car-header>
     <ion-content>
         <div>
-            <div class="row">
+            <div class="row1">
                 <img ng-src=" {{ncBrandDetails.ncBrandDetailsObj.data.oemImageUrl}}">
             </div>
-            <div class="row">
+            <div class="row1">
                 <span>{{ncBrandDetails.ncBrandDetailsObj.data.oemName}}</span>
             </div>
-            <div class="row" ng-click="fn_ncSearchCar()">
+            <div class="row2" ng-click="fn_ncSearchCar()">
                 <span>tap to choose another brand</span>
             </div>
-            <div class="bar bar-calm">
-                <h1 class="title">Model</h1>
+            <div class="row7 bar">
+                <h1 class="row8 title">Model</h1>
             </div>
         </div>
 
         <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
                        style="height: 80% !important;">
             <ion-slide ng-repeat="ncBrandDetail in ncBrandDetails.ncBrandDetailsObj.data.modelList">
-                <div class="list card cvCardProp" style="height: 70% !important;"
+                <div class="row1 list card cvCardProp" style="height: 70% !important;"
                      ng-click="fn_ncBrandDetail(ncBrandDetail)">
-                    <div class="item item-thumbnail cvitemPadding">
+                    <div class="row1 item item-thumbnail cvitemPadding">
                         <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}">
                     </div>
                     <div class="item item-body cvItemBodyProp">
-                        <div id="ccvBrand">
+                        <div class="row3" id="ccvBrand">
                             <span>{{ncBrandDetail.displayCarModelName}}</span>
                         </div>
-                        <div id="c1cvBrand">
+                        <div class="row4" id="c1cvBrand">
                             <span>RS. {{ncBrandDetail.minexshowroomprice | formatPrice}} - {{ncBrandDetail.maxexshowroomprice | formatPrice}} Lac</span>
                         </div>
 
                     </div>
 
-                    <div class="bar bar-calm">
-                        <h1 class="title">View Details</h1>
+                    <div class="row5 bar">
+                        <h1 class="row6 title">View Details</h1>
                     </div>
                 </div>
             </ion-slide>
@@ -1962,7 +1962,7 @@
 
                     <h2 class="">{{upcomingCar.carModelName}}</h2>
 		    <h3 class="">Estimated Price: <span class="">Rs.{{upcomingCar.expectedExShowRoomPrice | formatPrice  }} Lac</span></h3>
-                    <img src="images/upcoming_bell.png">
+                    <img src="images/Icons/xhdpi/upcoming_bell.png">
                 </div>
             </div>
             </div>
@@ -2045,7 +2045,7 @@
 <script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-header-bar class="bar bar-subheader">
-            <h1>Get Offers and Discounts</h1>
+            <h1>Offers and Discounts</h1>
         </ion-header-bar>
         <ion-content>
             <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
@@ -2063,50 +2063,58 @@
                 <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
                 &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
             </a>
-            <button class="button button-clear button-full button-positive "
+            <button class="bar-subheader1 disable-user-behavior"
                     style="margin-top: 0px;" ng-click="fn_getOffers()">
-                SEARCH
+                Search
             </button>
 
-            <div>
+            <div class="bar-subheader2 disable-user-behavior">
                 Find Offers by Brand
             </div>
-            <div ng-repeat="oem in oemObj.data.carOemList">
-                <div>
-                    <img ng-src={{oem.image_url}}>
+
+		<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+        	<ng-nc-car-brand>
+    			<div ng-repeat="oem in oemObj.data.carOemList">
+                	<img ng-src={{oem.image_url}}>
                     <span>{{oem.oemname}}</span>
-                </div>
+               	</div>
+			</ng-nc-car-brand>
+		</div>
 
-            </div>
-
-            <div>
-                Latest Discount Offers
+            <div class="bar-subheader3">
+               *Offers available on selected variants
             </div>
             <div>
             <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
-                <div>
-                    <span>{{offObj.carModelVersion}}</span>
+                <div class="brand-title">
+                    <span class="brand-title">{{offObj.carModelVersion}}</span>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col1">
                         <img ng-src="images/offer_petrol.png">
                     </div>
-                    <div class="col">
+                    <div class="col2">
                         <span>{{offObj.fueltype}}</span>
                     </div>
-                    <div class="col">
+                    <div class="col1">
                         <img ng-src="images/on_road_price_new.png">
                     </div>
-                    <div class="col">
+                    <div class="col2">
                         <span>{{offObj.exShowRoomPrice}}</span>
                     </div>
                 </div>
-                <div>
+                <div class="brand-description">
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
-                <div>
-                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
-                </div>
+				
+				<div class="rrow">
+                	<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
             </div>
             </div>
         </ion-content>
@@ -2119,33 +2127,38 @@
         </ion-header-bar>
         <ion-content>
             <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
-                <div>
+                <div class="brand-title">
                     <span>{{offObj.carModelVersion}}</span>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col1">
                         <img ng-src="images/offer_petrol.png">
                     </div>
-                    <div class="col">
+                    <div class="col2">
                         <span>{{offObj.fueltype}}</span>
                     </div>
-                    <div class="col">
+                    <div class="col1">
                         <img ng-src="images/on_road_price_new.png">
                     </div>
-                    <div class="col">
+                    <div class="col2">
                         <span>{{offObj.exShowRoomPrice}}</span>
                     </div>
                 </div>
-                <div>
+                <div class="brand-description">
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
-                <div>
-                    <img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
-                </div>
+                <div class="rrow">
+					<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
             </div>
         </ion-content>
         <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
-            <span class="text-center"> View More Offers </span>
+            <span class="bar-subheader1"> View More Offers </span>
         </div>
     </ion-view>
 </script>
