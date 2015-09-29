@@ -1,0 +1,132 @@
+.nc_lc_header_info{
+
+}
+
+.nc_lc_alignCenter{
+    text-align: left !important;
+}
+
+.bar-subheader {
+    top: 44px;
+    display: block;
+    height: 44px;
+    background-color: #f05a28;
+    font-size: 15px;
+    font-family: 'Roboto-Bold';
+    color: #fff;
+    text-align: center;
+    padding: 0;
+}
+
+h1 {
+    font-size: 14px !important;
+    font-family: 'Arial' !important;
+    color: #FCFCFC !important;
+    text-align: left;
+    padding-top: 15px !important;
+    padding-left: 5px !important;
+}
+
+.item-icon-left .icon, .item-icon-right .icon {
+    align-items: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    height: 100% !important;
+    font-size: 12px !important;
+}
+
+span {
+    font-size: 14px;
+    font-family: 'Roboto-Medium';
+    letter-spacing: +0.28px;
+    line-height: 11.96px;
+}
+
+.bar-subheader1 {
+    top: 41px;
+    padding-top: 5px;
+    display: block;
+    height: 37px;
+    background-color: #f05a28;
+    font: 18px 'Roboto-Regular';
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.bar-subheader2 {
+    margin-top: 41px;
+    padding-top:5px;
+    display: block;
+    height: 35px;
+    background-color: #f05a28;
+    font: 18px 'Roboto-Regular';
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.bar-subheader3 {
+	margin-top: 10px;
+    padding-top:5px;
+    display: block;
+    height: 28px;
+    background-color: #dfdfdf;
+    font-size: 11px;
+    font-family:  'Roboto Italic';
+    color: #797979;
+    text-align: center;
+    width: 100%;
+}
+
+.brand-title {
+	margin-top: 10px !important;
+	font-family: 'Roboto-Bold';
+	font-size: 15px !important;
+	color: #0E0E0E;
+	padding-left: 5px !important;
+}
+
+.brand-description {
+	padding-left: 5px;
+	font-family: 'Roboto-Regular';
+	font-size: 12px;
+	color: #767676;
+	
+	
+}
+
+.col1 {
+    display: block !important;
+    padding-top: 13px !important;
+    padding-left: 5px !important;
+    padding-right: 0px !important;
+    width: 15% !important;
+}
+
+.col2 {
+    display: block !important;
+    padding-top: 25px !important;
+    padding-left: 5px !important;
+    padding-right: 0px !important;
+    width: 35% !important;
+}
+
+.valid_title {
+	font-family: 'Roboto-Regular';
+	font-size: 11px;
+	color: #797979;
+}
+
+.valid_date {
+	font-family: 'Roboto-Regular'!important;
+	font-size: 11px !important;
+	color: #262626 !important;
+}
+
+.rrow {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    background-color: #F1F1F1;
+}
