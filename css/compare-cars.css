@@ -1,18 +1,44 @@
-div.background
-{
+div.background{
     background: url("../images/compare_btn_disable.png") no-repeat ;
     background-size:100%;
 }
 .bar-subheader {
     height: 23px;
 }
-
-
-div.transbox p
-{
+div.transbox p{
     margin: 5px !important;
     color: #000000;
 }
+
+
+/*##########  styling for compare cars-comparison details ###############*/
+
+
+.bar.bar-light.compareCrs-header{
+  border-color: #ececec;
+  background-color:rgb(240,90,40); 
+  height:21px;  
+  color: #fff; 
+  font-family:"Roboto Regular";
+  font-size:10px!important;
+ }
+ .bar.bar-positive {
+   border-color:#000;
+ }
+
+/*
+.bar-light {
+  background-color:rgb(240,90,40)!important;
+  height:21px;
+  color:#FFFFFF!important;
+}
+.compareCars{
+  font-family:"Roboto Regular";
+  font-size:10px!important;
+  color:#ffffff;
+}
+ */
+
 .compare-button{
   color:#ffffff;
   font-size:11px;

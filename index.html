@@ -3136,38 +3136,36 @@
 <script id="templates/show-compare.html" type="text/ng-template">
     <ion-view>
         <ion-content>
-            <div class="bar bar-header bar-light">
-                <h1>Compare Cars</h1>
-            </div>
-            <div class="row" style="padding-top: 50px;">
-                <div style="width: 45% !important; text-align: center">
+            <div style=" border-color: #ececec;background-color:rgb(240,90,40);font-size:10px;padding-top:0px;padding-left:10px;height:20px;color: #fff;border:0px;"class="bar bar-header bar-light compareCrs-hidder">
+                Compare Cars           
+     		</div>
+            <div class="row" style="width:100%;height:60px!important;display:inline-block;padding-top:0px;">
+                <div style="width: 50% !important; padding-top:15px;text-align: center">
                     <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}"
-                         alt="images/ic_error.png"></div>
-                <div class="col">
-                    <span>{{ compareDataObj.data.variantname.first}}</span>
+                         alt="images/ic_error.png">
+				</div>
+                <div class="col" style="width:50%;border-left:5%;border-right:10%;overflow:hidden;word-wrap: break-word;">
+                    <span style="font-size:10px!important;font-family:"Roboto Regular";">{{ compareDataObj.data.variantname.first}}</span>
 
                 </div>
             </div>
             <div class="row">
-                <div style="width: 45% !important;padding-top: 10px;">
-                    <hr>
+                <div style="width: 45% !important;padding-top: 10px;">                  
                 </div>
                 <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
                     <img ng-src="{{vsImage}}">
                 </div>
-                <div style="width: 46% !important;padding-top: 10px;">
-                    <hr>
+                <div style="width: 46% !important;padding-top: 10px;">                    
                 </div>
             </div>
 
             <div class="row">
-                <div class="word-wrap: break-word;">
-                    <span>{{ compareDataObj.data.variantname.second}} </span>
+                <div style="width:50%;border-left:10%;border-right:5%;overflow:hidden;word-wrap: break-word;">
+                    <span style="font-size:10px!important;font-family:"Roboto Regular";" >{{ compareDataObj.data.variantname.second}} </span>
 
                 </div>
-                <div style="width: 45% !important;text-align: center">
-                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}"
-                         alt="images/ic_error.png">
+                <div style="width: 50% !important;text-align: center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}" alt="images/ic_error.png">
                 </div>
             </div>
             <div class="row">
