@@ -69,6 +69,7 @@ div.transbox p{
 }
 .row-style{
 font-family:"Arial";
+overflow:hidden!important;
 font-size:10px;
 color:#272727;
 }
@@ -79,18 +80,26 @@ color:#272727;
 }
 .compareCars-leftRow{
   float:right;
-  padding-right:10%;
+  padding-right:0%;
 }
 .compareCars-rightRow{
   float:left;
-  padding-left:4%;
+  padding-left:0%;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-180);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 .row-overflow{
   overflow: hidden!important;
+  padding-bottom:5px!important;
   
 }
 .row {   
   padding: 0px; 
+    
 }
 body, .ionic-body {
   font-size: 17px;
@@ -106,21 +115,22 @@ body, .ionic-body {
   margin-left: 26%;
 }
 .compareCars-bar{
-  background-color:#FO5A28;
+  background-color: rgb(240,90,40);
   margin-top:5px;
 }
 .versus-bar{
-  line-height:10px;
+  line-height:7px;
   font-size:9px; 
-  margin-top:0px;
+  margin-top:-5px;
+  margin-bottom:5px;
   font-family:"Arial italic"; 
   color:#FFFFFF; 
-  padding-left: 47%; !important
+  padding-left: 47% !important;
   }
 .selectCar-align{
   padding-top:15px;
   padding-right:10px;
-  padding-left:10xp;
+  padding-left:10px;
   vertical-align:middle;
 }
 .col {  
@@ -141,3 +151,4 @@ element.style {
 }
 .bar.bar-positive {
     border-color:rgb(240,90,40)!important;
+}

@@ -3074,7 +3074,7 @@
         </div>
         <div class="row ">            
             <div class="versus-bar" >
-			   <span style="line-height:10px;">
+			   <span style="line-height:7px;">
                 <img  ng-src="{{vsImage}}">
 			   </span>
             </div>           
@@ -3087,8 +3087,8 @@
                 <img ng-src="{{ compDataObj.varientDetailObj.second.imageUrlList }}" alt="images/ic_error.png">
             </div>
         </div>
-		<div>
-		<span style="width:100%;color:#ececec;" > <hr> </span>
+		<div >
+		<span style="width:100%;color:#ececec;height:3px;" > <hr> </span>
 		</div>
         <div class="row" style="margin-bottom:23px;margin-top:23px;" ng-click="fn_selectCompare()">
             <div class="background compare-button" >
@@ -3098,23 +3098,23 @@
             </div>
         </div>
 
-        <div class="bar-stable popular-compare">
-            <p> <span style="padding-right:10px!important;">Popular Cars Comparison</span></p>
+        <div style="padding-right:10px!important;" class="bar-stable popular-compare">
+            <p style="padding-right:10px!important;">Popular Cars Comparison</p>
         </div>
         <div ng-repeat=" compareCarsObj in popularCarsWithStatus.data">
             <div ng-click="comparePopularModel(compareCarsObj)">
                 <div class="row" class="popularCompareProp">
-                    <div style="width: 48% !important;float:right !important; padding-top:0px;">
+                    <div style="width: 48% !important;float:right !important;padding-bottom:5px;">
                         <span class="compareCars-leftRow">
 						    <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
 						</span>
                     </div>
-                    <div class="col" style="padding-left: 1px!important;width:5%;padding-bottom:5px;padding-right: 7px!important;">
-                        <span style="align:center;"class="compareCars-vs">
+                    <div class="col" style="padding-top:5px;">
+                        <span style="align:center;width:55px!important;height:5px!important;" class="compareCars-vs">
 						    <img ng-src="{{vsImage}}">
 						</span>
                     </div>
-					<div style="width: 47% !important;float:right !important; padding-top:0px;padding-bottom:5px;">
+					<div style="width: 47% !important;float:right !important;padding-bottom:5px;">
                         <span class="compareCars-rightRow">
 						     <img class="imageSize" ng-src="{{compareCarsObj.Model2.imageUrl}}">
 					    </span>
@@ -3122,11 +3122,11 @@
                 </div>
 
                 <div class="row row-overflow">
-                    <div style="width: 48% !important;margin-top:5px;padding-left:15%;padding-top:1px;padding-right:10%">
-                        <span style="float:left;font-size:10px;color:#272727;overflow:hidden!important;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
+                    <div style="width: 50% !important;margin-top:5px;padding-left:10%;text-align:center;padding-top:2px;overflow:hidden!important;padding-right:10%">
+                        <span style="font-size:10px;color:#272727;text-align:center;overflow:hidden!important;" class:"row-style">{{compareCarsObj.Model1.name}} <span>
                     </div>
-                    <div style="width: 48% !important;margin-top:5px;padding-left:10%; overflow:hidden!important;padding-top:1px;padding-right:10%">
-                        <span  style="font-size:10px;color:#272727;float:left;padding-right:10%!important;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
+                    <div style="width: 50% !important;margin-top:5px;padding-left:10%;text-align:center;overflow:hidden!important;padding-top:3px;padding-right:10%">
+                        <span  style="font-size:10px;color:#272727;text-align:center;"class:"row-style">{{compareCarsObj.Model2.name}}</span>
                     </div>
                 </div>
             </div>
@@ -3141,10 +3141,9 @@
      		</div>
             <div class="row" style="width:100%;height:60px!important;display:table;padding-top:0px;">
                 <div style="width: 50% !important; display:table-cell;padding-top:15px;text-align: center">
-                    <img class="imageContainer" 
-                         alt="images/ic_error.png">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}" ng-src="" alt="images/ic_error.png">
 				</div>
-                <div class="col" style="width:50%; display:table-cell;border-left:5%;border-right:10%;overflow:hidden;word-wrap: break-word;">
+                <div class="col" style="width:40%; display:table-cell;border-left:5%;border-right:10%;overflow:hidden;">
                     <span style="font-size:10px!important;font-family:"Roboto Regular";">{{ compareDataObj.data.variantname.first}}</span>
 
                 </div>
