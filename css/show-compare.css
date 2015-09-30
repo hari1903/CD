@@ -1,15 +1,35 @@
 .imageContainer {
-    width: 60px !important;
-    height: 30px !important;
+    width: 50% !important;
+    height: 60px !important;
+	
+}
+.comparision-car1{
+   width:50%!important;
+   display:block;
+   margin-left: auto;
+   margin-right:auto;
+   padding-left:10%;
+   padding-right:10%;
+   padding-top:10px;
+   align:middle;
+   wrd-wrap:break-word;
 }
 
-
 .imageSide {
-    max-width: 100% !important;
+    max-width: 50% !important;
     max-height: 100% !important;
 }
 
 .cardSize {
     height: 70px !important;
     width: 180px !important;
+}
+.flip-car{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-180);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+	
 }
