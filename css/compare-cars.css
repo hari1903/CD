@@ -43,6 +43,20 @@ div.transbox p
     height: 100px !important;
 }
 
+<<<<<<< HEAD
+.bar-subheader{
+	background-color: #f05a28;
+	color:#fff;
+	font-family:'Roboto-Bold' !important;
+	font-size:16px;
+}
+
+.bar.bar-light{
+	background-color: #f05a28;
+	color:#fff;
+	font-family:'Roboto-Bold' !important;
+	font-size:16px;
+=======
 .row-style{
 font-family:"Arial";
 font-size:10px;
@@ -117,4 +131,5 @@ element.style {
 }
 .bar.bar-positive {
     border-color:rgb(240,90,40)!important;
+>>>>>>> upstream/master
 }
