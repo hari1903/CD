@@ -1191,6 +1191,12 @@ angular
             templateUrl: "templates/nc-car-brand-CD.html"
         }
     })
+    .directive('ngNcCarOffer', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/nc-car-offer-CD.html"
+        }
+    })
     .directive('ngNcSearchCarHeader', function () {
         return {
             restrict: 'AEC',
