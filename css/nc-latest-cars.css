@@ -11,8 +11,7 @@ ion-header-bar.bar-subheader.nc_uc_header_prop.bar.bar-header{
  	background:#DF5426;
  	color: #fff;
  	font-weight: bold !important;
- 	font-size:15px !important;
- 	font-family:'Roboto-Bold' !important;
+ 	font-size:120%;
 }
 
 
@@ -21,7 +20,7 @@ ion-content div.scroll div.list{
   	border-bottom: 2px solid #ccc;
   }
   ion-content div.scroll div.list:first-child{
-  	padding-top: 0;
+  	padding-top: 20px;
   }
   ion-content div.scroll div.list img{
   	display:inline-block;
@@ -41,9 +40,9 @@ ion-content div.scroll div.list{
   	color: #0E0E0E;
   }
   ion-content div.scroll div.list h3{
-  	font-family:'Roboto-Bold' !important;
-  	font-size:13px !important;
-  	color: #F05A28;
+  	font-family:'Roboto-Regular' !important;
+  	font-size:11px !important;
+  	color: #9D9D9D;
   }
    ion-content div.scroll div.list h3 span{
    	font-size: 13px;
@@ -112,6 +111,3 @@ fieldset, label { margin: 0; padding: 0;}
 
 .rating > input:checked ~ label { color: #DF5426;  }
 
-.has-subheader {
-    top: 89px;
-}
