@@ -1638,26 +1638,18 @@
 <script id="templates/nc-model-detail.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-content>
-            <div class="row">
+            <div class="rrow1">
                 <span>{{ncModelDetails.ncModelDetailsObj.data.displayCarModelName}}</span>
             </div>
-            <div class="row">
+            <div class="rrow2">
                 <img ng-src="images/sort_rs_orange.png"> <span>{{ncModelDetails.ncModelDetailsObj.data.modelminexshowroomprice | formatPrice }} - {{ncModelDetails.ncModelDetailsObj.data.modelmaxexshowroomprice | formatPrice}}</span>
             </div>
-            <div class="row">
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <span> {{ncModelDetails.ncModelDetailsObj.data.modelrating.rating}} / {{ncModelDetails.ncModelDetailsObj.data.modelrating.totalreviews}} Reviews</span>
+            
+            <div class="rrow3">
+                <img class="rrow3" src="{{imageUrl}}">
             </div>
 
-            <div class="row">
-                <img src="{{imageUrl}}">
-            </div>
-
-            <div class="row">
+            <div class="rrow4">
                 <div ng-repeat="colorObj in ncModelDetails.ncModelDetailsObj.data.colors">
                     <i class="fa fa-circle" style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
                        ng-click="fn_ncSelectedColor(colorObj)"></i>
@@ -1666,63 +1658,59 @@
 
             <div class="row">
                 <div class="col">
-                    <div><span>Mileage</span></div>
-                    <div><span>{{ncModelDetails.ncModelDetailsObj.data.minMilage}} {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
+                    <div class="rrow5"><span>Mileage</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.minMilage}} {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
                     </div>
-                    <div><span>Upto</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
 
                 </div>
                 <div class="col">
-                    <div><span>Engine</span></div>
-                    <div><span>{{ncModelDetails.ncModelDetailsObj.data.maxEngineCapacity}}</span></div>
-                    <div><span>Upto</span></div>
+                    <div class="rrow5"><span>Engine</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.maxEngineCapacity}}</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
                 </div>
                 <div class="col">
-                    <div><span>EMI</span></div>
-                    <div><img ng-src="images/sort_rs.png">
+                    <div class="rrow5"><span>EMI</span></div>
+                    <div class="rrow6"><img ng-src="images/sort_rs.png">
                         <span>{{ncModelDetails.ncModelDetailsObj.data.emipermonth}}/m</span></div>
-                    <div><span>Upto</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
                 </div>
             </div>
 
-            <div class="bar bar-calm">
-                <h1 class="title">Experience {{ncModelDetails.ncModelDetailsObj.data.modelname}}</h1>
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Experience {{ncModelDetails.ncModelDetailsObj.data.modelname}}</h1>
             </div>
-            <ion-scroll direction="x" class="wide-as-needed">
-                <a class="button inline-button">
+            <div class="wide-as-needed">
+                <a class="button1 inline-button" style="margin-left:50px">
                     <div><img src="images/feel_the_car_icon.png"></div>
                     <div><span>Feel the car</span></div>
                 </a>
 
-                <a class="button inline-button">
+                <a class="button1 inline-button">
                     <div><img src="images/video_footer_tab_icon.png"></div>
                     <div><span>Videos</span></div>
                 </a>
 
-                <a class="button inline-button">
+                <a class="button1 inline-button">
                     <div><i class="fa fa-picture-o"></i></div>
                     <div><span>Pictures</span></div>
                 </a>
-                <a class="button inline-button">
-                    <div><img src="images/threesixty.png"></div>
-                    <div><span>360 View</span></div>
-                </a>
-            </ion-scroll>
-            <div class="bar bar-calm">
-                <h1 class="title">Variants</h1>
+            </div>
+            <div class="bar bar-calm1" style="margin-top:10px">
+                <h1 class="heading2">Variants</h1>
             </div>
             <div class="row" style="padding-top: 50px !important;">
-                <div class="col">
+                <div class="col11">
                     <div>
                         <spam>Diesel</spam>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col11">
                     <div>
                         <spam>Petrol</spam>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col11">
                     <div>
                         <spam>All</spam>
                     </div>
@@ -1730,35 +1718,49 @@
             </div>
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
-                    <div class="list card cvCardProp" style="height: 70% !important;"
+                    <div class="list card cvCardProp" style="height: 50% !important; margin-top: 20px;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div id="c4vBrand">
-                                <span>{{modelVarient.displayVariantId}}</span>
+                                <span class="heading3">{{modelVarient.displayVariantId}}</span>
                             </div>
-                            <div id="c5cvBrand">
-                                <span>{{modelVarient.variantsHighWayAverage }} kmpl . {{modelVarient.variantsdisplacement }} cc</span>
-                            </div>
-                            <div id="c4cvBrand">
+
+                            <div class="rrow8" style="padding-top: 20px !important;">
+                				<div>
+                    				<div>
+                        				<spam><div class="col12">Milage </div>{{modelVarient.variantsHighWayAverage }} kmpl</spam>
+                    				</div>
+               					</div>
+                				<div class="col12">
+                    				<div>
+                        				<spam></spam>
+                    				</div>
+                				</div>
+                				<div>
+                    				<div>
+                        				<spam><div class="col12">Engine </div>{{modelVarient.variantsdisplacement }} cc</spam>
+                   					</div>
+                				</div>
+           				 	</div>
+							
+							<div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
                                 <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
                             </div>
 
                         </div>
 
-                        <div class="bar bar-calm">
-                            <h1 class="title">Compare</h1>
-                        </div>
+                        
                     </div>
                 </ion-slide>
             </ion-slide-box>
-            <div class="bar bar-calm">
-                <h1 class="title">Recommended cars for you</h1>
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Recommended cars for you</h1>
             </div>
 
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
-                           style="padding-top: 50px !important;">
+                           style="padding-top: 50px !important; text-align:center !important;">
                 <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
-                    <div class="list card cvCardProp" style="height: 70% !important;"
+                    <div class="list card cvCardProp" style="height: 40% !important;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div>
@@ -1770,7 +1772,7 @@
                             <div id="">
                                 <img src="images/sort_rs_orange.png"> <span> {{recommendedCars.minexshowroomprice | formatPrice }} - {{recommendedCars.maxexshowroomprice | formatPrice }} Lac*</span>
                             </div>
-                            <div class="row">
+                            <div class="rrow10">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -1780,7 +1782,7 @@
 
                         </div>
 
-                        <div class="item">
+                        <div class="bar bar-calm2">
                             <h1 class="title">Compare</h1>
                         </div>
                     </div>
@@ -1788,20 +1790,20 @@
             </ion-slide-box>
         </ion-content>
         <div class="bar bar-footer ">
-            <div class="row">
-                <div class="col-50" ng-click="fnGetOnRoadPrice()">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
                     <span> Get On Road Price</span>
                 </div>
-                <div class="col-30">
-                    <img src="images/list_view.png"> <span>Overview</span>
+                <div class="col-31">
+                    <span>Overview</span>
                 </div>
                 <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
-                    <div><i class="fa fa-circle"></i>
+                    <div>
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                     </div>
-
+					<div>More</div>
                 </div>
             </div>
         </div>
