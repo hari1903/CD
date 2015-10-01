@@ -4,7 +4,10 @@
 
 .nc_lc_alignCenter{
     text-align: center !important;
+    padding-top: 10px !important;
+
 }
+
 
 .bar-subheader {
     top: 44px;
@@ -41,34 +44,33 @@
 .card, .list-inset{
 	    margin: 0px 0px;
 }
-ion-footer-bar.bar.bar-assertive.bar-footer div.row{
-	padding-bottom: 10px;
-    border-bottom: 2px solid #ccc;
+.footerBarRow{
     height: 50px;
+    padding: 0px;
+    border-top-width: 1px;
+    border-color: #e42012;
+    border-style: solid;
 }
 
-ion-footer-bar.bar.bar-assertive.bar-footer{
-	border: none;
-    background: #f5f5f5;
-    background-image: none!important;
-    text-transform: uppercase;
-    max-width: 95%;
-    margin: 0 auto;
-    bottom: 20px;
-}
-
-.bar.bar-assertive{
+.footerBarProp{
 	border-color: #e42012;
-    background-color: #ef473a;
-    background-image: linear-gradient(0deg, #e42012, #e42012 50%, transparent 50%);
-    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+
 }
 
-ion-footer-bar .col-25{
-	border-top: 1px solid #DF5426;
+.activeBar{
+
+    border-top: 5px solid #e42012 !important;
+    margin-top: -5px;
     border-style: inset;
-    color: #000;
+    color: #DF5426;
     font-weight: bold;
     text-align: center;
-    padding-top: 10px;
 }

@@ -3081,19 +3081,19 @@
 </script>
 
 <script id="templates/nc-footer-options-CD.html" type="text/ng-template">
-    <ion-footer-bar align-title="left" class="bar-assertive" ng-controller="nc_footerOptionController">
-        <div class="row">
-            <div class="col-25 nc_lc_alignCenter active" ng-click='fn_ncFooterOptions_selectTab("search")'>
-                Search
+    <ion-footer-bar align-title="left" class="footerBarProp " ng-controller="nc_footerOptionController">
+        <div class="row footerBarRow">
+            <div class="col-25 nc_lc_alignCenter activeBar" ng-click='fn_ncFooterOptions_selectTab("search")'>
+                <span >Search</span>
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("upcoming")'>
-                Upcoming
+                <span >Upcoming</span>
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("latest")'>
-                Latest
+                <span >Latest</span>
             </div>
             <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("popular")'>
-		Popular
+                <span >Popular</span>
             </div>
         </div>
     </ion-footer-bar>
