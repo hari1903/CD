@@ -3134,51 +3134,55 @@
     </ion-content>
 </script>
 <script id="templates/show-compare.html" type="text/ng-template">
-    <ion-view>
+  <ion-view>
         <ion-content>
-            <div style=" border-color: #ececec;background-color:rgb(240,90,40);font-size:10px;padding-top:0px;padding-left:10px;height:20px;color: #fff;border:0px;"class="bar bar-header bar-light compareCrs-hidder">
+            <div style=" border-color:#ececec;background-color:rgb(240,90,40);font-size:10px;padding-top:5px;padding-left:10px;height:20px;color:#fff;"class="bar bar-header bar-light compareCrs-hidder">
                 Compare Cars           
      		</div>
-            <div class="row" style="width:100%;height:61px!important;">
-                <div class="comparision-car1">
-                    <img class="imageContainer flip-car" ng-src="{{ compareDataObj.data.imageurl.first}}" ng-src="" alt="images/ic_error.png">
+            <div class="row" style="padding-top:30px;">
+                <div style="width: 45% !important; text-align:center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png">
 				</div>
-                <div class="col" style="width:50%;border-left:5%;border-right:10%;overflow:hidden;">
-                    <span style="font-size:10px!important;font-family:"Roboto Regular";">{{ compareDataObj.data.variantname.first}}</span>
+                <div class="col" style="width:50%;border-left:2%;font-size:10px!important;border-right:10%;float:left;overflow:hidden;">
+                    <span style="font-size:10px!important;"> {{ compareDataObj.data.variantname.first}}</span>
                 </div>
             </div>
             <div class="row">
-                <div style="width: 47% !important;padding-top: 10px;">                  
+                <div style="width: 45% !important;padding-top: 1px;">
+                   
                 </div>
-                <div class="col" style="padding-left: 1px; align:middle!important;padding-right: 0px; !important;">
+                <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
                     <img ng-src="{{vsImage}}">
                 </div>
-                <div style="width: 47% !important;padding-top: 10px;">                    
+                <div style="width: 46% !important;padding-top: 1px;">
+                
                 </div>
             </div>
 
-            <div class="row"  style="width:100%;height:61px!important;display:table;">
-                <div style="width:50%;border-left:10%;border-right:5%;overflow:hidden;word-wrap: break-word;">
-                    
+            <div class="row">
+                <div class="word-wrap: break-word;">
+                    <span>{{ compareDataObj.data.variantname.second}} </span>
+
                 </div>
-                <div style="width: 50% !important;text-align: center">
-                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}" alt="images/ic_error.png">
+                <div style="width: 45% !important;text-align: center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.second}}"
+                         alt="images/ic_error.png">
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    
+                    <span>{{compareDataObj.data.variantname.first}}</span>
                 </div>
                 <div class="col-50">
-                    
+                    <span>{{compareDataObj.data.variantname.second}}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50" ng-click="fn_changeOverAndFeatures(true)">
-                    
+                    <span>Overview</span>
                 </div>
                 <div class="col-50" ng-click="fn_changeOverAndFeatures(false)">
-                    
+                    <span>Features</span>
                 </div>
             </div>
             <div class="row">
