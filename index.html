@@ -3136,26 +3136,24 @@
 <script id="templates/show-compare.html" type="text/ng-template">
   <ion-view>
         <ion-content>
-            <div style=" border-color:#ececec;background-color:rgb(240,90,40);font-size:10px;padding-top:5px;padding-left:10px;height:20px;color:#fff;"class="bar bar-header bar-light compareCrs-hidder">
+            <div style=" border-color:#ececec;background-color:rgb(240,90,40);font-size:10px;padding-top:5px;padding-left:10px;height:20px;color:#fff;" class="bar bar-header bar-light">
                 Compare Cars           
      		</div>
-            <div class="row" style="padding-top:30px;">
-                <div style="width: 45% !important; text-align:center">
-                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png">
-				</div>
-                <div class="col" style="width:50%;border-left:2%;font-size:10px!important;border-right:10%;float:left;overflow:hidden;">
-                    <span style="font-size:10px!important;"> {{ compareDataObj.data.variantname.first}}</span>
+            <div class="row" style="padding-top:50px;">
+                <div style="width: 45% !important; text-align: center">
+                    <img class="imageContainer" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png"></div>
+                <div class="col" >
+                    <span>{{ compareDataObj.data.variantname.first}}</span>
+
                 </div>
             </div>
             <div class="row">
-                <div style="width: 45% !important;padding-top: 1px;">
-                   
+                <div style="width: 45% !important;padding-top: 1px;">                   
                 </div>
                 <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
                     <img ng-src="{{vsImage}}">
                 </div>
-                <div style="width: 46% !important;padding-top: 1px;">
-                
+                <div style="width: 46% !important;padding-top: 1px;">                
                 </div>
             </div>
 
