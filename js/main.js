@@ -1517,7 +1517,7 @@ angular
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
                 }else if(retunEvent == 'compare-cars'){
                     console.log("in compare cars")
-                    $state.go('eventmenu.varient',{"retunEvent":"compare-cars"});
+                    $state.go('eventmenu.varient-id',{"retunEvent":"compare-cars"});
                 }else {
                     $state.go('eventmenu.'+retunEvent);
                 }
