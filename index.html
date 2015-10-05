@@ -1699,7 +1699,7 @@
             <div class="bar bar-calm1" style="margin-top:10px">
                 <h1 class="heading2">Variants</h1>
             </div>
-            <div class="row" style="padding-top: 50px !important;">
+            <div class="r2row" style="padding-top: 50px !important;">
                 <div class="col11">
                     <div>
                         <spam>Diesel</spam>
@@ -1725,25 +1725,23 @@
                                 <span class="heading3">{{modelVarient.displayVariantId}}</span>
                             </div>
 
-                            <div class="rrow8" style="padding-top: 20px !important;">
-                				<div>
-                    				<div>
-                        				<spam><div class="col12">Milage </div>{{modelVarient.variantsHighWayAverage }} kmpl</spam>
-                    				</div>
-               					</div>
-                				<div class="col12">
-                    				<div>
-                        				<spam></spam>
-                    				</div>
-                				</div>
-                				<div>
-                    				<div>
-                        				<spam><div class="col12">Engine </div>{{modelVarient.variantsdisplacement }} cc</spam>
-                   					</div>
-                				</div>
-           				 	</div>
-							
-							<div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
+                            <div class="r1row">
+				<div class="parameter_title1">
+                    			Milage :
+                		</div>
+				<div class="valid_parameter">
+					{{modelVarient.variantsHighWayAverage }} kmpl
+				</div>
+
+				<div class="parameter_title2">
+                    			Engine :
+                		</div>
+				<div class="valid_parameter">
+					{{modelVarient.variantsdisplacement }} cc
+				</div>
+			    </div>
+
+			    <div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
                                 <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
                             </div>
 
@@ -1803,7 +1801,7 @@
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                     </div>
-					<div>More</div>
+		    <div>More</div>
                 </div>
             </div>
         </div>
