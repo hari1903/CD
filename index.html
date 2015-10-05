@@ -2047,7 +2047,7 @@
 <script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-header-bar class="bar bar-subheader">
-            <h1>Offers and Discounts</h1>
+            <h1 class="heading1">Offers and Discounts</h1>
         </ion-header-bar>
         <ion-content>
             <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
@@ -2073,16 +2073,14 @@
             <div class="bar-subheader2 disable-user-behavior">
                 Find Offers by Brand
             </div>
-
-		<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
-        	<ng-nc-car-brand>
-    			<div ng-repeat="oem in oemObj.data.carOemList">
-                	<img ng-src={{oem.image_url}}>
-                    <span>{{oem.oemname}}</span>
-               	</div>
-			</ng-nc-car-brand>
-		</div>
-
+		
+				<ng-nc-car-offer>
+    				<div ng-repeat="oem in oemObj.data.carOemList">
+                		<img ng-src={{oem.image_url}}>
+                    	{{oem.oemname}}
+               		</div>
+				</ng-nc-car-offer>
+			
             <div class="bar-subheader3">
                *Offers available on selected variants
             </div>
@@ -2125,7 +2123,358 @@
 <script id="templates/nc-offers-and-dicounts-show.html" type="text/ng-template">
     <ion-view view-title="">
         <ion-header-bar class="bar bar-subheader">
-            <h1>Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
+            <h1 class="heading1">Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
+        </ion-header-bar>
+        <ion-content>
+            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
+                <div class="brand-title">
+                    <span>{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+                <div class="rrow">
+					<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
+            <span class="bar-subheader1"> View More Offers </span>
+        </div>
+    </ion-view>
+</script><script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers and Discounts</h1>
+        </ion-header-bar>
+        <ion-content>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style=";" menu-close>
+                <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-brand/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Brand* </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedBrand}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-model/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <button class="bar-subheader1 disable-user-behavior"
+                    style="margin-top: 0px;" ng-click="fn_getOffers()">
+                Search
+            </button>
+
+            <div class="bar-subheader2 disable-user-behavior">
+                Find Offers by Brand
+            </div>
+		
+				<ng-nc-car-offer>
+    				<div ng-repeat="oem in oemObj.data.carOemList">
+                		<img ng-src={{oem.image_url}}>
+                    	{{oem.oemname}}
+               		</div>
+				</ng-nc-car-offer>
+			
+            <div class="bar-subheader3">
+               *Offers available on selected variants
+            </div>
+            <div>
+            <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
+                <div class="brand-title">
+                    <span class="brand-title">{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+				
+				<div class="rrow">
+                	<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="templates/nc-offers-and-dicounts-show.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
+        </ion-header-bar>
+        <ion-content>
+            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
+                <div class="brand-title">
+                    <span>{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+                <div class="rrow">
+					<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
+            <span class="bar-subheader1"> View More Offers </span>
+        </div>
+    </ion-view>
+</script><script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers and Discounts</h1>
+        </ion-header-bar>
+        <ion-content>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style=";" menu-close>
+                <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-brand/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Brand* </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedBrand}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-model/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <button class="bar-subheader1 disable-user-behavior"
+                    style="margin-top: 0px;" ng-click="fn_getOffers()">
+                Search
+            </button>
+
+            <div class="bar-subheader2 disable-user-behavior">
+                Find Offers by Brand
+            </div>
+		
+				<ng-nc-car-offer>
+    				<div ng-repeat="oem in oemObj.data.carOemList">
+                		<img ng-src={{oem.image_url}}>
+                    	{{oem.oemname}}
+               		</div>
+				</ng-nc-car-offer>
+			
+            <div class="bar-subheader3">
+               *Offers available on selected variants
+            </div>
+            <div>
+            <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
+                <div class="brand-title">
+                    <span class="brand-title">{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+				
+				<div class="rrow">
+                	<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="templates/nc-offers-and-dicounts-show.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
+        </ion-header-bar>
+        <ion-content>
+            <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
+                <div class="brand-title">
+                    <span>{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+                <div class="rrow">
+					<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
+            <span class="bar-subheader1"> View More Offers </span>
+        </div>
+    </ion-view>
+</script><script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers and Discounts</h1>
+        </ion-header-bar>
+        <ion-content>
+            <a href="#/event/offer-and-discount-city/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style=";" menu-close>
+                <span class="selectionDetailHeader">City*</span> <i class="icon  selectionDetail">{{offerAndDiscountObj.selectedCity}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-brand/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Brand* </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedBrand}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <a href="#/event/offer-and-discount-model/nc-offers-and-dicounts" class="item item-icon-right listElement"
+               style="padding-bottom: 10px; padding-top: 10px;" menu-close>
+                <span class="selectionDetailHeader">Select Model </span><i class="icon selectionDetail">{{offerAndDiscountObj.selectedModel}}
+                &nbsp;<i class="iconRightCss"><img src="images/edit_enable.png"> </i></i>
+            </a>
+            <button class="bar-subheader1 disable-user-behavior"
+                    style="margin-top: 0px;" ng-click="fn_getOffers()">
+                Search
+            </button>
+
+            <div class="bar-subheader2 disable-user-behavior">
+                Find Offers by Brand
+            </div>
+		
+				<ng-nc-car-offer>
+    				<div ng-repeat="oem in oemObj.data.carOemList">
+                		<img ng-src={{oem.image_url}}>
+                    	{{oem.oemname}}
+               		</div>
+				</ng-nc-car-offer>
+			
+            <div class="bar-subheader3">
+               *Offers available on selected variants
+            </div>
+            <div>
+            <div ng-repeat="offObj in offerObj1.data.CarDiscountList">
+                <div class="brand-title">
+                    <span class="brand-title">{{offObj.carModelVersion}}</span>
+                </div>
+                <div class="row">
+                    <div class="col1">
+                        <img ng-src="images/offer_petrol.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.fueltype}}</span>
+                    </div>
+                    <div class="col1">
+                        <img ng-src="images/on_road_price_new.png">
+                    </div>
+                    <div class="col2">
+                        <span>{{offObj.exShowRoomPrice}}</span>
+                    </div>
+                </div>
+                <div class="brand-description">
+                    <p>{{offObj.discountDescriptions}}</p>
+                </div>
+				
+				<div class="rrow">
+                	<div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                	</div>
+					<div class="valid_date">
+						{{offObj.discountEndDates}}
+					</div>
+				</div>
+            </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="templates/nc-offers-and-dicounts-show.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-header-bar class="bar bar-subheader">
+            <h1 class="heading1">Offers on {{offerAndDiscountObj.selectedModel}} in {{offerAndDiscountObj.selectedCity}} </h1>
         </ion-header-bar>
         <ion-content>
             <div ng-repeat="offObj in offerObj.data.carDiscountsOemList" ng-click="">
