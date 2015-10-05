@@ -1,7 +1,7 @@
 .imageContainer {
-    width: 50% !important;
-    height: 60px !important;
-	
+     padding-top:5px;
+	 padding-bottom:5px;
+     height:61px!important;	
 }
 .comparision-car1{
    width:50%!important;
@@ -12,7 +12,23 @@
    padding-right:10%;
    padding-top:10px;
    }
-
+.compareCar-name1{
+   color:#313131;
+   font-family:"Roboto Regular";
+   font-size:10px;
+   overflow:hidden;
+   float:left;
+   padding-left:3%;
+}
+.comoareCarBar{
+border-color:#ececec;
+background-color:rgb(240,90,40);
+font-size:10px;
+padding-top:5px;
+padding-left:10px;
+height:20px;
+color:#FFFFFF;
+}
 .imageSide {
     max-width: 50% !important;
     max-height: 100% !important;
@@ -29,5 +45,6 @@
   transform: scaleX(-180);
   filter: FlipH;
   -ms-filter: "FlipH";
-	
+  height:40px;
+  float:right!important;
 }
