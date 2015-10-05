@@ -1435,37 +1435,39 @@
 
 <script id="templates/used-car-valuation-show.html" type="text/ng-template">
     <ion-view view-title="">
-        <div class="bar bar-header" style="padding-top: 50px !important;">
-            <h1 style="font-size: 15px !important;">Valuation Report</h1>
-            <div class="row">
-                <div class="col" ng-click="fn_changeDelerOrIndividual(true)">
-                    <span>DEALER</span>
-                </div>
-                <div class="col" ng-click="fn_changeDelerOrIndividual(false)">
-                    <span>INDIVIDUAL</span>
-                </div>
-            </div>
+        <div class="bar bar-header" style="padding-top: 44px !important;border-bottom-width: 0px;padding-left: 0px;padding-bottom: 0px;padding-right: 0px;"> 
+            <h1 style="font-size: 15px !important;width: 506px;background-color: #f05a28;height: 33;padding-top: 5px;padding-left: 15px;color: white;">Valuation Report</h1> 
+            
         </div>
-        <ion-content style="margin-top: -2px; padding-top: 35px !important;">
-            <div class="row">
-                <div class="col" ng-click="fn_changeType(true)">
-                    <i ng-class="isSellerOrBuyer ? 'fa fa-circle' : 'fa fa-circle-o' "></i>
+        <ion-content style="margin-top: 0px; padding-top: 0px !important;">
+
+			<div class="row" style="margin-top: 33px; padding-left: 65px;">
+                <div class="col" ng-click="fn_changeDelerOrIndividual(true)" style="border-bottom: 3px solid #DF5426;text-align: center;">
+                    <span style="font-weight: 500;">DEALER</span>
                 </div>
-                <div class="col">
-                    <span>I'am Seller</span>
-                </div>
-                <div class="col" ng-click="fn_changeType(false)">
-                    <i ng-class="isSellerOrBuyer ?  'fa fa-circle-o' : 'fa fa-circle' "></i>
-                </div>
-                <div class="col">
-                    <span>I'am Buyer</span>
+                <div class="col" ng-click="fn_changeDelerOrIndividual(false)" style="text-align: center;">
+                    <span style="font-weight: 500;">INDIVIDUAL</span>
                 </div>
             </div>
-            <div class="row">
+
+            <div class="row" style="background-color: #f5f5f5;padding-top: 5px;padding-left: 10px;">
+                <div class="col" ng-click="fn_changeType(true)">
+                    <i ng-class="isSellerOrBuyer ? 'fa fa-circle' : 'fa fa-circle-o' " style="color: #f05a28;"></i>
+<span style="font-weight: 700;">I'am Seller</span>
+				              
+			</div>
+                
+                <div class="col" ng-click="fn_changeType(false)">
+                    <i ng-class="isSellerOrBuyer ?  'fa fa-circle-o' : 'fa fa-circle' " style="color: #f05a28;"></i>
+<span style="font-weight: 700;">I'am Buyer</span>                
+</div>
+               
+            </div>
+            <div class="row" style="padding-top: 5px;height: 40px;padding-left: 10px;font-family: 'Roboto-Medium';">
                 <div class="col">
                     <span>Fair</span>
                 </div>
-                <div class="col">
+                <div class="col" style="text-align: right;font-family: 'Roboto-Regular';font-weight: bold;">
                     <div ng-show="!isSellerOrBuyer">
                         {{valutionObj.data.dealerfairprice}}
                     </div>
@@ -1474,11 +1476,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 5px;height: 40px;padding-left: 10px;font-family: 'Roboto-Medium';">
                 <div class="col">
                     <span>Good</span>
                 </div>
-                <div class="col">
+                <div class="col" style="text-align: right;font-family: 'Roboto-Regular';font-weight: bold;">
                     <div ng-show="!isSellerOrBuyer">
                         {{valutionObj.data.dealergoodPrice}}
                     </div>
@@ -1487,11 +1489,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 5px;height: 40px;padding-left: 10px;font-family: 'Roboto-Medium';">
                 <div class="col">
                     <span>Excellent</span>
                 </div>
-                <div class="col">
+                <div class="col" style="text-align: right;font-family: 'Roboto-Regular';font-weight: bold;">
                     <div ng-show="!isSellerOrBuyer">
                         {{valutionObj.data.dealerexcellentprice}}
                     </div>
@@ -1500,57 +1502,65 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div style="background-color: #f5f5f5;padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 10px;color: grey;font-style: italic;font-family: 'Roboto-Regular';">
                 <span>Terms & Conditions Apply*</span>
+                
+            </div>
+<div style="background-color: #f5f5f5;padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 10px;color: grey;font-family: 'Roboto-Regular';">
+                
                 <span> Refers to the condition of the car on which the valuation price is based**</span>
+                
+            </div>
+<div style="background-color: #f5f5f5;padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 10px;color: grey;font-family: 'Roboto-Regular';">
+                
                 <span> YOUR CAR INFORMATION</span>
             </div>
-            <div>
-                <span>
+            <div style="margin-top: 20px;font-family: 'Roboto-Bold';">
+                <span style="font-weight: 700;padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 10px;">
                     {{getUsedCarValuationObj.selectedVariant}}
                 </span>
             </div>
             <div class="row">
                 <div class="col">
-                    <span>
-                        Model
+                    <span style="font-family: 'Roboto-Regular';">
+                        Model:
                     </span>
                 </div>
-                <div class="col">
-                    <span>
+                <div class="col" style="text-align: center;">
+                    <span style="font-weight: 700;font-family: 'Roboto-Medium';">
                         {{getUsedCarValuationObj.selectedYear}}
                     </span>
                 </div>
-                <div class="col">
-                    <span>
-                        KMs
+                <div class="col" style="text-align: center;">
+                    <span style="font-family: 'Roboto-Regular';">
+                        KMs:
                     </span>
                 </div>
-                <div class="col">
-                    <span>
+                <div class="col" style="text-align: center;">
+                    <span style="font-weight: 700;font-family: 'Roboto-Medium';">
                         {{getUsedCarValuationObj.mileage}}
                     </span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    Location
-                </div>
-                <div class="col">
+                    <span style="font-family: 'Roboto-Regular';">
+                        LOCATION:
+                    </span>
+
+					<span style="font-weight: 700;font-family: 'Roboto-Medium';padding-left: 40px;">
                     {{getUsedCarValuationObj.selectedCity}}
+					</span>
                 </div>
+                
             </div>
-            <div>
-                <img ng-src="images/ibb_logo.png">
+            <div style="margin-top: 30px;text-align: center;background-color: #f5f5f5;">
+                <img ng-src="images/ibb_logo.png" style="width: 100px;">
             </div>
-            <div>
-                <i class="fa fa-circle"></i>
-                <i class="fa fa-circle"></i>
-                <i class="fa fa-circle"></i>
-            </div>
+            
         </ion-content>
         <ion-footer-bar class="bar-light " style="padding: 0px;" ng-click="fn_getDetailsForValuation()">
-            <div class="row">
+            <div class="row" style="text-align: center;">
                 <div class="col-33">
                 </div>
                 <div class="col-33">
@@ -1563,7 +1573,6 @@
         </ion-footer-bar>
     </ion-view>
 </script>
-
 <script id="templates/year.html" type="text/ng-template">
     <ng-search-header-bar></ng-search-header-bar>
     <ion-content>
