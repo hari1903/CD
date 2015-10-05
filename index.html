@@ -1359,42 +1359,42 @@
 <script id="templates/used-car-valuation-get-detail.html" type="text/ng-template">
 
     <ion-view view-title="">
-        <div class="bar bar-header" style="padding-top: 50px !important;">
-            <h1 style="font-size: 15px !important;">Valuation Information</h1>
+        <div class="bar bar-header" style="padding-top: 44px !important;border-bottom-width: 0px;padding-left: 0px;padding-bottom: 0px;padding-right: 0px;">
+            <h1 style="font-size: 15px !important;font-family: 'Roboto-Bold' !important;color: #fff;background-color: #f05a28;width: 506px;height: 32px;padding-top: 5px;margin-left: 0px;padding-left: 20px;margin-bottom: 0px;">Valuation Information</h1>
         </div>
 
-        <ion-content style="padding-top: 20px !important; ">
-            <div>
+        <ion-content style="padding-top: 0px !important; margin-top: 33px;">
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> MODEL YEAR </span>
             </div>
-            <div ng-click="fn_selectYear()">
+            <div ng-click="fn_selectYear()" style="height: 32px;padding-top: 5px;padding-left: 20px;font-weight: 700;">
                 <span> {{usedCarValuationGetDetailObj.selectedYear}}</span>
             </div>
-            <div >
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> BRAND </span>
             </div>
-            <div ng-click="fn_selectBrand()">
+            <div ng-click="fn_selectBrand()" style="height: 32px;padding-top: 5px;padding-left: 20px;font-weight: 700;">
                 <span> {{usedCarValuationGetDetailObj.selectedBrand}}</span>
             </div>
-            <div >
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> MODEL </span>
             </div>
-            <div ng-click="fn_selectModel()">
+            <div ng-click="fn_selectModel()" style="height: 32px;padding-top: 5px;padding-left: 20px;font-weight: 700;">
                 <span> {{usedCarValuationGetDetailObj.selectedModel}}</span>
             </div>
-            <div >
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> VARIANT </span>
             </div>
-            <div ng-click="fn_selectVariat()">
+            <div ng-click="fn_selectVariat()" style="height: 32px;padding-top: 5px;padding-left: 20px;font-weight: 700;">
                 <span> {{usedCarValuationGetDetailObj.selectedVariant}}</span>
             </div>
-            <div>
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> CITY </span>
             </div>
-            <div ng-click="fn_selectCity()">
+            <div ng-click="fn_selectCity()" style="height: 32px;padding-top: 5px;padding-left: 20px;font-weight: 700;">
                 <span> {{usedCarValuationGetDetailObj.selectedCity}}</span>
             </div>
-            <div>
+            <div style="height: 32px;background-color: #f5f5f5;padding-top: 5px;padding-left: 20px;color: grey;">
                 <span> KMs DRIVEN </span>
             </div>
 
@@ -1407,17 +1407,13 @@
             <!--</div>-->
             <ionslider min='0' max='100000' grid=true   postfix="Kms"  on-change='change()'></ionslider>
 
-            <div>
-                <img ng-src="images/ibb_logo.png">
+            <div style="text-align: center; background-color: #f5f5f5;">
+                <img ng-src="images/ibb_logo.png" style="margin-top: 15px;width: 100px;">
             </div>
-            <div>
-                <i class="fa fa-circle"></i>
-                <i class="fa fa-circle"></i>
-                <i class="fa fa-circle"></i>
-            </div>
+            
 
         </ion-content>
-        <ion-footer-bar class="bar-light " style="padding: 0px;" >
+        <ion-footer-bar class="bar-light " style="padding: 0px; text-align: center;" >
             <div class="row">
                 <div class="col-33">
                     <i class="fa fa-arrow-left" ng-click="fn_getValuationForCarLeft()"></i>
