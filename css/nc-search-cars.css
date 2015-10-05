@@ -152,7 +152,7 @@ div.bar.bar-light h1.title{
 ion-footer-bar.bar.bar-assertive.bar-footer{
 	border:none;
 	background: #f5f5f5;
-	background-image: none!important;
+	background-image: none !important;
 	text-transform: uppercase;
 	max-width: 95%;
 	margin: 0 auto;
