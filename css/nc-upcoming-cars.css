@@ -49,7 +49,7 @@
   ion-content div.scroll div.list:first-child{
   	padding-top: 20px;
   }
-  ion-content div.scroll div.list img{
+  ion-content div.scroll div.list img.car-thumbnail{
   	max-width: 100px;
   	max-height: 80px;
   }
@@ -101,4 +101,8 @@ ion-footer-bar .col-25.active{
 	border-top: 5px solid #DF5426;
 	margin-top: -5px;
 	color: #DF5426x;
+}
+.upcoming-alarm{
+  width:30px;
+  height:25px;
 }
