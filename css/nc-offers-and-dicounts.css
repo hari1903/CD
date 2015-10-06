@@ -68,7 +68,7 @@
 }
 
 .bar-subheader3 {
-	margin-top: 10px;
+    margin-top: 10px;
     padding-top:5px;
     display: block;
     height: 28px;
@@ -144,9 +144,8 @@ ion-content.has-subheader.scroll-content div.row10{
     padding-left: 15px !important;
 }
 
-
 .nc_ofd_rowRightPadding {
-    padding-right: 10px !important;
+    margin: 5px !important;
 }
 
 .nc_ofd_colom_border div.wrapper1{
@@ -166,4 +165,26 @@ ion-content.has-subheader.scroll-content div.row10{
     border: none;
     background-color: white;
     font-size: 15px;
+}
+.ccol-35 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 103px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 103px;
+    -ms-flex: 0 0 103px;
+    flex: 0 0 103px;
+    width: 103px;
+    height: 64px;
+    margin-right: 5px;
+}
+
+.rrow-33{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5px;
+    width: 100%;
 }
