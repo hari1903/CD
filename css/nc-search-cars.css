@@ -67,7 +67,7 @@ ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     margin-left: -10px;
     padding: 5px 5px;
     border: 2px solid #DF5426 !important;
-    border-radius: 3px !important;
+    border-radius: 5px !important;
     border-style: outset !important;
     text-decoration: none;
     text-align: center;
@@ -104,13 +104,11 @@ ng-nc-search-car-header ion-header-bar div div.active{
 }
 
 .nc_sc_colom_border div.wrapper{
-    margin: 7px !important;
-    border-width: 1px !important;
-    border-style: solid !important;
-    border-color: #c8c7cc !important;
-    height: 64px !important;
-    padding: 0;
-    width:103px;
+	border: 1px solid #E7E7EC;
+	margin: 0 10px;
+	padding:20px;
+	width: 155px;
+	height: 110px;
 }
 ng-price-range div.list, div.ng-binding {
 	margin-left: 30px;
@@ -169,15 +167,4 @@ ion-footer-bar .col-25.active{
 	border-top: 5px solid #DF5426;
 	margin-top: -5px;
 	color: #DF5426;
-}
-.col-35 {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 103px;
-    -moz-box-flex: 0;
-    -moz-flex: 0 0 103px;
-    -ms-flex: 0 0 103px;
-    flex: 0 0 103px;
-    width: 103px;
-    height: 64px;
-    margin-right: 5px;
 }
