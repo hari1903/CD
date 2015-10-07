@@ -3186,7 +3186,7 @@
 		    </div>
 			
 			<div class="row" style="width:100%;">
-                <div class="col-50" style="width:50%;">
+                <div class="col-50" style="width:50%;float:right;">
                     <img style="align:center;padding-left:-20%;width:50%;height:10px;padding-right:-10%!important;" ng-src="{{ isShowFirst &&  'images/review_unselected_header.png' || 'images/review_selected_header.png'}}">
                 </div>
                 <div class="col-50" style="width:50%;">
@@ -3250,8 +3250,8 @@
                     </div>
 					<span style="color:#545454;"><hr></span>
                 </div>
-                <div class="bar  bar-light" style="height:29px;background-color:#f1f1f1;padding-top:10px;padding-bottom:9xp;border-left:0px;border-right:0px;width:100%;">
-                    <h1 class="title">Colors</h1>
+                <div class="bar  bar-light" style="height:29px;background-color:#f1f1f1;padding-top:10px;padding-bottom:9xp!important;border-left:0px;border-right:0px;width:100%;">
+                    <h1 class="title" style="font-size:10px;color:#272727;">Colors</h1>
 		        </div>
                 <div class="row">
                     <div class="col">
@@ -3275,13 +3275,13 @@
 
                 <div class="row">
                     <div style="width: 45% !important;padding-top: 10px;">
-                        <hr>
+                        
                     </div>
                     <div class="col" style="padding-left: 1px; !important;padding-right: 0px; !important;">
                         <img ng-src="{{vsImage}}">
                     </div>
                     <div style="width: 46% !important;padding-top: 10px;">
-                        <hr>
+                       
                     </div>
                 </div>
 
@@ -3482,14 +3482,15 @@
                 </div>
             </div>
         </ion-content>
-        <div class="bar bar-footer">
-            <div ng-show="isCommonShow">
-                <button class="button button-clear pull-right" ng-click="fn_isCommonShow(false)">Hide Common Features
+        <div class="bar bar-footer" style="height:22px;background-color:#505050;border-radius:3.43px;width:100%;padding-bottom:7px!important;text-align:center!important;">
+            <div ng-show="isCommonShow"  >
+                <button class="button button-clear" ng-click="fn_isCommonShow(false)" style="color:#fff;font-size:8px;padding-right:35%!important;text-align:center;">
+				     <span style="padding-bottom:7px!important;">Hide Common Features</span>
                 </button>
             </div>
             <div ng-show="!isCommonShow">
-                <button class="button button-clear pull-right" ng-switch when="false" ng-click="fn_isCommonShow(true)">
-                    Show Common Features
+                <button class="button button-clear" ng-switch when="false" ng-click="fn_isCommonShow(true)" style="color:#fff;padding-right:35%!important;font-size:8px;text-align:center;">
+                    <span style="padding-bottom:7px!important;">Show Common Features</span>
                 </button>
             </div>
         </div>
