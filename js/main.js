@@ -96,6 +96,7 @@ angular
                 }
             })
             .state('eventmenu.varient-id', {
+                cache : false,
                 url: "/varient-id/:retunEvent",
                 views: {
                     'menuContent': {
