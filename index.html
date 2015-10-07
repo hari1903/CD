@@ -122,16 +122,16 @@
                         <i class="icon ion-home inAnchor"></i>Home
                     </a>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="OpenUpNewCar()"
-                       ng-class="{active: shown}">
+                       ng-click="toggleGroup('newCar')"
+                       ng-class="{active: isGroupShown('newCar')}">
                         <i class="icon ion-key inAnchor"></i>
                         New Cars
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !shown, 'ion-ios-arrow-up': shown}"></i>
+                           ng-class="{'ion-ios-arrow-down': !isGroupShown('newCar'), 'ion-ios-arrow-up': isGroupShown('newCar')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
-                         ng-show="shown">
+                         ng-show="isGroupShown('newCar')">
                         <ion-list>
                             <a href="#/event/nc-search-cars" class="item item-icon-left innerMenu inAnchor"
                                menu-close><i class="icon"></i>Search
@@ -163,15 +163,15 @@
                         </ion-list>
                     </div>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="OpenUpUsedCar()" ng-class="{active: shownUsed}">
+                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}">
                         <i class="icon ion-key inAnchor"></i>
                         Used Cars
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !shownUsed, 'ion-ios-arrow-up': shownUsed}"></i>
+                           ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
-                         ng-show="shownUsed">
+                         ng-show="isGroupShown('usedCar')">
                         <ion-list>
                             <a href="#/event/used-car-home" class="item item-icon-left innerMenu inAnchor" menu-close><i
                                     class="icon"></i>Search Used Cars
@@ -200,14 +200,14 @@
                     </a>
 
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="OpenUpReviews()" ng-class="{active: shownReview}">
+                       ng-click="toggleGroup('Reviews')" ng-class="{active: isGroupShown('Reviews')}">
                         <i class="icon ion-star inAnchor"></i>Reviews
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !shownReview, 'ion-ios-arrow-up': shownReview}"></i>
+                           ng-class="{'ion-ios-arrow-down': !isGroupShown('Reviews'), 'ion-ios-arrow-up': isGroupShown('Reviews')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
-                         ng-show="shownReview">
+                         ng-show="isGroupShown('Reviews')">
                         <ion-list>
                             <a href="#/event/review-user-and-road-test/road"
                                class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road
@@ -221,14 +221,14 @@
                     </div>
 
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="OpenUpUtilities()" ng-class="{active: shownUtility}">
+                       ng-click="toggleGroup('Utilities')" ng-class="{active: isGroupShown('Utilities')}">
                         <i class="icon ion-android-call inAnchor"></i> Utilities
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !shownUtility, 'ion-ios-arrow-up': shownUtility}"></i>
+                           ng-class="{'ion-ios-arrow-down': !isGroupShown('Utilities'), 'ion-ios-arrow-up': isGroupShown('Utilities')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
-                         ng-show="shownUtility">
+                         ng-show="isGroupShown('Utilities')">
                         <ion-list>
                             <a href="#/event/car-dealers" class="item item-icon-left innerMenu inAnchor" menu-close><i
                                     class="icon"></i>Dealers

@@ -37,6 +37,7 @@ angular
                 url: "/event",
                 abstract: true,
                 templateUrl: "templates/event-menu.html"
+
             })
 
 
@@ -1229,34 +1230,60 @@ angular
 
     })
     .controller(
-    'MainCtrl', function ($scope, $ionicSideMenuDelegate) {
+    'MainCtrl',['$scope', '$ionicSideMenuDelegate', 'cssInjector', function ($scope, $ionicSideMenuDelegate, cssInjector) {
         // StatusBar.hide();
 
-        $scope.toggleRight = function () {
+        cssInjector.add("css/event-menu.css");
+
+        $scope.toggleRight = function (groupName) {
             console.log("toggle right");
+            //toggleGroup(groupName);
             $ionicSideMenuDelegate.toggleRight();
         };
 
-        $scope.OpenUpNewCar = function () {
+        $scope.OpenUpNewCar = function (groupName) {
+            //toggleGroup(groupName);
             $scope.shown = !$scope.shown;
         };
 
-        $scope.OpenUpUsedCar = function () {
+        $scope.OpenUpUsedCar = function (groupName) {
+            //toggleGroup(groupName);
             $scope.shownUsed = !$scope.shownUsed;
         };
 
-        $scope.OpenUpReviews = function () {
+        $scope.OpenUpReviews = function (groupName) {
+            //toggleGroup(groupName);
             $scope.shownReview = !$scope.shownReview;
         };
 
-        $scope.OpenUpUtilities = function () {
+        $scope.OpenUpUtilities = function (groupName) {
+            //toggleGroup(groupName);
             $scope.shownUtility = !$scope.shownUtility;
         };
-        $scope.OpenUpFeedback = function () {
+        $scope.OpenUpFeedback = function (groupName) {
+            //toggleGroup(groupName);
             $scope.shownFeedBack = !$scope.shownFeedBack;
         };
 
-    })
+
+        $scope.toggleGroup = function(group) {
+            if ($scope.isGroupShown(group)) {
+                $scope.shownGroup = null;
+            } else {
+                $scope.shownGroup = group;
+            }
+        };
+        $scope.isGroupShown = function(group) {
+            return $scope.shownGroup === group;
+        };
+
+
+
+    }])
+
+
+
+
     .controller(
     'CheckinCtrl', function ($scope) {
         $scope.showForm = true;
