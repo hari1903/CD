@@ -1701,22 +1701,15 @@
                 <h1 class="heading2">Variants</h1>
             </div>
             <div class="r2row" style="padding-top: 50px !important;">
-                <div class="col11">
-                    <div>
-                        <spam>Diesel</spam>
-                    </div>
-                </div>
-                <div class="col11">
-                    <div>
-                        <spam>Petrol</spam>
-                    </div>
-                </div>
-                <div class="col11">
-                    <div>
-                        <spam>All</spam>
-                    </div>
+                <div class="row">
+                    <span class="col11">Diesel</span>
+                    
+                    <span class="col12">Petrol</span>
+                   
+                    <span class="col13">All</span>
                 </div>
             </div>
+            
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
                     <div class="list card cvCardProp" style="height: 50% !important; margin-top: 20px;"
@@ -1728,17 +1721,9 @@
 
                             <div class="r1row">
 				<div class="parameter_title1">
-                    			Milage :
-                		</div>
-				<div class="valid_parameter">
-					{{modelVarient.variantsHighWayAverage }} kmpl
-				</div>
-
-				<div class="parameter_title2">
-                    			Engine :
-                		</div>
-				<div class="valid_parameter">
-					{{modelVarient.variantsdisplacement }} cc
+                    			Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
+								
+                    			Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
 				</div>
 			    </div>
 
@@ -2106,14 +2091,11 @@
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
 				
-				<div class="rrow">
+		<div class="rrow">
                 	<div class="valid_title">
-                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                    		<img ng-src="images/calendar_icon.png"> Valid till : <span class="valid_date">{{offObj.discountEndDates}}</span>
                 	</div>
-					<div class="valid_date">
-						{{offObj.discountEndDates}}
-					</div>
-				</div>
+		</div>
             </div>
             </div>
         </ion-content>
@@ -2147,13 +2129,10 @@
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
                 <div class="rrow">
-					<div class="valid_title">
-                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
-                	</div>
-					<div class="valid_date">
-						{{offObj.discountEndDates}}
-					</div>
-				</div>
+		    <div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : <span class="valid_date">{{offObj.discountEndDates}}</span>
+                    </div>					
+		</div>
             </div>
         </ion-content>
         <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
