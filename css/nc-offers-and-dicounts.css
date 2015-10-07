@@ -137,11 +137,11 @@ ion-content.has-subheader.scroll-content div.row10{
 }
 
 .nc_ofd_rowRightPadding {
-    margin: 5px !important;
+    margin-left: 5px !important;
 }
 
 .nc_ofd_colom_border div.wrapper1{
-    margin: 7px !important;
+    margin: 0px !important;
     border-width: 1px !important;
     border-style: solid !important;
     border-color: #c8c7cc !important;
