@@ -1701,22 +1701,15 @@
                 <h1 class="heading2">Variants</h1>
             </div>
             <div class="r2row" style="padding-top: 50px !important;">
-                <div class="col11">
-                    <div>
-                        <spam>Diesel</spam>
-                    </div>
-                </div>
-                <div class="col11">
-                    <div>
-                        <spam>Petrol</spam>
-                    </div>
-                </div>
-                <div class="col11">
-                    <div>
-                        <spam>All</spam>
-                    </div>
+                <div class="row">
+                    <span class="col11">Diesel</span>
+                    
+                    <span class="col12">Petrol</span>
+                   
+                    <span class="col13">All</span>
                 </div>
             </div>
+            
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
                     <div class="list card cvCardProp" style="height: 50% !important; margin-top: 20px;"
@@ -1728,17 +1721,9 @@
 
                             <div class="r1row">
 				<div class="parameter_title1">
-                    			Milage :
-                		</div>
-				<div class="valid_parameter">
-					{{modelVarient.variantsHighWayAverage }} kmpl
-				</div>
-
-				<div class="parameter_title2">
-                    			Engine :
-                		</div>
-				<div class="valid_parameter">
-					{{modelVarient.variantsdisplacement }} cc
+                    			Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
+								
+                    			Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
 				</div>
 			    </div>
 
@@ -2106,14 +2091,11 @@
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
 				
-				<div class="rrow">
+		<div class="rrow">
                 	<div class="valid_title">
-                    	<img ng-src="images/calendar_icon.png"> Valid till :
+                    		<img ng-src="images/calendar_icon.png"> Valid till : <span class="valid_date">{{offObj.discountEndDates}}</span>
                 	</div>
-					<div class="valid_date">
-						{{offObj.discountEndDates}}
-					</div>
-				</div>
+		</div>
             </div>
             </div>
         </ion-content>
@@ -2147,13 +2129,10 @@
                     <p>{{offObj.discountDescriptions}}</p>
                 </div>
                 <div class="rrow">
-					<div class="valid_title">
-                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
-                	</div>
-					<div class="valid_date">
-						{{offObj.discountEndDates}}
-					</div>
-				</div>
+		    <div class="valid_title">
+                    	<img ng-src="images/calendar_icon.png"> Valid till : <span class="valid_date">{{offObj.discountEndDates}}</span>
+                    </div>					
+		</div>
             </div>
         </ion-content>
         <div class="bar bar-footer " ng-click="fn_getMoreOffers()">
@@ -2265,7 +2244,7 @@
                 </div>
                 <div class="rrow">
 					<div class="valid_title">
-                    	<img ng-src="images/calendar_icon.png"> Valid till : {{offObj.discountEndDates}}
+                    	<img ng-src="images/calendar_icon.png"> Valid till : 
                 	</div>
 					<div class="valid_date">
 						{{offObj.discountEndDates}}
@@ -3591,7 +3570,7 @@
 </script>
 <script id="templates/nc-car-brand-CD.html" type="text/ng-template">
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Maruti')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Maruti')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
@@ -3601,7 +3580,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Hyundai')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Hyundai')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
@@ -3611,7 +3590,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Honda')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Honda')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
@@ -3623,7 +3602,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Toyota')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Toyota')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
@@ -3633,7 +3612,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Mahindra')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Mahindra')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige"
@@ -3644,7 +3623,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Tata')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Tata')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
@@ -3656,7 +3635,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Ford')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Ford')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
@@ -3666,7 +3645,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Chevrolet')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Chevrolet')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige"
@@ -3677,7 +3656,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Renault')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Renault')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
@@ -3689,7 +3668,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Volkswagen')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Volkswagen')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige"
@@ -3700,7 +3679,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Audi')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Audi')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
@@ -3710,7 +3689,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Nissan')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Nissan')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
@@ -3722,7 +3701,7 @@
         </div>
     </div>
     <div class="row nc_sc_rowRightPadding">
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('BMW')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('BMW')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
@@ -3732,7 +3711,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Datsun')">
+        <div class="col-35 nc_sc_colom_border" ng-click="fn_ncSearchSetBrand('Datsun')">
             <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <img class="nc_sc_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
@@ -3742,16 +3721,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_sc_colom_border nc_sc_alignCenter" ng-click="nc_sc_getMoreBrand()">
+        <div class="col-35 nc_sc_colom_border" ng-click="nc_sc_getMoreBrand()">
             <div class="wrapper">
-                <span>MORE BRANDS</span>
+				<div class="nc_sc_alignCenter">
+                	<span>MORE BRANDS</span>
+				</div>
             </div>
         </div>
     </div>
 </script>
 <script id="templates/nc-car-offer-CD.html" type="text/ng-template">
-    <div class="row nc_ofd_rowRightPadding">
-        <div class="col-33 nc_ofd_colom_border">
+    <div class="rrow-33 nc_ofd_rowRightPadding">
+        <div class="ccol-35 nc_ofd_colom_border">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/maruti_logo.jpg">
@@ -3762,7 +3743,7 @@
             </div>
         </div>
 
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Hyundai')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Hyundai')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/hyundai_logo.jpg">
@@ -3772,7 +3753,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Honda')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Honda')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/honda_logo.jpg">
@@ -3783,8 +3764,8 @@
             </div>
         </div>
     </div>
-    <div class="row nc_ofd_rowRightPadding">
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Toyota')">
+    <div class="rrow-33 nc_ofd_rowRightPadding">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Toyota')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/toyota_logo.jpg">
@@ -3794,7 +3775,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Mahindra')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Mahindra')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige"
@@ -3805,7 +3786,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Tata')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Tata')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/tata_logo.jpg">
@@ -3816,8 +3797,8 @@
             </div>
         </div>
     </div>
-    <div class="row nc_ofd_rowRightPadding">
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Ford')">
+    <div class="rrow-33 nc_ofd_rowRightPadding">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Ford')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/ford_logo.jpg">
@@ -3827,7 +3808,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Chevrolet')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Chevrolet')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige"
@@ -3838,7 +3819,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Renault')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Renault')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/renault_logo.jpg">
@@ -3849,8 +3830,8 @@
             </div>
         </div>
     </div>
-    <div class="row nc_ofd_rowRightPadding">
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Volkswagen')">
+    <div class="rrow-33 nc_ofd_rowRightPadding">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Volkswagen')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige"
@@ -3861,7 +3842,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Audi')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Audi')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/audi_logo.jpg">
@@ -3871,7 +3852,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Nissan')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Nissan')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/nissan_logo.jpg">
@@ -3882,8 +3863,8 @@
             </div>
         </div>
     </div>
-    <div class="row nc_ofd_rowRightPadding">
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('BMW')">
+    <div class="rrow-33 nc_ofd_rowRightPadding">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('BMW')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/bmw_logo.jpg">
@@ -3893,7 +3874,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Datsun')">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="fn_ncSearchSetBrand('Datsun')">
             <div class="wrapper1">
                 <div class="nc_ofd_alignCenter">
                     <img class="nc_ofd_logoSige" src="http://images.cardekho.com/images/dealercallbacklogo/datsun_logo.jpg">
@@ -3903,11 +3884,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-33 nc_ofd_colom_border" ng-click="nc_sc_getMoreBrand()">
+        <div class="ccol-35 nc_ofd_colom_border" ng-click="nc_sc_getMoreBrand()">
             <div class="wrapper1">
             	<div class="nc_ofd_alignCenter">
                 	<span>MORE BRANDS</span>
-                </div
+                </div>
             </div>
         </div>
     </div>
