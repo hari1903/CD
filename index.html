@@ -1795,65 +1795,66 @@
 </script>
 <script id="templates/nc-get-on-road-price-form.html" type="text/ng-template">
     <ion-header-bar class="bar bar-subheader">
-        <h1>Get On Road Price of {{carModel}}</h1>
+        <h1 class="heading-orp">Get On Road Price of <span class="orp-name">{{carModel}}</span></h1>
     </ion-header-bar>
     <ion-content>
         <form novalidate class="simple-form">
             <div class="row">
-                <div class="col-25">
+                <div class="col-21">
                     <span>Name</span>
                 </div>
-                <div class="col">
-                    <input ng-model="user.name">
+                <div class="col-22">
+                    <input type= "text" ng-model="user.name">
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="col-21">
                     <span>Email</span>
                 </div>
-                <div class="col">
+                <div class="col-22">
                     <input type="email" ng-model="user.userEmail">
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="col-21">
                     <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
                 </div>
-                <div class="col">
+                <div class="col-22">
                     <input type="text" ng-model="user.userMobile">
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="col-21">
                     <span>City</span>
                 </div>
-                <div class="col" ng-click="">
+                <div class="col-22" ng-click="">
                     <input type="text" ng-model="user.userCity">
-                </div>
-                <div class="col-5" ng-click="">
-                    <i class="fa fa-angle-down"></i>
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="col-21">
                     <span>Area/Pin Code</span>
                 </div>
-                <div class="col">
+                <div class="col-22">
                     <input type="text" ng-model="user.userPinCode">
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-23">
                     <img ng-src="{{isUserAgreed && 'images/tick_selected.png' || 'images/tick_unselected.png'}}"
-                         ng-click="fn_isUserAgreed()"> <span>I Agree to <a> Terms & Conditions</a></span>
+                         ng-click="fn_isUserAgreed()"> <span class="col-pad">I Agree to <a> Terms & Conditions</a></span>
                 </div>
             </div>
-            <input type="submit" ng-click="fn_getOnRoadPriceDetails(user)" value="Save"/>
-        </form>
+           </form>
+           
+            <div class="rrow11">
+                <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
+                    <span> Get On Road Price</span>
+                </div>
+            </div>
+     
     </ion-content>
-    <div class="bar bar-footer bar-balanced">
-        <div class="title">Footer</div>
-    </div>
+	
 </script>
 <script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
     <ion-header-bar class="bar bar-subheader">
