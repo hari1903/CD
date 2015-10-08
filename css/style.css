@@ -119,3 +119,33 @@ span.usedCarHomeTitle {
   width: 200px;
   height: 200px;
 }
+.footerBarRow{
+    height: 50px;
+    padding: 0px;
+    border-top-width: 1px;
+    border-color: #e42012;
+    border-style: solid;
+}
+
+.footerBarProp{
+  border-color: #e42012;
+    border: none;
+    text-transform: uppercase;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+
+}
+
+.activeBar{
+
+    border-top: 5px solid #e42012 !important;
+    margin-top: -5px;
+    border-style: inset;
+    color: #DF5426;
+    font-weight: bold;
+    text-align: center;
+}
