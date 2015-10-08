@@ -61,11 +61,6 @@ ion-content.has-subheader.scroll-content div.row{
 	color: #1A1A1A !important;
 }
 
-.row9{
-	height: 200px !important;
-	max-width:450px !important;	
-	margin-top:5px !important;
-}
 ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     display: inline-block !important;
     margin: 0;
@@ -105,7 +100,7 @@ ng-nc-search-car-header ion-header-bar div div.active{
 }
 
 .nc_sc_rowRightPadding {
-    padding-right: 10px !important;
+    margin: 5px !important;
 }
 
 .nc_sc_colom_border div.wrapper{
@@ -141,7 +136,6 @@ div.bar.bar-light h1.title{
 	margin: 0 auto;
 	border-radius: 5px;
 	font-weight: bold;
-	color: #fff;
 	font-family:'Roboto-Bold';
 	font-size:15px;
 	color:#FFFFFF;
@@ -154,6 +148,7 @@ ion-footer-bar.bar.bar-assertive.bar-footer{
 	text-transform: uppercase;
 	max-width: 95%;
 	margin: 0 auto;
+	bottom: 20px;
 }
 ion-footer-bar.bar.bar-assertive.bar-footer div.row{
 	padding-bottom:10px;
@@ -172,4 +167,4 @@ ion-footer-bar .col-25.active{
 	border-top: 5px solid #DF5426;
 	margin-top: -5px;
 	color: #DF5426;
-	}
+}

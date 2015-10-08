@@ -1,10 +1,3 @@
-.nc_lc_header_info{
-
-}
-
-.nc_lc_alignCenter{
-    text-align: left !important;
-}
 
 .bar-subheader {
     top: 44px;
@@ -68,7 +61,7 @@
 }
 
 .bar-subheader3 {
-	margin-top: 10px;
+    margin-top: 10px;
     padding-top:5px;
     display: block;
     height: 28px;
@@ -141,16 +134,14 @@ ion-content.has-subheader.scroll-content div.row10{
 
 .nc_ofd_alignCenter {
     text-align: center !important;
-    padding-left: 15px !important;
 }
 
-
 .nc_ofd_rowRightPadding {
-    padding-right: 10px !important;
+    margin-left: 5px !important;
 }
 
 .nc_ofd_colom_border div.wrapper1{
-    margin: 7px !important;
+    margin: 0px !important;
     border-width: 1px !important;
     border-style: solid !important;
     border-color: #c8c7cc !important;
@@ -166,4 +157,25 @@ ion-content.has-subheader.scroll-content div.row10{
     border: none;
     background-color: white;
     font-size: 15px;
+}
+.ccol-35 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 103px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 103px;
+    -ms-flex: 0 0 103px;
+    flex: 0 0 103px;
+    width: 103px;
+    height: 64px;
+    margin-right: 5px;
+}
+
+.rrow-33{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
 }
