@@ -1614,7 +1614,7 @@
                 <div class="row1 list card cvCardProp" style="height: 70% !important;"
                      ng-click="fn_ncBrandDetail(ncBrandDetail)">
                     <div class="row1 item item-thumbnail cvitemPadding">
-                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}">
+                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}" style="height: 125px; width: 175px;">
                     </div>
                     <div class="item item-body cvItemBodyProp">
                         <div class="row3" id="ccvBrand">
@@ -1709,25 +1709,27 @@
                     <span class="col13">All</span>
                 </div>
             </div>
-            
+
+			<div style="height: 30%;">
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
+				
                 <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
-                    <div class="list card cvCardProp" style="height: 50% !important; margin-top: 20px;"
+                    <div class="list card cvCardProp" style="height: 70% !important; margin-top: 20px;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div id="c4vBrand">
                                 <span class="heading3">{{modelVarient.displayVariantId}}</span>
-                            </div>
+                            </div>                         
 
-                            <div class="r1row">
-				<div class="parameter_title1">
-                    			Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
+							<div class="r1row">
+								<div class="parameter_title1">
+                    				Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
 								
-                    			Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
-				</div>
-			    </div>
+                    				Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
+								</div>
+							</div>
 
-			    <div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
+							<div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
                                 <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
                             </div>
 
@@ -1736,15 +1738,19 @@
                         
                     </div>
                 </ion-slide>
+				
             </ion-slide-box>
+			</div>
+
             <div class="bar bar-calm1">
                 <h1 class="heading2">Recommended cars for you</h1>
             </div>
 
+			<div style="height: 65%;">
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
                            style="padding-top: 50px !important; text-align:center !important;">
                 <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
-                    <div class="list card cvCardProp" style="height: 40% !important;"
+                    <div class="list card cvCardProp" style="height: 60% !important;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div>
@@ -1767,11 +1773,17 @@
                         </div>
 
                         <div class="bar bar-calm2">
-                            <h1 class="title">Compare</h1>
+                            <a href="#/event/compare-cars">
+                				<span class="title1">Compare</span> 
+            				</a>
                         </div>
+
+			
+
                     </div>
                 </ion-slide>
             </ion-slide-box>
+			</div>
         </ion-content>
         <div class="bar bar-footer ">
             <div class="rrow11">
@@ -1787,7 +1799,7 @@
                         <i class="fa fa-circle"></i>
                         <i class="fa fa-circle"></i>
                     </div>
-		    <div>More</div>
+					<div>More</div>
                 </div>
             </div>
         </div>
@@ -1831,6 +1843,7 @@
                     <input type="text" ng-model="user.userCity">
                 </div>
             </div>
+            </div>
             <div class="row">
                 <div class="col-21">
                     <span>Area/Pin Code</span>
@@ -1846,7 +1859,8 @@
                 </div>
             </div>
            </form>
-           
+
+
             <div class="rrow11">
                 <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
                     <span> Get On Road Price</span>
@@ -1858,29 +1872,23 @@
 </script>
 <script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
     <ion-header-bar class="bar bar-subheader">
-        <div><span>{{carModel}}</span></div>
+        <div class= "heading-orpd"><span>{{carModel}}</span></div>
         <div class="row">
-            <div class="col-40"> On Road Price</div>
-            <div class="col-10">In</div>
-            <div class="col">
-                <div class="list">
-                    <div>{{cityItem.city}}</div>
-                    <label class="item item-input item-select">
-                        <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList">
-                        </select>
-                    </label>
-                </div>
+			<span class="col-41">On Road Price </span><div class="ccol-21"><span>In</span></div>
+            <div class="ccol-22">
+                <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
             </div>
-        </div>
+         </div>
     </ion-header-bar>
     <ion-content>
+		<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1); margin-top: 50px !important;">
         <ion-list>
             <div ng-repeat="onRoadDetail in onRoadDetailsObj.data['On Road Price']">
                 <ion-item class="item-stable item-icon-right active"
                           ng-init="status.open = $first"
                           is-open="status.open"
                           ng-click="toggleGroup(onRoadDetail)"
-                          ng-class="{active: isGroupShown(onRoadDetail)}">
+                          ng-class="{active: isGroupShown(onRoadDetail)}" style= "padding-top: 7px !important; font-size: 14px !important; font-family: 'Roboto-Regular' !important; border: 1px solid; height: 35px;">
                     <i class="icon " ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
                     &nbsp;
                     Group {{onRoadDetail.variantName}}
@@ -1889,39 +1897,726 @@
                           ng-show="isGroupShown(onRoadDetail)">
                     <div class="row">
                         <div class="col-90">Ex-showroom Price</div>
-                        <div>{{onRoadDetail.exShowRoomPrice}}</div>
+                        <div class="val-pad">{{onRoadDetail.exShowRoomPrice}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">RTO</div>
-                        <div>{{onRoadDetail.rto}}</div>
+                        <div class="val-pad">{{onRoadDetail.rto}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Insurance</div>
-                        <div>{{onRoadDetail.insurance}}</div>
+                        <div class="val-pad">{{onRoadDetail.insurance}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Handling Charges</div>
-                        <div>{{onRoadDetail.handlingCharges}}</div>
+                        <div class="val-pad">{{onRoadDetail.handlingCharges}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Logistics</div>
-                        <div>{{onRoadDetail.logistics}}</div>
+                        <div class="val-pad">{{onRoadDetail.logistics}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">MCD Charges</div>
-                        <div>{{onRoadDetail.mcd}}</div>
+                        <div class="val-pad">{{onRoadDetail.mcd}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Others</div>
-                        <div>{{onRoadDetail.others}}</div>
+                        <div class="val-pad">{{onRoadDetail.others}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">MCD Charges</div>
-                        <div>{{onRoadDetail.totalOnRoadPrice}}</div>
+                        <div class="val-pad">{{onRoadDetail.totalOnRoadPrice}}</div>
                     </div>
                 </ion-item>
             </div>
         </ion-list>
+	</div>
+    </ion-content>
+
+</script><script id="templates/nc-brand-detail.html" type="text/ng-template">
+    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-content>
+        <div>
+            <div class="row1">
+                <img ng-src=" {{ncBrandDetails.ncBrandDetailsObj.data.oemImageUrl}}">
+            </div>
+            <div class="row1">
+                <span>{{ncBrandDetails.ncBrandDetailsObj.data.oemName}}</span>
+            </div>
+            <div class="row2" ng-click="fn_ncSearchCar()">
+                <span>tap to choose another brand</span>
+            </div>
+            <div class="row7 bar">
+                <h1 class="row8 title">Model</h1>
+            </div>
+        </div>
+
+        <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
+                       style="height: 80% !important;">
+            <ion-slide ng-repeat="ncBrandDetail in ncBrandDetails.ncBrandDetailsObj.data.modelList">
+                <div class="row1 list card cvCardProp" style="height: 70% !important;"
+                     ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                    <div class="row1 item item-thumbnail cvitemPadding">
+                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}" style="height: 125px; width: 175px;">
+                    </div>
+                    <div class="item item-body cvItemBodyProp">
+                        <div class="row3" id="ccvBrand">
+                            <span>{{ncBrandDetail.displayCarModelName}}</span>
+                        </div>
+                        <div class="row4" id="c1cvBrand">
+                            <span>RS. {{ncBrandDetail.minexshowroomprice | formatPrice}} - {{ncBrandDetail.maxexshowroomprice | formatPrice}} Lac</span>
+                        </div>
+
+                    </div>
+
+                    <div class="row5 bar">
+                        <h1 class="row6 title">View Details</h1>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+    </ion-content>
+    <ng-nc-footer-option></ng-nc-footer-option>
+</script>
+<script id="templates/nc-model-detail.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-content>
+            <div class="rrow1">
+                <span>{{ncModelDetails.ncModelDetailsObj.data.displayCarModelName}}</span>
+            </div>
+            <div class="rrow2">
+                <img ng-src="images/sort_rs_orange.png"> <span>{{ncModelDetails.ncModelDetailsObj.data.modelminexshowroomprice | formatPrice }} - {{ncModelDetails.ncModelDetailsObj.data.modelmaxexshowroomprice | formatPrice}}</span>
+            </div>
+            
+            <div class="rrow3">
+                <img class="rrow3" src="{{imageUrl}}">
+            </div>
+
+            <div class="rrow4">
+                <div ng-repeat="colorObj in ncModelDetails.ncModelDetailsObj.data.colors">
+                    <i class="fa fa-circle" style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
+                       ng-click="fn_ncSelectedColor(colorObj)"></i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="rrow5"><span>Mileage</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.minMilage}} {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
+                    </div>
+                    <div class="rrow7"><span>Upto</span></div>
+
+                </div>
+                <div class="col">
+                    <div class="rrow5"><span>Engine</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.maxEngineCapacity}}</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
+                </div>
+                <div class="col">
+                    <div class="rrow5"><span>EMI</span></div>
+                    <div class="rrow6"><img ng-src="images/sort_rs.png">
+                        <span>{{ncModelDetails.ncModelDetailsObj.data.emipermonth}}/m</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
+                </div>
+            </div>
+
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Experience {{ncModelDetails.ncModelDetailsObj.data.modelname}}</h1>
+            </div>
+            <div class="wide-as-needed">
+                <a class="button1 inline-button" style="margin-left:50px">
+                    <div><img src="images/feel_the_car_icon.png"></div>
+                    <div><span>Feel the car</span></div>
+                </a>
+
+                <a class="button1 inline-button">
+                    <div><img src="images/video_footer_tab_icon.png"></div>
+                    <div><span>Videos</span></div>
+                </a>
+
+                <a class="button1 inline-button">
+                    <div><i class="fa fa-picture-o"></i></div>
+                    <div><span>Pictures</span></div>
+                </a>
+            </div>
+            <div class="bar bar-calm1" style="margin-top:10px">
+                <h1 class="heading2">Variants</h1>
+            </div>
+            <div class="r2row" style="padding-top: 50px !important;">
+                <div class="row">
+                    <span class="col11">Diesel</span>
+                    
+                    <span class="col12">Petrol</span>
+                   
+                    <span class="col13">All</span>
+                </div>
+            </div>
+
+			<div style="height: 30%;">
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
+				
+                <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
+                    <div class="list card cvCardProp" style="height: 70% !important; margin-top: 20px;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div id="c4vBrand">
+                                <span class="heading3">{{modelVarient.displayVariantId}}</span>
+                            </div>                         
+
+							<div class="r1row">
+								<div class="parameter_title1">
+                    				Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
+								
+                    				Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
+								</div>
+							</div>
+
+							<div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
+                                <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+                </ion-slide>
+				
+            </ion-slide-box>
+			</div>
+
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Recommended cars for you</h1>
+            </div>
+
+			<div style="height: 65%;">
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
+                           style="padding-top: 50px !important; text-align:center !important;">
+                <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
+                    <div class="list card cvCardProp" style="height: 60% !important;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div>
+                                <img src="{{recommendedCars.mobileimage}}">
+                            </div>
+                            <div id="">
+                                <span>{{recommendedCars.displayCarModelName}}</span>
+                            </div>
+                            <div id="">
+                                <img src="images/sort_rs_orange.png"> <span> {{recommendedCars.minexshowroomprice | formatPrice }} - {{recommendedCars.maxexshowroomprice | formatPrice }} Lac*</span>
+                            </div>
+                            <div class="rrow10">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="bar bar-calm2">
+                            <a href="#/event/compare-cars">
+                				<span class="title1">Compare</span> 
+            				</a>
+                        </div>
+
+			
+
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+			</div>
+        </ion-content>
+        <div class="bar bar-footer ">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
+                    <span> Get On Road Price</span>
+                </div>
+                <div class="col-31">
+                    <span>Overview</span>
+                </div>
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+					<div>More</div>
+                </div>
+            </div>
+        </div>
+    </ion-view>
+</script>
+<script id="templates/nc-get-on-road-price-form.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <h1 class="heading-orp">Get On Road Price of <span class="orp-name">{{carModel}}</span></h1>
+    </ion-header-bar>
+    <ion-content>
+        <form novalidate class="simple-form">
+            <div class="row">
+                <div class="col-21">
+                    <span>Name</span>
+                </div>
+                <div class="col-22">
+                    <input type= "text" ng-model="user.name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Email</span>
+                </div>
+                <div class="col-22">
+                    <input type="email" ng-model="user.userEmail">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
+                </div>
+                <div class="col-22">
+                    <input type="text" ng-model="user.userMobile">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>City</span>
+                </div>
+                <div class="col-22" ng-click="">
+                    <input type="text" ng-model="user.userCity">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Area/Pin Code</span>
+                </div>
+                <div class="col-22">
+                    <input type="text" ng-model="user.userPinCode">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-23">
+                    <img ng-src="{{isUserAgreed && 'images/tick_selected.png' || 'images/tick_unselected.png'}}"
+                         ng-click="fn_isUserAgreed()"> <span class="col-pad">I Agree to <a> Terms & Conditions</a></span>
+                </div>
+            </div>
+           </form>
+
+
+            <div class="rrow11">
+                <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
+                    <span> Get On Road Price</span>
+                </div>
+            </div>
+     
+    </ion-content>
+	
+</script>
+<script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <div class= "heading-orpd"><span>{{carModel}}</span></div>
+        <div class="row">
+			<span class="col-41">On Road Price </span><div class="ccol-21"><span>In</span></div>
+            <div class="ccol-22">
+                <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
+            </div>
+         </div>
+    </ion-header-bar>
+    <ion-content>
+		<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1); margin-top: 50px !important;">
+        <ion-list>
+            <div ng-repeat="onRoadDetail in onRoadDetailsObj.data['On Road Price']">
+                <ion-item class="item-stable item-icon-right active"
+                          ng-init="status.open = $first"
+                          is-open="status.open"
+                          ng-click="toggleGroup(onRoadDetail)"
+                          ng-class="{active: isGroupShown(onRoadDetail)}" style= "padding-top: 7px !important; font-size: 14px !important; font-family: 'Roboto-Regular' !important; border: 1px solid; height: 35px;">
+                    <i class="icon " ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
+                    &nbsp;
+                    Group {{onRoadDetail.variantName}}
+                </ion-item>
+                <ion-item class="item-accordion"
+                          ng-show="isGroupShown(onRoadDetail)">
+                    <div class="row">
+                        <div class="col-90">Ex-showroom Price</div>
+                        <div class="val-pad">{{onRoadDetail.exShowRoomPrice}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">RTO</div>
+                        <div class="val-pad">{{onRoadDetail.rto}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Insurance</div>
+                        <div class="val-pad">{{onRoadDetail.insurance}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Handling Charges</div>
+                        <div class="val-pad">{{onRoadDetail.handlingCharges}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Logistics</div>
+                        <div class="val-pad">{{onRoadDetail.logistics}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">MCD Charges</div>
+                        <div class="val-pad">{{onRoadDetail.mcd}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Others</div>
+                        <div class="val-pad">{{onRoadDetail.others}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">MCD Charges</div>
+                        <div class="val-pad">{{onRoadDetail.totalOnRoadPrice}}</div>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+	</div>
+    </ion-content>
+
+</script><script id="templates/nc-brand-detail.html" type="text/ng-template">
+    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-content>
+        <div>
+            <div class="row1">
+                <img ng-src=" {{ncBrandDetails.ncBrandDetailsObj.data.oemImageUrl}}">
+            </div>
+            <div class="row1">
+                <span>{{ncBrandDetails.ncBrandDetailsObj.data.oemName}}</span>
+            </div>
+            <div class="row2" ng-click="fn_ncSearchCar()">
+                <span>tap to choose another brand</span>
+            </div>
+            <div class="row7 bar">
+                <h1 class="row8 title">Model</h1>
+            </div>
+        </div>
+
+        <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
+                       style="height: 80% !important;">
+            <ion-slide ng-repeat="ncBrandDetail in ncBrandDetails.ncBrandDetailsObj.data.modelList">
+                <div class="row1 list card cvCardProp" style="height: 70% !important;"
+                     ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                    <div class="row1 item item-thumbnail cvitemPadding">
+                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}" style="height: 125px; width: 175px;">
+                    </div>
+                    <div class="item item-body cvItemBodyProp">
+                        <div class="row3" id="ccvBrand">
+                            <span>{{ncBrandDetail.displayCarModelName}}</span>
+                        </div>
+                        <div class="row4" id="c1cvBrand">
+                            <span>RS. {{ncBrandDetail.minexshowroomprice | formatPrice}} - {{ncBrandDetail.maxexshowroomprice | formatPrice}} Lac</span>
+                        </div>
+
+                    </div>
+
+                    <div class="row5 bar">
+                        <h1 class="row6 title">View Details</h1>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+    </ion-content>
+    <ng-nc-footer-option></ng-nc-footer-option>
+</script>
+<script id="templates/nc-model-detail.html" type="text/ng-template">
+    <ion-view view-title="">
+        <ion-content>
+            <div class="rrow1">
+                <span>{{ncModelDetails.ncModelDetailsObj.data.displayCarModelName}}</span>
+            </div>
+            <div class="rrow2">
+                <img ng-src="images/sort_rs_orange.png"> <span>{{ncModelDetails.ncModelDetailsObj.data.modelminexshowroomprice | formatPrice }} - {{ncModelDetails.ncModelDetailsObj.data.modelmaxexshowroomprice | formatPrice}}</span>
+            </div>
+            
+            <div class="rrow3">
+                <img class="rrow3" src="{{imageUrl}}">
+            </div>
+
+            <div class="rrow4">
+                <div ng-repeat="colorObj in ncModelDetails.ncModelDetailsObj.data.colors">
+                    <i class="fa fa-circle" style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
+                       ng-click="fn_ncSelectedColor(colorObj)"></i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="rrow5"><span>Mileage</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.minMilage}} {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
+                    </div>
+                    <div class="rrow7"><span>Upto</span></div>
+
+                </div>
+                <div class="col">
+                    <div class="rrow5"><span>Engine</span></div>
+                    <div class="rrow6"><span>{{ncModelDetails.ncModelDetailsObj.data.maxEngineCapacity}}</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
+                </div>
+                <div class="col">
+                    <div class="rrow5"><span>EMI</span></div>
+                    <div class="rrow6"><img ng-src="images/sort_rs.png">
+                        <span>{{ncModelDetails.ncModelDetailsObj.data.emipermonth}}/m</span></div>
+                    <div class="rrow7"><span>Upto</span></div>
+                </div>
+            </div>
+
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Experience {{ncModelDetails.ncModelDetailsObj.data.modelname}}</h1>
+            </div>
+            <div class="wide-as-needed">
+                <a class="button1 inline-button" style="margin-left:50px">
+                    <div><img src="images/feel_the_car_icon.png"></div>
+                    <div><span>Feel the car</span></div>
+                </a>
+
+                <a class="button1 inline-button">
+                    <div><img src="images/video_footer_tab_icon.png"></div>
+                    <div><span>Videos</span></div>
+                </a>
+
+                <a class="button1 inline-button">
+                    <div><i class="fa fa-picture-o"></i></div>
+                    <div><span>Pictures</span></div>
+                </a>
+            </div>
+            <div class="bar bar-calm1" style="margin-top:10px">
+                <h1 class="heading2">Variants</h1>
+            </div>
+            <div class="r2row" style="padding-top: 50px !important;">
+                <div class="row">
+                    <span class="col11">Diesel</span>
+                    
+                    <span class="col12">Petrol</span>
+                   
+                    <span class="col13">All</span>
+                </div>
+            </div>
+
+			<div style="height: 30%;">
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
+				
+                <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
+                    <div class="list card cvCardProp" style="height: 70% !important; margin-top: 20px;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div id="c4vBrand">
+                                <span class="heading3">{{modelVarient.displayVariantId}}</span>
+                            </div>                         
+
+							<div class="r1row">
+								<div class="parameter_title1">
+                    				Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
+								
+                    				Engine : <span class="valid_parameter">{{modelVarient.variantsdisplacement }} cc</span>
+								</div>
+							</div>
+
+							<div class="rrow9" style="padding-top: 20px !important;" id="c4cvBrand">
+                                <img src="images/sort_rs_orange.png"> <span> {{modelVarient.variantsprice }}* </span>
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+                </ion-slide>
+				
+            </ion-slide-box>
+			</div>
+
+            <div class="bar bar-calm1">
+                <h1 class="heading2">Recommended cars for you</h1>
+            </div>
+
+			<div style="height: 65%;">
+            <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
+                           style="padding-top: 50px !important; text-align:center !important;">
+                <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
+                    <div class="list card cvCardProp" style="height: 60% !important;"
+                         ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                        <div class="item item-body cvItemBodyProp">
+                            <div>
+                                <img src="{{recommendedCars.mobileimage}}">
+                            </div>
+                            <div id="">
+                                <span>{{recommendedCars.displayCarModelName}}</span>
+                            </div>
+                            <div id="">
+                                <img src="images/sort_rs_orange.png"> <span> {{recommendedCars.minexshowroomprice | formatPrice }} - {{recommendedCars.maxexshowroomprice | formatPrice }} Lac*</span>
+                            </div>
+                            <div class="rrow10">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="bar bar-calm2">
+                            <a href="#/event/compare-cars">
+                				<span class="title1">Compare</span> 
+            				</a>
+                        </div>
+
+			
+
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+			</div>
+        </ion-content>
+        <div class="bar bar-footer ">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
+                    <span> Get On Road Price</span>
+                </div>
+                <div class="col-31">
+                    <span>Overview</span>
+                </div>
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+					<div>More</div>
+                </div>
+            </div>
+        </div>
+    </ion-view>
+</script>
+<script id="templates/nc-get-on-road-price-form.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <h1 class="heading-orp">Get On Road Price of <span class="orp-name">{{carModel}}</span></h1>
+    </ion-header-bar>
+    <ion-content>
+        <form novalidate class="simple-form">
+            <div class="row">
+                <div class="col-21">
+                    <span>Name</span>
+                </div>
+                <div class="col-22">
+                    <input type= "text" ng-model="user.name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Email</span>
+                </div>
+                <div class="col-22">
+                    <input type="email" ng-model="user.userEmail">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
+                </div>
+                <div class="col-22">
+                    <input type="text" ng-model="user.userMobile">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>City</span>
+                </div>
+                <div class="col-22" ng-click="">
+                    <input type="text" ng-model="user.userCity">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-21">
+                    <span>Area/Pin Code</span>
+                </div>
+                <div class="col-22">
+                    <input type="text" ng-model="user.userPinCode">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-23">
+                    <img ng-src="{{isUserAgreed && 'images/tick_selected.png' || 'images/tick_unselected.png'}}"
+                         ng-click="fn_isUserAgreed()"> <span class="col-pad">I Agree to <a> Terms & Conditions</a></span>
+                </div>
+            </div>
+           </form>
+
+
+            <div class="rrow11">
+                <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
+                    <span> Get On Road Price</span>
+                </div>
+            </div>
+     
+    </ion-content>
+	
+</script>
+<script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
+    <ion-header-bar class="bar bar-subheader">
+        <div class= "heading-orpd"><span>{{carModel}}</span></div>
+        <div class="row">
+			<span class="col-41">On Road Price </span><div class="ccol-21"><span>In</span></div>
+            <div class="ccol-22">
+                <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
+            </div>
+         </div>
+    </ion-header-bar>
+    <ion-content>
+		<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1); margin-top: 50px !important;">
+        <ion-list>
+            <div ng-repeat="onRoadDetail in onRoadDetailsObj.data['On Road Price']">
+                <ion-item class="item-stable item-icon-right active"
+                          ng-init="status.open = $first"
+                          is-open="status.open"
+                          ng-click="toggleGroup(onRoadDetail)"
+                          ng-class="{active: isGroupShown(onRoadDetail)}" style= "padding-top: 7px !important; font-size: 14px !important; font-family: 'Roboto-Regular' !important; border: 1px solid; height: 35px;">
+                    <i class="icon " ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
+                    &nbsp;
+                    Group {{onRoadDetail.variantName}}
+                </ion-item>
+                <ion-item class="item-accordion"
+                          ng-show="isGroupShown(onRoadDetail)">
+                    <div class="row">
+                        <div class="col-90">Ex-showroom Price</div>
+                        <div class="val-pad">{{onRoadDetail.exShowRoomPrice}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">RTO</div>
+                        <div class="val-pad">{{onRoadDetail.rto}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Insurance</div>
+                        <div class="val-pad">{{onRoadDetail.insurance}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Handling Charges</div>
+                        <div class="val-pad">{{onRoadDetail.handlingCharges}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Logistics</div>
+                        <div class="val-pad">{{onRoadDetail.logistics}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">MCD Charges</div>
+                        <div class="val-pad">{{onRoadDetail.mcd}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">Others</div>
+                        <div class="val-pad">{{onRoadDetail.others}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-90">MCD Charges</div>
+                        <div class="val-pad">{{onRoadDetail.totalOnRoadPrice}}</div>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+	</div>
     </ion-content>
 
 </script>
