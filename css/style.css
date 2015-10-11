@@ -149,3 +149,6 @@ span.usedCarHomeTitle {
     font-weight: bold;
     text-align: center;
 }
+.item.item-thumbnail-left .detail{
+  margin-left:50px;
+}
