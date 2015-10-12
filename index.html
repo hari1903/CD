@@ -13,7 +13,6 @@
     <script src="js/ionic_bundle.js"></script>
     <script type="text/javascript" src="js/angular-css-injector.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="node_modules/angular-youtube-embed.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/ion.rangeSlider.js"></script>
     <script src="js/range_selector.js"></script>
@@ -1941,12 +1940,12 @@
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
             <div class="list ">
                 <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{upcomingCar.imageUrl}}>
+                    <img class="car-thumbnail" ng-src={{upcomingCar.imageUrl}}>
 		   <div class="detail">		
 
                     <h2 class="">{{upcomingCar.carModelName}}</h2>
 		    <h3 class="">Estimated Price: <span class="">Rs.{{upcomingCar.expectedExShowRoomPrice | formatPrice  }} Lac</span></h3>
-                    <img src="images/Icons/xhdpi/upcoming_bell.png">
+                    <img class="upcoming-alarm" src="images/Icons/xhdpi/upcoming_bell.png">
                 </div>
             </div>
             </div>
@@ -2012,15 +2011,28 @@
             <div class="list card ">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{popularCar.mobileimage}}>
+                    <div class="detail">
+                        <h2 class="">{{popularCar.displayCarModelName}}</h2>
 
-                    <h2 class="">{{popularCar.displayCarModelName}}</h2>
-
-                    <h3 class="">Rs <span class="">{{popularCar.minexshowroomprice | formatPrice  }} - {{popularCar.maxexshowroomprice | formatPrice  }}</span>
-                        Lac</h3>
+                        <h3 class="">Rs <span class="">{{popularCar.minexshowroomprice | formatPrice  }} - {{popularCar.maxexshowroomprice | formatPrice  }}</span>
+                            Lac</h3>
+                        <fieldset class="rating">
+                            <input type="radio" id="{{$index}}star5" name="{{$index}}rating" value="5" ng-model="popularCar.rating" /><label class = "full" for="{{$index}}star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="{{$index}}star4half" name="{{$index}}rating" value="4.5"  ng-model="popularCar.rating" /><label class="half" for="{{$index}}star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="{{$index}}star4" name="{{$index}}rating" value="4"  ng-model="popularCar.rating" /><label class = "full" for="{{$index}}star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="{{$index}}star3half" name="{{$index}}rating" value="3.5"  ng-model="popularCar.rating" /><label class="half" for="{{$index}}star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="{{$index}}star3" name="{{$index}}rating" value="3"  ng-model="popularCar.rating" /><label class = "full" for="{{$index}}star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="{{$index}}star2half" name="{{$index}}rating" value="2.5"  ng-model="popularCar.rating" /><label class="half" for="{{$index}}star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="{{$index}}star2" name="{{$index}}rating" value="2"  ng-model="popularCar.rating" /><label class = "full" for="{{$index}}star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="{{$index}}star1half" name="{{$index}}rating" value="1.5"  ng-model="popularCar.rating" /><label class="half" for="{{$index}}star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="{{$index}}star1" name="{{$index}}rating" value="1"  ng-model="popularCar.rating" /><label class = "full" for="{{$index}}star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"  ng-model="popularCar.rating" /><label class="half" for="{{$index}}starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>    
+                    </div>
                 </div>
-                <div class="item item-divider item-icon-left ">
+                <!--div class="item item-divider item-icon-left ">
                     <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{popularCar.rating}}/5</span>
-                </div>
+                </div-->
             </div>
         </ion-item>
     </ion-content>
