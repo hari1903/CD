@@ -1831,6 +1831,7 @@
                     <input type="text" ng-model="user.userCity">
                 </div>
             </div>
+            </div>
             <div class="row">
                 <div class="col-21">
                     <span>Area/Pin Code</span>
@@ -1846,7 +1847,8 @@
                 </div>
             </div>
            </form>
-           
+
+
             <div class="rrow11">
                 <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
                     <span> Get On Road Price</span>
@@ -1858,20 +1860,13 @@
 </script>
 <script id="templates/nc-get-on-road-price-detail.html" type="text/ng-template">
     <ion-header-bar class="bar bar-subheader">
-        <div><span>{{carModel}}</span></div>
+        <div class= "heading-orpd"><span>{{carModel}}</span></div>
         <div class="row">
-            <div class="col-40"> On Road Price</div>
-            <div class="col-10">In</div>
-            <div class="col">
-                <div class="list">
-                    <div>{{cityItem.city}}</div>
-                    <label class="item item-input item-select">
-                        <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList">
-                        </select>
-                    </label>
-                </div>
+			<span class="col-41">On Road Price </span><div class="ccol-21"><span>In</span></div>
+            <div class="ccol-22">
+                <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
             </div>
-        </div>
+         </div>
     </ion-header-bar>
     <ion-content>
         <ion-list>
@@ -1880,7 +1875,7 @@
                           ng-init="status.open = $first"
                           is-open="status.open"
                           ng-click="toggleGroup(onRoadDetail)"
-                          ng-class="{active: isGroupShown(onRoadDetail)}">
+                          ng-class="{active: isGroupShown(onRoadDetail)}" style= "margin-top: 25px; padding: 10px !important; font-size: 14px !important; font-family: 'Roboto-Regular' !important;">
                     <i class="icon " ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
                     &nbsp;
                     Group {{onRoadDetail.variantName}}
@@ -1889,35 +1884,35 @@
                           ng-show="isGroupShown(onRoadDetail)">
                     <div class="row">
                         <div class="col-90">Ex-showroom Price</div>
-                        <div>{{onRoadDetail.exShowRoomPrice}}</div>
+                        <div class="val-pad">{{onRoadDetail.exShowRoomPrice}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">RTO</div>
-                        <div>{{onRoadDetail.rto}}</div>
+                        <div class="val-pad">{{onRoadDetail.rto}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Insurance</div>
-                        <div>{{onRoadDetail.insurance}}</div>
+                        <div class="val-pad">{{onRoadDetail.insurance}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Handling Charges</div>
-                        <div>{{onRoadDetail.handlingCharges}}</div>
+                        <div class="val-pad">{{onRoadDetail.handlingCharges}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Logistics</div>
-                        <div>{{onRoadDetail.logistics}}</div>
+                        <div class="val-pad">{{onRoadDetail.logistics}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">MCD Charges</div>
-                        <div>{{onRoadDetail.mcd}}</div>
+                        <div class="val-pad">{{onRoadDetail.mcd}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">Others</div>
-                        <div>{{onRoadDetail.others}}</div>
+                        <div class="val-pad">{{onRoadDetail.others}}</div>
                     </div>
                     <div class="row">
                         <div class="col-90">MCD Charges</div>
-                        <div>{{onRoadDetail.totalOnRoadPrice}}</div>
+                        <div class="val-pad">{{onRoadDetail.totalOnRoadPrice}}</div>
                     </div>
                 </ion-item>
             </div>
