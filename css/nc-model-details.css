@@ -23,22 +23,24 @@
 
 .rrow3 {
 	margin-top: 10px;
-	height: 190px !important;
-	max-width:400px !important;	
+	height: auto !important;
+	max-width: 100% !important;	
 	text-align: center;
+	width: auto;
 }
 
 .rrow4 {
-	margin-top: 20px;
-	display: -webkit-box;
-    	display: -webkit-flex;
-    	display: -moz-box;
-    	display: -moz-flex;
-    	display: -ms-flexbox;
-    	display: flex;
-    	padding: 10px;
-    	width: 100%;
-    	margin-left: 100px;
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding-left: 25%;
+    padding-right: 25%;
+    text-align: center;
 }
 
 .rrow5 {
@@ -135,11 +137,10 @@
 }
 
 .col11 {	
-    margin-top: 20px; 
+	margin-top: 20px; 
     -webkit-box-flex: 1;
-    flex: 1;
     display: block;
-    padding: 5px;
+    padding-right: 20px;
     width: 100%;
     text-align: center;
     border: 2px;
@@ -214,11 +215,12 @@
     display: flex;
     padding: 5px;
     width: 100%;
-    padding-left: 125px;
+    padding-left: 35%;
+    padding-right: 35%;
 }
 
 .rrow11 {
-	display: -webkit-box;
+    display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -moz-flex;
@@ -244,7 +246,7 @@
 }
 
 .col-31 {
-	text-align: center; 
+    text-align: center; 
     margin: 10px;
 }
 
@@ -294,7 +296,7 @@
 
 .col-21 {
     -webkit-box-flex: 1;
-    width: 125px;
+    width: 30%;
     border: 1px solid;
     border-color: #585858;
     margin-top: 2px;
@@ -308,7 +310,7 @@
 .col-22 {
     -webkit-box-flex: 1;
     display: block;
-    width: 165px;
+    width: 70%;
     border: 1px solid;
     border-color: #585858;
     margin-top: 2px;
@@ -342,12 +344,13 @@
 .ccol-22 {
     -webkit-box-flex: 1;
     display: block;
-    width: 180px;
+    width: auto;
     border: 1px;
     border-color: #585858;
     margin-top: 2px;
     height: 23px;
     padding-left: 5px;
+    max-width: 100%;
 }
 
 .col-pad {
@@ -355,7 +358,7 @@
 }
 
 .rrow-footer {
-	margin-top: 41px;
+    margin-top: 41px;
     padding-top:5px;
     display: block;
     height: 35px;
@@ -382,6 +385,7 @@
 	text-align: left;
 	padding-left: 5px;
 	padding-top: 3px;
+	font-weight: 500;
 }
 
 .col-42 {
@@ -410,4 +414,44 @@
     font-family: 'Roboto-Regular' !important;
     font-size: 12px !important;
     color: #7B7B7B !important;
+    padding-right: 5px !important;
+}
+
+.bar .title1 {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    margin: 0 10px !important;
+    min-width: 30px !important;
+    height: 43px !important;
+    text-align: center !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    line-height: 44px !important;
+    font-family: 'Roboto-Bold' !important;
+    color: #FFFFFF !important;
+}
+
+.rrow66 {
+    font-family:'Roboto-Bold';
+    font-size: 15px;
+    color: #303030;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.price {
+	font-size: 23px !important;
+	font-family: "Roboto-Regular" !important;
+	color: #F05A28 !important;
+	font-weight: 500 !important;
 }
