@@ -9,7 +9,7 @@ div.background
 
 div.transbox p
 {
-    margin: 5px !important;
+    margin: 5px;
     color: #000000;
 }
 .compare-button{
@@ -32,42 +32,46 @@ div.transbox p
   height: 28px !important;
   padding-top: 9px!important;
   vertical-align:middle;
-  padding-right:10px !important;
+  padding-left:10px;
 }
 .imageSize {
   width: 60px !important;
   height: 40px !important;
 }
-
+/*
 .popularCompareProp {
     height: 100px !important;
-}
+}*/
 
 .row-style{
 font-family:"Arial";
 font-size:10px;
 color:#272727;
 }
-.compareCars-vs{
-  margin-right:auto;
-  margin-left:auto;
-  color:#ffffff;
+.compare-carName{
+   width: 50%;
+   font-size:10px;
+   margin-top:5px;
+   padding-left:8%;
+   text-align:center;
+   padding-top:1px;
+   overflow:hidden;
+   padding-right:8%;
 }
 .compareCars-leftRow{
   float:right;
-  padding-right:10%;
+  padding-top:5px;
+  padding-right:2%;
 }
 .compareCars-rightRow{
   float:left;
-  padding-left:4%;
+  padding-left:2%;
 }
 .row-overflow{
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis; 
 }
-
-
 body, .ionic-body {
   font-size: 17px;
   font-family: "Roboto Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
@@ -81,29 +85,46 @@ body, .ionic-body {
   height: 61px;
   margin-left: 32%;
 }
+.compare-row{
+   height:61px!important;
+   padding:0px;
+   margin-top:10px;
+   margin-bottom:10px;
+   margin-right:auto;
+   margin-left:auto;
+}
 .compareCars-bar{
-  background-color:#FO5A28;
+  background-color:rgb(240,90,40);
   margin-top:5px;
 }
+.row-vs{
+   margin-top:-12px;
+   margin-bottom:-12px;
+}
 .versus-bar{
-  line-height:10px;
-  font-size:9px; 
-  margin-top:0px;
-  font-family:"Arial italic"; 
-  color:#FFFFFF; 
-  padding-left: 47%; !important
-  }
+  line-height:20px;
+  margin-top:-10px;
+  margin-bottom:-10px;
+}
 .selectCar-align{
   padding-top:15px;
   padding-right:10px;
-  padding-left:10xp;
+  padding-left:10px;
   vertical-align:middle;
 }
 .col {  
   font-size:10px;
   color:#ffffff;
   padding: 0px;
-}	
+}
+.col1 {  
+  font-size:17px;
+  color:#a3a3a3;
+  font-family:"Roboto Regular";
+  padding-top: 11px;
+  padding-right: 10px;
+  padding-left:10px;
+}		
 element.style {
     height: 61px;
 }
