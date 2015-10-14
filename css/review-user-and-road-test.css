@@ -40,8 +40,9 @@
 .subHeaderAndFooter > span {
     color: #ffffff !important;
     font-family: 'Roboto-Regular', 'sans-serif';
-    font-size: 12px !important;
+    font-size: 15px !important;
     padding-top: 3px !important;
+    font-weight: 700;
 }
 .leftRightPadding {
     padding-left: 10% !important;
@@ -137,4 +138,12 @@
 ul {
     font-size: 0;
     line-height: 33px;
+}
+
+.bar .button.back-button{
+	display: block;
+    margin-right: 5px;
+    padding: 0;
+    white-space: nowrap;
+    font-weight: 400;
 }
