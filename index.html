@@ -2753,7 +2753,7 @@
         <ion-content class="topPaddingDetails">
             <div ng-repeat="reviewDataObj in reviewData.reviewUserAndRoadTestDetailObj.data.expertReview">
                 <div class="list listProp" ng-click="fn_getDetailedExpertReview(reviewDataObj)">
-                    <div class="item item-thumbnail-left">
+                    <div class="item item-thumbnail-left" style="padding-left: 106px;">
                         <img ng-src="{{reviewDataObj.carImageThumb}}">
 
                         <h2 class="wordRapPop">{{reviewDataObj.expertReviewTitle | cut:true:60:' ...' }}</h2>
@@ -2768,8 +2768,28 @@
             </div>
 
         </ion-content>
+
+		<div class="bar bar-footer ">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
+                    <span> GET ON ROAD PRICE</span>
+                </div>
+                <div class="col-31">
+<img ng-src="images/road_test_dialer.png" style="width: 20px;"><span>ROAD TEST</span>
+                </div>
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+		    <div>MORE</div>
+                </div>
+            </div>
+        </div>
     </ion-view>
 </script>
+
 <script id="templates/expert-review.html" type="text/ng-template">
     <ion-view>
         <div class="bar bar-subheader subHeaderAndFooter">
