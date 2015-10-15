@@ -51,15 +51,16 @@
 }
 
 .rrow6 {
-	font-family:'Roboto-Bold';
-	font-size: 23px;
-	color: #585858;
-	display: -webkit-box;
-    	display: -webkit-flex;
-    	display: -moz-box;
-    	display: -moz-flex;
-    	display: -ms-flexbox;
-    	display: flex;
+    font-family:'Roboto-Bold' !important;
+    font-size: 23px !important;
+    color: #585858 !important;
+    margin-left: 0 !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .rrow7 {
