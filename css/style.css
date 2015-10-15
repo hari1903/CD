@@ -81,13 +81,20 @@ span.usedCarHomeTitle {
     min-height: 100%;
     min-width: 100%;
 }
+
 .home_wrapper object{
     display: block;
     width: 400px;
     height: 400px;
     position: absolute;
     top: 15%;
-    left: 15%;
+    left: 10%;
+}
+.home_wrapper1 object{
+   width: 300px;
+   height: 300px;
+   margin-top:8%;
+   margin-left:-1.5%;
 }
 .full-width {
   width: 100%;
