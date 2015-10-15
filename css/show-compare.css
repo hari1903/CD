@@ -44,7 +44,6 @@ h1:first-child{
   font-size:10px!important;
   width:100%;
   text-align:center;
-  height:12px!important;
   margin-top:9px;
   margin-bottom:15px!important;
   height:22px!important;
@@ -97,8 +96,7 @@ h1:first-child{
 
 .bar .button.button-clear{
 	padding-right: 2px;
-	padding-bottom:5px!important;
-    font-size: 10px;
+	font-size: 10px;
     color: #fff;
     font-family:'Roboto-Regular';
 }

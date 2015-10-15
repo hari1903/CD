@@ -2253,10 +2253,10 @@
     </ion-header-bar>
     <ion-content>
         <div class="row"  style="margin-top:10px;" ng-click="fn_modelSelect('first')">
-            <div class="select-car1">
-			   <img style="height:41px;width:79px;" ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png">                
+            <div class="select-car1" style="width:40%;">
+			   <img style="height:40px;width:60px;float:right;" ng-src="{{ compDataObj.varientDetailObj.first.imageUrlList }}" alt="images/ic_error.png">                
             </div>
-			<div class="selectCar-align" >
+			<div class="selectCar-align" style="width:60%;">
 			  <span style="float:left;"> {{ compDataObj.varientDetailObj.first.displayVariantId }}</span>
 			</div>
         </div>
@@ -2268,11 +2268,11 @@
             </div>           
         </div>
         <div class="row select-car1" ng-click="fn_modelSelect('second')">
-            <div class="selectCar-align">
-                {{ compDataObj.varientDetailObj.second.displayVariantId }}
+            <div class="selectCar-align" style="width:60%;">
+                <span style="float:right;">{{ compDataObj.varientDetailObj.second.displayVariantId }}</span>
             </div>
-            <div>
-                <img style="height:41px;width:79px;" ng-src="{{ compDataObj.varientDetailObj.second.imageUrlList }}" alt="images/ic_error.png">
+            <div style="width:40%;">
+                <img style="height:40px;width:60px;float:left;" ng-src="{{ compDataObj.varientDetailObj.second.imageUrlList }}" alt="images/ic_error.png">
             </div>
         </div>
         <div class="row" ng-click="fn_selectCompare()">
@@ -2291,7 +2291,7 @@
                 <div class="row" >
                     <div style="width: 49%;">
                         <span class="compareCars-leftRow">
-						    <img class="imageSize flip-car" ng-src="{{compareCarsObj.Model1.imageUrl}}">
+						    <img class="imageSize" ng-src="{{compareCarsObj.Model1.imageUrl}}">
 						</span>
                     </div>
                     <div class="col" style="padding-top:20px;">                       
@@ -2322,10 +2322,10 @@
                 Compare Cars           
      		</div>
              <div class="row" style="padding-top:20px;margin-bottom:15xp;margin-bottom:10px;height:61px;width:100%;">
-                <div style="width: 40%;align:middle;">
-                    <img class="imageContainer flip-car" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png">
+                <div style="width: 40%;">
+                    <img class="imageContainer" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png">
 				</div>
-                <div style="width:60%!important;overflow:hidden;float:left!important;">
+                <div style="width:60%!important;overflow:hidden;float:left">
                     <span style="color:#313131;font-size:10px;padding-top:20px;float:left!important;font-family:"Roboto Regular";">{{ compareDataObj.data.variantname.first}}</span>
                 </div>
             </div>
@@ -2335,7 +2335,7 @@
                 <div class="col">
                     <img style="width:20px;height:20px;"ng-src="{{vsImage}}"> 
                 </div>
-                <div style="width: 46% !important;">
+                <div style="width:46%!important;">
                 </div>
             </div>
 
@@ -2431,58 +2431,52 @@
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
                     <h1 class="comparision-bars">Colors</h1>
 		        </div>
-                <div class="row" style="margin-top:30px;">
-                    <div class="col" style="height:61px;width:100%;">
-                        <img class="" ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png"
-                             style="height: 50px !important; width: 75px !important;float:right;margin-right:5%;">
-						
-						
+                <div class="row" style="margin-top:20px;width:100%;padding:0px;">
+                    <div class="col" style="height:61px;width:40%!important;padding-left:20%">
+                        <img ng-src="{{ compareDataObj.data.imageurl.first}}" alt="images/ic_error.png"
+                             style="height:50px!important;width:75px;float:left;padding-right:1%;">
 				    </div>
-                    <div class="col" style="margin-top:2px;">
+                    <div style="padding-top:10px;height:61px;width:59%;padding-right:19%;">
                         <div>
-                            <span style="color:#313131;font-size:10px;margin-left:5px;font-family:"Roboto Regular"">{{ compareDataObj.data.variantname.first}}</span>
+                            <span style="color:#313131;font-size:10px;float:left;font-family:"Roboto Regular"">
+							     {{ compareDataObj.data.variantname.first}}</span>
                         </div>
                         <ion-scroll direction="x" class="wide-as-needed">
-                            <div class="row">
+                            <div class="row" style="padding-left:0px;">
                                 <div ng-repeat="color1 in compareDataObj.data.color.first.split(',')">
-                                    <i class="fa fa-square" style="color: #{{color1}}; padding-left: 5px"></i>
+                                    <i class="fa fa-square" style="color:#{{color1}};float:left;padding-right:5px"></i>
                                 </div>
                             </div>
                         </ion-scroll>
                     </div>
                 </div>
-
                 <div class="row">
-                    <div style="width: 49% !important;padding-top: 10px;">
-                        
+                    <div style="width:49%!important;padding-top: 10px;">                        
                     </div>
                     <div class="col" >
                         <img style="width:15px;height:15px;" ng-src="{{vsImage}}">
                     </div>
-                    <div style="width: 47% !important;padding-top: 10px;">
-                       
+                    <div style="width: 47% !important;padding-top: 10px;">                       
                     </div>
                 </div>
-
-                <div class="row" style="height:61px;width:100%;">
-                    
-                    <div class="col"  style="padding-top:2px;width:50%!important;margin-right:5%;">
-                            <span style="color:#313131;float:right;font-size:10px;font-family:"Roboto Regular"!important;">{{ compareDataObj.data.variantname.second}}</span>
+                <div class="row" style="height:61px;width:100%;">                    
+                    <div style="padding-top:10px;width:60%;height:61px;padding-left:20%;">
+                            <span style="color:#313131;float:left;font-size:10px;font-family:"Roboto Regular"!important;">{{ compareDataObj.data.variantname.second}}</span>
                        
-                        <ion-scroll   >
-                            <div class="row">
-                                <div style="float:right!important;"ng-repeat="color2 in compareDataObj.data.color.second.split(',')" >
-                                    <i class="fa fa-square" style="color: #{{color2}}; padding-right:5px;"></i>
+                        <ion-scroll>
+                            <div class="row" style="padding-left:0px;">
+                                <div ng-repeat="color2 in compareDataObj.data.color.second.split(',')" >
+                                    <i class="fa fa-square" style="color: #{{color2}};float:left;padding-right:5px;"></i>
                                 </div>
                             </div>
                         </ion-scroll>
                     </div>
-					<div class="col" style="width:50%" >
-                        <img ng-src="{{ compareDataObj.data.imageurl.second}}" alt="images/ic_error.png" style="float:left;height: 50px !important; margin-left:5%;width:75px !important;">
+					<div class="col" style="width:40%" >
+                        <img ng-src="{{ compareDataObj.data.imageurl.second}}" alt="images/ic_error.png" style="float:left;height:50px!important;margin-left:1%;width:75px!important;">
 					</div>
                 </div>
 
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;margin:0px;width:100%;">
                     <h1 class="comparision-bars">Explore</h1>
 		        </div>
 
@@ -2660,14 +2654,14 @@
             </div>
         </ion-content>
         <div class="bar bar-footer">
-            <div ng-show="isCommonShow" style="margin-left:auto;margin-right:auto;padding-bottom:5px" >
-                <button class="button button-clear" ng-click="fn_isCommonShow(false)" >
-				     <p style="color:#fff;font-size:10px;;height:22px;">Hide Common Features</p>
+            <div ng-show="isCommonShow" style="margin-left:auto;margin-right:auto;" >
+                <button class=" button-clear" ng-click="fn_isCommonShow(false)" >
+				     <p style="color:#fff;font-size:10px;height:22px;padding-bottom:5px!important;padding-top:5px!important;">Hide Common Features</p>
                 </button>
             </div>
             <div ng-show="!isCommonShow" style="margin-left:auto;margin-right:auto;">
-                <button class="button button-clear" ng-switch when="false" ng-click="fn_isCommonShow(true)">
-                    <p style="color:#fff;font-size:10px;padding-bottom:7px;">Show Common Features</p>
+                <button class="button-clear" ng-switch when="false" ng-click="fn_isCommonShow(true)">
+                    <p style="color:#fff;font-size:10px;padding-bottom:5px!important;padding-top:5px!important;">Show Common Features</p>
                 </button>
             </div>
         </div>
