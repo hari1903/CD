@@ -168,3 +168,24 @@ ion-footer-bar .col-25.active{
 	margin-top: -5px;
 	color: #DF5426;
 }
+.ccol-35 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 103px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 103px;
+    -ms-flex: 0 0 103px;
+    width: 103px;
+    height: 64px;
+    margin-right: 5px;
+}
+
+.rrow-33{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5px;
+    width: 100%;
+}
