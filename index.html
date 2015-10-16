@@ -2000,7 +2000,7 @@
         <ion-item class="item " ng-repeat="latestCar in latestCars.data.latestCarSet.latestCarList"
                   ng-click="fnUpcomingCar(latestCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-            <div class="list">
+            <div class="list" ng-click="get_latestCarDetail(latestCar)">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{latestCar.mobileimage}}>
                     <div class="detail">
@@ -2042,7 +2042,7 @@
         <ion-item class="item " ng-repeat="popularCar in popularCars.data"
                   ng-click="fnUpcomingCar(popularCar)"
                   style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;padding-right: 0px;padding-left:0px;">
-            <div class="list card ">
+            <div class="list card " ng-click="get_popularCarDetail(popularCar)">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{popularCar.mobileimage}}>
                     <div class="detail">
