@@ -7,7 +7,7 @@
 // RangeSlider */
 
 .irs {
-    position: relative; display: block;
+    position: absolute; display: block;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;

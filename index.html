@@ -4,6 +4,7 @@
     <meta name="viewport"
           content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Side Menus</title>
+	
     <link href="css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css" />
@@ -255,11 +256,10 @@
 
 <script id="templates/home.html" type="text/ng-template">
     <ion-view view-title="">
-        <ion-content class="fillBackground">
+        <ion-content>
             <div class="home_wrapper home_wrapper1">
               <object data="images/dialer.svg" type="image/svg+xml" class="dialer"></object>
             </div>
-            <!--img style="width: 100%; height: 100%;" src="images/Home_Screen_Updated_15_jul_2014.png"-->
         </ion-content>
     </ion-view>
 </script>
@@ -2367,11 +2367,12 @@
                 </div>
 		    </div>
 			
-			<div class="row" style="width:100%;">
-                
+			<div class="row" style="width:100%;">     
+
+			
                     <img class="underline-img" ng-src="{{ isShowFirst &&  'images/review_unselected_header.png' || 'images/review_selected_header.png'}}">
                 
-                
+             
                     <img class="underline-img" ng-src="{{ isShowFirst && 'images/review_selected_header.png' || 'images/review_unselected_header.png' }}">
                 
             </div>
@@ -2383,8 +2384,8 @@
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
 				    <h1 class="comparision-bars">Dimensions</h1>
 			    </div>
-				<div ng-repeat=" dimensionObj in compareDataObj.data.dimensions" >
-                    <div class="row ng-hide" style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;" ng-hide=" !isCommonShow && dimensionObj.featureValue.first == dimensionObj.featureValue.second">
+				<div ng-repeat=" dimensionObj in compareDataObj.data.dimensions">
+                    <div class="row ng-hide" style="height:auto;margin-top:3px;border-bottom:1px solid #f1f1f1;" ng-hide=" !isCommonShow && dimensionObj.featureValue.first == dimensionObj.featureValue.second">
                         <div class="col"  style="width:33.33%;font-size:10px!important;text-align:center;">
                             <span style="color:#3B3B3B;vertical-align:middle;font-family:"Roboto Medium";"> {{dimensionObj.featureValue.first}}</span>
 						</div>
@@ -2400,7 +2401,7 @@
                     <h1 class="comparision-bars">Mileage and Specifications</h1>
 		        </div>
                 <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
-                    <div class="row ng-hide" style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;" ng-hide=" !isCommonShow && mileageandSpecificationsObj.featureValue.first == mileageandSpecificationsObj.featureValue.second">
+                    <div class="row ng-hide" style="height:auto;margin-top:3px;border-bottom:1px solid #f1f1f1;" ng-hide=" !isCommonShow && mileageandSpecificationsObj.featureValue.first == mileageandSpecificationsObj.featureValue.second">
                         <div class="col" style="width:33.33%;font-size:10px;text-align:center;">
                             <span style="color:#3B3B3B;vertical-align:middle;font-family:"Roboto Medium";"> {{mileageandSpecificationsObj.featureValue.first}}</span>
                         </div>
@@ -2416,9 +2417,9 @@
                     <h1 class="comparision-bars">Standard Features</h1>
 				</div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures" >
-                    <div class="row ng-hide" ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second" style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;">
+                    <div class="row ng-hide" ng-hide=" !isCommonShow && standardFeaturesObj.featureValue.first == standardFeaturesObj.featureValue.second" style="height:auto;margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;">
                         <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
-                             <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;" ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                             <img style="width:15px;height:15px;float:left;margin-bottom:2px;" ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                         </div>
                         <div class="col" style="width:33.33%;text-align:center;">
                             <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> {{standardFeaturesObj.featureName}}</span>
