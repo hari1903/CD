@@ -56,8 +56,8 @@ element.style {
 }
 
 hr {
-	margin-top: 10px !important;
-	margin-bottom: 4px !important;
+	margin-top: 10px;
+	margin-bottom: 4px;
 }
 span.usedCarHomeTitle {
 	font-size: 120% !important;

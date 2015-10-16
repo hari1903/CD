@@ -73,7 +73,7 @@ color:#272727;
   text-overflow: ellipsis; 
 }
 body, .ionic-body {
-  font-size: 17px;
+  font-size: 17px!important;
   font-family: "Roboto Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 10px;
   color: #a3a3a3;
@@ -83,7 +83,8 @@ body, .ionic-body {
 }
 .select-car1{
   height: 61px;
-  margin-left: 32%;
+  margin-left:auto;
+  margin-right:auto;
 }
 .compare-row{
    height:61px!important;
@@ -102,15 +103,18 @@ body, .ionic-body {
    margin-bottom:-12px;
 }
 .versus-bar{
+  width:100%;
+  padding-right:49%;
+  padding-left:48%;
   line-height:20px;
   margin-top:-10px;
   margin-bottom:-10px;
 }
 .selectCar-align{
-  padding-top:15px;
+  font-size:10px;
+  padding-top:18px;
   padding-right:10px;
-  padding-left:10px;
-  vertical-align:middle;
+  padding-left:10px; 
 }
 .col {  
   font-size:10px;
@@ -127,6 +131,16 @@ body, .ionic-body {
 }		
 element.style {
     height: 61px;
+}
+.flip-car{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-180);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+  height:40px;
+  float:right!important;
 }
 .bar{
   color:#FFFFFF;
