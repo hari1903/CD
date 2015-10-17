@@ -82,14 +82,13 @@ span.usedCarHomeTitle {
 	background-attachment:fixed!important;
 	height: 100%;
     width: 100%;
-	
 }
 
 .home_wrapper object{
     display: block;
-    width: 100%;
+    width: 90%;
     height:100%;
-    position: absolute;
+    position:fixed;
     padding:30% 10%;
 }
 .home_wrapper1 object{

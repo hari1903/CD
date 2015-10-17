@@ -18,6 +18,13 @@
     <script src="js/ion.rangeSlider.js"></script>
     <script src="js/range_selector.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+   window.addEventListener('tizenhwkey', function(e) {
+       if (e.keyName == "back") {
+        window.history.back();
+       }}); 
+ </script>
+    <script>
     <script>
         $(function () {
             $("#range").ionRangeSlider({
@@ -31,6 +38,17 @@
 
         });
     </script>
+    <style>
+    
+    .Carimage{
+    margin-top:5px;
+    margin-left:15px;
+    width: 60px;
+    background-color: black; 
+    height: 20px;
+    
+    }
+    </style>
 </head>
 <body ng-controller="MainCtrl">
 <ion-nav-view></ion-nav-view>
@@ -107,6 +125,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
+                 <img  class="Carimage" src="images/cd_logo.png"">
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -1613,7 +1632,7 @@
                 <div class="row1 list card cvCardProp" style="height: 70% !important;"
                      ng-click="fn_ncBrandDetail(ncBrandDetail)">
                     <div class="row1 item item-thumbnail cvitemPadding">
-                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}" style="height: 125px; width: 175px;">
+                        <img class="cvImg_1" ng-src="{{ncBrandDetail.mobileimage}}">
                     </div>
                     <div class="item item-body cvItemBodyProp">
                         <div class="row3" id="ccvBrand">
@@ -1635,6 +1654,7 @@
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
+
 
 <script id="templates/nc-model-detail.html" type="text/ng-template">
     <ion-view view-title="">
@@ -1714,7 +1734,7 @@
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
 				
                 <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
-                    <div class="list card cvCardProp" style="height: 70% !important; margin-top: 20px;"
+                    <div class="list card cvCardProp" style="height: 80% !important; margin-top: 20px;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div id="c4vBrand">
@@ -1750,7 +1770,7 @@
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
                            style="padding-top: 50px !important; text-align:center !important;">
                 <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
-                    <div class="list card cvCardProp" style="height: 60% !important;"
+                    <div class="list card cvCardProp" style="height: 75% !important;"
                          ng-click="fn_ncBrandDetail(ncBrandDetail)">
                         <div class="item item-body cvItemBodyProp">
                             <div>
@@ -2724,7 +2744,7 @@
 
         </ion-content>
         <div class="bar bar-footer subHeaderAndFooter " ng-click="fn_getReview()">
-            <span class="spanDivCenter"> Search </span>
+            <span class="spanDivCenter"> SEARCH </span>
         </div>
     </ion-view>
 </script>
@@ -2736,7 +2756,7 @@
         <ion-content class="topPaddingDetails">
             <div ng-repeat="reviewDataObj in reviewData.reviewUserAndRoadTestDetailObj.data.expertReview">
                 <div class="list listProp" ng-click="fn_getDetailedExpertReview(reviewDataObj)">
-                    <div class="item item-thumbnail-left">
+                    <div class="item item-thumbnail-left" style="padding-left: 106px;">
                         <img ng-src="{{reviewDataObj.carImageThumb}}">
 
                         <h2 class="wordRapPop">{{reviewDataObj.expertReviewTitle | cut:true:60:' ...' }}</h2>
@@ -2751,8 +2771,28 @@
             </div>
 
         </ion-content>
+
+		<div class="bar bar-footer ">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
+                    <span> GET ON ROAD PRICE</span>
+                </div>
+                <div class="col-31">
+<img ng-src="images/road_test_dialer.png" style="width: 20px;"><span>ROAD TEST</span>
+                </div>
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+		    <div>MORE</div>
+                </div>
+            </div>
+        </div>
     </ion-view>
 </script>
+
 <script id="templates/expert-review.html" type="text/ng-template">
     <ion-view>
         <div class="bar bar-subheader subHeaderAndFooter">
@@ -2761,6 +2801,26 @@
         <ion-content style="padding-top: 40px !important;">
             <div ng-bind-html="autoDetailedNews"></div>
         </ion-content>
+
+<div class="bar bar-footer ">
+            <div class="rrow11">
+                <div class="col-51" ng-click="fnGetOnRoadPrice()">
+                    <span> GET ON ROAD PRICE</span>
+                </div>
+                <div class="col-31">
+<img ng-src="images/road_test_dialer.png" style="width: 20px;"><span>ROAD TEST</span>
+                </div>
+                <div class="col-20" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+		    <div>MORE</div>
+                </div>
+            </div>
+        </div>
+
     </ion-view>
 </script>
 <script id="templates/user-review.html" type="text/ng-template">
@@ -3382,6 +3442,7 @@
         </div>
     </div>
 </script>
+
 <script id="templates/nc-car-offer-CD.html" type="text/ng-template">
     <div class="rrow-33 nc_ofd_rowRightPadding" style="margin-top: 15px !important;">
         <div class="ccol-35 nc_ofd_colom_border">
