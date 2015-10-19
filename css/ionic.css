@@ -787,10 +787,7 @@
   content: "\f142"; }
 
 .ion-home:before {
-  /* content: "\f144"; */ 
-  src: url("../images/Icons/xhdpi/left_home2.png");
-  
-  }
+   content: "\f144"; }
 
 .ion-icecream:before {
   content: "\f27d"; }

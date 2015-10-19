@@ -7,7 +7,7 @@
 // RangeSlider */
 
 .irs {
-    position: absolute; display: block;
+    position: fixed; display: block;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -16,7 +16,7 @@
             user-select: none;
 }
     .irs-line {
-        position: relative; display: block;
+        position:fixed; display: block;
         overflow: hidden;
         outline: none !important;
     }

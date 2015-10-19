@@ -86,13 +86,13 @@ span.usedCarHomeTitle {
 
 .home_wrapper object{
     display: block;
-    width: 90%;
+    width: 101%;
     height:100%;
     position:fixed;
     padding:30% 10%;
 }
 .home_wrapper1 object{
-   width: 100%;
+   width: 101%;
    height: 100%;
    padding:30% 10%;
 }
