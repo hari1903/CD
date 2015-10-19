@@ -1336,9 +1336,14 @@ angular
             $scope.newCity = function (selectedCity) {
                 sharedProperties.setCity(selectedCity);
                 $scope.search = '';
+                 console.log("Return Event " + returnEvent);
                 if(retunEvent == 'used-car-valuation-get-detail'){
                     $state.go('eventmenu.used-car-valuation-get-detail');
-                } else {
+                }
+                else if (retunEvent == 'nc-get-on-road-price-form'){
+                    $state.go('eventmenu.nc-get-on-road-price-form');
+                }
+                else {
                     $state.go('eventmenu.used-car-home');
                 }
             }
