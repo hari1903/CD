@@ -3348,6 +3348,10 @@ angular
                 $scope.latestCars = latestCars;
 
             });
+            
+            $scope.get_latestCarDetail = function (latestCar) {
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":latestCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+            }
 
         }])
     .controller(
@@ -3369,6 +3373,10 @@ angular
                 $scope.popularCars = popularCars;
 
             });
+            
+            $scope.get_popularCarDetail = function (popularCar) {
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":popularCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+            }
 
         }])
     .controller(
