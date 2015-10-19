@@ -1336,7 +1336,7 @@ angular
             $scope.newCity = function (selectedCity) {
                 sharedProperties.setCity(selectedCity);
                 $scope.search = '';
-                 console.log("Return Event " + returnEvent);
+                 console.log("Return Event " + retunEvent);
                 if(retunEvent == 'used-car-valuation-get-detail'){
                     $state.go('eventmenu.used-car-valuation-get-detail');
                 }
