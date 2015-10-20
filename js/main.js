@@ -293,6 +293,15 @@ angular
                     }
                 }
             })
+            .state('eventmenu.nc-search-cars-by-price-show', {
+                url: "/nc-search-cars-by-price-show",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/nc-search-cars-by-price-show.html",
+                        controller: "nc_searchCarsByPriceCtrlShow"
+                    }
+                }
+            })
             .state('eventmenu.nc-upcoming-cars', {
                 url: "/nc-upcoming-cars",
                 views: {
@@ -3072,9 +3081,36 @@ angular
             $scope.$on('priceRangeCarCount', function(event, dataObj) {
                 $scope.selectedRangeCarsCount = dataObj.data.Count;
             });
-
-
+            
+            $scope.fn_ncSearchCarbyprice = function () {
+                $state.go('eventmenu.nc-search-cars-by-price-show');
+            }
         }])
+        
+    .controller(
+    'nc_searchCarsByPriceCtrlShow',
+    [
+	'$scope',
+	'sharedProperties',
+	'$state',
+	'cssInjector',
+	'$stateParams',
+	function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+		console.log("nc_searchCarsByPriceCtrlShow");
+		cssInjector.add("css/nc-popular-cars.css");
+
+		var searchString = "getNewCarSearchResultDataOnLinkrewrite&sortedBy=Price-Low-High&startLimit=1&endLimit=10&linkrewrite=10-lakh-20-lakh%2B1-lakh-5-lakh";
+    
+		sharedProperties.getHttpData(searchString, function(carListforSelectedPrice){
+            console.log("Price data "+ JSON.stringify(carListforSelectedPrice.carmodelname));
+            $scope.carListforSelectedPrice = carListforSelectedPrice;
+        })
+    
+		$scope.get_carPriceDetail = function (carList) {
+			$state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":carList.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+		}
+
+	}])
     .controller(
     'nc_brandDetails',
     [
