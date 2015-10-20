@@ -4,10 +4,6 @@ ng-nc-search-car-header ion-header-bar div{
 	background-color: #f5f5f5;
 	padding-bottom:10px!important;
 }
-ion-content.has-subheader.scroll-content div.row{
-	max-width:99%;	
-	margin-top:15px;
-}
 
 .row1{
 	margin-top:15px;
@@ -52,7 +48,7 @@ ion-content.has-subheader.scroll-content div.row{
 	font-family:'Roboto-Bold' !important;
 	font-size: 15px !important;
 	text-align: center !important;
-	background-color: #f7f7f7 !important;
+	background-color: #ebe7e7 !important;
 }
 .row8{
 	font-family:'Roboto-Bold' !important;
@@ -67,7 +63,7 @@ ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     margin-left: -10px;
     padding: 5px 5px;
     border: 2px solid #DF5426 !important;
-    border-radius: 5px !important;
+    border-radius: 3px !important;
     border-style: outset !important;
     text-decoration: none;
     text-align: center;
@@ -100,15 +96,15 @@ ng-nc-search-car-header ion-header-bar div div.active{
 }
 
 .nc_sc_rowRightPadding {
-    margin: 5px !important;
+      padding: 5px;
 }
-
 .nc_sc_colom_border div.wrapper{
-	border: 1px solid #E7E7EC;
-	margin: 0 10px;
-	padding:20px;
-	width: 155px;
-	height: 110px;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #c8c7cc !important;
+    height: 64px !important;
+    padding: 0;
+    width:103px;
 }
 ng-price-range div.list, div.ng-binding {
 	margin-left: 30px;
@@ -168,6 +164,7 @@ ion-footer-bar .col-25.active{
 	margin-top: -5px;
 	color: #DF5426;
 }
+	
 .ccol-35 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 103px;
@@ -189,3 +186,7 @@ ion-footer-bar .col-25.active{
     padding: 5px;
     width: 100%;
 }
+element.style {
+    height: 250%;
+    width: 50%;
+} 
