@@ -113,7 +113,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
-                   <img class="Carimage" src="images/cd_logo.png"> 
+                 <img  class="Carimage" src="images/cd_logo.png">
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -170,9 +170,9 @@
                         </ion-list>
                     </div>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}">
-                        <i class="icon ion-key inAnchor"></i>
-                        Used Cars
+                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}" style="padding-left: 17px;">
+                       <i class="fa fa-car"></i>
+                       Used Cars
                         <i class="icon inAnchor"
                            ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
                     </a>
@@ -184,12 +184,10 @@
                                     class="icon"></i>Search Used Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Search Trustmark Cars
+                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor" menu-close>Search Trustmark Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Used Car
+                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car
                                 Validation</a>
                         </ion-list>
                     </div>
@@ -1996,7 +1994,7 @@
             </div>
         </div>
     </ion-header-bar>
-    <ion-content style="padding-top: 0px !important;">
+    <ion-content style="padding-top: 25px !important;">
         <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
                   ng-click="fnUpcomingCar(upcomingCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
@@ -2041,35 +2039,35 @@
 
                         <h3 class="">Rs <span class="">{{latestCar.minexshowroomprice | formatPrice  }} - {{latestCar.maxexshowroomprice | formatPrice  }}Lac</span>
                         </h3>
-                        <fieldset class="rating">
-                            <input type="radio" id="{{$index}}star5" name="{{$index}}rating" value="5"
+                        <fieldset class="rating" disabled>
+                            <input type="radio" disabled id="{{$index}}star5" name="{{$index}}rating" value="5"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star5"
                                                                        title="Awesome - 5 stars"></label>
-                            <input type="radio" id="{{$index}}star4half" name="{{$index}}rating" value="4.5"
+                            <input type="radio" disabled id="{{$index}}star4half" name="{{$index}}rating" value="4.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star4half"
                                                                        title="Pretty good - 4.5 stars"></label>
-                            <input type="radio" id="{{$index}}star4" name="{{$index}}rating" value="4"
+                            <input type="radio" disabled id="{{$index}}star4" name="{{$index}}rating" value="4"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star4"
                                                                        title="Pretty good - 4 stars"></label>
-                            <input type="radio" id="{{$index}}star3half" name="{{$index}}rating" value="3.5"
+                            <input type="radio" disabled id="{{$index}}star3half" name="{{$index}}rating" value="3.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star3half"
                                                                        title="Meh - 3.5 stars"></label>
-                            <input type="radio" id="{{$index}}star3" name="{{$index}}rating" value="3"
+                            <input type="radio" disabled id="{{$index}}star3" name="{{$index}}rating" value="3"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star3"
                                                                        title="Meh - 3 stars"></label>
-                            <input type="radio" id="{{$index}}star2half" name="{{$index}}rating" value="2.5"
+                            <input type="radio" disabled id="{{$index}}star2half" name="{{$index}}rating" value="2.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star2half"
                                                                        title="Kinda bad - 2.5 stars"></label>
-                            <input type="radio" id="{{$index}}star2" name="{{$index}}rating" value="2"
+                            <input type="radio" disabled id="{{$index}}star2" name="{{$index}}rating" value="2"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star2"
                                                                        title="Kinda bad - 2 stars"></label>
-                            <input type="radio" id="{{$index}}star1half" name="{{$index}}rating" value="1.5"
+                            <input type="radio" disabled id="{{$index}}star1half" name="{{$index}}rating" value="1.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star1half"
                                                                        title="Meh - 1.5 stars"></label>
-                            <input type="radio" id="{{$index}}star1" name="{{$index}}rating" value="1"
+                            <input type="radio" disabled id="{{$index}}star1" name="{{$index}}rating" value="1"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star1"
                                                                        title="Sucks big time - 1 star"></label>
-                            <input type="radio" id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"
+                            <input type="radio" disabled id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}starhalf"
                                                                        title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
