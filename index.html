@@ -113,7 +113,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
-                    <img class="Carimage" src="images/CarLogo.png">
+                   <img class="Carimage" src="images/cd_logo.png"> 
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -2430,8 +2430,8 @@
                          alt="images/ic_error.png">
                 </div>
                 <div style="width:60%!important;overflow:hidden;float:left">
-                    <span style="color:#313131;font-size:10px;padding-top:20px;float:left!important;font-family:" Roboto
-                          Regular";">{{ compareDataObj.data.variantname.first}}</span>
+                    <span style="color:#313131;font-size:10px;padding-top:20px;float:left!important;font-family:" Roboto Regular";">
+					{{ compareDataObj.data.variantname.first}}</span>
                 </div>
             </div>
             <div class="row" style="height:35px !important;padding-top:10px;padding-bottom:10px;">
@@ -2511,7 +2511,7 @@
                     <h1 class="comparision-bars">Mileage and Specifications</h1>
                 </div>
                 <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
-                    <div class="row ng-hide" style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;"
+                    <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;"
                          ng-hide=" !isCommonShow && mileageandSpecificationsObj.featureValue.first == mileageandSpecificationsObj.featureValue.second">
                         <div class="col" style="width:33.33%;font-size:10px;text-align:center;">
                             <span style="color:#3B3B3B;vertical-align:middle;font-family:" Roboto Medium";">
@@ -2536,15 +2536,15 @@
                          style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;">
                         <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
                             <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;"
-                                 ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                                 ng-src="{{standardFeaturesObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                         </div>
                         <div class="col" style="width:33.33%;text-align:center;">
-                            <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"
-                                  Roboto Regular";"> {{standardFeaturesObj.featureName}}</span>
+                            <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> 
+							    {{standardFeaturesObj.featureName}}</span>
                         </div>
                         <div class="col" style="width:33.33%;padding-right:16.6%;padding-bottom:2px;">
                             <img style="width:15px!important;height:15px!important;float:right;margin-bottom:2px;"
-                                 ng-src="{{standardFeaturesObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                                 ng-src="{{standardFeaturesObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                         </div>
                     </div>
                 </div>
@@ -2702,75 +2702,83 @@
                 </div>
                 </div>
                 <div ng-show="!isOverView" class="ng-hide">
-                    <div class="bar  bar-light">
-                        <h1 class="title">interior</h1>
+                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                        <h1 class="title comparision-bars">interior</h1>
                     </div>
                     <div ng-repeat=" interiorObj in compareDataObj.data.features.interior">
-                        <div class="row ng-hide"
+                        <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;"
                              ng-hide=" !isCommonShow && interiorObj.featureValue.first == interiorObj.featureValue.second">
-                            <div class="col">
-                                <img ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;"
+								    ng-src="{{interiorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
-                            <div class="col">
-                                <span> {{interiorObj.featureName}}</span>
+                            <div class="col" style="width:33.33%;text-align:center;">
+                            <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> 
+   							    {{interiorObj.featureName}}</span>
                             </div>
-                            <div class="col">
-                                <img ng-src="{{interiorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
-
+                            <div class="col" style="width:33.33%;padding-right:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:right;margin-bottom:2px;"
+								    ng-src="{{interiorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
                         </div>
                     </div>
-                    <div class="bar  bar-light">
-                        <h1 class="title">Exterior</h1>
+                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                        <h1 class="title comparision-bars">Exterior</h1>
                     </div>
                     <div ng-repeat=" exteriorObj in compareDataObj.data.features.exterior">
-                        <div class="row ng-hide"
+                        <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;"
                              ng-hide=" !isCommonShow && exteriorObj.featureValue.first == exteriorObj.featureValue.second">
-                            <div class="col">
-                                <img ng-src="{{exteriorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;"
+								     ng-src="{{exteriorObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
-                            <div class="col">
-                                <span> {{exteriorObj.featureName}}</span>
+                            <div class="col" style="width:33.33%;text-align:center;">
+                                <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> 
+								    {{exteriorObj.featureName}}</span>
                             </div>
-                            <div class="col">
-                                <img ng-src="{{exteriorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
-
+                            <div class="col" style="width:33.33%;padding-right:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:right;margin-bottom:2px;"
+								    ng-src="{{exteriorObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
                         </div>
                     </div>
-                    <div class="bar  bar-light">
-                        <h1 class="title">Comfort & Convenience</h1>
+                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                        <h1 class="title comparision-bars"> Comfort & Convenience</h1>
                     </div>
                     <div ng-repeat=" comfortandConvenienceObj in compareDataObj.data.features.comfortandConvenience">
-                        <div class="row ng-hide"
+                        <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;
                              ng-hide=" !isCommonShow && comfortandConvenienceObj.featureValue.first == comfortandConvenienceObj.featureValue.second">
-                            <div class="col">
-                                <img ng-src="{{comfortandConvenienceObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;"
+								    ng-src="{{comfortandConvenienceObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
-                            <div class="col">
-                                <span> {{comfortandConvenienceObj.featureName}}</span>
+                            <div class="col" style="width:33.33%;text-align:center;">
+                                <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> 
+								    {{comfortandConvenienceObj.featureName}}</span>
                             </div>
-                            <div class="col">
-                                <img ng-src="{{comfortandConvenienceObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
-
+                            <div class="col" style="width:33.33%;padding-right:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:right;margin-bottom:2px;"
+								    ng-src="{{comfortandConvenienceObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon1.png'}} ">
                             </div>
                         </div>
                     </div>
-                    <div class="bar  bar-light">
-                        <h1 class="title">Entertainment</h1>
+                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                        <h1 class="title comparision-bars">Entertainment</h1>
                     </div>
                     <div ng-repeat=" entertainmentObj in compareDataObj.data.features.entertainment">
-                        <div class="row ng-hide"
+                        <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;
                              ng-hide=" !isCommonShow && entertainmentObj.featureValue.first == entertainmentObj.featureValue.second">
-                            <div class="col">
-                                <img ng-src="{{entertainmentObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
+                            <div class="col" style="width:33.33%;padding-left:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:left;margin-bottom:2px;"
+								    ng-src="{{entertainmentObj.featureValue.first == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                             </div>
-                            <div class="col">
-                                <span> {{entertainmentObj.featureName}}</span>
+                            <div class="col" style="width:33.33%;text-align:center;">
+                                <span style="color:#545454!important;text-align:center;font-size:10px;vertical-align:middle;font-family:"Roboto Regular";"> 
+								    {{entertainmentObj.featureName}}</span>
                             </div>
-                            <div class="col">
-                                <img ng-src="{{entertainmentObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
-
+                            <div class="col" style="width:33.33%;padding-right:16.6%;padding-bottom:2px;">
+                                <img style="width:15px!important;height:15px!important;float:right;margin-bottom:2px;"  
+								    ng-src="{{entertainmentObj.featureValue.second == 'Standard' && 'images/check_green.png' || 'images/close_icon.png'}} ">
                             </div>
                         </div>
                     </div>
@@ -2823,7 +2831,7 @@
             </div>
 
 
-            <ul class="rowWitdth leftRightPadding brandPaddingTop">
+            <ul class="rowWitdth1 leftRightPadding brandPaddingTop">
                 <li class="colPopWith1">
                     Brand
                 </li>
@@ -2835,7 +2843,7 @@
                     <img ng-src="images/down_arrow.png">
                 </li>
             </ul>
-            <ul class="rowWitdth leftRightPadding modelPaddingTop">
+            <ul class="rowWitdth1 leftRightPadding modelPaddingTop">
                 <li class="colPopWith1">
                     <span> Model</span>
                 </li>

@@ -58,7 +58,7 @@ h1:first-child{
 }
 .underline-img{
    width:50%;
-   height:10px;
+   padding-top:-25px;
    padding:0px!important;
    margin:0px!important:
 }
