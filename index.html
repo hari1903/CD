@@ -17,6 +17,7 @@
     <script src="js/ion.rangeSlider.js"></script>
     <script src="js/range_selector.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/angular-youtube-embed.js"></script>
     <script type="text/javascript">
         window.addEventListener('tizenhwkey', function (e) {
             if (e.keyName == "back") {
@@ -24,21 +25,7 @@
             }
         });
     </script>
-    <script>
-        <
-        script >
-        $(function () {
-            $("#range").ionRangeSlider({
-                grid: true,
-                min: 0,
-                max: 100000,
-                from: 0,
-                prefix: "",
-                max_postfix: "Kms"
-            });
 
-        });
-    </script>
     <style>
 
         .Carimage {
@@ -126,7 +113,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
-                    <img class="Carimage" src="images/CarLogo.png">
+                 <img  class="Carimage" src="images/cd_logo.png">
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -193,12 +180,10 @@
                                     class="icon"></i>Search Used Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Search Trustmark Cars
+                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor" menu-close>Search Trustmark Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Used Car
+                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car
                                 Validation</a>
                         </ion-list>
                     </div>
@@ -1087,7 +1072,7 @@
         <ion-header-bar class="bar-light bar-subheader barHeight"
                         style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
             <label class="item usedCarDetailTitle">{{detailedObj.usedCarSearchResult.data.count}} Used Cars in
-                {{detailedObj.city}}</label>
+                {{detailedObj.city}} </label>
             <label class="item usedCarDetailSort ">Sorted by : Relevence </label>
         </ion-header-bar>
 
@@ -1147,6 +1132,8 @@
                 </div>
             </div>
             <div id="sdCarInfo">
+                <div class="row">
+                    <div class="col-75">
                 <div id="sdCarBrand">
                     <span>{{usedCarDetailResult.data.Brand}}</span>
                 </div>
@@ -1155,9 +1142,17 @@
                 </div>
                 <div id="sdCarLocation">
                     <i class="icon"><img src="images/location_icon.png"> </i>
-
                     <span class="footerText">{{selectedCarItem.city}}, {{selectedCarItem.state}}</span>
-
+                </div>
+                    </div>
+                    <div class="col-25" ng-show="isTrustedScreen" >
+                        <div  class="tristMarkImage paddingLeftImg">
+                            <img ng-src="images/small_logo.png">
+                        </div>
+                        <div class="paddingLeft">
+                            <div ng-click="getTrustMarkInfo()"> What's This?</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="sdCarMileage">
@@ -1995,7 +1990,7 @@
             </div>
         </div>
     </ion-header-bar>
-    <ion-content style="padding-top: 0px !important;">
+    <ion-content style="padding-top: 25px !important;">
         <ion-item class="item " ng-repeat="upcomingCar in upcomingCars.data.upcomingCarSet.upcomingCarList"
                   ng-click="fnUpcomingCar(upcomingCar)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
@@ -2040,35 +2035,35 @@
 
                         <h3 class="">Rs <span class="">{{latestCar.minexshowroomprice | formatPrice  }} - {{latestCar.maxexshowroomprice | formatPrice  }}Lac</span>
                         </h3>
-                        <fieldset class="rating">
-                            <input type="radio" id="{{$index}}star5" name="{{$index}}rating" value="5"
+                        <fieldset class="rating" disabled>
+                            <input type="radio" disabled id="{{$index}}star5" name="{{$index}}rating" value="5"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star5"
                                                                        title="Awesome - 5 stars"></label>
-                            <input type="radio" id="{{$index}}star4half" name="{{$index}}rating" value="4.5"
+                            <input type="radio" disabled id="{{$index}}star4half" name="{{$index}}rating" value="4.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star4half"
                                                                        title="Pretty good - 4.5 stars"></label>
-                            <input type="radio" id="{{$index}}star4" name="{{$index}}rating" value="4"
+                            <input type="radio" disabled id="{{$index}}star4" name="{{$index}}rating" value="4"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star4"
                                                                        title="Pretty good - 4 stars"></label>
-                            <input type="radio" id="{{$index}}star3half" name="{{$index}}rating" value="3.5"
+                            <input type="radio" disabled id="{{$index}}star3half" name="{{$index}}rating" value="3.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star3half"
                                                                        title="Meh - 3.5 stars"></label>
-                            <input type="radio" id="{{$index}}star3" name="{{$index}}rating" value="3"
+                            <input type="radio" disabled id="{{$index}}star3" name="{{$index}}rating" value="3"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star3"
                                                                        title="Meh - 3 stars"></label>
-                            <input type="radio" id="{{$index}}star2half" name="{{$index}}rating" value="2.5"
+                            <input type="radio" disabled id="{{$index}}star2half" name="{{$index}}rating" value="2.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star2half"
                                                                        title="Kinda bad - 2.5 stars"></label>
-                            <input type="radio" id="{{$index}}star2" name="{{$index}}rating" value="2"
+                            <input type="radio" disabled id="{{$index}}star2" name="{{$index}}rating" value="2"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star2"
                                                                        title="Kinda bad - 2 stars"></label>
-                            <input type="radio" id="{{$index}}star1half" name="{{$index}}rating" value="1.5"
+                            <input type="radio" disabled id="{{$index}}star1half" name="{{$index}}rating" value="1.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}star1half"
                                                                        title="Meh - 1.5 stars"></label>
-                            <input type="radio" id="{{$index}}star1" name="{{$index}}rating" value="1"
+                            <input type="radio" disabled id="{{$index}}star1" name="{{$index}}rating" value="1"
                                    ng-model="latestCar.rating"/><label class="full" for="{{$index}}star1"
                                                                        title="Sucks big time - 1 star"></label>
-                            <input type="radio" id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"
+                            <input type="radio" disabled id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"
                                    ng-model="latestCar.rating"/><label class="half" for="{{$index}}starhalf"
                                                                        title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
@@ -2342,6 +2337,15 @@
         </iframe>
     </ion-content>
 </script>
+<script id="templates/trust-mark-info.html" type="text/ng-template">
+    <ion-view>
+    <ion-content>
+        <iframe height="100% !important" width="100% !importat"
+                src="http://m.cardekho.com/trustmark/index.html?body=inspection">
+        </iframe>
+    </ion-content>
+    </ion-view>
+</script>
 <script id="templates/compare-cars.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader nc_uc_header_prop">
         <div class="row nc_lc_header_info">
@@ -2396,7 +2400,7 @@
 						</span>
                     </div>
                     <div class="col" style="padding-top:20px;">
-                        <img style="width:20px;height:20;" ng-src="{{vsImage}}">
+                        <img style="width:20px; height:20 px ;" ng-src="{{vsImage}}">
                     </div>
                     <div style="width: 47%;padding-bottom:5px;">
                         <span class="compareCars-rightRow">
@@ -2406,10 +2410,10 @@
                 </div>
                 <div class="row row-overflow">
                     <div class="compare-carName">
-                        <span class:"row-style">{{compareCarsObj.Model1.name}} </span>
+                        <span class='row-style'>{{compareCarsObj.Model1.name}} </span>
                     </div>
                     <div class="compare-carName">
-                        <span class:"row-style">{{compareCarsObj.Model2.name}} </span>
+                        <span class='row-style'>{{compareCarsObj.Model2.name}} </span>
                     </div>
                 </div>
             </div>
@@ -2423,8 +2427,13 @@
                  class="bar bar-header bar-light compareCrs-hidder">
                 Compare Cars
             </div>
+<<<<<<< HEAD
             <div class="row" style="padding-top:20px;margin-bottom:-10px;height:61px;width:100%;">
                 <div style="width: 50%;padding:5px 15%;">
+=======
+            <div class="row" style="padding-top:20px;margin-bottom:10px;height:61px;width:100%;">
+                <div style="width: 40%;">
+>>>>>>> upstream/master
                     <img class="imageContainer" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}"
                          alt="images/ic_error.png">
                 </div>
