@@ -1078,7 +1078,7 @@
         <ion-header-bar class="bar-light bar-subheader barHeight"
                         style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
             <label class="item usedCarDetailTitle">{{detailedObj.usedCarSearchResult.data.count}} Used Cars in
-                {{detailedObj.city}}</label>
+                {{detailedObj.city}} </label>
             <label class="item usedCarDetailSort ">Sorted by : Relevence </label>
         </ion-header-bar>
 
@@ -1152,11 +1152,11 @@
                 </div>
                     </div>
                     <div class="col-25" ng-show="isTrustedScreen" >
-                        <div  class="tristMarkImage">
+                        <div  class="tristMarkImage paddingLeftImg">
                             <img ng-src="images/small_logo.png">
                         </div>
-                        <div>
-                            <span><a href=""> What's This?</a></span>
+                        <div class="paddingLeft">
+                            <div ng-click="getTrustMarkInfo()"> What's This?</div>
                         </div>
                     </div>
                 </div>
@@ -2342,6 +2342,15 @@
 
         </iframe>
     </ion-content>
+</script>
+<script id="templates/trust-mark-info.html" type="text/ng-template">
+    <ion-view>
+    <ion-content>
+        <iframe height="100% !important" width="100% !importat"
+                src="http://m.cardekho.com/trustmark/index.html?body=inspection">
+        </iframe>
+    </ion-content>
+    </ion-view>
 </script>
 <script id="templates/compare-cars.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader nc_uc_header_prop">

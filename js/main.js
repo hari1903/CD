@@ -413,6 +413,15 @@ angular
                     }
                 }
             })
+            .state('eventmenu.trust-mark-info', {
+                url: "/trust-mark-info",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/trust-mark-info.html",
+                        controller: "trustMarkInfoCtrl"
+                    }
+                }
+            })
             .state('eventmenu.compare-cars', {
                 url: "/compare-cars",
                 views: {
@@ -2542,6 +2551,11 @@ angular
                                 .setUsedCarDetailPerCar(item);
                             getData();
                         }
+
+                        $scope.getTrustMarkInfo =function (){
+                            console.log("trust-mark-info")
+                            $state.go('eventmenu.trust-mark-info');
+                        }
                     })
             })();
 
@@ -3557,6 +3571,18 @@ angular
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
             console.log("in sellACarCtrl");
+
+        }])
+    .controller(
+    'trustMarkInfoCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        'cssInjector',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+            console.log("in trustMarkInfoCtrl");
 
         }])
     .controller(
