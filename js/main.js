@@ -3602,7 +3602,7 @@ angular
             var urlToSearch = baseUrl + "getCarVariantDetailByCarModelName&ModelName=";
 
             $scope.isCompare = "images/compare_btn_disable.png";
-            $scope.vsImage = "images/vs_grey.png";
+            $scope.vsImage = "images/vs_black.png";
 
             $scope.compDataObj = sharedProperties.getObject();
 
@@ -3666,7 +3666,7 @@ angular
             console.log("in showCompareCtrl");
             cssInjector.add("css/show-compare.css");
 
-            $scope.vsImage = "images/vs_grey.png";
+            $scope.vsImage = "images/vs_black.png";
             $scope.isOverView = true;
             $scope.isCommonShow = true;
             $scope.compareDataObj = sharedProperties.getCompareData();

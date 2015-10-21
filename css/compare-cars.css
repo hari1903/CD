@@ -83,6 +83,7 @@ body, .ionic-body {
 }
 .select-car1{
   height: 61px;
+  padding:10px 0px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -107,11 +108,9 @@ body, .ionic-body {
   padding-right:49%;
   padding-left:48%;
   line-height:20px;
-  margin-top:-10px;
-  margin-bottom:-10px;
 }
 .selectCar-align{
-  font-size:10px;
+  font-size:17px;
   padding-top:18px;
   padding-right:10px;
   padding-left:10px; 

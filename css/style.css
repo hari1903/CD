@@ -37,8 +37,11 @@ element.style {
   display: block !important;
 }
 
-
+span.homePage{
+   vertical-align:middle!important;
+}
 .outAnchor{
+    
 	color: #ffffff !important;
 }
 
