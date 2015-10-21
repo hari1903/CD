@@ -1,5 +1,5 @@
 angular
-    .module('ionicApp', ['ionic', 'angular.css.injector', 'ionSlider'])
+    .module('ionicApp', ['ionic', 'angular.css.injector', 'ionSlider','youtube-embed'])
 
     // *************  Config ********************
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -256,7 +256,7 @@ angular
                 }
             })
             .state('eventmenu.used-single-car-detail', {
-                url: "/used-single-car-detail",
+                url: "/used-single-car-detail/:isTrusted",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/used-single-car-detail.html",
@@ -2058,7 +2058,11 @@ angular
             $scope.usedCarDetailPerCar = function (item) {
                 sharedProperties
                     .setUsedCarDetailPerCar(item);
-                $state.go('eventmenu.used-single-car-detail');
+                if($scope.isTrusted === 'trusted') {
+                    $state.go('eventmenu.used-single-car-detail', {"isTrusted": "trusted"});
+                }else {
+                    $state.go('eventmenu.used-single-car-detail');
+                }
             }
 
             $scope.fnCardView = function () {
@@ -2478,22 +2482,27 @@ angular
         'cssInjector',
         '$ionicSlideBoxDelegate',
         '$ionicLoading',
+        '$stateParams',
         function ($scope, sharedProperties, $window, $location,
-                  $rootScope, $state, cssInjector, $ionicSlideBoxDelegate, $ionicLoading) {
+                  $rootScope, $state, cssInjector, $ionicSlideBoxDelegate, $ionicLoading, $stateParams) {
 
             cssInjector.add("css/singleCarPage.css");
             cssInjector.add("css/usedCarDetail.css");
+
+
+            $scope.isTrustedScreen = false;
+
+            if( $stateParams.isTrusted === 'trusted' ) {
+                $scope.isTrustedScreen = true;
+                console.log("isTrustedScreen :"+ $scope.isTrustedScreen);
+            };
+
+
 
             $scope.loading = $ionicLoading.show({
                 template: 'loading'
             });
 
-            //$scope.loading =
-
-            //console.log("loading check "+JSON.stringify(sharedProperties.shoLoading()));
-            //$scope.loading = sharedProperties.shoLoading;
-            //console.log("Used Single Car Detail Result :"
-            //+ JSON.stringify(usedCarSearchResultObj));
             (function getData() {
                 $scope.singleCarObj = sharedProperties
                     .getUsedCarDetailPerCar(function (data1, selectedCarItem) {

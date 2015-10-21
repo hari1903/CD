@@ -17,6 +17,7 @@
     <script src="js/ion.rangeSlider.js"></script>
     <script src="js/range_selector.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/angular-youtube-embed.js"></script>
     <script type="text/javascript">
         window.addEventListener('tizenhwkey', function (e) {
             if (e.keyName == "back") {
@@ -24,21 +25,7 @@
             }
         });
     </script>
-    <script>
-        <
-        script >
-        $(function () {
-            $("#range").ionRangeSlider({
-                grid: true,
-                min: 0,
-                max: 100000,
-                from: 0,
-                prefix: "",
-                max_postfix: "Kms"
-            });
 
-        });
-    </script>
     <style>
 
         .Carimage {
@@ -126,7 +113,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
-                    <img class="Carimage" src="images/CarLogo.png"">
+                    <img class="Carimage" src="images/CarLogo.png">
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -139,7 +126,7 @@
             <ion-content class="outMenu">
                 <ion-list>
                     <a href="#/event/home" menu-close class="item item-icon-left outMenu outAnchor">
-                        <i class="icon ion-home inAnchor"></i>Home
+                        <i class="icon  ion-home inAnchor"> </i>Home
                     </a>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
                        ng-click="toggleGroup('newCar')"
@@ -1151,6 +1138,8 @@
                 </div>
             </div>
             <div id="sdCarInfo">
+                <div class="row">
+                    <div class="col-75">
                 <div id="sdCarBrand">
                     <span>{{usedCarDetailResult.data.Brand}}</span>
                 </div>
@@ -1159,9 +1148,17 @@
                 </div>
                 <div id="sdCarLocation">
                     <i class="icon"><img src="images/location_icon.png"> </i>
-
                     <span class="footerText">{{selectedCarItem.city}}, {{selectedCarItem.state}}</span>
-
+                </div>
+                    </div>
+                    <div class="col-25" ng-show="isTrustedScreen" >
+                        <div  class="tristMarkImage">
+                            <img ng-src="images/small_logo.png">
+                        </div>
+                        <div>
+                            <span><a href=""> What's This?</a></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="sdCarMileage">
@@ -2400,7 +2397,7 @@
 						</span>
                     </div>
                     <div class="col" style="padding-top:20px;">
-                        <img style="width:20px;height:20;" ng-src="{{vsImage}}">
+                        <img style="width:20px; height:20 px ;" ng-src="{{vsImage}}">
                     </div>
                     <div style="width: 47%;padding-bottom:5px;">
                         <span class="compareCars-rightRow">
@@ -2410,10 +2407,10 @@
                 </div>
                 <div class="row row-overflow">
                     <div class="compare-carName">
-                        <span class:"row-style">{{compareCarsObj.Model1.name}} </span>
+                        <span class='row-style'>{{compareCarsObj.Model1.name}} </span>
                     </div>
                     <div class="compare-carName">
-                        <span class:"row-style">{{compareCarsObj.Model2.name}} </span>
+                        <span class='row-style'>{{compareCarsObj.Model2.name}} </span>
                     </div>
                 </div>
             </div>
@@ -2427,7 +2424,7 @@
                  class="bar bar-header bar-light compareCrs-hidder">
                 Compare Cars
             </div>
-            <div class="row" style="padding-top:20px;margin-bottom:15xp;margin-bottom:10px;height:61px;width:100%;">
+            <div class="row" style="padding-top:20px;margin-bottom:10px;height:61px;width:100%;">
                 <div style="width: 40%;">
                     <img class="imageContainer" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}"
                          alt="images/ic_error.png">
