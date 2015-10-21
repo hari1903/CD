@@ -113,7 +113,7 @@
                 <ion-nav-back-button>
                 </ion-nav-back-button>
                 <ion-nav-buttons side="right">
-                   <img class="Carimage" src="images/cd_logo.png"> 
+                 <img  class="Carimage" src="images/cd_logo.png">
                     <button class="button button-icon button-clear ion-navicon" ng-click="toggleRight()">
                     </button>
                 </ion-nav-buttons>
@@ -126,7 +126,7 @@
             <ion-content class="outMenu">
                 <ion-list>
                     <a href="#/event/home" menu-close class="item item-icon-left outMenu outAnchor">
-                        <i class="icon  ion-home inAnchor"> </i>Home
+                        <i class="icon ion-home inAnchor"></i>Home
                     </a>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
                        ng-click="toggleGroup('newCar')"
@@ -170,9 +170,9 @@
                         </ion-list>
                     </div>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}">
-                        <i class="icon ion-key inAnchor"></i>
-                        Used Cars
+                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}" style="padding-left: 17px;">
+                       <i class="fa fa-car"></i>
+                       Used Cars
                         <i class="icon inAnchor"
                            ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
                     </a>
@@ -184,12 +184,10 @@
                                     class="icon"></i>Search Used Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Search Trustmark Cars
+                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor" menu-close>Search Trustmark Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Used Car
+                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car
                                 Validation</a>
                         </ion-list>
                     </div>
@@ -262,6 +260,7 @@
         </ion-side-menu>
     </ion-side-menus>
 </script>
+
 
 <script id="templates/home.html" type="text/ng-template">
     <ion-view view-title="">
