@@ -125,24 +125,21 @@
         <ion-side-menu side="right">
             <ion-content class="outMenu">
                 <ion-list>
-                    <a href="#/event/home" menu-close class="item item-icon-left outMenu outAnchor">
-                        <i class="icon  ion-home inAnchor"> </i>Home
+                     <a href="#/event/home" menu-close class="item item-icon-left outMenu outAnchor">
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_home2.png"></i>Home
                     </a>
-                    <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="toggleGroup('newCar')"
+                    <a class="item item-icon-left item-icon-right outMenu outAnchor" ng-click="toggleGroup('newCar')"
                        ng-class="{active: isGroupShown('newCar')}">
-                        <i class="icon ion-key inAnchor"></i>
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_new_cars2.png"></i>
                         New Cars
-                        <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !isGroupShown('newCar'), 'ion-ios-arrow-up': isGroupShown('newCar')}"></i>
+                        <i class="icon" ng-class="{'ion-ios-arrow-down': !isGroupShown('newCar'), 'ion-ios-arrow-up': isGroupShown('newCar')}">
+						     </i>
                     </a>
 
-                    <div class="item-accordion innerMenu"
-                         ng-show="isGroupShown('newCar')">
+                    <div class="item-accordion innerMenu" ng-show="isGroupShown('newCar')">
                         <ion-list>
-                            <a href="#/event/nc-search-cars" class="item item-icon-left innerMenu inAnchor"
-                               menu-close><i class="icon"></i>Search
-                                Cars
+                            <a href="#/event/nc-search-cars" class="item item-icon-left innerMenu inAnchor" menu-close>
+							   <i class="icon"></i>Search Cars
                                 <hr>
                             </a>
                             <a href="#/event/nc-upcoming-cars" class="item item-icon-left innerMenu inAnchor"
@@ -170,11 +167,10 @@
                         </ion-list>
                     </div>
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
-                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}" style="padding-left: 17px;">
-                       <i class="fa fa-car"></i>
-                       Used Cars
-                        <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
+                       ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}">
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_used_car2.png"></i>
+                        Used Cars
+                        <i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
@@ -193,22 +189,22 @@
                     </div>
 
                     <a href="#/event/compare-cars" class="item item-icon-left outMenu outAnchor" menu-close>
-                        <i class="icon ion-arrow-swap inAnchor"></i>
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_compare_cars2.png"></i>
                         Compare Cars
                     </a>
 
                     <a href="#/event/sell-a-car" class="item item-icon-left outMenu outAnchor" menu-close>
-                        <i class="icon ion-cash inAnchor"></i>
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_sell_cars2.png"></i>
                         Sell a Car
                     </a>
 
                     <a href="#/event/auto-news" class="item item-icon-left outMenu outAnchor" menu-close>
-                        <i class="icon ion-ios-paper-outline inAnchor"></i> Auto News
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_auto_news2.png"></i> Auto News
                     </a>
 
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
                        ng-click="toggleGroup('Reviews')" ng-class="{active: isGroupShown('Reviews')}">
-                        <i class="icon ion-star inAnchor"></i>Reviews
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_reviews2.png"></i>Reviews
                         <i class="icon inAnchor"
                            ng-class="{'ion-ios-arrow-down': !isGroupShown('Reviews'), 'ion-ios-arrow-up': isGroupShown('Reviews')}"></i>
                     </a>
@@ -229,7 +225,7 @@
 
                     <a class="item item-icon-left item-icon-right outMenu outAnchor"
                        ng-click="toggleGroup('Utilities')" ng-class="{active: isGroupShown('Utilities')}">
-                        <i class="icon ion-android-call inAnchor"></i> Utilities
+                        <i class="icon"><img style="height:25px;width:25px;" src="images/left_utilities2.png"></i> Utilities
                         <i class="icon inAnchor"
                            ng-class="{'ion-ios-arrow-down': !isGroupShown('Utilities'), 'ion-ios-arrow-up': isGroupShown('Utilities')}"></i>
                     </a>
