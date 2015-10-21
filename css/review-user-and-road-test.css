@@ -56,7 +56,7 @@
 .heightAndWidth {
     display: table !important;
     height: 33px !important;
-    width: 154px !important;
+    width: 50% !important;
     text-align: center !important;
     border-radius: 2px !important;
 }
@@ -81,13 +81,16 @@
 .rowWitdth {
     width: 408px !important;
 }
+.rowWitdth1 {
+    width: 100% !important;
+}
 .colProp {
     display: inline-block;
 }
 
 .colPopWith1 {
     display: inline-block;
-    width: 80px !important;
+    width: 20% !important;
     height: 33px !important;
     font-size: 12px !important;
     border:  1px solid !important;
@@ -98,7 +101,7 @@
 }
 .colPopWith2 {
     display: inline-block;
-    width: 178px !important;
+    width: 70% !important;
     height: 33px !important;
     text-align: center !important;
     font-size: 12px !important;
@@ -112,7 +115,7 @@
 }
 .colPopWith3 {
     display: inline-block;
-    width: 50px !important;
+    width: 10% !important;
     height: 33px !important;
     border-right: 1px solid !important;
     border-top: 1px solid !important;
