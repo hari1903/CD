@@ -113,7 +113,7 @@ ng-price-range div.list, div.ng-binding {
 	color:#7B7B7B;
 }
 ng-price-range div.item{ margin-left: 10px; padding:0;}
-ng-price-range div.item div.item-content{ margin: 0; padding:0;}
+ng-price-range div.item div.item-content{ margin: 0; padding:0;height: 50px;}
 ng-price-range div.item div.item-content div.row{
 	border-bottom: 3px solid #f5f5f5;
 	margin:0;
