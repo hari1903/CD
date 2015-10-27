@@ -1615,14 +1615,14 @@
 <script id="templates/nc-brand-detail.html" type="text/ng-template">
     <ng-nc-search-car-header></ng-nc-search-car-header>
     <ion-content>
-        <div>
+        <div ng-click="fn_ncSearchCar()">
             <div class="row1">
                 <img ng-src=" {{ncBrandDetails.ncBrandDetailsObj.data.oemImageUrl}}">
             </div>
             <div class="row1">
                 <span>{{ncBrandDetails.ncBrandDetailsObj.data.oemName}}</span>
             </div>
-            <div class="row2" ng-click="fn_ncSearchCar()">
+            <div class="row2">
                 <span>tap to choose another brand</span>
             </div>
             <div class="row7 bar">
