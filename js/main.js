@@ -1491,7 +1491,7 @@ angular
                 $scope.search = '';
             };
             $scope.newBrand = function (brand) {
-                console.log(brand);
+                console.log(brand + " "+ retunEvent );
                 sharedProperties.setBrand(brand);
                 $scope.search = '';
                 if(retunEvent == 'review-user-and-road-test'){
@@ -1499,6 +1499,9 @@ angular
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
                 }else if(retunEvent == 'compare-cars'){
                     $state.go('eventmenu.model',{"retunEvent":retunEvent});
+                }else if(retunEvent == 'nc-brand-detail' ){
+                    //$state.go('eventmenu.'+retunEvent,{"paramName":brand});
+                    $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brand, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
                 }
                 else {
                     $state.go('eventmenu.'+retunEvent);
@@ -3035,7 +3038,7 @@ angular
 
     }])
 
-    .controller(
+   .controller(
     'nc_searchCars',
     [
         '$scope',
@@ -3055,7 +3058,7 @@ angular
             }
 
             $scope.nc_sc_getMoreBrand = function () {
-                $state.go('eventmenu.brand', {"retunEvent":"nc-search-cars"});
+                $state.go('eventmenu.brand', {"retunEvent":"nc-brand-detail"});
             }
             $scope.nc_sc_getByPrice = function () {
                 $state.go('eventmenu.nc-search-cars-by-price');
