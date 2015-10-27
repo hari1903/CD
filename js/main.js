@@ -1505,6 +1505,9 @@ angular
                 }
 
             }
+            $scope.fn_ncSearchSetMoreBrand = function(brandName){
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+            }
         }])
     .controller(
     'yearCtrl',
