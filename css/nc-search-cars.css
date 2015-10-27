@@ -91,20 +91,24 @@ ng-nc-search-car-header ion-header-bar div div.active{
 }
 
 .nc_sc_logoSige {
-    width: 55px !important;
-    height: 45px !important;
+    width: 45px !important;
+    height: 35px !important;
 }
 
 .nc_sc_rowRightPadding {
-      padding: 5px;
+    /*   padding: 2px; */
+      margin-bottom: 2px !important;
 }
 .nc_sc_colom_border div.wrapper{
     border-width: 1px !important;
-    border-style: solid !important;
+    border-style: ridge !important;
     border-color: #c8c7cc !important;
-    height: 64px !important;
+    height: 57px !important;
     padding: 0;
-    width:103px;
+    width:100px  !important;
+    border-radius: 3px;
+    margin: 0 4px 0px 0 !important;
+   
 }
 ng-price-range div.list, div.ng-binding {
 	margin-left: 30px;
