@@ -95,6 +95,15 @@ angular
                     }
                 }
             })
+            .state('eventmenu.brand1', {
+                url: "/brand1/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/brand1.html",
+                        controller: "brandCtrl1"
+                    }
+                }
+            })
             .state('eventmenu.varient-id', {
                 cache : false,
                 url: "/varient-id/:retunEvent",
@@ -1504,6 +1513,40 @@ angular
                     $state.go('eventmenu.'+retunEvent);
                 }
 
+            }
+        }])
+    .controller(
+    'brandCtrl1',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        '$stateParams',
+        function ($scope, sharedProperties, $state, $stateParams) {
+            $scope.brand1 = "...";
+            var retunEvent = $stateParams.retunEvent;
+
+            $scope.brandTempObj = sharedProperties.getObject();
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+            $scope.newBrand = function (brand) {
+                console.log(brand);
+                sharedProperties.setBrand(brand);
+                $scope.search = '';
+                if(retunEvent == 'review-user-and-road-test'){
+                    var reviewType = sharedProperties.getReviewType();
+                    $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
+                }else if(retunEvent == 'compare-cars'){
+                    $state.go('eventmenu.model',{"retunEvent":retunEvent});
+                }
+                else {
+                    $state.go('eventmenu.'+retunEvent);
+                }
+
+            }
+            $scope.fn_ncSearchSetMoreBrand = function(brandName){
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
             }
         }])
     .controller(
@@ -3055,7 +3098,7 @@ angular
             }
 
             $scope.nc_sc_getMoreBrand = function () {
-                $state.go('eventmenu.brand', {"retunEvent":"nc-search-cars"});
+                $state.go('eventmenu.brand1', {"retunEvent":"nc-search-cars"});
             }
             $scope.nc_sc_getByPrice = function () {
                 $state.go('eventmenu.nc-search-cars-by-price');
