@@ -74,6 +74,23 @@ ng-nc-search-car-header ion-header-bar div div.nc_sc_alignCenter {
     font-size: 13px !important;
 }
 
+.sc_alignCenter {
+    display: inline-block !important;
+    margin: 0;
+    margin-left: -10px;
+    padding: 5px 5px;
+    border: 2px solid #DF5426 !important;
+    border-radius: 3px !important;
+    border-style: outset !important;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    color: #484848;
+    background-color: #fff;
+    font-family: 'Roboto-Bold' !important;
+    font-size: 13px !important;
+}
+
 ng-nc-search-car-header ion-header-bar div div.active{
 	margin-left:0;
 	border: none;
@@ -176,7 +193,14 @@ ion-footer-bar .col-25.active{
 	margin-top: -5px;
 	color: #DF5426;
 }
-	
+.activate{
+	margin-left:0;
+	border: none;
+	background-color: #F88017;
+	color: #fff;
+	font-family:'Roboto-Bold' !important;
+	font-size:13px !important;
+}	
 .ccol-35 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 103px;
