@@ -1784,7 +1784,7 @@
                                style="padding-top: 50px !important; text-align:center !important;">
                     <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
                         <div class="list card cvCardProp" style="height: 75% !important;"
-                             ng-click="fn_ncBrandDetail(ncBrandDetail)">
+                             ng-click="fn_ncRecCarDetail(recommendedCars)>
                             <div class="item item-body cvItemBodyProp">
                                 <div>
                                     <img src="{{recommendedCars.mobileimage}}" style="height: 75px; width: 100px;">
@@ -3539,7 +3539,7 @@
             </div>
         </div>
         <div class="col-35 nc_sc_colom_border" ng-click="nc_sc_getMoreBrand()">
-            <div class="wrapper" style="padding-top: 20px;">
+            <div class="wrapper">
                 <div class="nc_sc_alignCenter">
                     <span>MORE BRANDS</span>
                 </div>
