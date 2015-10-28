@@ -1599,21 +1599,42 @@
         <ng-year></ng-year>
     </ion-content>
 </script>
-
 <script id="templates/nc-search-cars.html" type="text/ng-template">
-    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-header-bar class=" bar-subheader">
+        <div class="row " style="font: 13px !important; background-color: #f5f5f5 !important; height:50px !important; width: auto !important;">
+            <div class="col-25" style="height: 35px !important;"></div>
+            <div class="col-25 sc_alignCenter activate" ng-click="nc_sc_getByBrand()" style="height: 35px !important;">
+                BY BRAND
+            </div>
+            <div class="col-25 sc_alignCenter " ng-click="nc_sc_getByPrice()" style="height: 35px !important;">
+                BY PRICE
+            </div>
+            <div class="col-25" style="height: 35px !important;"></div>
+        </div>
+    </ion-header-bar>
     <ion-content>
         <ng-nc-car-brand></ng-nc-car-brand>
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
 <script id="templates/nc-search-cars-by-price.html" type="text/ng-template">
-    <ng-nc-search-car-header></ng-nc-search-car-header>
+    <ion-header-bar class=" bar-subheader">
+        <div class="row " style="font: 13px !important; background-color: #f5f5f5 !important; height:50px !important; width: auto !important;">
+            <div class="col-25" style="height: 35px !important;"></div>
+            <div class="col-25 sc_alignCenter" ng-click="nc_sc_getByBrand()" style="height: 35px !important;">
+                BY BRAND
+            </div>
+            <div class="col-25 sc_alignCenter activate" ng-click="nc_sc_getByPrice()" style="height: 35px !important;">
+                BY PRICE
+            </div>
+            <div class="col-25" style="height: 35px !important;"></div>
+        </div>
+    </ion-header-bar>
     <ion-content>
         <ng-price-range></ng-price-range>
-        <div style="height: 42px;"><img ng-src="images/price_car.png" style="height: 40px;">{{selectedRangeCarsCount}} Cars found</div>
-        <div class="bar  bar-light" style="margin-top: 0px !important;">
-            <h1 class="title" style="height: 40px;">View All</h1>
+        <div><img ng-src="images/price_car.png">{{selectedRangeCarsCount}} Cars found</div>
+        <div class="bar  bar-light">
+            <h1 class="title">View All</h1>
         </div>
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
