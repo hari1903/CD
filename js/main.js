@@ -3137,7 +3137,9 @@ angular
             $scope.fn_ncSearchSetBrand = function(brandName){
                 $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
             }
-
+            $scope.nc_sc_getByBrand = function () {
+                $state.go('eventmenu.nc-search-cars');
+            }
             $scope.$on('priceRangeCarCount', function(event, dataObj) {
                 $scope.selectedRangeCarsCount = dataObj.data.Count;
             });
