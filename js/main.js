@@ -2634,7 +2634,10 @@ angular
                     .setUsedCarDetailPerCar(item);
                 $state.go('eventmenu.used-single-car-detail');
             }
-
+            $scope.fnCardView = function(){
+                console.log("used-car-detail");
+                $state.go('eventmenu.used-car-detail');
+            }
 
             $scope.fnUCFilter = function () {
                 //$state.go('eventmenu.used-car-filter');
