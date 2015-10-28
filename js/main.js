@@ -3212,6 +3212,10 @@ angular
                 $scope.isMore = true;
 
             }
+            
+            $scope.fn_ncRecCarDetail = function (recommendedCars) {
+                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":recommendedCars.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+            }
 
         }])
     .controller(
