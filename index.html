@@ -2894,7 +2894,7 @@
                 </div>
             </div>
             <div class="reviewHeaderProp">
-                <span> &nbsp; {{modelDetailObject.model }}  Reviews </span>
+                <span style="font-size:16px;padding:5px;"><b>{{modelDetailObject.model }}  Reviews </b></span> 
 
                 <div class="row">
                     <span>Overall Rating: &nbsp;&nbsp;</span>
@@ -2903,15 +2903,15 @@
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
-                    <span> {{reviewData[0].data.data.overAllRating }} </span>
+                    &nbsp;&nbsp; <span><b> {{reviewData[0].data.data.overAllRating }}/5 </b></span>
                 </div>
             </div>
         </div>
         <ion-content class="topPaddingUserView">
             <div ng-show="reviewType != 'mostHelpful' ">
                 <div ng-repeat="reviewDataObj in reviewData[0].data.data.review">
-                    <div class="list listHeightReview" ng-click="fn_getDetailedUserReview(reviewDataObj)">
-                        <div class="item ">
+                    <div class="list card marg0" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                        <div class="item reve">
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
 
@@ -2922,8 +2922,8 @@
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
-                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
+                            <div class="wordwrap" style=" width: 100% !important;">
+                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
                             </div>
 
                         </div>
@@ -2933,8 +2933,8 @@
             </div>
             <div ng-show="reviewType == 'mostHelpful' ">
                 <div ng-repeat="reviewDataObj in reviewData[1].data.data.review">
-                    <div class="list card" ng-click="fn_getDetailedUserReview(reviewDataObj)">
-                        <div class="item ">
+                    <div class="list card marg0" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                        <div class="item reve" >
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
 
@@ -2945,8 +2945,8 @@
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
-                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
+                            <div class="wordwrap" style=" width: 100% !important;">
+                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
                             </div>
 
                         </div>
