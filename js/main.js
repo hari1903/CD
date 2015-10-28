@@ -3138,7 +3138,10 @@ angular
             $scope.$on('priceRangeCarCount', function(event, dataObj) {
                 $scope.selectedRangeCarsCount = dataObj.data.Count;
             });
-
+            
+            $scope.nc_sc_getByBrand = function () {
+            	$state.go('eventmenu.nc-search-cars');
+            }
 
         }])
     .controller(
