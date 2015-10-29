@@ -17,7 +17,7 @@
 }
 .subHeaderColActive  {
     border-bottom: 5px !important;
-    margin-bottom: -4px !important;
+    /* margin-bottom: -4px !important; */
     border-style: solid !important;
     border-color: #f05a28 !important;
 }
@@ -25,18 +25,24 @@
     color: #f05a28 !important;
 }
 .reviewHeaderProp {
-    background-color: #C2B9B9 !important;
+    background-color: #EDEDED !important;
     padding-left: 15px !important;
+    margin-top: -4px !important;
+    padding-top: 4px !important;
+   
 }
 .listHeightReview {
     height: 40px !important;
 }
 
 .wordwrap {
-    white-space: pre-wrap;      /* CSS3 */
-    white-space: -moz-pre-wrap; /* Firefox */
-    white-space: -o-pre-wrap;   /* Opera 7 */
+  white-space: normal;      CSS3
+    /*   white-space: -moz-pre-wrap; Firefox
+    white-space: -o-pre-wrap;   Opera 7 */
     word-wrap: break-word;      /* IE */
+    font-family: Roboto Regular;
+    font-size: 14px;
+    color: #555555;
 }
 .topPaddingUserView{
     padding-top: 90px !important;
@@ -51,3 +57,14 @@
 	text-align:center; 
 }
 
+.marg0{
+	margin: 0 !important;
+	border-bottom: solid 1px grey;;
+}
+.reve{
+padding:10px 20px;	
+}
+.reve h2{
+	font-weight: bold;
+	color: #555555;
+}
