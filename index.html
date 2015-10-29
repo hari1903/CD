@@ -2982,32 +2982,36 @@
 </script>
 <script id="templates/user-review-detail.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader urdSubHeaderProperty">
-            <div class="row urdRowProp">
-                <span> {{modelName}} Reviews</span>
+        <div class="bar bar-subheader subHeaderProperty">
+            <div class="row reviewHeader">
+                <span class="reviewsText"> {{modelName}} Reviews</span>
             </div>
             <div>
-                <div class="row"><span>Overall Rating:</span>
+                <div class="row subRatingProperty"><span>Overall Rating:</span>
                     <ng-review-stars></ng-review-stars>
                     <span> {{ autoDetailedNews.data.review.overallSatisfactionRating }}/5 </span>
                 </div>
             </div>
         </div>
-        <ion-content class="topPadding">
+        <ion-content class="rudTopPadding">
+<div class="rudTitleName">
             <div class="row">
                 <span> {{modelName}} : {{ autoDetailedNews.data.review.title }}</span>
             </div>
             <div class="row">
                 <span> {{modelName}} : {{ autoDetailedNews.data.review.authorName }} Posted on: {{ autoDetailedNews.data.review.date }} |  {{ autoDetailedNews.data.review.viewsCount }} views</span>
             </div>
+</div>		
+<hr>
             <div class="row">
                 <div class="col">
                     Overall Satisfaction:
                 </div>
-                <div class="col">
+                <div class="col ratingtext">
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Appearance:
@@ -3016,6 +3020,7 @@
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Comfort:
@@ -3024,6 +3029,7 @@
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Performance:
@@ -3032,6 +3038,7 @@
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Value for Money:
@@ -3040,6 +3047,7 @@
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Fule Economy:
@@ -3048,6 +3056,7 @@
                     <ng-review-stars></ng-review-stars>
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Pros:
@@ -3056,6 +3065,7 @@
                     {{ autoDetailedNews.data.review.Pros }}
                 </div>
             </div>
+	<hr>
             <div class="row">
                 <div class="col">
                     Cons:
@@ -3064,51 +3074,57 @@
                     {{ autoDetailedNews.data.review.Cons }}
                 </div>
             </div>
-            <div>
+<hr>
+ <!--           <div>
                 <p>
                     {{ autoDetailedNews.data.review.reviewText }}
                 </p>
-            </div>
+            </div> -->
             <div>
                 <div class="row">
                     <span>{{ autoDetailedNews.data.review.reviewText }} found this review useful to you ?</span>
                 </div>
+<div class="helpful">
                 <div class="row">
                     <span>Was this review helpful?</span>
                 </div>
                 <div class="row">
-                    <div class="col">
+             <!--       <div class="col">
                         <i class="fa fa-thumbs-o-up"></i>
-                    </div>
-                    <div class="col">
+                    </div> -->
+                   <h6 style="margin-left:50%;"><i class="fa fa-thumbs-o-up"></i> Yes</h6>
+                    <div class="col yes yes1">
                         {{ autoDetailedNews.data.review.yes }}
                     </div>
-                    <div class="col">
+                    <h6><i class="fa fa-thumbs-o-down"></i> No</h6>
+                    <div class="col no">
                         {{ autoDetailedNews.data.review.no }}
                     </div>
-                    <div class="col">
+                 <!--   <div class="col">
                         <i class="fa fa-thumbs-o-down"></i>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="row">
-                    <img ng-src="images/edit_enable.png"> <span>Write a comment</span>
+<div class="square">
+                <div class="row fnt">
+                    <img ng-src="images/edit_enable.png"> <span class="fnt">Write a comment</span>
                 </div>
+</div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col leftarrow">
                         <i class="fa fa-angle-left"></i>
                     </div>
-                    <div class="col">
+                    <div class="col prev">
                         PREV
                     </div>
-                    <div class="col">
+                    <div class="col next">
                         NEXT
                     </div>
-                    <div class="col">
+                    <div class="col rightarrow">
                         <i class="fa fa-angle-right"></i>
                     </div>
                 </div>
             </div>
-
+</div>
         </ion-content>
         <div class="bar bar-footer " ng-click="fn_getReview()">
             <span class="text-center"> Search </span>
