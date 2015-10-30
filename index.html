@@ -2027,7 +2027,22 @@
             </div>
         </ion-item>
     </ion-content>
-    <ng-nc-footer-option></ng-nc-footer-option>
+    <ion-footer-bar align-title="left" class="footerBarProp " ng-controller="nc_footerOptionController">
+        <div class="row footerBarRow">
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("search")'>
+                <span>Search</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter activeBar" ng-click='fn_ncFooterOptions_selectTab("upcoming")'>
+                <span>Upcoming</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("latest")'>
+                <span>Latest</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("popular")'>
+                <span>Popular</span>
+            </div>
+        </div>
+    </ion-footer-bar>
 </script>
 <script id="templates/nc-latest-cars.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader nc_uc_header_prop">
@@ -2060,7 +2075,22 @@
             </div>
         </ion-item>
     </ion-content>
-    <ng-nc-footer-option></ng-nc-footer-option>
+    <ion-footer-bar align-title="left" class="footerBarProp " ng-controller="nc_footerOptionController">
+        <div class="row footerBarRow">
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("search")'>
+                <span>Search</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("upcoming")'>
+                <span>Upcoming</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter activeBar" ng-click='fn_ncFooterOptions_selectTab("latest")'>
+                <span>Latest</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("popular")'>
+                <span>Popular</span>
+            </div>
+        </div>
+    </ion-footer-bar>
 
 </script>
 <script id="templates/nc-popular-cars.html" type="text/ng-template">
@@ -2094,7 +2124,22 @@
 			
         </ion-item>
     </ion-content>
-    <ng-nc-footer-option></ng-nc-footer-option>
+    <ion-footer-bar align-title="left" class="footerBarProp " ng-controller="nc_footerOptionController">
+        <div class="row footerBarRow">
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("search")'>
+                <span>Search</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("upcoming")'>
+                <span>Upcoming</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter" ng-click='fn_ncFooterOptions_selectTab("latest")'>
+                <span>Latest</span>
+            </div>
+            <div class="col-25 nc_lc_alignCenter  activeBar" ng-click='fn_ncFooterOptions_selectTab("popular")'>
+                <span>Popular</span>
+            </div>
+        </div>
+    </ion-footer-bar>
 </script>
 <script id="templates/nc-offers-and-dicounts.html" type="text/ng-template">
     <ion-view view-title="">
