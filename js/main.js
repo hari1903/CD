@@ -459,7 +459,8 @@ angular
                 }
             })
             .state('eventmenu.review-user-and-road-test', {
-                url: "/review-user-and-road-test/:reviewType",
+            	 cache : false,
+                url: "/review-user-and-road-test/:reviewType/:isHome",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/review-user-and-road-test.html",
@@ -3749,15 +3750,20 @@ angular
             cssInjector.add("css/review-user-and-road-test.css");
 
             $scope.reviewType =  $stateParams.reviewType;
+            $scope.isHome =  $stateParams.isHome;
             console.log("$scope.reviewType "+ $scope.reviewType );
 
             $scope.brandAndObject = sharedProperties.getObject();
-
+            if($scope.isHome==="home"){		
+            	$scope.brandAndObject.model="Select Model";		
+            	$scope.brandAndObject.brand="Select Brand";		
+            }
             $scope.fn_changeUserAndRoadReview = function(reviewType){
                 $scope.reviewType = reviewType;
             }
 
             $scope.fn_getBrand = function(){
+                $scope.brandAndObject.model="Select Model";
                 sharedProperties.setReviewType($scope.reviewType);
                 $state.go("eventmenu.brand",{'retunEvent':'review-user-and-road-test'});
             }
