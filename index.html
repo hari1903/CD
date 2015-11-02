@@ -1281,7 +1281,7 @@
                 <span class="cvInfoHeaderText"> {{detailedObj.usedCarSearchResult.data.count }} Used Cars In {{detailedObj.city}}</span>
             </div>
             <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
-                <ion-slide ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result">
+                <ion-slide ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result" class="cvCarWidth">
                     <div class="list card cvCardProp">
                         <div class="item item-thumbnail cvitemPadding">
                             <img class="cvImg_1" ng-src="{{detailedItem.imageUrl}}">
@@ -1307,13 +1307,14 @@
                             <div id="cvItemVariant">
                                 <span>{{detailedItem.carVariantId}}</span>
                             </div>
-                            <div id="cvItemPrice">
+                            <div id="cvItemPrice" style="color:#F05A28">
                                 <span> Rs <span
                                         class="cvItemPriceValue">{{detailedItem.expectedPrice | formatPrice }}</span> Lac</span>
                             </div>
-                            <div id="cvKMandModel">
-                                <span class="">KMs <span class="cvModelProp">{{detailedItem.driven}}</span></span>
-                                <span class="cvKMandModelPadding">Model <span class="cvModelProp">{{detailedItem.modelYear}}</span></span>
+                            <div id="cvKMandModel" class="cKMandModel">
+                                <span class="">KMs &nbsp; <span class="cvModelProp">{{detailedItem.driven}}&nbsp;</span></span>
+								<img class="cardicon" ng-src="images\card_icon.png">
+                                <span class="cvKMandModelPadding">&nbsp;Model &nbsp;<span class="cvModelProp">{{detailedItem.modelYear}}</span></span>
                             </div>
                         </div>
 
