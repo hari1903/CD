@@ -3028,7 +3028,7 @@
 </script>
 <script id="templates/user-review-detail.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader subHeaderProperty">
+        <div class="bar bar-subheader bar-subheader1 subHeaderProperty">
             <div class="row reviewHeader">
                 <span class="reviewsText"> {{modelName}} Reviews</span>
             </div>
@@ -3128,13 +3128,16 @@
             </div> -->
             <div>
                 <div class="row">
-                    <span>{{ autoDetailedNews.data.review.reviewText }} found this review useful to you ?</span>
+         <!-- 	<span>{{ autoDetailedNews.data.review.reviewText }} found this review useful to you ?</span>-->
+ 			<span>{{ autoDetailedNews.data.review.reviewText }}</span>
                 </div>
 <div class="helpful">
                 <div class="row">
-                    <span>Was this review helpful?</span>
+<div>
+			<h6 class="usefulreview"> {{ autoDetailedNews.data.review.yes }} People found this useful</h6> </div>
+              <span class="wasreviewhelpful"><br><br>Was this review helpful?</span>
                 </div>
-                <div class="row">
+                <div class="row yesornotop">
              <!--       <div class="col">
                         <i class="fa fa-thumbs-o-up"></i>
                     </div> -->
@@ -3142,7 +3145,7 @@
                     <div class="col yes yes1">
                         {{ autoDetailedNews.data.review.yes }}
                     </div>
-                    <h6><i class="fa fa-thumbs-o-down"></i> No</h6>
+                    <h6>&nbsp;<i class="fa fa-thumbs-o-down"></i> No</h6>
                     <div class="col no">
                         {{ autoDetailedNews.data.review.no }}
                     </div>
