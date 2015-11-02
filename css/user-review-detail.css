@@ -91,8 +91,6 @@ border-bottom-right-radius: 1%;
 border-top-left-radius: 1%;
 border-top-right-radius: 1%;
 padding: 8px;
-
-
 }
 .fnt{
 font-family: Roboto Medium;
@@ -130,7 +128,6 @@ padding-left: 40px;
     text-align: center;
     padding: 2%;
     margin-left: 1%;
-   
 }
 /* .yes1{
 	width: 20%;
@@ -161,6 +158,7 @@ padding-left: 40px;
 }
 .h6{
 	padding-left: 20px;
+	font-size: 14px;
  }
  .leftarrow{
  margin-left: 2%;
@@ -189,6 +187,28 @@ padding-left: 40px;
     margin-bottom: 4%;
     
  
+ }
+ .usefulreview{
+     /* font-size: smaller;
+    font-weight: bold;
+    padding-left: 2%;
+    margin: 0%; */
+    margin-left: -7px;
+}
+ .wasreviewhelpful{
+    margin-left: -50%;
+    font-family: Roboto Medium;
+    font-size: 11px;
+    color: #262626;
+    /* padding-left: 0px; */
+    /* top: 9px; */
+    margin-top: 5px;
+ }
+ .yesornotop{
+ margin-top: -10% !important; 
+ }
+ .bar-subheader1{
+ top: 43px;
  }
  
 /*.subHeaderProperty{
