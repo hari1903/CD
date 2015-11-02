@@ -142,13 +142,14 @@ element.style {
   height:40px;
   float:right!important;
 }
-.bar{
+.bar-subheader{
   color:#FFFFFF;
   font-size:10px;
   font-family:"Roboto Regular";
   padding-top:0px;
   padding-bottom:0px;
   background-color:rgb(240,90,40);
+  text-align: left;
 }
 .bar.bar-positive {
     border-color:rgb(240,90,40)!important;
