@@ -2014,7 +2014,7 @@
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
             <div class="list ">
                 <div class="item item-thumbnail-left ">
-                    <img class="car-thumbnail" ng-src={{upcomingCar.imageUrl}}>
+                    <img class="car-thumbnail" ng-src={{upcomingCar.imageUrl}} onError="this.src='images/ic_error.png';" />
 
                     <div class="detail">
 
@@ -2060,7 +2060,7 @@
                   style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;">
             <div class="list" ng-click="get_latestCarDetail(latestCar)" style="margin-top: 0px; padding-top: 0px;">
                 <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{latestCar.mobileimage}}>
+                    <img class="" ng-src={{latestCar.mobileimage}} onError="this.src='images/ic_error.png';" />
 
                     <div class="detail" style="padding-top: 10%;">
 
@@ -2109,7 +2109,7 @@
                   style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;padding-right: 0px;padding-left:0px;">
             <div class="list card " ng-click="get_popularCarDetail(popularCar)" style="padding-top: 0px;">
                 <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{popularCar.mobileimage}}>
+                    <img class="" ng-src={{popularCar.mobileimage}} onError="this.src='images/ic_error.png';" />
 
                     <div class="detail" style="padding-top: 10%">
                         <h2 class="">{{popularCar.displayCarModelName}}</h2>
