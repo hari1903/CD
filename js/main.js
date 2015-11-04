@@ -3771,7 +3771,7 @@ angular
             $scope.fn_getModel = function(){
                 console.log("In Model");
                 sharedProperties.setReviewType($scope.reviewType);
-                if($scope.brandAndObject.brand == ''){
+                if($scope.brandAndObject.brand == 'Select Brand'){
                     alert("Please Select Brand First");
                 }else {
                     $state.go("eventmenu.model", {'retunEvent': 'review-user-and-road-test'});
@@ -3780,9 +3780,9 @@ angular
 
             $scope.fn_getReview = function () {
                 console.log("get review");
-                if ($scope.brandAndObject.brand == '') {
+                if ($scope.brandAndObject.brand == 'Select Brand') {
                     alert("Please Select Brand First");
-                } else if ($scope.brandAndObject.model == '') {
+                } else if ($scope.brandAndObject.model == 'Select Model') {
                     alert("Please Select Model First");
                 } else {
                     console.log('$scope.brandAndObject.model' + $scope.reviewType);
