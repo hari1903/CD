@@ -237,10 +237,10 @@
                                     class="icon"></i>Dealers
                                 <hr>
                             </a>
-                            <a href="#/event/car-healp-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
+                            <a href="#/event/car-help-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
                                 <hr>
                             </a>
-                            <a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor"
+                            <a href="#/event/car-road-side-assistance" class="item item-icon-left innerMenu inAnchor"
                                menu-close>Roadside Assistance
                                 <hr>
                             </a>
@@ -3208,43 +3208,33 @@
         </iframe>
     </ion-content>
 </script>
-<script id="templates/car-healp-line.html" type="text/ng-template">
-    <ion-view>
-        <div class="bar bar-subheader bar-light">
-            <span>{{reviewType}}</span>
+<script id="templates/car-help-line.html" type="text/ng-template">
+     <ion-header-bar class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Helpline
+            </div>
         </div>
-        <ion-content>
-            <div ng-bind-html="autoDetailedNews"></div>
-        </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
-        </div>
-        <div>
-            {{}}
-        </div>
-        <div>
-            Overall Rating
-        </div>
-    </ion-view>
+    </ion-header-bar>
+    <ion-content>
+        <iframe height="100% !important" width="100% !important" src="http://m.cardekho.com/road-side-assistance-helpline">
+
+        </iframe>
+    </ion-content>
 </script>
-<script id="templates/car-road-side-assitance.html" type="text/ng-template">
-    <ion-view>
-        <div class="bar bar-subheader bar-light">
-            <span>{{reviewType}}</span>
+<script id="templates/car-road-side-assistance.html" type="text/ng-template">
+    <ion-header-bar class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col ">
+                Roadside Assistance
+            </div>
         </div>
-        <ion-content>
-            <div ng-bind-html="autoDetailedNews"></div>
-        </ion-content>
-        <div class="bar bar-footer " ng-click="fn_getReview()">
-            <span class="text-center"> Search </span>
-        </div>
-        <div>
-            {{}}
-        </div>
-        <div>
-            Overall Rating
-        </div>
-    </ion-view>
+    </ion-header-bar>
+    <ion-content>
+        <iframe height="100% !important" width="100% !important" src="http://m.cardekho.com/road-side-assistance">
+
+        </iframe>
+    </ion-content>
 </script>
 <script id="templates/car-loan.html" type="text/ng-template">
     <ion-view>
