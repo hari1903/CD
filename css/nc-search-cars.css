@@ -148,13 +148,13 @@ ng-price-range div.item div.item-content div.row{
 	margin:0;
 	padding:0;
 }
-div.bar.bar-light{
+/* div.bar.bar-light{
 	margin-top: 80px;
 	padding: 10px;
 	border: none;
 	background:none;
-}
-div.bar.bar-light h1.title{
+} */
+div.bar.bar-light {
 	background:#DF5426;
 	display:inline-block;
 	width: 70%;
