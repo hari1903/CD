@@ -132,7 +132,7 @@
                        ng-class="{active: isGroupShown('newCar')}">
                         <i class="icon"><img style="height:25px;width:25px;" src="images/left_new_cars2.png"></i>
                         New Cars
-                        <i class="icon" ng-class="{'ion-ios-arrow-down': !isGroupShown('newCar'), 'ion-ios-arrow-up': isGroupShown('newCar')}">
+                        <i class="icon" ng-class="{'ion-ios-arrow-right': !isGroupShown('newCar'), 'ion-ios-arrow-down': isGroupShown('newCar')}">
 						     </i>
                     </a>
 
@@ -155,7 +155,7 @@
                                 <hr>
                             </a>
                             <a href="#/event/nc-offers-and-dicounts" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Offers and Discounts
+                               menu-close>Offer and Discounts
                                 <hr>
                             </a>
                             <a href="#/event/nc-car-videos" class="item item-icon-left innerMenu inAnchor" menu-close>Car
@@ -170,7 +170,7 @@
                        ng-click="toggleGroup('usedCar')" ng-class="{active: isGroupShown('usedCar')}">
                         <i class="icon"><img style="height:25px;width:25px;" src="images/left_used_car2.png"></i>
                         Used Cars
-                        <i class="icon inAnchor" ng-class="{'ion-ios-arrow-down': !isGroupShown('usedCar'), 'ion-ios-arrow-up': isGroupShown('usedCar')}"></i>
+                        <i class="icon inAnchor" ng-class="{'ion-ios-arrow-right': !isGroupShown('usedCar'), 'ion-ios-arrow-down': isGroupShown('usedCar')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
@@ -180,11 +180,13 @@
                                     class="icon"></i>Search Used Cars
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor" menu-close>Search Trustmark Cars
+<a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car
+                                Valuation <hr>
+</a>
+                            <a href="#/event/used-car-detail/trusted" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car Trustmark
                                 <hr>
                             </a>
-                            <a href="#/event/used-car-valuation" class="item item-icon-left innerMenu inAnchor" menu-close>Used Car
-                                Validation</a>
+                            
                         </ion-list>
                     </div>
 
@@ -195,7 +197,7 @@
 
                     <a href="#/event/sell-a-car" class="item item-icon-left outMenu outAnchor" menu-close>
                         <i class="icon"><img style="height:25px;width:25px;" src="images/left_sell_cars2.png"></i>
-                        Sell a Car
+                        Sell Cars
                     </a>
 
                     <a href="#/event/auto-news" class="item item-icon-left outMenu outAnchor" menu-close>
@@ -206,20 +208,22 @@
                        ng-click="toggleGroup('Reviews')" ng-class="{active: isGroupShown('Reviews')}">
                         <i class="icon"><img style="height:25px;width:25px;" src="images/left_reviews2.png"></i>Reviews
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !isGroupShown('Reviews'), 'ion-ios-arrow-up': isGroupShown('Reviews')}"></i>
+                           ng-class="{'ion-ios-arrow-right': !isGroupShown('Reviews'), 'ion-ios-arrow-down': isGroupShown('Reviews')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
                          ng-show="isGroupShown('Reviews')">
                         <ion-list>
+<a href="#/event/review-user-and-road-test/user/home"
+                               class="item item-icon-left innerMenu inAnchor" menu-close>User Review
+                           <hr> </a>
+
                             <a href="#/event/review-user-and-road-test/road/home"
                                class="item item-icon-left innerMenu inAnchor" menu-close><i class="icon"></i>Road
                                 Test
-                                <hr>
+                                
                             </a>
-                            <a href="#/event/review-user-and-road-test/user/home"
-                               class="item item-icon-left innerMenu inAnchor" menu-close>User Review
-                            </a>
+                            
                         </ion-list>
                     </div>
 
@@ -227,28 +231,30 @@
                        ng-click="toggleGroup('Utilities')" ng-class="{active: isGroupShown('Utilities')}">
                         <i class="icon"><img style="height:25px;width:25px;" src="images/left_utilities2.png"></i> Utilities
                         <i class="icon inAnchor"
-                           ng-class="{'ion-ios-arrow-down': !isGroupShown('Utilities'), 'ion-ios-arrow-up': isGroupShown('Utilities')}"></i>
+                           ng-class="{'ion-ios-arrow-right': !isGroupShown('Utilities'), 'ion-ios-arrow-down': isGroupShown('Utilities')}"></i>
                     </a>
 
                     <div class="item-accordion innerMenu"
                          ng-show="isGroupShown('Utilities')">
                         <ion-list>
+<a href="#/event/car-insurance" class="item item-icon-left innerMenu inAnchor" menu-close>Insurance <hr> </a>
                             <a href="#/event/car-dealers" class="item item-icon-left innerMenu inAnchor" menu-close><i
                                     class="icon"></i>Dealers
+                                <hr>
+                            </a>
+<a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor"
+                               menu-close>Road Side Assistance
                                 <hr>
                             </a>
                             <a href="#/event/car-healp-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
                                 <hr>
                             </a>
-                            <a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor"
-                               menu-close>Roadside Assistance
-                                <hr>
-                            </a>
+                            
                             <a href="#/event/car-loan" class="item item-icon-left innerMenu inAnchor" menu-close>Car
                                 Loan
-                                <hr>
+                                
                             </a>
-                            <a href="#/event/car-insurance" class="item item-icon-left innerMenu inAnchor" menu-close>Insurance</a>
+                            
                         </ion-list>
                     </div>
                 </ion-list>
