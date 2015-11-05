@@ -50,9 +50,11 @@ element.style {
 
 .innerMenu{
 	background-color:  #474747 !important;
+	font-family: 'Roboto-Regular';
 }
 .outMenu{
 	background-color:  #2B2B2B !important;
+	font-family: 'Roboto-Bold';
 }
 
 hr {
