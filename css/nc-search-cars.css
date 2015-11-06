@@ -105,6 +105,7 @@ ng-nc-search-car-header ion-header-bar div div.active{
 }
 .nc_sc_alignCenter {
     text-align: center !important;
+    color: grey;
 }
 
 .nc_sc_logoSige {
