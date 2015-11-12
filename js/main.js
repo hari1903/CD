@@ -3468,6 +3468,13 @@ angular
             $scope.get_popularCarDetail = function (popularCar) {
                 $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":popularCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
             }
+            
+             $scope.fn_modelSelect = function(popularCar){
+                console.log("fn_selectModel "+ popularCar);
+                sharedProperties.setModel(popularCar);
+                sharedProperties.setCurrentModelNumber('first');
+                $state.go('eventmenu.varient-id',{"retunEvent":"compare-cars"});
+            }
 
         }])
     .controller(
