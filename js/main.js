@@ -3222,6 +3222,13 @@ angular
             $scope.fn_ncRecCarDetail = function (recommendedCars) {
                 $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":recommendedCars.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
             }
+            
+            $scope.fn_modelSelect = function(recommendedCars){
+                console.log("fn_selectModel "+ recommendedCars);
+                sharedProperties.setModel(recommendedCars);
+                sharedProperties.setCurrentModelNumber('first');
+                $state.go('eventmenu.varient-id',{"retunEvent":"compare-cars"});
+            }
 
         }])
     .controller(
