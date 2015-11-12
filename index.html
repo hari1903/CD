@@ -2062,9 +2062,10 @@
     </ion-header-bar>
     <ion-content style="padding-top: 0px !important;">
         <ion-item class="item " ng-repeat="latestCar in latestCars.data.latestCarSet.latestCarList"
-                  ng-click="fnUpcomingCar(latestCar)"
+                  
                   style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;">
-            <div class="list" ng-click="get_latestCarDetail(latestCar)" style="margin-top: 0px; padding-top: 0px;">
+			<div class="list" ng-click="fnUpcomingCar(latestCar)" style="margin-top: 0px; padding-top: 0px;">
+            <div ng-click="get_latestCarDetail(latestCar)">
                 <div class="item item-thumbnail-left ">
                     <img class="" ng-src={{latestCar.mobileimage}} onError="this.src='images/ic_error.png';" />
 
@@ -2076,8 +2077,9 @@
                         </h3>                       
                     </div>
                 </div>
-				<div>
-                	<i><img src="images/compare_unselected.png" style="margin-left: 1%; margin-right: 3px; height: 32px;vertical-align:middle;"></i> <span style="font-size: 15px !important;vertical-align:middle;">COMPARE</span><i><img src="images/latest_rating.png" style="margin-left: 5%; margin-right: 3px; height: 32px; width: 32px;vertical-align:middle;"></i><span style="vertical-align:middle;">{{latestCar.rating}}/5</span>
+	     </div>
+		<div>
+                        <i ng-click="fn_modelSelect(latestCar.carmodelname)"><img src="images/compare_unselected.png" style="margin-left: 1%; margin-right: 3px; height: 15px;"><span style="font-size: 15px !important;">Compare</span></i> <i ng-click="get_latestCarDetail(latestCar)"><img src="images/latest_rating.png" style="margin-left: 30%; margin-right: 3px; height: 20px; width: 20px;"></i><span>{{latestCar.rating}}/5</span>
             	</div>
             </div>
         </ion-item>
