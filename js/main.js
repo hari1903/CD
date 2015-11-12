@@ -3268,11 +3268,19 @@ angular
                 console.log("userMobile"+ onRoadDetailsObj.userMobile);
                 console.log("userCity"+ onRoadDetailsObj.userCity);
                 console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
-                $scope.onRoadDetailsObj = onRoadDetailsObj;
-                onRoadDetailsObj.oem = $scope.oem;
-                onRoadDetailsObj.carModel = $scope.carModel;
-                sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
-                $state.go('eventmenu.nc-get-on-road-price-detail')
+                
+                if((!onRoadDetailsObj.userCity)||(!onRoadDetailsObj.userPinCode)) {
+                	alert("Please enter city name an Pin");
+                	$state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.oem,"carModel":$scope.carModel});                	
+                }
+                
+                else {               	
+                	$scope.onRoadDetailsObj = onRoadDetailsObj;
+                    onRoadDetailsObj.oem = $scope.oem;
+                    onRoadDetailsObj.carModel = $scope.carModel;
+                    sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
+                    $state.go('eventmenu.nc-get-on-road-price-detail');              	
+                }
 
             }
 
