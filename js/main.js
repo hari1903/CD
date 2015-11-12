@@ -3436,6 +3436,13 @@ angular
             $scope.get_latestCarDetail = function (latestCar) {
                 $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":latestCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
             }
+            
+            $scope.fn_modelSelect = function(latestCar){
+                console.log("fn_selectModel "+ latestCar);
+                sharedProperties.setModel(latestCar);
+                sharedProperties.setCurrentModelNumber('first');
+                $state.go('eventmenu.varient-id',{"retunEvent":"compare-cars"});
+            }
 
         }])
     .controller(
