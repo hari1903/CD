@@ -3316,6 +3316,7 @@ angular
                 $scope.onRoadDetailsObj = onRoadDetailsObj;
 
                 $scope.carModel = onRoadDetailRequestObj.carModel;
+                $scope.userCity = onRoadDetailRequestObj.userCity;
 
             });
 
