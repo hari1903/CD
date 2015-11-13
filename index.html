@@ -1811,9 +1811,9 @@
                 <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
                                style="padding-top: 50px !important; text-align:center !important;">
                     <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
-                        <div class="list card cvCardProp" style="height: 75% !important;"
-                             ng-click="fn_ncRecCarDetail(recommendedCars)">
-                            <div class="item item-body cvItemBodyProp">
+                        <div class="list card cvCardProp" style="height: 75% !important;">
+                             
+                            <div class="item item-body cvItemBodyProp" ng-click="fn_ncRecCarDetail(recommendedCars)">
                                 <div>
                                     <img src="{{recommendedCars.mobileimage}}" style="height: 75px; width: 100px;">
                                 </div>
