@@ -69,6 +69,7 @@ angular
                 }
             })
             .state('eventmenu.offer-and-discount-model', {
+            cache : false,
                 url: "/offer-and-discount-model/:retunEvent",
                 views: {
                     'menuContent': {
@@ -4410,7 +4411,7 @@ angular
                     $state.go('eventmenu.nc-offers-and-dicounts');
             }
         }])
-    .controller(
+   .controller(
     'offerAndDiscountBrandCtrl',
     [
         '$scope',
@@ -4421,13 +4422,14 @@ angular
             $scope.brand = "...";
             var retunEvent = $stateParams.retunEvent;
 
-            $scope.brandTempObj = sharedProperties.getOfferAndDiscountObj();
+            
+            $scope.offerAndDiscountObj = sharedProperties.getOfferAndDiscountObj();
             $scope.clearSearch = function () {
                 $scope.search = '';
             };
 
 
-            var urlToCount = "getOfferOemModelForCity&city="+$scope.brandTempObj.selectedCity;
+            var urlToCount = "getOfferOemModelForCity&city="+$scope.offerAndDiscountObj.selectedCity;
 
             sharedProperties.getHttpData(urlToCount, function(data){
                 $scope.offerBrandListObj =data;
@@ -4435,13 +4437,15 @@ angular
             })
 
             $scope.newBrand = function (brand) {
-                console.log(brand);
+            	console.log(brand);
+            	$scope.offerAndDiscountObj.selectedModel="Select Model";
                 sharedProperties.setOfferAndDiscountBrand(brand);
                 $scope.search = '';
-                $state.go('eventmenu.nc-offers-and-dicounts');
-
+               
+                $state.go("eventmenu.nc-offers-and-dicounts");
             }
         }])
+        
     .controller(
     'offerAndDiscountModelCtrl',
     [
@@ -4461,6 +4465,7 @@ angular
             //$scope.
 
             console.log('offerAndDiscountObj'+ JSON.stringify($scope.offerAndDiscountObj.selectedCity));
+            
             var modelListArray = angular.copy($scope.offerAndDiscountObj.OfferAndDiscountBrandAndModelObj.data.oemModelList);
 
             for(var i=0; i< modelListArray.length; i++){
@@ -4483,12 +4488,14 @@ angular
             };
 
             $scope.newModel = function (model) {
+            	
                 sharedProperties.setOfferAndDiscountModel(model);
                 $scope.search = '';
                 $state.go('eventmenu.nc-offers-and-dicounts');
 
             }
         }])
+        
     .controller(
     'nc_offersAndDiscountsShow',
     [
