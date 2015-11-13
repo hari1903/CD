@@ -1937,7 +1937,12 @@
 
             <div class="ccol-21"><span>in</span></div>
             <div class="ccol-22">
-                <select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
+                <form method="get">
+  			<input list="browsers" name="browser" placeholder={{userCity}}>
+  				<datalist id="browsers">
+    					<select ng-model="cityItem" ng-options="item.city for item in cityObj.data.data.cityList"></select>
+  				</datalist>
+		</form>
             </div>
         </div>
     </ion-header-bar>
