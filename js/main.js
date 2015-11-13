@@ -3261,30 +3261,57 @@ angular
                 $scope.isUserAgreed = !$scope.isUserAgreed;
             }
 
-            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
-                console.log("oem"+ $scope.oem );
-                console.log("carModel"+ $scope.carModel  );
-                console.log("userName"+ onRoadDetailsObj.name);
-                console.log("userEmail"+ onRoadDetailsObj.userEmail);
-                console.log("userMobile"+ onRoadDetailsObj.userMobile);
-                console.log("userCity"+ onRoadDetailsObj.userCity);
-                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
-                
-                if((!onRoadDetailsObj.userCity)||(!onRoadDetailsObj.userPinCode)) {
-                	alert("Please enter city name an Pin");
-                	$state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.oem,"carModel":$scope.carModel});                	
-                }
-                
-                else {               	
-                	$scope.onRoadDetailsObj = onRoadDetailsObj;
-                    onRoadDetailsObj.oem = $scope.oem;
-                    onRoadDetailsObj.carModel = $scope.carModel;
-                    sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
-                    $state.go('eventmenu.nc-get-on-road-price-detail');              	
-                }
-
+         function isEmpty(str) {
+                return (!str || 0 === str.length || /^\s*$/.test(str) || !str.trim() );
             }
-
+            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
+//                console.log("oem"+ $scope.oem );
+//                console.log("carModel"+ $scope.carModel  );
+//                console.log("userName"+ onRoadDetailsObj.name);
+//                console.log("userEmail"+ onRoadDetailsObj.userEmail);
+//                console.log("userMobile"+ onRoadDetailsObj.userMobile);
+//                console.log("userCity"+ onRoadDetailsObj.userCity);
+//                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
+                $scope.onRoadDetailsObj = {};
+                if(onRoadDetailsObj != null || onRoadDetailsObj != undefined){
+                $scope.onRoadDetailsObj.oem = $scope.oem;
+                $scope.onRoadDetailsObj.carModel = $scope.carModel;
+                console.log(JSON.stringify(onRoadDetailsObj));
+                var isValidationSuccess = true;
+                if(!onRoadDetailsObj.hasOwnProperty('name') || isEmpty(onRoadDetailsObj.name))
+                {
+                 isValidationSuccess = false;
+                 alert("Please enter your name"); 
+                } else
+                if(!onRoadDetailsObj.hasOwnProperty('userEmail') || isEmpty(onRoadDetailsObj.userEmail)){
+                 isValidationSuccess = false;
+                 alert("Please enter your email");
+                } else
+                if(onRoadDetailsObj.userMobile === null || onRoadDetailsObj.userMobile === undefined){
+                 isValidationSuccess = false;
+                 alert("Please enter your phone no.");
+                } else
+                if(onRoadDetailsObj.userCity === null || onRoadDetailsObj.userCity === undefined){
+                 isValidationSuccess = false;
+                 alert("Please Select The city");
+                } else
+                if(onRoadDetailsObj.userPinCode === null || onRoadDetailsObj.userPinCode === undefined){
+                 isValidationSuccess = false;
+                 alert("Please Enter The Pincode");
+                } else 
+                if($scope.isUserAgreed == false){
+                 isValidationSuccess = false;
+                 alert("Please check Terms and Conditions");
+                }
+                if(isValidationSuccess){
+                sharedProperties.setOnRoadRequestObj($scope.onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail')
+                }
+            } else {
+             alert(" Please Enter the details");
+            }
+             
+            }
         }])
     .controller(
     'nc_getOnRoadPriceDetailCtrl',
