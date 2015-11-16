@@ -2437,11 +2437,15 @@
 </script>
 <script id="templates/show-compare.html" type="text/ng-template">
     <ion-view>
-        <ion-content>
-            <div style=" border-color: #ececec;background-color:rgb(240,90,40);font-size:12px;padding-top:5px;padding-left:10px;height:20px;color: #fff;border:0px;"
-                 class="bar bar-header bar-light compareCrs-hidder">
+
+        <ion-header-bar class=" bar-subheader nc_uc_header_prop">
+        <div class="row nc_lc_header_info">
+            <div class="col1 ">
                 Compare Cars
             </div>
+        </div>
+    </ion-header-bar>
+<ion-content>
             <div class="row" style="padding-top:20px;margin-bottom:10px;height:61px;width:100%;">
                 <div style="width: 40%;">
                     <img class="imageContainer" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}"
@@ -2621,14 +2625,12 @@
                     <h1 class="comparision-bars">Explore</h1>
                 </div>
 
-                <div class="row">
+                <div class="row" style="padding-top: 30px;">
                     <div class="col">
-                        <div>
-                            <span>{{ compareDataObj.data.variantname.first}}</span>
-                        </div>
-                        <span>{{ compareDataObj.data.variantname.first}}</span>
+                        
+                        <span style="padding-right: 400px;">{{ compareDataObj.data.variantname.first}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
-                            <div class="row">
+                            <div class="row1">
                                 <div class="card cardSize">
                                     <div class="item">
                                         <img ng-src="images/on_road_price_new.png">
@@ -2671,9 +2673,9 @@
                                 </div>
                             </div>
                         </ion-scroll>
-                        <span>{{ compareDataObj.data.variantname.second}}</span>
+                        <span style="padding-right: 40px;">{{ compareDataObj.data.variantname.second}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
-                            <div class="row">
+                            <div class="row1">
                                 <div class="card cardSize">
                                     <div class="item">
                                         <img ng-src="images/on_road_price_new.png">
@@ -2806,7 +2808,7 @@
         <div class="bar bar-footer">
             <div ng-show="isCommonShow" style="margin-left:auto;margin-right:auto;">
                 <button class=" button-clear" ng-click="fn_isCommonShow(false)">
-                    <p style="color:#fff;font-size:14px;height:22px;padding-bottom:5px!important;padding-top:5px!important;">
+                    <p style="color:#fff;font-size:14px;height:22px;padding-bottom:5px!important;padding-top:2px!important;">
                         Hide Common Features</p>
                 </button>
             </div>
