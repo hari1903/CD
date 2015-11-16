@@ -3,7 +3,7 @@ div.background
     background: url("../images/compare_btn_disable.png") no-repeat ;
     background-size:100%;
 }
-.bar-subheader {
+.subheight {
     height: 23px;
 }
 
@@ -116,7 +116,7 @@ body, .ionic-body {
   padding-right:10px;
   padding-left:10px; 
 }
-.col {  
+.col2 {  
   font-size:10px;
   color:#ffffff;
   padding: 0px;
@@ -142,14 +142,14 @@ element.style {
   height:40px;
   float:right!important;
 }
-.bar-subheader{
-  color:#FFFFFF;
-  font-size:10px;
-  font-family:"Roboto Regular";
-  padding-top:0px;
-  padding-bottom:0px;
-  background-color:rgb(240,90,40);
-  text-align: left;
+.comheader{
+  color:#FFFFFF !important;
+  font-size:10px !important;
+  font-family:"Roboto Regular" !important;
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+  background-color:rgb(240,90,40) !important;
+  text-align: left !important;
 }
 .bar.bar-positive {
     border-color:rgb(240,90,40)!important;
