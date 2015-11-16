@@ -3260,31 +3260,84 @@ angular
             $scope.fn_isUserAgreed = function() {
                 $scope.isUserAgreed = !$scope.isUserAgreed;
             }
-
-            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
-                console.log("oem"+ $scope.oem );
-                console.log("carModel"+ $scope.carModel  );
-                console.log("userName"+ onRoadDetailsObj.name);
-                console.log("userEmail"+ onRoadDetailsObj.userEmail);
-                console.log("userMobile"+ onRoadDetailsObj.userMobile);
-                console.log("userCity"+ onRoadDetailsObj.userCity);
-                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
-                
-                if((!onRoadDetailsObj.userCity)||(!onRoadDetailsObj.userPinCode)) {
-                	alert("Please enter city name an Pin");
-                	$state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.oem,"carModel":$scope.carModel});                	
-                }
-                
-                else {               	
-                	$scope.onRoadDetailsObj = onRoadDetailsObj;
-                    onRoadDetailsObj.oem = $scope.oem;
-                    onRoadDetailsObj.carModel = $scope.carModel;
-                    sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
-                    $state.go('eventmenu.nc-get-on-road-price-detail');              	
-                }
-
+          function isEmpty(str) {
+//              return (!str || 0 === str.length || /^\s*$/.test(str) || !str.trim() ); 
+            	 return (!str || 0 === str.length || /^\s*$/.test(str)); 
             }
-
+            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
+//                console.log("oem"+ $scope.oem );
+//                console.log("carModel"+ $scope.carModel  );
+//                console.log("userName"+ onRoadDetailsObj.name);
+//                console.log("userEmail"+ onRoadDetailsObj.userEmail);
+//                console.log("userMobile"+ onRoadDetailsObj.userMobile);
+//                console.log("userCity"+ onRoadDetailsObj.userCity);
+//                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
+                $scope.onRoadDetailsObj = {};
+                if(onRoadDetailsObj != null || onRoadDetailsObj != undefined){
+                $scope.onRoadDetailsObj.oem = $scope.oem;
+                $scope.onRoadDetailsObj.carModel = $scope.carModel;
+                console.log(JSON.stringify(onRoadDetailsObj));
+                var isValidationSuccess = true;
+                var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                var phone = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+               // var pincode = /^([0-9](6,6))+$/;
+                var pincode = /(^\d{6}$)/;
+               // alert(pincode(onRoadDetailsObj.userPinCode));
+               // alert(re.test(onRoadDetailsObj.userEmail));
+                if(!onRoadDetailsObj.hasOwnProperty('name') || isEmpty(onRoadDetailsObj.name))
+                {
+                	isValidationSuccess = false;
+                	alert("Please enter your name");
+                	//alert("Your Name Should Contain Atleast 3 Characters");
+                } else if(onRoadDetailsObj.name.length <= 2)  {
+                	isValidationSuccess = false;
+                	alert("Minimum required characters is 3 for your name"); 
+                } else
+                	 if(!onRoadDetailsObj.hasOwnProperty('userEmail') || isEmpty(onRoadDetailsObj.userEmail)){
+                	isValidationSuccess = false;
+                	alert("Please enter your email");
+                }    else if(!re.test(onRoadDetailsObj.userEmail)){
+                	 isValidationSuccess = false; 
+                	  alert("Please enter valid email");
+                } 
+                else
+                if(!onRoadDetailsObj.hasOwnProperty('userMobile') || isEmpty(onRoadDetailsObj.userMobile)){
+                	isValidationSuccess = false;
+                	alert("Please enter your phone no.");
+                } else if(!phone.test(onRoadDetailsObj.userMobile)){
+                	isValidationSuccess = false;
+                	alert("Please enter valid number"); 
+                }
+                else
+                if(!onRoadDetailsObj.hasOwnProperty('userCity') || isEmpty(onRoadDetailsObj.userCity)){
+                	isValidationSuccess = false;
+                	alert("Please select the city");
+                } else
+                if(!onRoadDetailsObj.hasOwnProperty('userPinCode') || isEmpty(onRoadDetailsObj.userPinCode)){
+                	isValidationSuccess = false;
+                	alert("Please enter the pincode");
+                } else if(!pincode.test(onRoadDetailsObj.userPinCode)){
+                	isValidationSuccess = false;
+                	alert("Please enter valid pincode ");
+                }
+                else 
+                if($scope.isUserAgreed == false){
+                	isValidationSuccess = false;
+                	alert("Please check Terms and Conditions");
+                }
+                if(isValidationSuccess){
+                sharedProperties.setOnRoadRequestObj($scope.onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail')
+                $scope.onRoadDetailsObj = onRoadDetailsObj;
+                onRoadDetailsObj.oem = $scope.oem;
+                onRoadDetailsObj.carModel = $scope.carModel;
+                sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail');
+                }
+            } else {
+            	alert(" Please Enter the details");
+            	}
+            }
         }])
     .controller(
     'nc_getOnRoadPriceDetailCtrl',
