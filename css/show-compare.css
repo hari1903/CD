@@ -14,19 +14,19 @@
     width: 180px !important;
 }
 
-.bar.bar-light {
+.balight {
     background-color: #f05a28;
     color: #fff;
     font-family: 'Roboto-Bold' !important;
     font-size: 16px;
 }
 
-.bar-subheader{
+/* .bar-subheader{
 	background-color: #f05a28;
 	color:#fff;
 	font-family:'Roboto-Bold' !important;
 	font-size:16px;
-}
+} */
 
 h1:first-child{
 	margin-top: 5px;
@@ -39,6 +39,8 @@ h1:first-child{
     color: #fff;
     font-family: 'Roboto-Bold';
     font-size: 16px;
+    line-height: 2;
+    font-weight: bold !important;
 }
 .comparision-bars{
   font-size:10px!important;
@@ -60,20 +62,23 @@ h1:first-child{
    width:50%;
    padding-top:-25px;
    padding:0px!important;
-   margin:0px!important:
+   margin:0px!important;
+   height: 2%;
 }
 .car-title{
    color:#313131;
    font-size:10px;
    vertical-align:middle;
    text-align:center;
-   font-family:"Roboto Regular";">
+   font-family:'Roboto Regular';
 }
-.col{
-	text-align:center;
+.col1{
+	text-align:center !important;
 	font-family:'Roboto-Regular';
-	font-size:14px;
-	color:#313131;
+	font-size:14px !important ;
+	color:#313131 !important;
+	vertical-align:middle !important;
+	white-space: normal !important;
 }
 .flip-car{
   -moz-transform: scaleX(-1);
@@ -85,7 +90,7 @@ h1:first-child{
   height:40px;
   float:right!important;
 }
-.bar-footer{
+.footcompare{
 	height:22px;
 	vertical-align:middle;
 	border-radius:3.43px;
@@ -100,3 +105,12 @@ h1:first-child{
     color: #fff;
     font-family:'Roboto-Regular';
 }
+.bar h1{
+	font-weight:bold;
+	margin:0 !important;
+}
+
+.bld{
+	font-weight:bold !important;
+}
+
