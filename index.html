@@ -2382,7 +2382,7 @@
         <div class="row ">
             <div class="versus-bar">
 			   <span style="margin:5px;">
-                <img style="width:20px;height:20px;" ng-src="{{vsImage}}">
+                <img style="width:20px;height:20px;" ng-src="{{vsImage}}" >
 			   </span>
             </div>
         </div>
@@ -2396,7 +2396,7 @@
             </div>
         </div>
         <div class="row" ng-click="fn_selectCompare()">
-            <div class="background compare-button">
+            <div class="compare-button" ng-class="background">
                 <div>
                     <p>Compare</p>
                 </div>
@@ -2506,7 +2506,7 @@
 
             <div ng-show="isOverView" class="ng-hide">
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                    <h1 class="comparision-bars">Dimensions</h1>
+                    <h1 class="title comparision-bars">Dimensions</h1>
                 </div>
                 <div ng-repeat=" dimensionObj in compareDataObj.data.dimensions">
                     <div class="row ng-hide" style="height:20px;margin-top:3px;border-bottom:1px solid #f1f1f1;"
@@ -2526,7 +2526,7 @@
                     </div>
                 </div>
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                    <h1 class="comparision-bars">Mileage and Specifications</h1>
+                    <h1 class=" title comparision-bars">Mileage and Specifications</h1>
                 </div>
                 <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
                     <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;"
@@ -2546,7 +2546,7 @@
                     </div>
                 </div>
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                    <h1 class="comparision-bars">Standard Features</h1>
+                    <h1 class=" title comparision-bars">Standard Features</h1>
                 </div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
                     <div class="row ng-hide"
@@ -2567,7 +2567,7 @@
                     </div>
                 </div>
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                    <h1 class="comparision-bars">Colors</h1>
+                    <h1 class="title comparision-bars">Colors</h1>
                 </div>
                 <div class="row" style="margin-top:20px;width:100%;padding:0px;">
                     <div class="col" style="height:61px;width:40%!important;padding-left:20%">
@@ -2618,7 +2618,7 @@
                 </div>
 
                 <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;margin:0px;width:100%;">
-                    <h1 class="comparision-bars">Explore</h1>
+                    <h1 class="title comparision-bars">Explore</h1>
                 </div>
 
                 <div class="row">
@@ -2721,7 +2721,7 @@
                 </div>
                 <div ng-show="!isOverView" class="ng-hide">
                     <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                        <h1 class="title comparision-bars">interior</h1>
+                        <h1 class="title comparision-bars">Interior</h1>
                     </div>
                     <div ng-repeat=" interiorObj in compareDataObj.data.features.interior">
                         <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;"
@@ -2741,7 +2741,7 @@
                         </div>
                     </div>
                     <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                        <h1 class="title comparision-bars">Exterior</h1>
+                        <h1 class="title comparision-bars" >Exterior</h1>
                     </div>
                     <div ng-repeat=" exteriorObj in compareDataObj.data.features.exterior">
                         <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;"
@@ -2761,7 +2761,7 @@
                         </div>
                     </div>
                     <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                        <h1 class="title comparision-bars"> Comfort & Convenience</h1>
+                        <h1 class="title comparision-bars" > Comfort & Convenience</h1>
                     </div>
                     <div ng-repeat=" comfortandConvenienceObj in compareDataObj.data.features.comfortandConvenience">
                         <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;
@@ -2781,7 +2781,7 @@
                         </div>
                     </div>
                     <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
-                        <h1 class="title comparision-bars">Entertainment</h1>
+                        <h1 class="title comparision-bars" >Entertainment</h1>
                     </div>
                     <div ng-repeat=" entertainmentObj in compareDataObj.data.features.entertainment">
                         <div class="row ng-hide" style="margin-top:3px;border-bottom:1px solid #f1f1f1;width:100%;
