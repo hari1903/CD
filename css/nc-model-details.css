@@ -483,3 +483,24 @@
 	color: #F05A28 !important;
 	font-weight: 500 !important;
 }
+.rrow-header1 {
+	padding-top: 5px;
+    display: block !important;
+    height: 35px !important;
+    background-color: #f05a28 !important;
+    font: 18px 'Roboto-Regular';
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.rrow-header2 {
+	padding-top: 0px;
+    display: block !important;
+    height: 35px !important;
+    background-color: #ebe7e7 !important;
+    font: 14px 'Roboto-Regular';
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
