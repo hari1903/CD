@@ -10,18 +10,25 @@
 }
 
 .cardSize {
-    height: 70px !important;
-    width: 180px !important;
+    
+    overflow: visible;
 }
-
-.bar.bar-light {
+.rowcard{
+	display: -webkit-box;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  padding: 5px;
+ width: 160%;
+ }
+.light1 {
     background-color: #f05a28;
     color: #fff;
     font-family: 'Roboto-Bold' !important;
     font-size: 16px;
 }
 
-.bar-subheader{
+.head{
 	background-color: #f05a28;
 	color:#fff;
 	font-family:'Roboto-Bold' !important;
@@ -29,10 +36,10 @@
 }
 
 h1:first-child{
-	margin-top: 5px;
+	margin-top: 15px;
     color: white;
     font-family: 'Roboto-Bold';
-    font-size: 16px;
+    font-size: 15px !important;
 }
 
 .bar.bar-light .title {
@@ -46,7 +53,7 @@ h1:first-child{
   text-align:center;
   margin-top:9px;
   margin-bottom:15px!important;
-  height:22px!important;
+  
   color:#272727!important;
   font-family:"Roboto Bold"
 }
@@ -75,6 +82,14 @@ h1:first-child{
 	font-size:14px;
 	color:#313131;
 }
+.colcard{
+	text-align:left;
+	font-family:'Roboto-Regular';
+	font-size:16px;
+	color: #fff;
+	padding-top: 0px !important;
+	padding-left: 5px !important;
+}
 .flip-car{
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
@@ -85,8 +100,8 @@ h1:first-child{
   height:40px;
   float:right!important;
 }
-.bar-footer{
-	height:22px;
+.foot{
+	height:25px;
 	vertical-align:middle;
 	border-radius:3.43px;
 	border-bottom:5px;
