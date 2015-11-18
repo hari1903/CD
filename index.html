@@ -2437,11 +2437,15 @@
 </script>
 <script id="templates/show-compare.html" type="text/ng-template">
     <ion-view>
+<ion-header-bar class=" bar-subheader nc_uc_header_prop head">
+        <div class="row nc_lc_header_info">
+            <div class="colcard ">
+                 Compare Cars
+             </div>
+        </div>
+    </ion-header-bar>
         <ion-content>
-            <div style=" border-color: #ececec;background-color:rgb(240,90,40);font-size:12px;padding-top:5px;padding-left:10px;height:20px;color: #fff;border:0px;"
-                 class="bar bar-header bar-light compareCrs-hidder">
-                Compare Cars
-            </div>
+            
             <div class="row" style="padding-top:20px;margin-bottom:10px;height:61px;width:100%;">
                 <div style="width: 40%;">
                     <img class="imageContainer" style="float:right;" ng-src="{{ compareDataObj.data.imageurl.first}}"
@@ -2505,7 +2509,7 @@
 
 
             <div ng-show="isOverView" class="ng-hide">
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                     <h1 class="comparision-bars">Dimensions</h1>
                 </div>
                 <div ng-repeat=" dimensionObj in compareDataObj.data.dimensions">
@@ -2525,7 +2529,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                     <h1 class="comparision-bars">Mileage and Specifications</h1>
                 </div>
                 <div ng-repeat=" mileageandSpecificationsObj in compareDataObj.data.mileageandSpecifications">
@@ -2545,7 +2549,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                     <h1 class="comparision-bars">Standard Features</h1>
                 </div>
                 <div ng-repeat=" standardFeaturesObj in compareDataObj.data.standardFeatures">
@@ -2566,7 +2570,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                     <h1 class="comparision-bars">Colors</h1>
                 </div>
                 <div class="row" style="margin-top:20px;width:100%;padding:0px;">
@@ -2579,7 +2583,7 @@
                             <span style="color:#313131;font-size:10px;float:left;font-family:" Roboto Regular"">
                             {{ compareDataObj.data.variantname.first}}</span>
                         </div>
-                        <ion-scroll direction="x" class="wide-as-needed">
+                        <ion-scroll direction="x" class="wide-needed">
                             <div class="row" style="padding-left:0px;">
                                 <div ng-repeat="color1 in compareDataObj.data.color.first.split(',')">
                                     <i class="fa fa-square" style="color:#{{color1}};float:left;padding-right:5px"></i>
@@ -2617,18 +2621,16 @@
                     </div>
                 </div>
 
-                <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;margin:0px;width:100%;">
+                <div class="light1" style="height:22px;background-color:#f1f1f1;margin:0px;width:100%;">
                     <h1 class="comparision-bars">Explore</h1>
                 </div>
 
-                <div class="row">
+                <div class="row" style="padding-top: 30px;">
                     <div class="col">
-                        <div>
-                            <span>{{ compareDataObj.data.variantname.first}}</span>
-                        </div>
-                        <span>{{ compareDataObj.data.variantname.first}}</span>
+                        
+                        <span style="padding-right: 400px;">{{ compareDataObj.data.variantname.first}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
-                            <div class="row">
+                            <div class="rowcard">
                                 <div class="card cardSize">
                                     <div class="item">
                                         <img ng-src="images/on_road_price_new.png">
@@ -2671,9 +2673,9 @@
                                 </div>
                             </div>
                         </ion-scroll>
-                        <span>{{ compareDataObj.data.variantname.second}}</span>
+                        <span style="padding-right: 40px;">{{ compareDataObj.data.variantname.second}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
-                            <div class="row">
+                            <div class="rowcard">
                                 <div class="card cardSize">
                                     <div class="item">
                                         <img ng-src="images/on_road_price_new.png">
@@ -2740,7 +2742,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                    <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                         <h1 class="title comparision-bars">Exterior</h1>
                     </div>
                     <div ng-repeat=" exteriorObj in compareDataObj.data.features.exterior">
@@ -2780,7 +2782,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bar  bar-light" style="height:22px;background-color:#f1f1f1;width:100%;">
+                    <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
                         <h1 class="title comparision-bars">Entertainment</h1>
                     </div>
                     <div ng-repeat=" entertainmentObj in compareDataObj.data.features.entertainment">
@@ -2803,10 +2805,10 @@
                 </div>
             </div>
         </ion-content>
-        <div class="bar bar-footer">
+        <div class="bar bar-footer foot">
             <div ng-show="isCommonShow" style="margin-left:auto;margin-right:auto;">
                 <button class=" button-clear" ng-click="fn_isCommonShow(false)">
-                    <p style="color:#fff;font-size:14px;height:22px;padding-bottom:5px!important;padding-top:5px!important;">
+                    <p style="color:#fff;font-size:14px;height:22px;padding-bottom:5px!important;padding-top:2px!important;">
                         Hide Common Features</p>
                 </button>
             </div>
@@ -2819,6 +2821,7 @@
         </div>
     </ion-view>
 </script>
+
 <script id="templates/auto-detailed-news.html" type="text/ng-template">
     <ion-content>
         <div ng-bind-html="autoDetailedNews"></div>
