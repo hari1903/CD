@@ -48,7 +48,8 @@ h1:first-child{
   margin-bottom:15px!important;
   height:22px!important;
   color:#272727!important;
-  font-family:"Roboto Bold"
+  font-family:"Roboto Bold";
+  line-height:22px!important;
 }
 .align-hr{
    border:0px!important;
