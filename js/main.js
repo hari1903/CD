@@ -3818,7 +3818,10 @@ angular
                 console.log("isOverView"+ isCommonShow);
                 $scope.isCommonShow = isCommonShow;
             }
-
+$scope.fnInsurance = function() {
+                
+                $state.go('eventmenu.car-insurance');
+            }
         }])
     .controller(
     'reviewUserAndRoadTestCtrl',
