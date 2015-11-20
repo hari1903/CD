@@ -4,8 +4,7 @@
 }
 
 .nc_uc_header_info {
-    border-bottom-width: 2px;
-    border-bottom-color: #F05A28 !important;
+    padding-top: 10px !important;
     border-style: outset !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -113,4 +112,21 @@ ion-footer-bar .col-25.active{
 .upcoming-alarm{
   width:30px;
   height:25px;
+}
+.nc_uc_header2_info {
+    border-bottom-width: 2px;
+    border-style: outset !important;
+    border-bottom-color: #F05A28 !important;
+    border-top-width: 2px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    height: 30px;
+    background-color: #dfdfdf;
+    color: #0E0E0E;
+}
+
+.nc_uc_header3_info {
+    height: 20px;
+    background-color: #dfdfdf;
+    color: #0E0E0E !important;
 }
