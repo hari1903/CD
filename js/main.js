@@ -3743,10 +3743,22 @@ angular
 
             $scope.isCompare = "images/compare_btn_disable.png";
             $scope.vsImage = "images/vs_grey.png";
+            $scope.background = [];
+            $scope.background.push('disableimg');
+            console.log("background is set " + $scope.background);
 
             $scope.compDataObj = sharedProperties.getObject();
+            
+            console.log("condition car first id "+$scope.compDataObj.varientDetailObj.first.displayVariantId);
+            console.log("condition car second id "+$scope.compDataObj.varientDetailObj.second.displayVariantId);
+            
+            if(($scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1") && ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2"))
+            {
+            	$scope.background.pop('disableimg');
+            	$scope.background.push('enableimg');
+            }
 
-
+            var f1 = false; f2 = false;
             var urlForData = "getPopularCompareCarListWithStatus&startLimit=1&endLimit=5"
 
             sharedProperties.getHttpData(urlForData, function (popularCarsWithStatus){
@@ -3755,13 +3767,21 @@ angular
 
             $scope.fn_modelSelect = function(modelIndex){
                 console.log("fn_selectModel "+ modelIndex);
+                if(modelIndex == "first")
+                	f1 = true;
+                else if(modelIndex == "second")
+                    f2 = true;
+               
                 sharedProperties.setCurrentModelNumber(modelIndex);
                 $state.go("eventmenu.brand",{"retunEvent": "compare-cars"});
             }
-
+            
             $scope.fn_selectCompare = function(){
-                getDataToCompare($scope.compDataObj.varientDetailObj.first.carVariantId, $scope.compDataObj.varientDetailObj.second.carVariantId);
-
+            	 if(($scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1") && ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2"))
+                  {
+            		 getDataToCompare($scope.compDataObj.varientDetailObj.first.carVariantId, $scope.compDataObj.varientDetailObj.second.carVariantId);
+            	  }
+            	
             }
 
             var showCompare = function(compareDate){
