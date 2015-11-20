@@ -385,7 +385,7 @@ angular
                 }
             })
             .state('eventmenu.nc-get-on-road-price-form', {
-                url: "/nc-get-on-road-price-form/:oem/:carModel",
+                url: "/nc-get-on-road-price-form/:oem/:carModel/:carImage/:carRating",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/nc-get-on-road-price-form.html",
@@ -3210,7 +3210,7 @@ angular
 
             $scope.fnGetOnRoadPrice = function() {
                 console.log("go to on road price"+JSON.stringify($scope.ncModelDetails.ncModelDetailsObj));
-                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname});
+                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname,"carImage":$scope.imageUrl, "carRating":$scope.ncModelDetails.ncModelDetailsObj.data.modelrating.rating});
             }
 
 
@@ -3245,6 +3245,8 @@ angular
             console.log("in nc_modelDetails");
             $scope.oem = $stateParams.oem;
             $scope.carModel = $stateParams.carModel;
+            $scope.carImage = $stateParams.carImage;
+            $scope.carRating = $stateParams.carRating;
             $scope.isUserAgreed = false;
 
             $scope.loading = $ionicLoading.show({
