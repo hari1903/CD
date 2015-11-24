@@ -1,6 +1,11 @@
-div.background
+div.disableimg
 {
     background: url("../images/compare_btn_disable.png") no-repeat ;
+    background-size:100%;
+}
+
+.enableimg{
+    background: url("../images/compare_btn_enable.png") no-repeat ;
     background-size:100%;
 }
 .bar-subheader {

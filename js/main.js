@@ -386,7 +386,7 @@ angular
                 }
             })
             .state('eventmenu.nc-get-on-road-price-form', {
-                url: "/nc-get-on-road-price-form/:oem/:carModel",
+                url: "/nc-get-on-road-price-form/:oem/:carModel/:carImage/:carRating",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/nc-get-on-road-price-form.html",
@@ -3320,7 +3320,7 @@ angular
 
             $scope.fnGetOnRoadPrice = function() {
                 console.log("go to on road price"+JSON.stringify($scope.ncModelDetails.ncModelDetailsObj));
-                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname});
+                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname,"carImage":$scope.imageUrl, "carRating":$scope.ncModelDetails.ncModelDetailsObj.data.modelrating.rating});
             }
 
 
@@ -3355,6 +3355,8 @@ angular
             console.log("in nc_modelDetails");
             $scope.oem = $stateParams.oem;
             $scope.carModel = $stateParams.carModel;
+            $scope.carImage = $stateParams.carImage;
+            $scope.carRating = $stateParams.carRating;
             $scope.isUserAgreed = false;
 
             $scope.loading = $ionicLoading.show({
@@ -3370,31 +3372,84 @@ angular
             $scope.fn_isUserAgreed = function() {
                 $scope.isUserAgreed = !$scope.isUserAgreed;
             }
-
-            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
-                console.log("oem"+ $scope.oem );
-                console.log("carModel"+ $scope.carModel  );
-                console.log("userName"+ onRoadDetailsObj.name);
-                console.log("userEmail"+ onRoadDetailsObj.userEmail);
-                console.log("userMobile"+ onRoadDetailsObj.userMobile);
-                console.log("userCity"+ onRoadDetailsObj.userCity);
-                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
-                
-                if((!onRoadDetailsObj.userCity)||(!onRoadDetailsObj.userPinCode)) {
-                	alert("Please enter city name an Pin");
-                	$state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.oem,"carModel":$scope.carModel});                	
-                }
-                
-                else {               	
-                	$scope.onRoadDetailsObj = onRoadDetailsObj;
-                    onRoadDetailsObj.oem = $scope.oem;
-                    onRoadDetailsObj.carModel = $scope.carModel;
-                    sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
-                    $state.go('eventmenu.nc-get-on-road-price-detail');              	
-                }
-
+          function isEmpty(str) {
+//              return (!str || 0 === str.length || /^\s*$/.test(str) || !str.trim() ); 
+            	 return (!str || 0 === str.length || /^\s*$/.test(str)); 
             }
-
+            $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
+//                console.log("oem"+ $scope.oem );
+//                console.log("carModel"+ $scope.carModel  );
+//                console.log("userName"+ onRoadDetailsObj.name);
+//                console.log("userEmail"+ onRoadDetailsObj.userEmail);
+//                console.log("userMobile"+ onRoadDetailsObj.userMobile);
+//                console.log("userCity"+ onRoadDetailsObj.userCity);
+//                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
+                $scope.onRoadDetailsObj = {};
+                if(onRoadDetailsObj != null || onRoadDetailsObj != undefined){
+                $scope.onRoadDetailsObj.oem = $scope.oem;
+                $scope.onRoadDetailsObj.carModel = $scope.carModel;
+                console.log(JSON.stringify(onRoadDetailsObj));
+                var isValidationSuccess = true;
+                var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                var phone = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+               // var pincode = /^([0-9](6,6))+$/;
+                var pincode = /(^\d{6}$)/;
+               // alert(pincode(onRoadDetailsObj.userPinCode));
+               // alert(re.test(onRoadDetailsObj.userEmail));
+                if(!onRoadDetailsObj.hasOwnProperty('name') || isEmpty(onRoadDetailsObj.name))
+                {
+                	isValidationSuccess = false;
+                	alert("Please enter your name");
+                	//alert("Your Name Should Contain Atleast 3 Characters");
+                } else if(onRoadDetailsObj.name.length <= 2)  {
+                	isValidationSuccess = false;
+                	alert("Minimum required characters is 3 for your name"); 
+                } else
+                	 if(!onRoadDetailsObj.hasOwnProperty('userEmail') || isEmpty(onRoadDetailsObj.userEmail)){
+                	isValidationSuccess = false;
+                	alert("Please enter your email");
+                }    else if(!re.test(onRoadDetailsObj.userEmail)){
+                	 isValidationSuccess = false; 
+                	  alert("Please enter valid email");
+                } 
+                else
+                if(!onRoadDetailsObj.hasOwnProperty('userMobile') || isEmpty(onRoadDetailsObj.userMobile)){
+                	isValidationSuccess = false;
+                	alert("Please enter your phone no.");
+                } else if(!phone.test(onRoadDetailsObj.userMobile)){
+                	isValidationSuccess = false;
+                	alert("Please enter valid number"); 
+                }
+                else
+                if(!onRoadDetailsObj.hasOwnProperty('userCity') || isEmpty(onRoadDetailsObj.userCity)){
+                	isValidationSuccess = false;
+                	alert("Please select the city");
+                } else
+                if(!onRoadDetailsObj.hasOwnProperty('userPinCode') || isEmpty(onRoadDetailsObj.userPinCode)){
+                	isValidationSuccess = false;
+                	alert("Please enter the pincode");
+                } else if(!pincode.test(onRoadDetailsObj.userPinCode)){
+                	isValidationSuccess = false;
+                	alert("Please enter valid pincode ");
+                }
+                else 
+                if($scope.isUserAgreed == false){
+                	isValidationSuccess = false;
+                	alert("Please check Terms and Conditions");
+                }
+                if(isValidationSuccess){
+                sharedProperties.setOnRoadRequestObj($scope.onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail')
+                $scope.onRoadDetailsObj = onRoadDetailsObj;
+                onRoadDetailsObj.oem = $scope.oem;
+                onRoadDetailsObj.carModel = $scope.carModel;
+                sharedProperties.setOnRoadRequestObj(onRoadDetailsObj);
+                $state.go('eventmenu.nc-get-on-road-price-detail');
+                }
+            } else {
+            	alert(" Please Enter the details");
+            	}
+            }
         }])
     .controller(
     'nc_getOnRoadPriceDetailCtrl',
@@ -3800,10 +3855,22 @@ angular
 
             $scope.isCompare = "images/compare_btn_disable.png";
             $scope.vsImage = "images/vs_grey.png";
+            $scope.background = [];
+            $scope.background.push('disableimg');
+            console.log("background is set " + $scope.background);
 
             $scope.compDataObj = sharedProperties.getObject();
+            
+            console.log("condition car first id "+$scope.compDataObj.varientDetailObj.first.displayVariantId);
+            console.log("condition car second id "+$scope.compDataObj.varientDetailObj.second.displayVariantId);
+            
+            if(($scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1") && ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2"))
+            {
+            	$scope.background.pop('disableimg');
+            	$scope.background.push('enableimg');
+            }
 
-
+            var f1 = false; f2 = false;
             var urlForData = "getPopularCompareCarListWithStatus&startLimit=1&endLimit=5"
 
             sharedProperties.getHttpData(urlForData, function (popularCarsWithStatus){
@@ -3812,13 +3879,21 @@ angular
 
             $scope.fn_modelSelect = function(modelIndex){
                 console.log("fn_selectModel "+ modelIndex);
+                if(modelIndex == "first")
+                	f1 = true;
+                else if(modelIndex == "second")
+                    f2 = true;
+               
                 sharedProperties.setCurrentModelNumber(modelIndex);
                 $state.go("eventmenu.brand",{"retunEvent": "compare-cars"});
             }
-
+            
             $scope.fn_selectCompare = function(){
-                getDataToCompare($scope.compDataObj.varientDetailObj.first.carVariantId, $scope.compDataObj.varientDetailObj.second.carVariantId);
-
+            	 if(($scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1") && ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2"))
+                  {
+            		 getDataToCompare($scope.compDataObj.varientDetailObj.first.carVariantId, $scope.compDataObj.varientDetailObj.second.carVariantId);
+            	  }
+            	
             }
 
             var showCompare = function(compareDate){
@@ -3875,7 +3950,10 @@ angular
                 console.log("isOverView"+ isCommonShow);
                 $scope.isCommonShow = isCommonShow;
             }
-
+$scope.fnInsurance = function() {
+                
+                $state.go('eventmenu.car-insurance');
+            }
         }])
     .controller(
     'reviewUserAndRoadTestCtrl',
