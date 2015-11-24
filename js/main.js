@@ -2229,6 +2229,17 @@ angular
                 console.log("call single card view")
                 $state.go('eventmenu.used-single-car-card-view');
             }
+            var trust = false;
+            $scope.imgScr = "images/fill_uncheck.png";
+            $scope.cr_trustmark = function (){
+              trust = !trust; 
+            if(trust==true){
+            	$scope.imgScr  = "images/fill_check.png";
+             }else{
+            	 $scope.imgScr = "images/fill_uncheck.png";
+             }
+              console.log("imagesuncheck",$scope.imgScr);
+            }
 
             $scope.fnUCFilter = function () {
                 //$state.go('eventmenu.used-car-filter');
