@@ -785,8 +785,8 @@
                                 <span  style="display:table-cell; vertical-align:middle;">Model</span>
                             </div>
                         </div>
-                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Fuel Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Fuel Type' ? 'orangeBackGround' : '' ">
-                            <div style="display: table; width: 20%" ng-if="sharedObj.fuel != '' || filterOptions.isCurrent == 'Fuel Type' " >
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('FuelType')" style="display:table;" ng-class="filterOptions.isCurrent == 'FuelType' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.fuel != '' || filterOptions.isCurrent == 'FuelType' " >
                                 <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
                             </div>
                             <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
@@ -794,24 +794,24 @@
                             </div>
                         </div>
 
-                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('KMs Driven')" style="display:table;" ng-class="filterOptions.isCurrent == 'KMs Driven' ? 'orangeBackGround' : '' ">
-                            <div style="display: table; width: 20%" ng-if="sharedObj.km != '' || filterOptions.isCurrent == 'KMs Driven' " >
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('KMsDriven')" style="display:table;" ng-class="filterOptions.isCurrent == 'KMsDriven' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.km != '' || filterOptions.isCurrent == 'KMsDriven' " >
                                 <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
                             </div>
                             <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
                                 <span  style="display:table-cell; vertical-align:middle;">KMs Driven</span>
                             </div>
                         </div>
-                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Vehicke Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Vehicke Type' ? 'orangeBackGround' : '' ">
-                            <div style="display: table; width: 20%" ng-if="sharedObj.vehicleType != '' || filterOptions.isCurrent == 'Vehicke Type' " >
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('VehickeType')" style="display:table;" ng-class="filterOptions.isCurrent == 'VehickeType' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.vehicleType != '' || filterOptions.isCurrent == 'VehickeType' " >
                                 <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
                             </div>
                             <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
                                 <span  style="display:table-cell; vertical-align:middle;">Vehicke Type</span>
                             </div>
                         </div>
-                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Model Year')" style="display:table;" ng-class="filterOptions.isCurrent == 'Model Year' ? 'orangeBackGround' : '' ">
-                            <div style="display: table; width: 20%" ng-if="sharedObj.modelYear != '' || filterOptions.isCurrent == 'Model Year' " >
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('ModelYear')" style="display:table;" ng-class="filterOptions.isCurrent == 'ModelYear' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.modelYear != '' || filterOptions.isCurrent == 'ModelYear' " >
                                 <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
                             </div>
                             <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
@@ -826,8 +826,8 @@
                                 <span  style="display:table-cell; vertical-align:middle;">Transmission</span>
                             </div>
                         </div>
-                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Seller Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Seller Type' ? 'orangeBackGround' : '' ">
-                            <div style="display: table; width: 20%" ng-if="sharedObj.sellerType != '' || filterOptions.isCurrent == 'Seller Type' " >
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('SellerType')" style="display:table;" ng-class="filterOptions.isCurrent == 'SellerType' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.sellerType != '' || filterOptions.isCurrent == 'SellerType' " >
                                 <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
                             </div>
                             <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
@@ -902,6 +902,167 @@
                                         </div>
                                     </div>
                                 </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'Picture' " >
+                            <ion-list>
+                                <ion-item class="my-item item item-icon-left"  " style="
+                                padding-left: 15px;
+                                border-left-width: 0px;
+                                margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newPhoto()" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="sharedObj.withPicture">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="sharedObj.withPicture ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        With Picture
+                                    </div>
+                                </div>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+                        <div ng-show="filterOptions.isCurrent == 'Brand' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.brandObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="newBrand(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.oemname}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+                        <div ng-show="filterOptions.isCurrent == 'Model' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.filterModelObj.data.Oem " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="newModel(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.carModelNameDisplayName}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'FuelType' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.fuelTypeObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newFuelType(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.type}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'KMsDriven' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.KMsDrivenObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newKMDriven(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.kmDisply}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'VehickeType' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.vehicleTypeObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newVehileType(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.vehicleType}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'ModelYear' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.modelYearObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newModelYear(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.mYear}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'Transmission' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.transmissionObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newTransmission(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.transType}}
+                                    </div>
+                                </div>
+                            </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'SellerType' " >
+                            <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.sellerTypeObj " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                <div  ng-click="fn_newSellerType(item, $index)" style="display:table; width: 100%" >
+                                    <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                        <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                    </div>
+                                    <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                         style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                        {{item.sellerType}}
+                                    </div>
+                                </div>
+                            </ion-item>
                             </ion-list>
                         </div>
                     </ion-scroll>
@@ -2254,7 +2415,7 @@
             </div>
         </div>
                 <div class="row" ng-click="fn_selectCompare()">
-            <div class="compare-button" ng-class="background">
+               <div class="compare-button" ng-class="background">
                 <div>
                     <p>Compare</p>
                 </div>
@@ -2273,7 +2434,7 @@
 						</span>
                     </div>
                     <div class="col" style="padding-top:20px;">
-                        <img style="width:20px; height:20 px ;" ng-src="{{vsImage}}">
+                        <img style="width:20px; height:20px; " ng-src="{{vsImage}}">
                     </div>
                     <div style="width: 47%;padding-bottom:5px;">
                         <span class="compareCars-rightRow">

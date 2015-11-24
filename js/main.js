@@ -434,6 +434,7 @@ angular
                 }
             })
             .state('eventmenu.compare-cars', {
+                cache : false,
                 url: "/compare-cars",
                 views: {
                     'menuContent': {
@@ -623,6 +624,44 @@ angular
             objectValue.varientDetailObj.first ={};
             objectValue.varientDetailObj.second={};
             objectValue.reviewObj = {};
+
+            objectValue.fuelTypeObj = [{'type':'Diesel','isSelected':false},
+                                        {'type':'Petrol','isSelected':false},
+                                        {'type':'CNG','isSelected':false},
+                                        {'type':'LPG','isSelected':false},
+                                        {'type':'Electric','isSelected':false}];
+
+            objectValue.KMsDrivenObj = [{'kmDisply':'Below 5,000 km','link_rewrite':'Below-5000-km', 'isSelected':false},
+                {'kmDisply':'Below 20,000 km','link_rewrite':'Below-20000-km', 'isSelected':false},
+                {'kmDisply':'Below 50,000 km','link_rewrite':'Below-50000-km', 'isSelected':false},
+                {'kmDisply':'Below 2,00,000 km','link_rewrite':'Below-200000-km', 'isSelected':false},
+                {'kmDisply':'Above 2,00,000 km','link_rewrite':'Above-200000-km', 'isSelected':false}];
+
+            objectValue.vehicleTypeObj = [{'vehicleType':'Hatchback', 'isSelected':false, 'link_rewrite':'hatchback'},
+                {'vehicleType':'Sedans', 'isSelected':false, 'link_rewrite':'sedans'},
+                {'vehicleType':'SUV', 'isSelected':false, 'link_rewrite':'suv'},
+                {'vehicleType':'MUV', 'isSelected':false, 'link_rewrite':'muv'},
+                {'vehicleType':'Luxury', 'isSelected':false, 'link_rewrite':'luxury'},
+                {'vehicleType':'Hybrid', 'isSelected':false, 'link_rewrite':'hybrid'},
+                {'vehicleType':'Coupe', 'isSelected':false, 'link_rewrite':'coupe'},
+                {'vehicleType':'Minivans', 'isSelected':false, 'link_rewrite':'minivans'},
+                {'vehicleType':'Wagons', 'isSelected':false, 'link_rewrite':'wagons'},
+                {'vehicleType':'Diesel Engines', 'isSelected':false, 'link_rewrite':'diesel-engines'}
+            ]
+
+            objectValue.modelYearObj = [{'mYear':'2013 - Onward','link_rewrite':'2013-onward', 'isSelected':false},
+                {'mYear':'2011 - 2012','link_rewrite':'2011-2012', 'isSelected':false},
+                {'mYear':'2008 - 2010','link_rewrite':'2008-2010', 'isSelected':false},
+                {'mYear':'2004 - 2007','link_rewrite':'2004-2007', 'isSelected':false},
+                {'mYear':'Before - 2003','link_rewrite':'Before-2003', 'isSelected':false}];
+
+            objectValue.transmissionObj = [{'transType':'Automatic','link_rewrite':'automatic', 'isSelected':false},
+                {'transType':'Manual','link_rewrite':'manual', 'isSelected':false}];
+
+            objectValue.sellerTypeObj = [{'sellerType':'Individual','link_rewrite':'individual', 'isSelected':false},
+                {'sellerType':'Dealer','link_rewrite':'dealer', 'isSelected':false},
+                {'sellerType':'Certified Dealer','link_rewrite':'certified-dealer', 'isSelected':false}];
+
 
             objectValue.varientDetailObj.first.imageUrlList = "images/select_car_1.png";
             objectValue.varientDetailObj.first.displayVariantId = "Select Car 1";
@@ -3110,7 +3149,7 @@ angular
         }])
     .controller(
     'usedCarFilterCtl',
-    ['$scope', 'cssInjector','sharedProperties', function ($scope, cssInjector, sharedProperties) {
+    ['$scope', 'cssInjector', 'sharedProperties', function ($scope, cssInjector, sharedProperties) {
 
         cssInjector.add("css/usedCarFilter.css");
         $scope.check = "CarDekho";
@@ -3129,33 +3168,45 @@ angular
         $scope.filterOptions.isCurrent = "City";
 
 
-        if($scope.sharedObj.price != '' ){
+        if ($scope.sharedObj.price != '') {
             var priceArray = $scope.sharedObj.price.split("+");
-            for(var iCount = 0;  iCount < $scope.sharedObj.priceRange.data.newCarFilterPriceRange.length; iCount++ ){
-                if(priceArray.indexOf($scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].linkRewrite) != -1 ){
-                    $scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].isSelected  = true;
+            for (var iCount = 0; iCount < $scope.sharedObj.priceRange.data.newCarFilterPriceRange.length; iCount++) {
+                if (priceArray.indexOf($scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].linkRewrite) != -1) {
+                    $scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].isSelected = true;
                 }
 
             }
         }
 
-        sharedProperties.getHttpData("getOfferCityList", function(data){
+
+        var priceArray = $scope.sharedObj.brand.split("+");
+        for (var iCount = 0; iCount < $scope.sharedObj.brandObj.length; iCount++) {
+            if (priceArray.indexOf($scope.sharedObj.brandObj[iCount].oemname) != -1) {
+                $scope.sharedObj.brandObj[iCount].isSelected = true;
+            } else {
+                $scope.sharedObj.brandObj[iCount].isSelected = false;
+            }
+
+        }
+
+
+        sharedProperties.getHttpData("getOfferCityList", function (data) {
             $scope.$emit('cityObj', data);
             console.log("$scope.sharedObj ", JSON.stringify(data));
-            for(var iCount=0; iCount < data.data.CarDiscountCities.length; iCount++){
+            for (var iCount = 0; iCount < data.data.CarDiscountCities.length; iCount++) {
                 var cityObj = {};
                 cityObj.city = data.data.CarDiscountCities[iCount];
                 cityObj.isSelected = false;
-                if(cityObj.city === $scope.sharedObj.city){
+                if (cityObj.city === $scope.sharedObj.city) {
                     cityObj.isSelected = true;
                 }
                 $scope.contactObj.contact.push(cityObj);
             }
         })
-       $scope.newCity = function(cityObj, index){
+        $scope.newCity = function (cityObj, index) {
             console.log('index', index);
             console.log('prevIndex', prevIndex);
-            if(prevIndex || prevIndex === 0 ){
+            if (prevIndex || prevIndex === 0) {
                 console.log('prevIndex', prevIndex);
                 $scope.contactObj.contact[prevIndex].isSelected = false;
             }
@@ -3165,13 +3216,23 @@ angular
 
         }
         $scope.selectedPrice = [];
+        $scope.selectedBrands = [];
+        $scope.selectedModels = [];
+        $scope.selectedFuleType = [];
+        $scope.vehicleType = [];
+        $scope.selectedFuleType = [];
+        $scope.selectKMSDriven = [];
+        $scope.selectModelYear = [];
+        $scope.selectTransmission = [];
+        $scope.selectSellerType = [];
 
-        $scope.newPrice = function(priceObj, index){
-            if(priceObj.isSelected){
+
+        $scope.newPrice = function (priceObj, index) {
+            if (priceObj.isSelected) {
                 $scope.sharedObj.priceRange.data.newCarFilterPriceRange[index].isSelected = false;
                 $scope.selectedPrice.splice($scope.selectedPrice.indexOf(priceObj.linkRewrite), 1);
-            }else {
-                $scope.sharedObj.priceRange.data.newCarFilterPriceRange[index].isSelected  = true;
+            } else {
+                $scope.sharedObj.priceRange.data.newCarFilterPriceRange[index].isSelected = true;
                 $scope.selectedPrice.push(priceObj.linkRewrite);
             }
 
@@ -3179,16 +3240,157 @@ angular
 
         }
 
-        $scope.fn_newCertified = function(){
-            sharedProperties.setCertifiedByTrustMaster(! $scope.sharedObj.certifiedByTrustMaster);
+        $scope.fn_newFuelType = function (selectFuelTypeObj, index) {
+            if (selectFuelTypeObj.isSelected) {
+                $scope.sharedObj.fuelTypeObj[index].isSelected = false;
+                $scope.selectedFuleType.splice($scope.selectedFuleType.indexOf(selectFuelTypeObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.fuelTypeObj[index].isSelected = true;
+                $scope.selectedFuleType.push(selectFuelTypeObj.link_rewrite);
+            }
+
+            sharedProperties.setFuel($scope.selectedFuleType.join("+"));
+
         }
 
-        $scope.fn_setCurrentFilter = function(currentOption){
-            $scope.filterOptions.isCurrent = currentOption;
-            console.log('price range ',  $scope.filterOptions.isCurrent)
+        $scope.fn_newKMDriven = function (selectKMSDrivenObj, index) {
+            if (selectKMSDrivenObj.isSelected) {
+                $scope.sharedObj.KMsDrivenObj[index].isSelected = false;
+                $scope.selectKMSDriven.splice($scope.selectKMSDriven.indexOf(selectKMSDrivenObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.KMsDrivenObj[index].isSelected = true;
+                $scope.selectKMSDriven.push(selectKMSDrivenObj.link_rewrite);
+            }
+
+            sharedProperties.setKM($scope.selectKMSDriven.join("+"));
+
+        }
+
+        $scope.fn_newVehileType = function (selectvehicleObj, index) {
+            if (selectvehicleObj.isSelected) {
+                $scope.sharedObj.vehicleTypeObj[index].isSelected = false;
+                $scope.vehicleType.splice($scope.vehicleType.indexOf(selectvehicleObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.vehicleTypeObj[index].isSelected = true;
+                $scope.vehicleType.push(selectvehicleObj.link_rewrite);
+            }
+
+            sharedProperties.setVehicleType($scope.vehicleType.join("+"));
+
+        }
+
+        $scope.fn_newModelYear = function (selectModelYearObj, index) {
+            if (selectModelYearObj.isSelected) {
+                $scope.sharedObj.modelYearObj[index].isSelected = false;
+                $scope.selectModelYear.splice($scope.vehicleType.indexOf(selectModelYearObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.modelYearObj[index].isSelected = true;
+                $scope.selectModelYear.push(selectModelYearObj.link_rewrite);
+            }
+
+            sharedProperties.setModelYear($scope.selectModelYear.join("+"));
+
+        }
+
+        $scope.fn_newTransmission = function (selectTransmissionObj, index) {
+            if (selectTransmissionObj.isSelected) {
+                $scope.sharedObj.transmissionObj[index].isSelected = false;
+                $scope.selectTransmission.splice($scope.selectTransmission.indexOf(selectTransmissionObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.transmissionObj[index].isSelected = true;
+                $scope.selectTransmission.push(selectTransmissionObj.link_rewrite);
+            }
+
+            sharedProperties.setTransmission($scope.selectTransmission.join("+"));
+
+        }
+
+        $scope.fn_newSellerType = function (selectSellerTypeObj, index) {
+            if (selectSellerTypeObj.isSelected) {
+                $scope.sharedObj.sellerTypeObj[index].isSelected = false;
+                $scope.selectSellerType.splice($scope.selectSellerType.indexOf(selectSellerTypeObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.sellerTypeObj[index].isSelected = true;
+                $scope.selectSellerType.push(selectSellerTypeObj.link_rewrite);
+            }
+            console.log('Seller Type',$scope.selectSellerType );
+            sharedProperties.setSellerType($scope.selectSellerType.join("+"));
+
+        }
+
+        $scope.newBrand = function (priceObj, index) {
+            if (priceObj.isSelected) {
+                $scope.sharedObj.brandObj[index].isSelected = false;
+                $scope.selectedBrands.splice($scope.selectedBrands.indexOf(priceObj.oemname), 1);
+            } else {
+                $scope.sharedObj.brandObj[index].isSelected = true;
+                $scope.selectedBrands.push(priceObj.oemname);
+            }
+
+            sharedProperties.setBrand($scope.selectedBrands.join("+"));
+
+        }
+
+        $scope.newModel = function (priceObj, index) {
+            if (priceObj.isSelected) {
+                $scope.sharedObj.filterModelObj.data.Oem[index].isSelected = false;
+                $scope.selectedModels.splice($scope.selectedModels.indexOf(priceObj.link_rewrite), 1);
+            } else {
+                $scope.sharedObj.filterModelObj.data.Oem[index].isSelected  = true;
+                $scope.selectedModels.push(priceObj.link_rewrite);
+            }
+            sharedProperties.setModel($scope.selectedModels.join("+"));
+
+        }
+
+        $scope.fn_newCertified = function () {
+            sharedProperties.setCertifiedByTrustMaster(!$scope.sharedObj.certifiedByTrustMaster);
         }
 
 
+        $scope.fn_newPhoto = function () {
+            sharedProperties.setWithPicture(!$scope.sharedObj.withPicture);
+        }
+
+
+
+        function getModel(){
+
+            sharedProperties.getHttpData("getUsedCarModelNameListByOemNameWithStatus&oemName=" + $scope.selectedBrands.join("%2B"), function (modelObj) {
+                $scope.selectedModels = [];
+                var modelArray = $scope.sharedObj.model.split("+");
+                console.log('Model Obj', modelArray);
+                $scope.sharedObj.filterModelObj = modelObj;
+                for (var iCount = 0; iCount < $scope.sharedObj.filterModelObj.data.Oem.length; iCount++) {
+                    $scope.sharedObj.filterModelObj.data.Oem[iCount].isSelected = false;
+                    console.log('model selected ', $scope.sharedObj.filterModelObj.data.Oem[iCount].link_rewrite);
+                    if (modelArray.indexOf($scope.sharedObj.filterModelObj.data.Oem[iCount].link_rewrite) != -1) {
+                        $scope.sharedObj.filterModelObj.data.Oem[iCount].isSelected = true;
+                        $scope.selectedModels.push($scope.sharedObj.filterModelObj.data.Oem[iCount].link_rewrite);
+
+                    }
+                }
+                console.log('model data', $scope.sharedObj.filterModelObj);
+            })
+        }
+
+        $scope.fn_setCurrentFilter = function (currentOption) {
+            if (currentOption === 'Model' && ! $scope.sharedObj.hasOwnProperty('filterModelObj') && $scope.selectedBrands.length > 0 ) {
+                $scope.sharedObj.filterModelObj = {};
+                $scope.filterOptions.isCurrent = currentOption;
+                getModel();
+                console.log('length ',$scope.sharedObj.filterModelObj );
+
+            }else if (currentOption === 'Model' && $scope.selectedBrands.length > 0 ) {
+                $scope.filterOptions.isCurrent = currentOption;
+                getModel();
+            }else if (currentOption === 'Model' && $scope.selectedBrands.length === 0){
+                alert('Please Select Brand First ')
+            }else {
+                $scope.filterOptions.isCurrent = currentOption;
+                console.log('current option ', $scope.sharedObj)
+            }
+        }
 
 
     }])
@@ -3855,22 +4057,19 @@ angular
 
             $scope.isCompare = "images/compare_btn_disable.png";
             $scope.vsImage = "images/vs_grey.png";
-            $scope.background = [];
-            $scope.background.push('disableimg');
+            $scope.background = 'disableimg';
             console.log("background is set " + $scope.background);
 
             $scope.compDataObj = sharedProperties.getObject();
             
             console.log("condition car first id "+$scope.compDataObj.varientDetailObj.first.displayVariantId);
             console.log("condition car second id "+$scope.compDataObj.varientDetailObj.second.displayVariantId);
-            
-            if(($scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1") && ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2"))
-            {
-            	$scope.background.pop('disableimg');
-            	$scope.background.push('enableimg');
+
+
+            if ($scope.compDataObj.varientDetailObj.second.displayVariantId != "Select Car 2" && $scope.compDataObj.varientDetailObj.first.displayVariantId != "Select Car 1"){
+                $scope.background = 'enableimg';
             }
 
-            var f1 = false; f2 = false;
             var urlForData = "getPopularCompareCarListWithStatus&startLimit=1&endLimit=5"
 
             sharedProperties.getHttpData(urlForData, function (popularCarsWithStatus){
@@ -3879,10 +4078,6 @@ angular
 
             $scope.fn_modelSelect = function(modelIndex){
                 console.log("fn_selectModel "+ modelIndex);
-                if(modelIndex == "first")
-                	f1 = true;
-                else if(modelIndex == "second")
-                    f2 = true;
                
                 sharedProperties.setCurrentModelNumber(modelIndex);
                 $state.go("eventmenu.brand",{"retunEvent": "compare-cars"});
