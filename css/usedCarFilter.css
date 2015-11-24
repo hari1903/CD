@@ -32,13 +32,59 @@
     padding-left: 0px !important;
     padding-bottom: 0px !important;
     padding-right: 0px !important;
-    padding-top: 60px !important;
+    padding-top: 16px !important;
+
 }
 
 .popup-container {
     width: 100% !important;
     height: 100% !important;
 }
+
+.filterOptions {
+    height: 50px ;
+    width: 100%;
+
+    padding-left: 10px;
+}
+
+.fiterLabel {
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: #404040;
+    border-right-width: 1px;
+}
+
+.filterSelectProp {
+    height: 50px ;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: #404040;
+}
+
+.filterDiv {
+    border-bottom-width: 0px !important;
+}
+
+.orangeBackGround {
+    background-color:#FF6600 !important;
+    color: #ffffff;
+}
+
+
+.orangeBackGround .fiterLabel {
+    border-bottom-width: 0px !important;
+    border-style: none;
+}
+
+.selectOptionText {
+    color: #FF6600 !important;
+}
+
+
 
 
 

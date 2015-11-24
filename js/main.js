@@ -59,6 +59,7 @@ angular
                     }
                 }
             })
+
             .state('eventmenu.offer-and-discount-brand', {
                 url: "/offer-and-discount-brand/:retunEvent",
                 views: {
@@ -497,7 +498,7 @@ angular
                 }
             })
             .state('eventmenu.user-review-detail', {
-                url: "/user-review-detail/:reviewId",
+                url: "/user-review-detail/:reviewId/:reviewType/:indexId",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/user-review-detail.html",
@@ -621,6 +622,7 @@ angular
             objectValue.varientDetailObj = {};
             objectValue.varientDetailObj.first ={};
             objectValue.varientDetailObj.second={};
+            objectValue.reviewObj = {};
 
             objectValue.varientDetailObj.first.imageUrlList = "images/select_car_1.png";
             objectValue.varientDetailObj.first.displayVariantId = "Select Car 1";
@@ -646,6 +648,64 @@ angular
             objectValue.offersAndDiscountObj.selectedBrand = "Select Brand";
             objectValue.offersAndDiscountObj.selectedModel = "Select Model";
             objectValue.offersAndDiscountObj.OfferAndDiscountBrandAndModelObj = {};
+            objectValue.priceRange = {};
+            objectValue.priceRange =  {
+                "status":"true",
+                "data":{
+                    "newCarFilterPriceRange":[
+                        {
+                            "displayPriceRange":"Below 1 Lac",
+                            "linkRewrite":"below-1-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"1 lakh - 2 lakh",
+                            "linkRewrite":"1-lakh-to-2-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"2 lakh - 3 lakh",
+                            "linkRewrite":"2-lakh-to-3-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"3 lakh - 4 lakh",
+                            "linkRewrite":"3-lakh-to-4-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"4 lakh - 5 lakh",
+                            "linkRewrite":"4-lakh-to-5-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"5 lakh - 6 lakh",
+                            "linkRewrite":"5-lakh-to-6-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"6 lakh - 8 lakh",
+                            "linkRewrite":"6-lakh-to-7-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"8 lakh - 10 lakh",
+                            "linkRewrite":"8-lakh-to-10-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"10 lakh - 30 lakh",
+                            "linkRewrite":"10-lakh-to-30-lakh",
+                            "isSelected" : false
+                        },
+                        {
+                            "displayPriceRange":"Above 30 Crore",
+                            "linkRewrite":"above-30-crore",
+                            "isSelected" : false
+                        }
+                    ]
+                }
+            };
 
 
             $http
@@ -1030,6 +1090,12 @@ angular
                 },
                 setOfferAndDiscountBrandAndModelObj : function(OfferAndDiscountBrandAndModelObj){
                     objectValue.offersAndDiscountObj.OfferAndDiscountBrandAndModelObj = OfferAndDiscountBrandAndModelObj;
+                },
+                setReviewObject : function(reviewObj){
+                    objectValue.reviewObj = reviewObj;
+                },
+                getReviewObject : function(reviewObj){
+                    return objectValue.reviewObj ;
                 }
             }
         }])
@@ -1453,16 +1519,6 @@ angular
 
             $scope.newPrice = function (priceSelected) {
 
-
-                if(priceSelected.isSelected){
-                    priceSelected.isSelected = false;
-                    $scope.selectedPrice.splice($scope.selectedPrice.indexOf(priceSelected.linkRewrite), 1);
-                }else {
-                    priceSelected.isSelected = true;
-                    $scope.selectedPrice.push(priceSelected.linkRewrite);
-                }
-                console.log("price selected " + priceSelected + JSON.stringify($scope.selectedPrice));
-
                 var priceObj = {
                     "1-lakh-3-lakh":"1-lakh-to-3-lakh",
                     "3-lakh-5-lakh":"3-lakh-to-5-lakh",
@@ -1474,7 +1530,18 @@ angular
                     "above-1-crore":"above-1-crore",
                 }
 
+                if(priceSelected.isSelected){
+                    priceSelected.isSelected = false;
+                    $scope.selectedPrice.splice($scope.selectedPrice.indexOf(priceSelected.linkRewrite), 1);
+                }else {
+                    priceSelected.isSelected = true;
+                    $scope.selectedPrice.push(priceSelected.linkRewrite);
+                }
+                console.log("price selected " + priceSelected + JSON.stringify($scope.selectedPrice));
+
+
                 sharedProperties.setPrice($scope.selectedPrice.join("+"));
+
                 var urlToCount = "getNewCarSearchResultDataCount&PriceRange="+$scope.selectedPrice.join("+");
                 sharedProperties.getHttpData(urlToCount, function(data){
                     $scope.$emit('priceRangeCarCount', data);
@@ -3043,42 +3110,85 @@ angular
         }])
     .controller(
     'usedCarFilterCtl',
-    ['$scope', 'cssInjector', function ($scope, cssInjector) {
-        console.log("");
+    ['$scope', 'cssInjector','sharedProperties', function ($scope, cssInjector, sharedProperties) {
+
         cssInjector.add("css/usedCarFilter.css");
         $scope.check = "CarDekho";
 
-        $scope.showPopup = function () {
-            $scope.data = {}
-            // An elaborate, custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type="password" ng-model="data.wifi">',
-                title: 'Enter Wi-Fi Password',
-                subTitle: 'Please use normal things',
-                scope: $scope,
-                buttons: [
-                    {text: 'Cancel'},
-                    {
-                        text: '<b>Save</b>',
-                        type: 'button-positive',
-                        onTap: function (e) {
-                            if (!$scope.data.wifi) {
-                                //don't allow the user to close unless he enters wifi password
-                                e.preventDefault();
-                            } else {
-                                return $scope.data.wifi;
-                            }
-                        }
-                    },
-                ]
-            });
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-            $timeout(function () {
-                myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
-        };
+
+        $scope.sharedObj = sharedProperties.getObject();
+        console.log("$scope.sharedObj ", $scope.sharedObj);
+
+        $scope.filterOptions = {};
+
+        $scope.contactObj = {};
+        $scope.contactObj.contact = [];
+
+        var prevIndex = "";
+
+        $scope.filterOptions.isCurrent = "City";
+
+
+        if($scope.sharedObj.price != '' ){
+            var priceArray = $scope.sharedObj.price.split("+");
+            for(var iCount = 0;  iCount < $scope.sharedObj.priceRange.data.newCarFilterPriceRange.length; iCount++ ){
+                if(priceArray.indexOf($scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].linkRewrite) != -1 ){
+                    $scope.sharedObj.priceRange.data.newCarFilterPriceRange[iCount].isSelected  = true;
+                }
+
+            }
+        }
+
+        sharedProperties.getHttpData("getOfferCityList", function(data){
+            $scope.$emit('cityObj', data);
+            console.log("$scope.sharedObj ", JSON.stringify(data));
+            for(var iCount=0; iCount < data.data.CarDiscountCities.length; iCount++){
+                var cityObj = {};
+                cityObj.city = data.data.CarDiscountCities[iCount];
+                cityObj.isSelected = false;
+                if(cityObj.city === $scope.sharedObj.city){
+                    cityObj.isSelected = true;
+                }
+                $scope.contactObj.contact.push(cityObj);
+            }
+        })
+       $scope.newCity = function(cityObj, index){
+            console.log('index', index);
+            console.log('prevIndex', prevIndex);
+            if(prevIndex || prevIndex === 0 ){
+                console.log('prevIndex', prevIndex);
+                $scope.contactObj.contact[prevIndex].isSelected = false;
+            }
+            $scope.contactObj.contact[index].isSelected = true;
+            prevIndex = index;
+            sharedProperties.setCity(cityObj.city);
+
+        }
+        $scope.selectedPrice = [];
+
+        $scope.newPrice = function(priceObj, index){
+            if(priceObj.isSelected){
+                $scope.sharedObj.priceRange.data.newCarFilterPriceRange[index].isSelected = false;
+                $scope.selectedPrice.splice($scope.selectedPrice.indexOf(priceObj.linkRewrite), 1);
+            }else {
+                $scope.sharedObj.priceRange.data.newCarFilterPriceRange[index].isSelected  = true;
+                $scope.selectedPrice.push(priceObj.linkRewrite);
+            }
+
+            sharedProperties.setPrice($scope.selectedPrice.join("+"));
+
+        }
+
+        $scope.fn_newCertified = function(){
+            sharedProperties.setCertifiedByTrustMaster(! $scope.sharedObj.certifiedByTrustMaster);
+        }
+
+        $scope.fn_setCurrentFilter = function(currentOption){
+            $scope.filterOptions.isCurrent = currentOption;
+            console.log('price range ',  $scope.filterOptions.isCurrent)
+        }
+
+
 
 
     }])
@@ -3885,11 +3995,10 @@ angular
             urlArryaToSearch.push($http.post(mostHelpFul));
             $scope.reviewType = $stateParams.reviewType;
 
-
             sharedProperties.getMultipleHttpData(urlArryaToSearch, function (httpCallBackData) {
-
                 $scope.reviewData = httpCallBackData;
                 console.log("userReviewCtrl"+ JSON.stringify($scope.reviewData));
+                sharedProperties.setReviewObject($scope.reviewData);
 
             });
 
@@ -3897,7 +4006,7 @@ angular
                 $scope.reviewType = reviewTypeParam;
             }
             $scope.fn_getDetailedUserReview = function (reviewDataObj){
-                $state.go("eventmenu.user-review-detail", {'reviewId':reviewDataObj.reviewId});
+                $state.go("eventmenu.user-review-detail", {'reviewId':reviewDataObj.reviewId, 'reviewType':$scope.reviewType, 'indexId':2});
             }
 
 
@@ -3916,16 +4025,37 @@ angular
             cssInjector.add("css/user-review-detail.css");
 
             $scope.expertReviewId = $stateParams.reviewId;
+            $scope.reviewType = $stateParams.reviewType === 'mostHelpful' ? 1 : 0 ;
+            $scope.indexId = $stateParams.indexId;
+
             $scope.modelName = sharedProperties.getModel();
             console.log("$scope.expertReviewId"+ $scope.expertReviewId);
+            showDetailReview();
 
-            var urlForData = "getMoreReviewsWithStatus&startLimit=1&endLimit=5&carUserReviewId="+  $scope.expertReviewId;
-            sharedProperties.getHttpData(urlForData, function(userDetailReviewData){
-                console.log("expertReviewData"+ JSON.stringify(userDetailReviewData));
+            function showDetailReview() {
+                var urlForData = "getMoreReviewsWithStatus&startLimit=1&endLimit=5&carUserReviewId=" + $scope.expertReviewId;
+                sharedProperties.getHttpData(urlForData, function (userDetailReviewData) {
+                    console.log("expertReviewData" + JSON.stringify(userDetailReviewData));
 
-                $scope.autoDetailedNews =userDetailReviewData;
+                    $scope.autoDetailedNews = userDetailReviewData;
 
-            });
+                });
+            }
+
+            $scope.reviewObj = sharedProperties.getReviewObject();
+
+            $scope.fn_getNextReview = function(action) {
+
+                if ( action === 'next' ){
+                    $scope.indexId = +$scope.indexId + 1;
+                }else {
+                    $scope.indexId = +$scope.indexId - 1;
+                }
+                console.log("index id "+ $scope.indexId);
+                $scope.expertReviewId = $scope.reviewObj[$scope.reviewType].data.data.review[$scope.indexId].reviewId;
+                showDetailReview();
+
+            }
 
         }])
     .controller(

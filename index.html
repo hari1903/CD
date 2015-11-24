@@ -742,326 +742,168 @@
             <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">
                 <span style="color: #FFFFFF">FILTER BY</span>
             </div>
-            <div class="row scrollView scrollView">
-                <div class="col scrollView">
-                    <ion-scroll direction="y" class="theroot">
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik1234
-                        </button>
+            <div class="row scrollView " style=" height: 91%">
+                <div class="col-33 scrollView" >
+                    <ion-scroll direction="y"  class="theroot">
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('City')" style="display:table;" ng-class="filterOptions.isCurrent == 'City' ? 'orangeBackGround' : '' ">
+                                <div style="display: table; width: 20%">
+                                    <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" ng-if="sharedObj.city != '' "src="images/on.png">
+                                    </div>
+                                <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                 <span  style="display:table-cell; vertical-align:middle;">City</span>
+                                </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Price Range')" style="display:table;" ng-class="filterOptions.isCurrent == 'Price Range' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.price != ''  || filterOptions.isCurrent == 'Price Range' ">
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Price Range</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Certified')" style="display:table;" ng-class="filterOptions.isCurrent == 'Certified' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.certifiedByTrustMaster || filterOptions.isCurrent == 'Certified' ">
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Certified By TrustMark</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Brand')" style="display:table;" ng-class="filterOptions.isCurrent == 'Brand' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.brand != '' || filterOptions.isCurrent == 'Brand' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Brand</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Model')" style="display:table;" ng-class="filterOptions.isCurrent == 'Model' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.model != '' || filterOptions.isCurrent == 'Model' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Model</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Fuel Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Fuel Type' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.fuel != '' || filterOptions.isCurrent == 'Fuel Type' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Fuel Type</span>
+                            </div>
+                        </div>
+
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('KMs Driven')" style="display:table;" ng-class="filterOptions.isCurrent == 'KMs Driven' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.km != '' || filterOptions.isCurrent == 'KMs Driven' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">KMs Driven</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Vehicke Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Vehicke Type' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.vehicleType != '' || filterOptions.isCurrent == 'Vehicke Type' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Vehicke Type</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Model Year')" style="display:table;" ng-class="filterOptions.isCurrent == 'Model Year' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.modelYear != '' || filterOptions.isCurrent == 'Model Year' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Model Year</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Transmission')" style="display:table;" ng-class="filterOptions.isCurrent == 'Transmission' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.transmission != '' || filterOptions.isCurrent == 'Transmission' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Transmission</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Seller Type')" style="display:table;" ng-class="filterOptions.isCurrent == 'Seller Type' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.sellerType != '' || filterOptions.isCurrent == 'Seller Type' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Seller Type</span>
+                            </div>
+                        </div>
+                        <div class=" filterOptions" ng-click="fn_setCurrentFilter('Picture')" style="display:table;" ng-class="filterOptions.isCurrent == 'Picture' ? 'orangeBackGround' : '' ">
+                            <div style="display: table; width: 20%" ng-if="sharedObj.withPicture  || filterOptions.isCurrent == 'Picture' " >
+                                <img   style="padding-top:20px; display:table-cell;vertical-align:middle; width: 9px" src="images/on.png">
+                            </div>
+                            <div style="width:80%;display:table-cell;vertical-align:middle;" class="fiterLabel">
+                                <span  style="display:table-cell; vertical-align:middle;">Picture</span>
+                            </div>
+                        </div>
+
                     </ion-scroll>
                 </div>
 
                 <div class="col scrollView">
                     <ion-scroll direction="y" class="theroot">
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik
-                        </button>
-                        <button class="backbutton">
-                            Karthik1234
-                        </button>
+                        <div ng-show="filterOptions.isCurrent == 'City' " >
+                            <ion-list>
+                                <ion-item class="my-item item item-icon-left" collection-repeat="item in contactObj.contact " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                    <div class="  " ng-click="newCity(item, $index)" style="display:table; width: 100%" >
+                                        <div style="display: table; width: 100%" ng-if="item.isSelected">
+                                            <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                        </div>
+                                        <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                             style="border-bottom-width: 1px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                            {{item.city}}
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'Price Range' " >
+                            <ion-list>
+                                <ion-item class="my-item item item-icon-left" ng-repeat="item in sharedObj.priceRange.data.newCarFilterPriceRange " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                    <div  ng-click="newPrice(item, $index)" style="display:table; width: 100%" >
+                                        <div style="display: table; width: 100%" ng-show="item.isSelected">
+                                            <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                        </div>
+                                        <div class="item-content filterSelectProp" ng-class="item.isSelected ? 'selectOptionText' : '' "
+                                             style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                            {{item.displayPriceRange}}
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+
+                        <div ng-show="filterOptions.isCurrent == 'Certified' " >
+                            <ion-list>
+                                <ion-item class="my-item item item-icon-left"  " style="
+                                     padding-left: 15px;
+                                     border-left-width: 0px;
+                                     margin-left: 0px;padding-right: 0px;">
+                                    <div  ng-click="fn_newCertified()" style="display:table; width: 100%" >
+                                        <div style="display: table; width: 100%" ng-show="sharedObj.certifiedByTrustMaster">
+                                            <img  style="padding-top:15px; display:table-cell;vertical-align:middle;"  src="images/tick_filter.png">
+                                        </div>
+                                        <div class="item-content filterSelectProp" ng-class="sharedObj.certifiedByTrustMaster ? 'selectOptionText' : '' "
+                                             style="border-bottom-width: 2px; padding-bottom: 10px; padding-top: 10px; width:80%;display:table-cell;vertical-align:middle;">
+                                            Certified
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                        </div>
                     </ion-scroll>
                 </div>
             </div>
@@ -3174,10 +3016,10 @@
                     <div class="col leftarrow">
                         <i class="fa fa-angle-left"></i>
                     </div>
-                    <div class="col prev">
+                    <div class="col prev" ng-click="fn_getNextReview('prev')">
                         PREV
                     </div>
-                    <div class="col next">
+                    <div class="col next" ng-click="fn_getNextReview('next')">
                         NEXT
                     </div>
                     <div class="col rightarrow">
