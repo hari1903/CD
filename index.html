@@ -1088,6 +1088,8 @@
                         style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
             <label class="item usedCarDetailTitle">{{detailedObj.usedCarSearchResult.data.count}} Used Cars in
                 {{detailedObj.city}} </label>
+      <img class="imgScrcheckbox" ng-click="cr_trustmark()" ng-src="{{imgScr}}">
+      <img class="biglogotrustmark" src="images/big_logo.png">
             <label class="item usedCarDetailSort ">Sorted by : Relevence </label>
         </ion-header-bar>
 
@@ -1095,10 +1097,11 @@
             <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result"
                       ng-click="usedCarDetailPerCar(detailedItem)"
                       style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
-                <div class="list card " style="margin-top: 1px;margin-bottom: 1px;">
+                <div class="list card card1" style="margin-top: 1px;margin-bottom: 1px;">
                     <div class="item item-thumbnail-left cardHeaderHight">
-                        <img class="thumnailImgCss" ng-src={{detailedItem.imageUrl}}>
-
+                    <img class="feature" src="images/feature_ribbion.png">
+                        <img style="position: absolute;left: 3%;top: 10%;"class="thumnailImgCss" ng-src={{detailedItem.imageUrl}}>
+                      
                         <h2 class="usedCarDetailCarName">{{detailedItem.carVariantId}}</h2>
 
                         <h3 class="usedCarDetailPrice">Rs <span class="usedCarDetailPriceSpan">{{detailedItem.expectedPrice | formatPrice }}</span>
@@ -1110,8 +1113,8 @@
                     </div>
                     <div class="item item-divider item-icon-left footerLine cardFooterHight">
                         <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
-                        <img style="max-height: 40px !important; max-width: 160px !important; padding-left: 50px !important;"
-                             ng-src="{{ isTrusted == 'trusted' && 'images/big_logo.png' || ''}}">
+                        <img style="max-width: 55% !important; position: absolute; right: 10%;"
+                             ng-src="{{ isTrusted == 'trusted' && 'images/Icons/mdpi/trust_mark_logo.png' || ''}}">
                     </div>
                 </div>
             </ion-item>
