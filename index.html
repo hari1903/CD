@@ -757,7 +757,7 @@
             <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">
                 <span style="color: #FFFFFF">FILTER BY</span>
             </div>
-            <div class="row scrollView " style=" height: 91%">
+            <div class="row scrollView " style=" height: 81%">
                 <div class="col-33 scrollView" >
                     <ion-scroll direction="y"  class="theroot">
                         <div class=" filterOptions" ng-click="fn_setCurrentFilter('City')" style="display:table;" ng-class="filterOptions.isCurrent == 'City' ? 'orangeBackGround' : '' ">
@@ -1110,7 +1110,7 @@
                 {{detailedObj.city}} </label>
       <img class="imgScrcheckbox" ng-click="cr_trustmark()" ng-src="{{imgScr}}">
       <img class="biglogotrustmark" src="images/big_logo.png">
-            <label class="item usedCarDetailSort ">Sorted by : Relevence </label>
+            <label class="item usedCarDetailSort ">Sorted by : {{detailedObj.sortBy}} </label>
         </ion-header-bar>
 
         <ion-content style="padding-top: 0px !important;">
