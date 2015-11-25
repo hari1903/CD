@@ -1106,15 +1106,15 @@
     <ion-view class="bgColor">
         <ion-header-bar class="bar-light bar-subheader barHeight"
                         style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
-            <label class="item usedCarDetailTitle">{{detailedObj.usedCarSearchResult.data.count}} Used Cars in
+            <label class="item usedCarDetailTitle">{{detailedObj.data.count}} Used Cars in
                 {{detailedObj.city}} </label>
       <img class="imgScrcheckbox" ng-click="cr_trustmark()" ng-src="{{imgScr}}">
       <img class="biglogotrustmark" src="images/big_logo.png">
-            <label class="item usedCarDetailSort ">Sorted by : {{detailedObj.sortBy}} </label>
+            <label class="item usedCarDetailSort ">Sorted by : {{sharedObj.sortBy}} </label>
         </ion-header-bar>
 
         <ion-content style="padding-top: 0px !important;">
-            <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.usedCarSearchResult.data.result"
+            <ion-item class="item borderRadius" ng-repeat="detailedItem in detailedObj.data.result"
                       ng-click="usedCarDetailPerCar(detailedItem)"
                       style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;">
                 <div class="list card card1" style="margin-top: 1px;margin-bottom: 1px;">

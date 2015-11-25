@@ -258,6 +258,7 @@ angular
                 }
             })
             .state('eventmenu.used-car-detail', {
+                cache : false,
                 url: "/used-car-detail/:isTrusted",
                 views: {
                     'menuContent': {
@@ -625,6 +626,8 @@ angular
             objectValue.varientDetailObj.second={};
             objectValue.reviewObj = {};
             objectValue.sortBy = 'Relevance';
+            objectValue.isAsending = true;
+            objectValue.isTrusted = false;
 
             objectValue.fuelTypeObj = [{'type':'Diesel','isSelected':false},
                                         {'type':'Petrol','isSelected':false},
@@ -779,8 +782,9 @@ angular
                 })
 
             return {
-                setSortBy : function(sortBy){
+                setSortBy : function(sortBy, sortOrder){
                     objectValue.sortBy = sortBy;
+                    objectValue.isAsending = sortOrder;
                 },
                 setCity: function (cityVal) {
                     // console.log("Service"+cityVal);
@@ -847,7 +851,7 @@ angular
                             objectValue.modelObj = data1.data.modelList;
                         })
                 },
-                getUsedCarSearchResult: function () {
+                getUsedCarSearchResult: function (isTruested, cb) {
                     var serachString = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&parameter=getUsedCarSearchResultDataWithStatus&format=Gson&startLimit=1&endLimit=20";
 
                         serachString += "&City=" + objectValue.city;
@@ -876,35 +880,73 @@ angular
                         serachString += "&Vehicletype=" + objectValue.vehicleType;
                     }
                     if (objectValue.modelYear !== '') {
-                        console.log();
+
                         serachString += "&modelYear=" + objectValue.modelYear;
                     }
                     if (objectValue.transmission !== '') {
-                        console.log();
+
                         serachString += "&Transmission=" + objectValue.transmission;
                     }
                     if (objectValue.sellerType !== '') {
-                        console.log();
+
                         serachString += "&sellerType=" + objectValue.sellerType;
                     }
                     if (objectValue.certifiedByTrustMaster === true) {
-                        console.log();
+
                         serachString += "&certificationid=1";
                     }
                     if (objectValue.withPicture === true) {
-                        console.log();
+                        
                         serachString += "&photo=with-photos";
+                    }
+                    if (objectValue.isTrusted  === true || isTruested ) {
+
+                        serachString += "&certificationid=1";
                     }
 
                     console.log("Serach String " + serachString);
 
-                    var url = 'http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?parameter=getUsedCarSearchResultDataWithStatus&format=Gson&authenticateKey=14@89cardekho66feeds&City=Pune&PriceRange=1-Lac-to-5-Lac&Brand=honda&CarName=honda_city&startLimit=10&endLimit=20';
-                    //console.log("URL :" + url);
                     $http
                         .post(serachString)
                         .success(
                         function (data1, status) {
+
+                            function dynamicSort(property) {
+                                var sortOrder = 1;
+                                if(property[0] === "-") {
+                                    sortOrder = -1;
+                                    property = property.substr(1);
+                                }
+                                return function (a,b) {
+                                    var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                                    return result * sortOrder;
+                                }
+                            }
+
+                            if( objectValue.sortBy === 'Relevance' ){
+                                objectValue.usedCarSearchResult = data1;
+                            }else if (objectValue.sortBy === 'Price' ){
+                                getSortData("expectedPrice")
+                            }else if (objectValue.sortBy === 'KM' ){
+                                getSortData("driven")
+                            }else if (objectValue.sortBy === 'ModelYear' ){
+                                getSortData("modelYear")
+                            }
+
+
+
+                            function getSortData(propertyName){
+                                if(objectValue.isAsending ) {
+                                    data1.data.result.sort(dynamicSort(propertyName));
+                                }else {
+                                    data1.data.result.sort(dynamicSort("-"+ propertyName));
+                                }
+                                objectValue.usedCarSearchResult = data1;
+                            }
+
                             objectValue.usedCarSearchResult = data1;
+
+                            cb(objectValue.usedCarSearchResult);
                         })
                 },
                 getObject: function () {
@@ -2164,7 +2206,7 @@ angular
                 $scope.isAdvanceSerach = false;
                 // console.log("Final Obj :"+
                 // JSON.stringify(sharedProperties.getObject()));
-                sharedProperties.getUsedCarSearchResult();
+                //sharedProperties.getUsedCarSearchResult();
                 $state.go('eventmenu.used-car-detail');
 
                 // console.log('In SearchCar'+
@@ -2204,8 +2246,9 @@ angular
         '$ionicPopup',
         '$timeout',
         '$stateParams',
+        '$ionicLoading',
         function ($scope, sharedProperties, $window, $location,
-                  $rootScope, $state, cssInjector, $ionicPopup, $timeout, $stateParams) {
+                  $rootScope, $state, cssInjector, $ionicPopup, $timeout, $stateParams, $ionicLoading) {
 
             $scope.isTrusted = $stateParams.isTrusted;
             console.log('used car details controller')
@@ -2213,13 +2256,30 @@ angular
             cssInjector.add("css/usedCarDetail.css");
             cssInjector.add("css/usedCarFilter.css");
 
+            var trustedResult = {};
+            var nonTrustResult = {};
+
+            $scope.loading = $ionicLoading.show({
+                template: 'loading'
+            });
+
             if($scope.isTrusted == 'trusted'){
-                sharedProperties.setUsedTrustedCar("getUsedCarSearchResultDataWithStatus&City=Chennai&certificationid=1&startLimit=1&endLimit=20");
+                sharedProperties.getUsedCarSearchResult(true, function(data){
+                    trustedResult = data;
+                    $scope.detailedObj = data;
+                    $ionicLoading.hide();
+                });
+            }else {
+                sharedProperties.getUsedCarSearchResult(false, function(data){
+                    nonTrustResult = data;
+                    $scope.detailedObj = data;
+                    $ionicLoading.hide();
+                });
             }
 
-            var usedCarSearchResultObj = sharedProperties
+            $scope.sharedObj = sharedProperties
                 .getObject();
-            $scope.detailedObj = usedCarSearchResultObj;
+
 
             $scope.usedCarDetailPerCar = function (item) {
                 sharedProperties
@@ -2236,13 +2296,42 @@ angular
                 $state.go('eventmenu.used-single-car-card-view');
             }
             var trust = false;
-            $scope.imgScr = "images/fill_uncheck.png";
+            $scope.imgScr = "images/trust_mark_uncheck.png";
             $scope.cr_trustmark = function (){
               trust = !trust; 
             if(trust==true){
-            	$scope.imgScr  = "images/fill_check.png";
+                $scope.isTrusted = 'trusted';
+            	$scope.imgScr  = "images/trust_mark_check.png";
+                if(trustedResult.hasOwnProperty('data')){
+                    $scope.detailedObj = trustedResult;
+                }else {
+                    $scope.loading = $ionicLoading.show({
+                        template: 'loading'
+                    });
+                    sharedProperties.getUsedCarSearchResult(true, function(data){
+                        trustedResult = data;
+                        $scope.detailedObj = data;
+                        $ionicLoading.hide();
+                    });
+                }
              }else{
-            	 $scope.imgScr = "images/fill_uncheck.png";
+                $scope.isTrusted = '';
+            	 $scope.imgScr = "images/trust_mark_uncheck.png";
+                console.log('non trust result', nonTrustResult);
+                if(nonTrustResult.hasOwnProperty('data')){
+
+                    $scope.detailedObj = nonTrustResult;
+
+                }else {
+                    $scope.loading = $ionicLoading.show({
+                        template: 'loading'
+                    });
+                    sharedProperties.getUsedCarSearchResult(false, function(data){
+                        nonTrustResult = data;
+                        $scope.detailedObj = data;
+                        $ionicLoading.hide();
+                    });
+                }
              }
               console.log("imagesuncheck",$scope.imgScr);
             }
@@ -2410,7 +2499,9 @@ angular
             }else {
                 $scope.isUpArrow = 'images/active_arrow_down.png';
             }
-            sharedProperties.setSortBy(sortOption);
+            var isAsending = $scope.isUpArrow === 'images/active_arrow_up.png' ? true : false;
+            console.log('isAsending ', isAsending);
+            sharedProperties.setSortBy(sortOption, isAsending);
 
         }
 
@@ -2634,7 +2725,7 @@ angular
         }
 
         $scope.fn_apply = function(){
-            sharedProperties.getUsedCarSearchResult();
+            //sharedProperties.getUsedCarSearchResult();
             $state.go('eventmenu.used-car-detail');
         }
 
