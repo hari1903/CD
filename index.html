@@ -1069,14 +1069,19 @@
                 </div>
             </div>
         </ion-content>
-        <ion-footer-bar align-title="left" class="bar-assertive">
-            <div class="buttons">
-                <button class="button">Left Button</button>
-            </div>
-            <h1 class="title">Title!</h1>
+        <ion-footer-bar class="barfooterSize" align-title="left" style="padding: 0px 0px 0px 0px; ">
+            <div  class="row" style="padding: 0px 0px 0px 0px; ">
+                <div class="col-33 text-center" style="background-color: #000000; color: #ffffff;  " ng-click="fn_clear()" >
+                    <div style="display:table; width: 100%; padding-top: 16px">
+                    <span style=" display:table-cell;vertical-align:middle; align-content: center">Clear All</span>
+                    </div>
+                </div>
 
-            <div class="buttons" ng-click="doSomething()">
-                <button class="button">Right Button</button>
+                <div  class="col-67 text-center" style="background-color: #02d75f; color: #ffffff;" ng-click="fn_apply()">
+                    <div style="display:table; width: 100%; padding-top: 16px">
+                        <span style=" display:table-cell;vertical-align:middle;align-content: center ">Apply</span>
+                    </div>
+                </div>
             </div>
         </ion-footer-bar>
 

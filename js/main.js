@@ -2204,6 +2204,7 @@ angular
                   $rootScope, $state, cssInjector, $ionicPopup, $timeout, $stateParams) {
 
             $scope.isTrusted = $stateParams.isTrusted;
+            console.log('used car details controller')
 
             cssInjector.add("css/usedCarDetail.css");
             cssInjector.add("css/usedCarFilter.css");
@@ -2215,6 +2216,7 @@ angular
             var usedCarSearchResultObj = sharedProperties
                 .getObject();
             $scope.detailedObj = usedCarSearchResultObj;
+
             $scope.usedCarDetailPerCar = function (item) {
                 sharedProperties
                     .setUsedCarDetailPerCar(item);
@@ -2231,402 +2233,8 @@ angular
             }
 
             $scope.fnUCFilter = function () {
-                //$state.go('eventmenu.used-car-filter');
-                $scope.data = {}
-
-                var html = "";
-                cssInjector.add("css/usedCarFilter.css");
-
-                html = '<div style="position: absolute !important; width: 100% !important; z-index: 95 !important;"><div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">' +
-                    ' <span style="color: #FFFFFF">SORT BY</span> </div>' +
-                    ' <div class="row rowPadding" align="center" valign="center">' +
-                    '                <div class="col filterImageRow col-center" style="height: 73px;">' +
-                    '                    <div>' +
-                    '                        <img src="images/price_normal.png">' +
-                    '                    </div>' +
-                    '                    <div>' +
-                    '                        <span>Price</span>' +
-                    '                    </div>' +
-                    '                </div>' +
-                    '                <div class="col filterImageRow">' +
-                    '                    <div>' +
-                    '                        <img src="images/km_normal.png">' +
-                    '                    </div>' +
-                    '                    <div>' +
-                    '                        <span>Kilometer</span>' +
-                    '                    </div>' +
-                    '                </div>' +
-                    '                <div class="col filterImageRow">' +
-                    '                    <div>' +
-                    '                        <img src="images/model_normal.png">' +
-                    '                    </div>' +
-                    '                    <div>' +
-                    '                        <span>Model Year</span>' +
-                    '                    </div>' +
-                    '                </div>' +
-                    '                <div class="col filterImageRow">' +
-                    '                    <div>' +
-                    '                        <img src="images/relevence_normal.png">' +
-                    '                    </div>' +
-                    '                    <div>' +
-                    '                        <span>Relevance</span>' +
-                    '                    </div>' +
-                    '                </div>' +
-                    '</div>' +
-                    '            <div class="bar" style="height:24px !important; background-color: #23272c; padding-top: 2px;">' +
-                    '                <span style="color: #FFFFFF">FILTER BY</span>' +
-                    '            </div> </div>' +
-                    ' <div class="row scrollView ">' +
-                    '                <div class="col scrollView">' +
-                    '                    <ion-scroll direction="y" class="theroot">' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho1234' +
-                    '                        </button>' +
-                    '                    </ion-scroll>' +
-                    '                </div>' +
-                    '                <div class="col scrollView">' +
-                    '                    <ion-scroll direction="y" class="theroot">' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho' +
-                    '                        </button>' +
-                    '                        <button class="backbutton">' +
-                    '                            CarDekho1234' +
-                    '                        </button>' +
-                    '                    </ion-scroll>' +
-                    '                </div>' +
-                    '            </div> ';
-
-                // An elaborate, custom popup
-                var myPopup = $ionicPopup.show({
-                    template: html,
-                    scope: $scope,
-                    title: '<div class="row filterTopBar"> <div class="col-75 resultLeft"> <label class="fResultHeadFont">Used Car <span class="fResultFont"> Result</span> by</label> </label></div><div class="col-25 resultRight"><img class="resultImageRight" src="images/cross.png"></div></div>',
-                    buttons: [
-                        {text: 'Cancel'},
-                        {
-                            text: '<b>Save</b>',
-                            type: 'button-positive',
-                            onTap: function (e) {
-                                if (!$scope.data.wifi) {
-                                    //don't allow the user to close unless he enters wifi password
-                                    e.preventDefault();
-                                } else {
-                                    return $scope.data.wifi;
-                                }
-                            }
-                        },
-                    ]
-                });
-                myPopup.then(function (res) {
-                    console.log('Tapped!', res);
-                });
-                //$timeout(function() {
-                //    myPopup.close(); //close the popup after 3 seconds for some reason
-                //}, 3000);
-            };
+                $state.go('eventmenu.used-car-filter');
+            }
 
 
         }])
@@ -3149,7 +2757,7 @@ angular
         }])
     .controller(
     'usedCarFilterCtl',
-    ['$scope', 'cssInjector', 'sharedProperties', function ($scope, cssInjector, sharedProperties) {
+    ['$scope', 'cssInjector', 'sharedProperties','$state', function ($scope, cssInjector, sharedProperties, $state) {
 
         cssInjector.add("css/usedCarFilter.css");
         $scope.check = "CarDekho";
@@ -3217,7 +2825,11 @@ angular
         }
         $scope.selectedPrice = [];
         $scope.selectedBrands = [];
+        $scope.selectedBrands = $scope.sharedObj.brand.replace(/ /g, '-').toLowerCase().split("+");
+        console.log('brands ', $scope.selectedBrands, ' split',  $scope.sharedObj.brand.replace(/ /g, '-').toLowerCase().split("+") );
         $scope.selectedModels = [];
+        $scope.selectedModels = $scope.sharedObj.model.replace(/ /g, '-').toLowerCase().split("+");
+        console.log('Models ', $scope.selectedModels, ' split',  $scope.sharedObj.model.replace(/ /g, '-').toLowerCase().split("+") );
         $scope.selectedFuleType = [];
         $scope.vehicleType = [];
         $scope.selectedFuleType = [];
@@ -3332,6 +2944,7 @@ angular
         }
 
         $scope.newModel = function (priceObj, index) {
+            console.log('selected model obj ', priceObj);
             if (priceObj.isSelected) {
                 $scope.sharedObj.filterModelObj.data.Oem[index].isSelected = false;
                 $scope.selectedModels.splice($scope.selectedModels.indexOf(priceObj.link_rewrite), 1);
@@ -3352,13 +2965,46 @@ angular
             sharedProperties.setWithPicture(!$scope.sharedObj.withPicture);
         }
 
+        $scope.fn_clear = function () {
+            sharedProperties.setModel('');
+            sharedProperties.setCertifiedByTrustMaster(false);
+            sharedProperties.setWithPicture(false);
+            sharedProperties.setBrand('');
+            sharedProperties.setSellerType('');
+            sharedProperties.setTransmission('');
+            sharedProperties.setModelYear('');
+            sharedProperties.setVehicleType('');
+            sharedProperties.setKM('');
+            sharedProperties.setFuel('');
+            sharedProperties.setPrice('');
+
+            $scope.selectedPrice = [];
+            $scope.selectedBrands = [];
+            $scope.selectedBrands  = [];
+            $scope.selectedModels = [];
+            $scope.selectedFuleType = [];
+            $scope.vehicleType = [];
+            $scope.selectedFuleType = [];
+            $scope.selectKMSDriven = [];
+            $scope.selectModelYear = [];
+            $scope.selectTransmission = [];
+            $scope.selectSellerType = [];
+
+            $scope.filterOptions.isCurrent = 'City';
+
+        }
+
+        $scope.fn_apply = function(){
+            sharedProperties.getUsedCarSearchResult();
+            $state.go('eventmenu.used-car-detail');
+        }
 
 
         function getModel(){
 
             sharedProperties.getHttpData("getUsedCarModelNameListByOemNameWithStatus&oemName=" + $scope.selectedBrands.join("%2B"), function (modelObj) {
                 $scope.selectedModels = [];
-                var modelArray = $scope.sharedObj.model.split("+");
+                var modelArray = $scope.sharedObj.model.replace(/ /g, '-').toLowerCase().split("+");
                 console.log('Model Obj', modelArray);
                 $scope.sharedObj.filterModelObj = modelObj;
                 for (var iCount = 0; iCount < $scope.sharedObj.filterModelObj.data.Oem.length; iCount++) {
@@ -3375,6 +3021,7 @@ angular
         }
 
         $scope.fn_setCurrentFilter = function (currentOption) {
+            console.log('brand ', $scope.selectedBrands.length);
             if (currentOption === 'Model' && ! $scope.sharedObj.hasOwnProperty('filterModelObj') && $scope.selectedBrands.length > 0 ) {
                 $scope.sharedObj.filterModelObj = {};
                 $scope.filterOptions.isCurrent = currentOption;
