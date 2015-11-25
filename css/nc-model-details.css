@@ -111,7 +111,25 @@
     color: #fff;
     height: 48px;
    }
-   
+   .checkboxcompare {
+	border-color: #9E9E9E;
+    background-color: #9E9E9E;
+    color: #fff;
+    /*  height: 29px;
+    top: 744px;  */
+} 
+ .checkboxcompare2 {
+    height: 22px;
+    /* padding-top: 4px; */
+    position: absolute;
+    top: 20%;
+    z-index: 10;
+    right: 0%;
+    left: 62%;
+    height: 22px;
+    padding-top: 2px;
+    margin-right: 94px;
+}
    .button1 {
     border-color: #b2b2b2;
     background-color: #EDEDED;
