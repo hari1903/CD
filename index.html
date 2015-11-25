@@ -3056,7 +3056,7 @@
             </div>
             <div ng-show="reviewType == 'mostHelpful' ">
                 <div ng-repeat="reviewDataObj in reviewData[1].data.data.review">
-                    <div class="list card marg0" ng-click="fn_getDetailedUserReview(reviewDataObj)">
+                    <div class="list card marg0" ng-click="fn_getDetailedUserReview(reviewDataObj, $index)">
                         <div class="item reve" >
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>

@@ -3963,8 +3963,8 @@ $scope.fnInsurance = function() {
             $scope.fn_changeType = function(reviewTypeParam){
                 $scope.reviewType = reviewTypeParam;
             }
-            $scope.fn_getDetailedUserReview = function (reviewDataObj){
-                $state.go("eventmenu.user-review-detail", {'reviewId':reviewDataObj.reviewId, 'reviewType':$scope.reviewType, 'indexId':2});
+            $scope.fn_getDetailedUserReview = function (reviewDataObj, index){
+                $state.go("eventmenu.user-review-detail", {'reviewId':reviewDataObj.reviewId, 'reviewType':$scope.reviewType, 'indexId':index});
             }
 
 
