@@ -695,7 +695,7 @@
                             by</label>
                     </td>
                     <td style="width: 50%; height: 20px !important; text-align: right; padding-top: 10px;!important;">
-                        <a class="right"> <img src="images/cross.png" height="16" width="16"> </a>
+                        <div class="right" ng-click="fn_closeFilter()"> <img src="images/cross.png" height="16" width="16"> </div>
                     </td>
                 </tr>
             </table>
@@ -706,32 +706,47 @@
                 <span style="color: #FFFFFF">SORT BY</span>
             </div>
             <div class="row rowPadding" align="center" valign="center">
-                <div class="col filterImageRow col-center" style="height: 73px;">
-                    <div>
+                <div class="col filterImageRow col-center" style="height: 73px;" ng-click="fn_changeSort('Price')">
+                    <div ng-show="sharedObj.sortBy === 'Price' ">
+                        <img src="images/price.png">
+                        <img ng-src=" {{ isUpArrow }} ">
+                    </div>
+                    <div ng-show="sharedObj.sortBy !== 'Price' ">
                         <img src="images/price_normal.png">
                     </div>
                     <div>
                         <span>Price</span>
                     </div>
                 </div>
-                <div class="col filterImageRow">
-                    <div>
+                <div class="col filterImageRow" ng-click="fn_changeSort('KM')" >
+                    <div ng-show="sharedObj.sortBy === 'KM' ">
+                        <img src="images/km.png">
+                        <img ng-src=" {{ isUpArrow }}">
+                    </div>
+                    <div ng-show="sharedObj.sortBy !== 'KM' ">
                         <img src="images/km_normal.png">
                     </div>
                     <div>
                         <span>Kilometer</span>
                     </div>
                 </div>
-                <div class="col filterImageRow">
-                    <div>
+                <div class="col filterImageRow" ng-click="fn_changeSort('ModelYear')">
+                    <div ng-show="sharedObj.sortBy === 'ModelYear' ">
+                        <img src="images/model_filter.png">
+                        <img ng-src="{{ isUpArrow }} ">
+                    </div>
+                    <div ng-show="sharedObj.sortBy !== 'ModelYear' ">
                         <img src="images/model_normal.png">
                     </div>
                     <div>
                         <span>Model Year</span>
                     </div>
                 </div>
-                <div class="col filterImageRow">
-                    <div>
+                <div class="col filterImageRow" ng-click="fn_changeSort('Relevance')">
+                    <div ng-show="sharedObj.sortBy === 'Relevance' ">
+                        <img src="images/relevence.png">
+                    </div>
+                    <div ng-show="sharedObj.sortBy !== 'Relevance' ">
                         <img src="images/relevence_normal.png">
                     </div>
                     <div>

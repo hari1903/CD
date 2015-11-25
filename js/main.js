@@ -624,6 +624,7 @@ angular
             objectValue.varientDetailObj.first ={};
             objectValue.varientDetailObj.second={};
             objectValue.reviewObj = {};
+            objectValue.sortBy = 'Relevance';
 
             objectValue.fuelTypeObj = [{'type':'Diesel','isSelected':false},
                                         {'type':'Petrol','isSelected':false},
@@ -778,6 +779,9 @@ angular
                 })
 
             return {
+                setSortBy : function(sortBy){
+                    objectValue.sortBy = sortBy;
+                },
                 setCity: function (cityVal) {
                     // console.log("Service"+cityVal);
                     objectValue.usedCarValuationGetDetail.selectedCity = cityVal;
@@ -2782,9 +2786,27 @@ angular
         $scope.contactObj = {};
         $scope.contactObj.contact = [];
 
+        $scope.isUpArrow = 'images/active_arrow_down.png';
+
         var prevIndex = "";
 
         $scope.filterOptions.isCurrent = "City";
+
+
+        $scope.fn_changeSort = function (sortOption) {
+
+            if($scope.sharedObj.sortBy === sortOption ){
+                if($scope.isUpArrow === 'images/active_arrow_down.png' ){
+                    $scope.isUpArrow = 'images/active_arrow_up.png';
+                }else {
+                    $scope.isUpArrow = 'images/active_arrow_down.png';
+                }
+            }else {
+                $scope.isUpArrow = 'images/active_arrow_down.png';
+            }
+            sharedProperties.setSortBy(sortOption);
+
+        }
 
 
         if ($scope.sharedObj.price != '') {
@@ -3007,6 +3029,11 @@ angular
 
         $scope.fn_apply = function(){
             sharedProperties.getUsedCarSearchResult();
+            $state.go('eventmenu.used-car-detail');
+        }
+
+
+        $scope.fn_closeFilter = function(){
             $state.go('eventmenu.used-car-detail');
         }
 
