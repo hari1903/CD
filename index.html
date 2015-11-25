@@ -1796,17 +1796,17 @@
                 </div>
             </div>
 
-            <div style="height: 30%;">
-                <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)">
-
+            <div style="height: 65%;">
+                <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
+                               style="padding-top: 0px !important; text-align:center !important;">
                     <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
-                        <div class="list card cvCardProp" style="height: 90% !important; margin-top: 20px;"
-                             ng-click="fn_ncBrandDetail(ncBrandDetail)">
-                            <div class="item item-body cvItemBodyProp">
+                        <div class="list card cvCardProp" style="height: 75% !important;"
+                             ">
+                            <div class="item item-body cvItemBodyProp" "fn_ncBrandDetail(ncBrandDetail)">
+                                
                                 <div id="c4vBrand">
                                     <span class="heading3">{{modelVarient.displayVariantId}}</span>
                                 </div>
-
                                 <div class="r1row">
                                     <div class="parameter_title1">
                                         Milage : <span class="valid_parameter">{{modelVarient.variantsHighWayAverage }} kmpl</span>
@@ -1823,8 +1823,17 @@
 
                             </div>
 
+                                                       
+                 
+                                      <div class="bar bar-calm2">
+                                <a href="#/event/compare-cars">
+                          <img id="image1" class="checkboxcompare2" src="images/fill_uncheck.png"  alt="image" onclick="this.src='images/fill_check.png'" />
+                                    <span class="title1">Compare</span>
+                                </a>
+                            </div>
 
                         </div>
+                          
                     </ion-slide>
 
                 </ion-slide-box>
