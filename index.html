@@ -3044,13 +3044,19 @@
                 <span style="font-size:16px;padding:5px;"><b>{{modelDetailObject.model }}  Reviews </b></span> 
 
                 <div class="row">
-                    <span>Overall Rating: &nbsp;&nbsp;</span>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    &nbsp;&nbsp; <span><b> {{reviewData[0].data.data.overAllRating }}/5 </b></span>
+                    <fieldset class="rating">
+                        <input type="radio" id="{{$index}}star5" name="{{$index}}rating" value="5" ng-model="reviewData[0].data.data.overAllRating" /><label class = "full" for="{{$index}}star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="{{$index}}star4half" name="{{$index}}rating" value="4.5"  ng-model="reviewData[0].data.data.overAllRating" /><label class="half" for="{{$index}}star4half" title="Pretty good - 4.5 stars"></label>
+                        <input type="radio" id="{{$index}}star4" name="{{$index}}rating" value="4"  ng-model="reviewData[0].data.data.overAllRating" /><label class = "full" for="{{$index}}star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="{{$index}}star3half" name="{{$index}}rating" value="3.5"  ng-model="reviewData[0].data.data.overAllRating" /><label class="half" for="{{$index}}star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="{{$index}}star3" name="{{$index}}rating" value="3"  ng-model="reviewData[0].data.data.overAllRating" /><label class = "full" for="{{$index}}star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="{{$index}}star2half" name="{{$index}}rating" value="2.5"  ng-model="reviewData[0].data.data.overAllRating" /><label class="half" for="{{$index}}star2half" title="Kinda bad - 2.5 stars"></label>
+                        <input type="radio" id="{{$index}}star2" name="{{$index}}rating" value="2"  ng-model="reviewData[0].data.data.overAllRating" /><label class = "full" for="{{$index}}star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="{{$index}}star1half" name="{{$index}}rating" value="1.5"  ng-model="reviewData[0].data.data.overAllRating" /><label class="half" for="{{$index}}star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="{{$index}}star1" name="{{$index}}rating" value="1"  ng-model="reviewData[0].data.data.overAllRating" /><label class = "full" for="{{$index}}star1" title="Sucks big time - 1 star"></label>
+                        <input type="radio" id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"  ng-model="reviewData[0].data.data.overAllRating" /><label class="half" for="{{$index}}starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+
                 </div>
             </div>
         </div>
@@ -3061,16 +3067,8 @@
                         <div class="item reve">
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
-
-                            <div class="row">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <div class="wordwrap" style=" width: 100% !important;">
-                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
+                            <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
+                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
                             </div>
 
                         </div>
@@ -3086,11 +3084,19 @@
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
 
                             <div class="row">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+
+                                <fieldset class="rating">
+                                <input type="radio" id="{{$index}}star5" name="{{$index}}rating" value="5" ng-model="reviewDataObj.overAllRating" /><label class = "full" for="{{$index}}star5" title="Awesome - 5 stars"></label>
+                                <input type="radio" id="{{$index}}star4half" name="{{$index}}rating" value="4.5"  ng-model="reviewDataObj.overAllRating" /><label class="half" for="{{$index}}star4half" title="Pretty good - 4.5 stars"></label>
+                                <input type="radio" id="{{$index}}star4" name="{{$index}}rating" value="4"  ng-model="reviewDataObj.overAllRating" /><label class = "full" for="{{$index}}star4" title="Pretty good - 4 stars"></label>
+                                <input type="radio" id="{{$index}}star3half" name="{{$index}}rating" value="3.5"  ng-model="reviewDataObj.overAllRating" /><label class="half" for="{{$index}}star3half" title="Meh - 3.5 stars"></label>
+                                <input type="radio" id="{{$index}}star3" name="{{$index}}rating" value="3"  ng-model="reviewDataObj.overAllRating" /><label class = "full" for="{{$index}}star3" title="Meh - 3 stars"></label>
+                                <input type="radio" id="{{$index}}star2half" name="{{$index}}rating" value="2.5"  ng-model="reviewDataObj.overAllRating" /><label class="half" for="{{$index}}star2half" title="Kinda bad - 2.5 stars"></label>
+                                <input type="radio" id="{{$index}}star2" name="{{$index}}rating" value="2"  ng-model="reviewDataObj.overAllRating" /><label class = "full" for="{{$index}}star2" title="Kinda bad - 2 stars"></label>
+                                <input type="radio" id="{{$index}}star1half" name="{{$index}}rating" value="1.5"  ng-model="reviewDataObj.overAllRating" /><label class="half" for="{{$index}}star1half" title="Meh - 1.5 stars"></label>
+                                <input type="radio" id="{{$index}}star1" name="{{$index}}rating" value="1"  ng-model="reviewDataObj.overAllRating" /><label class = "full" for="{{$index}}star1" title="Sucks big time - 1 star"></label>
+                                <input type="radio" id="{{$index}}starhalf" name="{{$index}}rating" value="0.5"  ng-model="reviewDataObj.overAllRating" /><label class="half" for="{{$index}}starhalf" title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
                             </div>
                             <div class="wordwrap" style=" width: 100% !important;">
                                 {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
