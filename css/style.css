@@ -163,8 +163,6 @@ span.usedCarHomeTitle {
 .item.item-thumbnail-left .detail{
   margin-left:50px;
 }
-
-
 @keyframes multiple-image{
     0%{ background-image:url('../images/1.png');}
     8%{background-image:url('../images/2.png');}
@@ -187,3 +185,32 @@ span.usedCarHomeTitle {
     padding-right : 75px !important;
     background-color: transparent !important;
 }
+/* Rating */
+
+fieldset, label { margin: 0; padding: 0;}
+
+.rating { 
+  border: none;
+  float: left;
+}
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+.rating > input:checked ~ label { color: #DF5426;  }
+
