@@ -535,21 +535,21 @@ angular
                     }
                 }
             })
-            .state('eventmenu.car-healp-line', {
-                url: "/car-healp-line",
+            .state('eventmenu.car-help-line', {
+                url: "/car-help-line",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/car-healp-line.html",
-                        controller: "carHealpLineCtrl"
+                        templateUrl: "templates/car-help-line.html",
+                        controller: "carHelpLineCtrl"
                     }
                 }
             })
-            .state('eventmenu.car-road-side-assitance', {
-                url: "/car-road-side-assitance",
+            .state('eventmenu.car-road-side-assistance', {
+                url: "/car-road-side-assistance",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/car-road-side-assitance.html",
-                        controller: "carRoadSideAssitanceCtrl"
+                        templateUrl: "templates/car-road-side-assistance.html",
+                        controller: "carRoadSideAssistanceCtrl"
                     }
                 }
             })
@@ -3929,7 +3929,7 @@ $scope.fnInsurance = function() {
 
         }])
     .controller(
-    'carHealpLineCtrl',
+    'carHelpLineCtrl',
     [
         '$scope',
         'sharedProperties',
@@ -3954,7 +3954,7 @@ $scope.fnInsurance = function() {
 
         }])
     .controller(
-    'carRoadSideAssitanceCtrl',
+    'carRoadSideAssistanceCtrl',
     [
         '$scope',
         'sharedProperties',
