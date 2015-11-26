@@ -51,6 +51,16 @@ angular
                     }
                 }
             })
+            .state('eventmenu.pincode', {
+                cache : false,
+                url: "/pincode/:retunEvent",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/pincode.html",
+                        controller: "pincodeCtrl"
+                    }
+                }
+            })
             .state('eventmenu.offer-and-discount-city', {
                 url: "/offer-and-discount-city/:retunEvent",
                 views: {
@@ -589,6 +599,7 @@ angular
             objectValue.isLoading = true;
             objectValue.city = 'All India';
             objectValue.price = "";
+             objectValue.pincode = "";
             objectValue.brand = "";
             objectValue.model = "";
             objectValue.fuel = "";
@@ -792,6 +803,9 @@ angular
                     objectValue.usedCarValuationGetDetail.selectedCity = cityVal;
                     objectValue.city = cityVal;
                 },
+                setPincode: function (pinCode){
+                	objectValue.pincode = pinCode;
+				},
                 setPrice: function (price) {
                     objectValue.price = price;
                 },
@@ -1288,6 +1302,12 @@ angular
             templateUrl: "templates/city-CD.html"
         }
     })
+    .directive('ngPincode', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: "templates/pincode-CD.html"
+        }
+    })
     .directive('ngCompareCarsSelectCar', function () {
         return {
             restrict: 'AEC',
@@ -1521,6 +1541,28 @@ angular
                     $state.go('eventmenu.used-car-home');
                 }
             }
+        }])
+        .controller(
+    'pincodeCtrl',
+    [
+        '$scope',
+        'sharedProperties',
+        '$state',
+        '$stateParams',
+
+        function ($scope, sharedProperties, $state,$stateParams) {
+            var retunEvent = $stateParams.retunEvent;
+            $scope.pincode = "";
+            $scope.contactObj = sharedProperties.getObject();
+            console.log("pincode",$scope.contactObj)
+            $scope.clearSearch = function () {
+                $scope.search = '';
+            };
+            $scope.pincode = function (pincodeobj) {
+                sharedProperties.setPincode(pincodeobj.pincode);
+                $scope.search = '';
+                    $state.go('eventmenu.'+ retunEvent);
+                }
         }])
     .controller(
     'priceRangeCtrl',
@@ -3033,6 +3075,9 @@ angular
 
             $scope.getUserCity = function(){
                 $state.go('eventmenu.city', {'retunEvent':'nc-get-on-road-price-form'})
+            }
+             $scope.getUserPincode = function(){
+                $state.go('eventmenu.pincode', {'retunEvent':'nc-get-on-road-price-form'})
             }
 
             $scope.fn_isUserAgreed = function() {
