@@ -22,7 +22,15 @@
         window.addEventListener('tizenhwkey', function (e) {
             if (e.keyName == "back") {
 
-                $ionicGoBack();
+                var str = window.location.href;
+                var patt = new RegExp("#/event/home");
+                var res = patt.test(str);
+                if(res ){
+                    window.tizen.application.getCurrentApplication().exit();
+                }else {
+                    window.history.back();
+                }
+
             }
         });
     </script>

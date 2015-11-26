@@ -1494,8 +1494,9 @@ angular
         'sharedProperties',
         '$state',
         '$stateParams',
+        '$ionicPlatform',
 
-        function ($scope, sharedProperties, $state,$stateParams) {
+        function ($scope, sharedProperties, $state,$stateParams, $ionicPlatform) {
 
             $scope.city = "All India";
             var retunEvent = $stateParams.retunEvent;
@@ -1504,6 +1505,7 @@ angular
             $scope.clearSearch = function () {
                 $scope.search = '';
             };
+
 
             $scope.newCity = function (selectedCity) {
                 sharedProperties.setCity(selectedCity);
