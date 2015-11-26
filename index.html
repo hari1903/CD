@@ -1735,13 +1735,13 @@
                 <img ng-src="images/sort_rs_orange.png"> <span>{{ncModelDetails.ncModelDetailsObj.data.modelminexshowroomprice | formatPrice }} - {{ncModelDetails.ncModelDetailsObj.data.modelmaxexshowroomprice | formatPrice}}</span>
             </div>
 
-            <div class="rrow3">
+            <div class="rrow3" on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()" >
                 <img class="rrow3" src="{{imageUrl}}">
             </div>
 
             <div class="rrow4">
                 <div ng-repeat="colorObj in ncModelDetails.ncModelDetailsObj.data.colors">
-                    <i class="fa fa-circle" style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
+                    <i class="fa fa-circle " style="color: #{{colorObj.colorcode}}; padding-left: 10px  "
                        ng-click="fn_ncSelectedColor(colorObj)"></i>
                 </div>
             </div>

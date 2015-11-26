@@ -2918,6 +2918,9 @@ angular
             console.log("in nc_modelDetails");
             var brandName = $stateParams.paramName;
             cssInjector.add("css/nc-model-details.css");
+
+            var colorIndex = 0;
+
             $scope.isMore = false;
             $scope.ncModelDetails = sharedProperties
                 .getObject();
@@ -2943,6 +2946,31 @@ angular
                 console.log("in fn_ncGetMoreOptionPopup")
                 $scope.isMore = true;
 
+            }
+
+            $scope.onSwipeLeft = function(){
+                console.log('swipe left', colorIndex);
+                if(colorIndex < $scope.ncModelDetails.ncModelDetailsObj.data.colors.length-1) {
+                    colorIndex++;
+                    setImageUrl(colorIndex);
+                }
+            }
+
+            function setImageUrl(colorIndex ){
+                $scope.imageUrl = $scope.ncModelDetails.ncModelDetailsObj.data.colors[colorIndex].colorImageUrl;
+                if($scope.imageUrl === ''){
+                    $scope.imageUrl = 'images/Car-Gray.png';
+                }
+                //console.log('swipe ',colorIndex, $scope.imageUrl, $scope.ncModelDetails.ncModelDetailsObj.data.colors);
+
+            }
+
+            $scope.onSwipeRight = function(){
+                console.log('swipe right', colorIndex);
+                if(colorIndex >= 1  ) {
+                    colorIndex--;
+                    setImageUrl(colorIndex);
+                }
             }
             
             $scope.fn_ncRecCarDetail = function (recommendedCars) {
