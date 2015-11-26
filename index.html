@@ -21,7 +21,8 @@
     <script type="text/javascript">
         window.addEventListener('tizenhwkey', function (e) {
             if (e.keyName == "back") {
-                window.history.back();
+
+                $ionicGoBack();
             }
         });
     </script>
@@ -1951,17 +1952,18 @@
                 <div class="col-21">
                     <span>City</span>
                 </div>
-                <div class="col-22" ng-click="">
-                    <input type="text" ng-model="user.userCity">                    
+                <div class="col-22" ng-click="getUserCity()" >
+                     {{sharedObj.city}}
                 </div>
+
             </div>
             </div>
             <div class="row">
                 <div class="col-21">
                     <span>Area/Pin Code</span>
                 </div>
-                <div class="col-22">
-                    <input type="number" ng-model="user.userPinCode">
+                <div class="col-22" ng-model="user.userPinCode">
+                    {{user.userPinCode}}
                 </div>
             </div>
             <div class="row">

@@ -42,6 +42,7 @@ angular
 
 
             .state('eventmenu.city', {
+                cache : false,
                 url: "/city/:retunEvent",
                 views: {
                     'menuContent': {
@@ -3012,15 +3013,25 @@ angular
             $scope.carRating = $stateParams.carRating;
             $scope.isUserAgreed = false;
 
+
+
             $scope.loading = $ionicLoading.show({
                 template: ''
             });
+
+            $scope.sharedObj = sharedProperties
+                .getObject();
 
            sharedProperties.getCityAndPin(function(cityAndPingObjs){
                $ionicLoading.hide();
                console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
 
            });
+
+
+            $scope.getUserCity = function(){
+                $state.go('eventmenu.city', {'retunEvent':'nc-get-on-road-price-form'})
+            }
 
             $scope.fn_isUserAgreed = function() {
                 $scope.isUserAgreed = !$scope.isUserAgreed;
