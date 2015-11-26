@@ -163,3 +163,27 @@ span.usedCarHomeTitle {
 .item.item-thumbnail-left .detail{
   margin-left:50px;
 }
+
+
+@keyframes multiple-image{
+    0%{ background-image:url('../images/1.png');}
+    8%{background-image:url('../images/2.png');}
+    16%{background-image:url('../images/3.png');}
+    24%{background-image:url('../images/4.png');}
+    32%{background-image:url('../images/5.png');}
+    40%{background-image:url('../images/6.png');}
+    48%{background-image:url('../images/7.png');}
+    56%{background-image:url('../images/8.png');}
+    64%{background-image:url('../images/9.png');}
+    72%{background-image:url('../images/10.png');}
+    80%{background-image:url('../images/11.png');}
+    88%{background-image:url('../images/12.png');}
+
+}
+.loading{
+    -webkit-animation: multiple-image 1s infinite; /* Chrome, Safari, Opera */
+    animation: multiple-image 1s infinite;
+    padding-left: 75px !important;
+    padding-right : 75px !important;
+    background-color: transparent !important;
+}

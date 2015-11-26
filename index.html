@@ -1108,7 +1108,7 @@
                         style="height: 25px; padding-bottom: 0px;padding-top: 0px;">
             <label class="item usedCarDetailTitle">{{detailedObj.data.count}} Used Cars in
                 {{detailedObj.city}} </label>
-      <img class="imgScrcheckbox" ng-click="cr_trustmark()" ng-src="{{imgScr}}">
+      <img  style="width: 26px;" class="imgScrcheckbox" ng-click="cr_trustmark()" ng-src="{{imgScr}}">
       <img class="biglogotrustmark" src="images/big_logo.png">
             <label class="item usedCarDetailSort ">Sorted by : {{sharedObj.sortBy}} </label>
         </ion-header-bar>
@@ -1133,9 +1133,9 @@
                     </div>
                     <div class="item item-divider item-icon-left footerLine cardFooterHight">
                         <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
-                        <!--  <img style="max-width: 55% !important; position: absolute; right: 10%;"
-                             ng-src="{{ isTrusted == 'trusted' && 'images/Icons/mdpi/trust_mark_logo.png' || ''}}"> -->
-			<img style="max-width: 55% !important; position: absolute; right: 10%;" src="images/Icons/mdpi/trust_mark_logo.png">
+                        <img style="max-width: 55% !important; position: absolute; right: 10%;"
+                             ng-src="{{ isTrusted == 'trusted' && 'images/Icons/mdpi/trust_mark_logo.png' || ''}}">
+			           <!-- <img style="max-width: 55% !important; position: absolute; right: 10%;" src="images/Icons/mdpi/trust_mark_logo.png"> -->
                     </div>
                 </div>
             </ion-item>
@@ -1634,6 +1634,7 @@
     </ion-content>
 </script>
 <script id="templates/nc-search-cars.html" type="text/ng-template">
+    <ion-view view-title="">
     <ion-header-bar class=" bar-subheader">
         <div class="row " style="font: 13px !important; background-color: #f5f5f5 !important; height:50px !important; width: auto !important;">
             <div class="col-25" style="height: 35px !important;"></div>
@@ -1650,6 +1651,7 @@
         <ng-nc-car-brand></ng-nc-car-brand>
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
+    </ion-view>
 </script>
 <script id="templates/nc-search-cars-by-price.html" type="text/ng-template">
     <ion-header-bar class=" bar-subheader">
@@ -1674,6 +1676,7 @@
     <ng-nc-footer-option></ng-nc-footer-option>
 </script>
 <script id="templates/nc-brand-detail.html" type="text/ng-template">
+    <ion-view view-title="">
     <ng-nc-search-car-header></ng-nc-search-car-header>
     <ion-content>
         <div ng-click="fn_ncSearchCar()">
@@ -1718,6 +1721,7 @@
 
     </ion-content>
     <ng-nc-footer-option></ng-nc-footer-option>
+        </ion-view>
 </script>
 
 

@@ -1700,7 +1700,8 @@ angular
 
             }
             $scope.fn_ncSearchSetMoreBrand = function(brandName){
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+                 $state.go('eventmenu.nc-brand-details', {"paramName":brandName});
+
             }
         }])
     .controller(
@@ -2260,7 +2261,7 @@ angular
             var nonTrustResult = {};
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
             if($scope.isTrusted == 'trusted'){
@@ -2306,7 +2307,7 @@ angular
                     $scope.detailedObj = trustedResult;
                 }else {
                     $scope.loading = $ionicLoading.show({
-                        template: 'loading'
+                        template: ''
                     });
                     sharedProperties.getUsedCarSearchResult(true, function(data){
                         trustedResult = data;
@@ -2324,7 +2325,7 @@ angular
 
                 }else {
                     $scope.loading = $ionicLoading.show({
-                        template: 'loading'
+                        template: ''
                     });
                     sharedProperties.getUsedCarSearchResult(false, function(data){
                         nonTrustResult = data;
@@ -2372,7 +2373,7 @@ angular
 
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
             (function getData() {
@@ -2784,8 +2785,9 @@ angular
         'sharedProperties',
         '$state',
         'cssInjector',
+        '$ionicLoading',
 
-        function ($scope, sharedProperties, $state, cssInjector) {
+        function ($scope, sharedProperties, $state, cssInjector, $ionicLoading) {
             console.log("in nc_searchCars");
             cssInjector.add("css/nc-search-cars.css");
 
@@ -2793,7 +2795,18 @@ angular
                 .getObject();
 
             $scope.fn_ncSearchSetBrand = function(brandName){
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+                console.log('brandName'+ brandName );
+
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncBrandDetailsObj', brandName, function (data) {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-brand-details', {'paramName':brandName });
+
+                    })
             }
 
             $scope.nc_sc_getMoreBrand = function () {
@@ -2831,7 +2844,17 @@ angular
                 .getObject();
 
             $scope.fn_ncSearchSetBrand = function(brandName){
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"brandName","paramValue":brandName, "apiOption":"ncBrandDetailsObj","urlToCall":"nc-brand-details"});
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncBrandDetailsObj', brandName, function (data) {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-brand-details', {'paramName':brandName });
+
+                    })
+
             }
             $scope.nc_sc_getByBrand = function () {
                 $state.go('eventmenu.nc-search-cars');
@@ -2860,16 +2883,24 @@ angular
 
             var brandName = $stateParams.paramName;
 
-            var usedCarSearchResultObj = sharedProperties
+
+            $scope.ncBrandDetails = sharedProperties
                 .getObject();
-            $scope.ncBrandDetails = usedCarSearchResultObj;
 
             $scope.fn_ncSearchCar = function () {
                 $state.go('eventmenu.nc-search-cars');
             }
 
             $scope.fn_ncBrandDetail = function (ncBrandDetail) {
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":ncBrandDetail.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncModelDetailsObj', ncBrandDetail.carmodelname, function () {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-model-details', {"paramName":ncBrandDetail.carmodelname});
+                    })
             }
 
 
@@ -2915,7 +2946,17 @@ angular
             }
             
             $scope.fn_ncRecCarDetail = function (recommendedCars) {
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":recommendedCars.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncModelDetailsObj', recommendedCars.carmodelname, function () {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-model-details',{ paramName :recommendedCars.carmodelname});
+                    })
+
             }
             
             $scope.fn_modelSelect = function(recommendedCars){
@@ -2944,7 +2985,7 @@ angular
             $scope.isUserAgreed = false;
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
            sharedProperties.getCityAndPin(function(cityAndPingObjs){
@@ -2957,17 +2998,9 @@ angular
                 $scope.isUserAgreed = !$scope.isUserAgreed;
             }
           function isEmpty(str) {
-//              return (!str || 0 === str.length || /^\s*$/.test(str) || !str.trim() ); 
             	 return (!str || 0 === str.length || /^\s*$/.test(str)); 
             }
             $scope.fn_getOnRoadPriceDetails = function(onRoadDetailsObj) {
-//                console.log("oem"+ $scope.oem );
-//                console.log("carModel"+ $scope.carModel  );
-//                console.log("userName"+ onRoadDetailsObj.name);
-//                console.log("userEmail"+ onRoadDetailsObj.userEmail);
-//                console.log("userMobile"+ onRoadDetailsObj.userMobile);
-//                console.log("userCity"+ onRoadDetailsObj.userCity);
-//                console.log("userPinCode"+ onRoadDetailsObj.userPinCode);
                 $scope.onRoadDetailsObj = {};
                 if(onRoadDetailsObj != null || onRoadDetailsObj != undefined){
                 $scope.onRoadDetailsObj.oem = $scope.oem;
@@ -3049,7 +3082,7 @@ angular
 
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
             $scope.cityItem ={"city": "New Delhi"};
@@ -3145,7 +3178,7 @@ angular
             console.log("KK param name "+ paramName +paramValue+urlToCall);
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
             sharedProperties
@@ -3153,8 +3186,8 @@ angular
                     console.log("in temp "+ urlToCall + paramName + paramValue+ JSON.stringify({paramName:paramValue}));
                     $ionicLoading.hide();
                     $state.go('eventmenu.'+urlToCall, { paramName :paramValue});
+            })
 
-             })
         }])
 
 
@@ -3187,7 +3220,8 @@ angular
         '$state',
         'cssInjector',
         '$stateParams',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+        '$ionicLoading',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams,  $ionicLoading) {
             console.log("in nc_latestCars");
             cssInjector.add("css/nc-latest-cars.css");
 
@@ -3200,7 +3234,16 @@ angular
             });
             
             $scope.get_latestCarDetail = function (latestCar) {
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":latestCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncModelDetailsObj', latestCar.carmodelname , function () {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-model-details', { paramName :latestCar.carmodelname});
+                    })
+
             }
             
             $scope.fn_modelSelect = function(latestCar){
@@ -3219,7 +3262,8 @@ angular
         '$state',
         'cssInjector',
         '$stateParams',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
+        '$ionicLoading',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams,  $ionicLoading) {
             console.log("in nc_popularCars");
             cssInjector.add("css/nc-popular-cars.css");
 
@@ -3232,7 +3276,15 @@ angular
             });
             
             $scope.get_popularCarDetail = function (popularCar) {
-                $state.go('eventmenu.gbl-temp-page', {"paramName":"modelName","paramValue":popularCar.carmodelname, "apiOption":"ncModelDetailsObj","urlToCall":"nc-model-details"});
+                 $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+
+                sharedProperties
+                    .getDataFromApi('ncModelDetailsObj', popularCar.carmodelname , function () {
+                        $ionicLoading.hide();
+                        $state.go('eventmenu.nc-model-details', { paramName :popularCar.carmodelname});
+                    })
             }
             
              $scope.fn_modelSelect = function(popularCar){
@@ -3585,12 +3637,16 @@ $scope.fnInsurance = function() {
                     if ($scope.reviewType == "user") {
                         $state.go('eventmenu.user-review',{"reviewType":"mostHelpful"});
                     } else {
-                        $state.go('eventmenu.gbl-temp-page', {
-                            "paramName": "reviewtype",
-                            "paramValue": $scope.reviewType,
-                            "apiOption": "reviewUserAndRoadTestDetailObj",
-                            "urlToCall": "review-user-and-road-test-detail"
+
+                        $scope.loading = $ionicLoading.show({
+                            template: ''
                         });
+
+                        sharedProperties
+                            .getDataFromApi('reviewUserAndRoadTestDetailObj', $scope.reviewType, function () {
+                                $ionicLoading.hide();
+                                $state.go('eventmenu.review-user-and-road-test-detail', { 'reviewtype' :$scope.reviewType});
+                            })
                     }
                 }
             }
@@ -3938,7 +3994,7 @@ $scope.fnInsurance = function() {
             cssInjector.add("css/used-car-valuation.css");
 
             $scope.loading = $ionicLoading.show({
-                template: 'loading'
+                template: ''
             });
 
             var baseUrl = "http://www.cardekho.com/getIPhoneFeedsDispatchAction.do?authenticateKey=14@89cardekho66feeds&format=Gson&parameter="
