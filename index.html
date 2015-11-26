@@ -288,6 +288,12 @@
         <ng-city></ng-city>
     </ion-content>
 </script>
+<script id="templates/pincode.html" type="text/ng-template">
+    <ng-search-header-bar></ng-search-header-bar>
+    <ion-content>
+        <ng-pincode></ng-pincode>
+    </ion-content>
+</script> 
 <script id="templates/offer-and-discount-city.html" type="text/ng-template">
     <ng-search-header-bar></ng-search-header-bar>
     <ion-content>
@@ -1970,8 +1976,8 @@
                 <div class="col-21">
                     <span>Area/Pin Code</span>
                 </div>
-                <div class="col-22" ng-model="user.userPinCode">
-                    {{user.userPinCode}}
+                 <div class="col-22" ng-click="getUserPincode()">
+                    {{sharedObj.pincode}}
                 </div>
             </div>
             <div class="row">
@@ -3394,6 +3400,23 @@
                 <div class="item-content"
                      style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
                     {{item}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+        </ion-item>
+    </ion-list>
+</script>
+<script id="templates/pincode-CD.html" type="text/ng-template">
+    <ion-list>
+        <ion-item class="my-item item" collection-repeat="item in contactObj.pinCodeObj.data.data.pinCodeList | filter:search" style="
+         padding-left: 0px;
+         border-left-width: 0px;
+         margin-left: 0px;">
+            <label class="item item-radio">
+                <input type="radio" name="group" value={{item.pincode}} ng-model="pincode" ng-change='pincode(item)'>
+                <div class="item-content"
+                     style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
+                    {{item.pincode}} {{item.subCity}}
                 </div>
                 <i class="radio-icon ion-checkmark"></i>
             </label>
