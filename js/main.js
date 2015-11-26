@@ -610,6 +610,12 @@ angular
             objectValue.sellerType = '';
             objectValue.sellerType = '';
 
+            objectValue.userDetails = {};
+            objectValue.userDetails.name = '';
+            objectValue.userDetails.userEmail = "";
+            objectValue.userDetails.userMobile = "";
+
+
             objectValue.usedCardIdToSearch = "";
             objectValue.certifiedByTrustMaster = false;
             objectValue.withPicture = false;
@@ -625,6 +631,12 @@ angular
             objectValue.ncBrandDetailsObj = {};
             objectValue.ncModelDetailsObj = {};
             objectValue.reviewUserAndRoadTestDetailObj = {};
+
+            objectValue.reqParam = {};
+            objectValue.reqParam.oem = "";
+            objectValue.reqParam.carModel = "";
+            objectValue.reqParam.carImage = "";
+            objectValue.reqParam.carRating = "";
 
             objectValue.cityObj = {};
             objectValue.pinCodeObj = {};
@@ -794,6 +806,12 @@ angular
                 })
 
             return {
+                setUserDetail : function(userDetails){
+                    objectValue.userDetails = userDetails;
+                },
+                setGOPR : function(reqParam){
+                    objectValue.reqParam = reqParam;
+                },
                 setSortBy : function(sortBy, sortOrder){
                     objectValue.sortBy = sortBy;
                     objectValue.isAsending = sortOrder;
@@ -1515,8 +1533,9 @@ angular
         '$state',
         '$stateParams',
         '$ionicPlatform',
+        '$ionicLoading',
 
-        function ($scope, sharedProperties, $state,$stateParams, $ionicPlatform) {
+        function ($scope, sharedProperties, $state,$stateParams, $ionicPlatform, $ionicLoading) {
 
             $scope.city = "All India";
             var retunEvent = $stateParams.retunEvent;
@@ -1535,7 +1554,16 @@ angular
                     $state.go('eventmenu.used-car-valuation-get-detail');
                 }
                 else if (retunEvent == 'nc-get-on-road-price-form'){
-                    $state.go('eventmenu.nc-get-on-road-price-form');
+                    $scope.loading = $ionicLoading.show({
+                        template: ''
+                    });
+                    sharedProperties.getCityAndPin(function(cityAndPingObjs){
+                        $ionicLoading.hide();
+                        //console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
+                        $state.go('eventmenu.nc-get-on-road-price-form');
+
+                    });
+
                 }
                 else {
                     $state.go('eventmenu.used-car-home');
@@ -1554,15 +1582,16 @@ angular
             var retunEvent = $stateParams.retunEvent;
             $scope.pincode = "";
             $scope.contactObj = sharedProperties.getObject();
-            console.log("pincode",$scope.contactObj)
+
             $scope.clearSearch = function () {
                 $scope.search = '';
-            };
-            $scope.pincode = function (pincodeobj) {
+            }
+            $scope.fn_pincode = function (pincodeobj) {
                 sharedProperties.setPincode(pincodeobj.pincode);
+                console.log('retunEvent', retunEvent);
                 $scope.search = '';
-                    $state.go('eventmenu.'+ retunEvent);
-                }
+                $state.go('eventmenu.'+ retunEvent);
+            }
         }])
     .controller(
     'priceRangeCtrl',
@@ -2983,7 +3012,16 @@ angular
 
             $scope.fnGetOnRoadPrice = function() {
                 console.log("go to on road price"+JSON.stringify($scope.ncModelDetails.ncModelDetailsObj));
-                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname,"carImage":$scope.imageUrl, "carRating":$scope.ncModelDetails.ncModelDetailsObj.data.modelrating.rating});
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+                sharedProperties.getCityAndPin(function(cityAndPingObjs){
+                    $ionicLoading.hide();
+                    //console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
+                    $state.go('eventmenu.nc-get-on-road-price-form',{"oem":$scope.ncModelDetails.ncModelDetailsObj.data.Brand,"carModel":$scope.ncModelDetails.ncModelDetailsObj.data.modelname,"carImage":$scope.imageUrl, "carRating":$scope.ncModelDetails.ncModelDetailsObj.data.modelrating.rating});
+
+
+                });
             }
 
 
@@ -3051,32 +3089,35 @@ angular
         '$ionicLoading',
         function ($scope, sharedProperties, cssInjector, $state, $stateParams, $ionicLoading) {
             console.log("in nc_modelDetails");
-            $scope.oem = $stateParams.oem;
-            $scope.carModel = $stateParams.carModel;
-            $scope.carImage = $stateParams.carImage;
-            $scope.carRating = $stateParams.carRating;
-            $scope.isUserAgreed = false;
-
-
-
-            $scope.loading = $ionicLoading.show({
-                template: ''
-            });
 
             $scope.sharedObj = sharedProperties
                 .getObject();
 
-           sharedProperties.getCityAndPin(function(cityAndPingObjs){
-               $ionicLoading.hide();
-               console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
+            console.log('$stateParams.oem', $stateParams.oem);
+            $scope.oem = $stateParams.oem || $scope.sharedObj.reqParam.oem  ;
+            $scope.carModel = $stateParams.carModel || $scope.sharedObj.reqParam.carModel;
+            $scope.carImage = $stateParams.carImage || $scope.sharedObj.reqParam.carImage;
+            $scope.carRating = $stateParams.carRating || $scope.sharedObj.reqParam.carRating;
+            $scope.isUserAgreed = false;
 
-           });
 
+
+            function setReqParam(){
+                sharedProperties.setUserDetail($scope.sharedObj.userDetails);
+
+                $scope.sharedObj.reqParam.oem = $scope.oem;
+                $scope.sharedObj.reqParam.carModel = $scope.carModel
+                $scope.sharedObj.reqParam.carImage = $scope.carImage;
+                $scope.sharedObj.reqParam.carRating = $scope.carRating;
+                sharedProperties.setGOPR($scope.sharedObj.reqParam);
+            }
 
             $scope.getUserCity = function(){
+                setReqParam();
                 $state.go('eventmenu.city', {'retunEvent':'nc-get-on-road-price-form'})
             }
              $scope.getUserPincode = function(){
+                 setReqParam();
                 $state.go('eventmenu.pincode', {'retunEvent':'nc-get-on-road-price-form'})
             }
 
@@ -3124,14 +3165,14 @@ angular
                 	alert("Please enter valid number"); 
                 }
                 else
-                if(!onRoadDetailsObj.hasOwnProperty('userCity') || isEmpty(onRoadDetailsObj.userCity)){
+                if(isEmpty($scope.sharedObj.city)){
                 	isValidationSuccess = false;
                 	alert("Please select the city");
                 } else
-                if(!onRoadDetailsObj.hasOwnProperty('userPinCode') || isEmpty(onRoadDetailsObj.userPinCode)){
+                if(isEmpty($scope.sharedObj.pincode)){
                 	isValidationSuccess = false;
                 	alert("Please enter the pincode");
-                } else if(!pincode.test(onRoadDetailsObj.userPinCode)){
+                } else if(!pincode.test($scope.sharedObj.pincode)){
                 	isValidationSuccess = false;
                 	alert("Please enter valid pincode ");
                 }
@@ -3649,7 +3690,8 @@ angular
         'cssInjector',
         '$stateParams',
         '$sce',
-        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce) {
+        '$ionicLoading',
+        function ($scope, sharedProperties, $state, cssInjector, $stateParams, $sce,$ionicLoading) {
             console.log("in showCompareCtrl");
             cssInjector.add("css/show-compare.css");
 
@@ -3683,7 +3725,15 @@ angular
             }
 
             $scope.getOnRoadPrice = function (oem, model, image, rating) {
-                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":oem,"carModel":model,"carImage":image, "carRating":rating});
+                $scope.loading = $ionicLoading.show({
+                    template: ''
+                });
+                sharedProperties.getCityAndPin(function(cityAndPingObjs){
+                    $ionicLoading.hide();
+                    //console.log("city and ping"+ JSON.stringify(cityAndPingObjs));
+                    $state.go('eventmenu.nc-get-on-road-price-form',{"oem":oem,"carModel":model,"carImage":image, "carRating":rating});
+
+                });
             }
 
 

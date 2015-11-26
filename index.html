@@ -1943,7 +1943,7 @@
                     <span>Name</span>
                 </div>
                 <div class="col-22">
-                    <input type="text" ng-model="user.name">
+                    <input type="text" ng-model="sharedObj.userDetails.name">
                 </div>
             </div>
             <div class="row">
@@ -1951,7 +1951,7 @@
                     <span>Email</span>
                 </div>
                 <div class="col-22">
-                    <input type="text" ng-model="user.userEmail">
+                    <input type="text" ng-model="sharedObj.userDetails.userEmail">
                 </div>
             </div>
             <div class="row">
@@ -1959,7 +1959,7 @@
                     <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
                 </div>
                 <div class="col-22">
-                    <input type="number" ng-model="user.userMobile">
+                    <input type="number" ng-model="sharedObj.userDetails.userMobile">
                 </div>
             </div>
             <div class="row">
@@ -1991,7 +1991,7 @@
 
 
         <div class="rrow11">
-            <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(user)">
+            <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(sharedObj.userDetails)">
                 <span> GET ON ROAD PRICE</span>
             </div>
         </div>
@@ -3413,7 +3413,7 @@
          border-left-width: 0px;
          margin-left: 0px;">
             <label class="item item-radio">
-                <input type="radio" name="group" value={{item.pincode}} ng-model="pincode" ng-change='pincode(item)'>
+                <input type="radio" name="group" value={{item.pincode}} ng-model="pincode" ng-change='fn_pincode(item)'>
                 <div class="item-content"
                      style="border-bottom-width: 3px; padding-bottom: 10px; padding-top: 10px;">
                     {{item.pincode}} {{item.subCity}}
