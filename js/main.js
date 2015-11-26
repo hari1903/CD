@@ -3620,10 +3620,28 @@ angular
                 console.log("isOverView"+ isCommonShow);
                 $scope.isCommonShow = isCommonShow;
             }
-$scope.fnInsurance = function() {
+             $scope.fnInsurance = function() {
                 
                 $state.go('eventmenu.car-insurance');
             }
+            $scope.fnInsurance = function() {
+
+                $state.go('eventmenu.car-insurance');
+            }
+
+            $scope.fn_getReview = function(carId){
+                console.log('carId', carId);
+
+                sharedProperties.setModel(carId.replace(/ /g, "_"));
+                $state.go('eventmenu.user-review',{"reviewType":"mostHelpful"});
+
+            }
+
+            $scope.getOnRoadPrice = function (oem, model, image, rating) {
+                $state.go('eventmenu.nc-get-on-road-price-form',{"oem":oem,"carModel":model,"carImage":image, "carRating":rating});
+            }
+
+
         }])
     .controller(
     'reviewUserAndRoadTestCtrl',

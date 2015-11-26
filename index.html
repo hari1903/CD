@@ -2697,7 +2697,7 @@
                         <span style="padding-right: 400px;">{{ compareDataObj.data.variantname.first}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
                             <div class="rowcard">
-                                <div class="card cardSize" ng-click="fnGetOnRoadPrice()">
+                                <div class="card cardSize" ng-click="getOnRoadPrice( compareDataObj.data.oemName.first,compareDataObj.data.model.first,compareDataObj.data.imageurl.first,4 )">
                                     <div class="item">
                                         <img ng-src="images/Icons/xhdpi/ex_on_road_price.png" style="width: 47px;height: 34px;">
                                     </div>
@@ -2713,7 +2713,7 @@
                                         Pictures
                                     </div>
                                 </div>
-                                <div class="card cardSize" ng-click="fn_getReview()">
+                                <div class="card cardSize" ng-click="fn_getReview(compareDataObj.data.model.first )">
                                     <div class="item item-text-wrap">
                                         <i class="fa fa-star"></i>
                                     </div>
@@ -2742,8 +2742,8 @@
                         <span style="padding-right: 40px;">{{ compareDataObj.data.variantname.second}}</span>
                         <ion-scroll direction="x" class="wide-as-needed">
                             <div class="rowcard">
-                                <div class="card cardSize">
-                                    <div class="item">
+                                <div class="card cardSize" ng-click="getOnRoadPrice( compareDataObj.data.oemName.second,compareDataObj.data.model.second,compareDataObj.data.imageurl.second,4 )">
+                                    <div class="item" >
                                         <img ng-src="images/Icons/xhdpi/ex_on_road_price.png" style="width: 47px;height: 34px;">
                                     </div>
                                     <div class="item item-text-wrap">
@@ -2758,7 +2758,7 @@
                                         Pictures
                                     </div>
                                 </div>
-                                <div class="card cardSize">
+                                <div class="card cardSize" ng-click="fn_getReview(compareDataObj.data.model.second )" >
                                     <div class="item item-text-wrap">
                                         <i class="fa fa-star"></i>
                                     </div>
