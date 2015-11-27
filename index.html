@@ -1805,15 +1805,7 @@
             <div class="bar bar-calm1" style="margin-top:10px">
                 <h1 class="heading2">Variants</h1>
             </div>
-            <div class="r2row" style="padding-top: 50px !important;">
-                <div class="row">
-                    <span class="col11">Diesel</span>
-
-                    <span class="col12">Petrol</span>
-
-                    <span class="col13">All</span>
-                </div>
-            </div>
+            
 
             <div style="height: 65%;">
                 <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
@@ -3146,10 +3138,10 @@
         </div>
         <ion-content class="rudTopPadding">
 <div class="rudTitleName">
-            <div class="row">
+            <div class="row"  style="line-height: 110%;">
                 <span> {{modelName}} : {{ autoDetailedNews.data.review.title }}</span>
             </div>
-            <div class="row">
+            <div class="row"  style="line-height: 110%;">
                 <span> {{modelName}} : {{ autoDetailedNews.data.review.authorName }} Posted on: {{ autoDetailedNews.data.review.date }} |  {{ autoDetailedNews.data.review.viewsCount }} views</span>
             </div>
 </div>		
@@ -3312,6 +3304,7 @@
             <div>
                 <div class="row">
          <!-- 	<span>{{ autoDetailedNews.data.review.reviewText }} found this review useful to you ?</span>-->
+           <span class="ng-binding" style="line-height: 110%;"></span>
  			<span>{{ autoDetailedNews.data.review.reviewText }}</span>
                 </div>
 <div class="helpful">
