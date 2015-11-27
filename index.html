@@ -3112,13 +3112,13 @@
 </script>
 <script id="templates/user-review-detail.html" type="text/ng-template">
     <ion-view>
-        <div class="bar bar-subheader bar-subheader1 subHeaderProperty">
+        <div class="bar bar-subheader bar-subheader1 subHeaderProperty subHeaderProperty1">
             <div class="row reviewHeader">
-                <span class="reviewsText"> {{modelName}} Reviews</span>
+                <span class="reviewsText" > {{modelName}} Reviews</span>
             </div>
             <div>
-                <div class="row subRatingProperty"><span>Overall Rating:</span>
-                    <div class="row">
+                <div class="row subRatingProperty"><span style=" width: 40% !important; padding-top: 5px" >Overall Rating:</span>
+                    <div class="row" style="padding-top: 0px !important;">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5" ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                             <input type="radio" id="star4half" name="rating" value="4.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -3132,7 +3132,7 @@
                             <input type="radio" id="starhalf" name="rating" value="0.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
                     </div>
-                    <span> {{ autoDetailedNews.data.review.overallSatisfactionRating }}/5 </span>
+                    <span style=" padding-top: 5px"> {{ autoDetailedNews.data.review.overallSatisfactionRating }}/5 </span>
                 </div>
             </div>
         </div>
