@@ -3074,7 +3074,7 @@
 
                             <h2>{{reviewDataObj.reviewTitle}}</h2>
                             <div class="wordwrap" style="height: 32px !important; width: 100% !important;">
-                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span>[READ MORE]</span>
+                                {{reviewDataObj.reviewText | cut:true:140:' ...' }}<span>[READ MORE]</span>
                             </div>
 
                         </div>
@@ -3105,7 +3105,7 @@
                                 </fieldset>
                             </div>
                             <div class="wordwrap" style=" width: 100% !important;">
-                                {{reviewDataObj.reviewText | cut:true:40:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
+                                {{reviewDataObj.reviewText | cut:true:140:' ...' }}<span style="color:#FF0101">[READ MORE]</span>
                             </div>
 
                         </div>
@@ -3126,7 +3126,20 @@
             </div>
             <div>
                 <div class="row subRatingProperty"><span>Overall Rating:</span>
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="0.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                     <span> {{ autoDetailedNews.data.review.overallSatisfactionRating }}/5 </span>
                 </div>
             </div>
@@ -3146,7 +3159,20 @@
                     Overall Satisfaction:
                 </div>
                 <div class="col ratingtext">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="1star5" name="1rating" value="5" ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="1star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="1star4half" name="1rating" value="4.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="1star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="1star4" name="1rating" value="4"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="1star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="1star3half" name="1rating" value="3.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="1star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="1star3" name="1rating" value="3"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="1star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="1star2half" name="1rating" value="2.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="1star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="1star2" name="1rating" value="2"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="1star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="1star1half" name="1rating" value="1.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="1star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="1star1" name="1rating" value="1"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class = "full" for="1star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="1starhalf" name="1rating" value="0.5"  ng-model="autoDetailedNews.data.review.overallSatisfactionRating" /><label class="half" for="1starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>
@@ -3155,7 +3181,20 @@
                     Appearance:
                 </div>
                 <div class="col">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="2star5" name="2rating" value="5" ng-model="autoDetailedNews.data.review.appearanceRating" /><label class = "full" for="2star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="2star4half" name="2rating" value="4.5"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class="half" for="2star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="2star4" name="2rating" value="4"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class = "full" for="2star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="2star3half" name="2rating" value="3.5"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class="half" for="2star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="2star3" name="2rating" value="3"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class = "full" for="2star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="2star2half" name="2rating" value="2.5"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class="half" for="2star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="2star2" name="2rating" value="2"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class = "full" for="2star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="2star1half" name="2rating" value="1.5"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class="half" for="2star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="2star1" name="2rating" value="1"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class = "full" for="2star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="2starhalf" name="2rating" value="0.5"  ng-model="autoDetailedNews.data.review.appearanceRating" /><label class="half" for="2starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>
@@ -3164,7 +3203,20 @@
                     Comfort:
                 </div>
                 <div class="col">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="3star5" name="3rating" value="5" ng-model="autoDetailedNews.data.review.comfortRating" /><label class = "full" for="3star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="3star4half" name="3rating" value="4.5"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class="half" for="3star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="3star4" name="3rating" value="4"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class = "full" for="3star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="3star3half" name="3rating" value="3.5"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class="half" for="3star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="3star3" name="3rating" value="3"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class = "full" for="3star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="3star2half" name="3rating" value="2.5"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class="half" for="3star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="3star2" name="3rating" value="2"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class = "full" for="3star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="3star1half" name="3rating" value="1.5"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class="half" for="3star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="3star1" name="3rating" value="1"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class = "full" for="3star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="3starhalf" name="3rating" value="0.5"  ng-model="autoDetailedNews.data.review.comfortRating" /><label class="half" for="3starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>
@@ -3173,7 +3225,20 @@
                     Performance:
                 </div>
                 <div class="col">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="4star5" name="4rating" value="5" ng-model="autoDetailedNews.data.review.performanceRating" /><label class = "full" for="4star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="4star4half" name="4rating" value="4.5"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class="half" for="4star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="4star4" name="4rating" value="4"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class = "full" for="4star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="4star3half" name="4rating" value="3.5"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class="half" for="4star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="4star3" name="4rating" value="3"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class = "full" for="4star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="4star2half" name="4rating" value="2.5"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class="half" for="4star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="4star2" name="4rating" value="2"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class = "full" for="4star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="4star1half" name="4rating" value="1.5"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class="half" for="4star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="4star1" name="4rating" value="1"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class = "full" for="4star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="4starhalf" name="4rating" value="0.5"  ng-model="autoDetailedNews.data.review.performanceRating" /><label class="half" for="4starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>
@@ -3182,7 +3247,20 @@
                     Value for Money:
                 </div>
                 <div class="col">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="5star5" name="5rating" value="5" ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class = "full" for="5star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="5star4half" name="5rating" value="4.5"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class="half" for="5star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="5star4" name="5rating" value="4"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class = "full" for="5star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="5star3half" name="5rating" value="3.5"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class="half" for="5star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="5star3" name="5rating" value="3"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class = "full" for="5star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="5star2half" name="5rating" value="2.5"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class="half" for="5star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="5star2" name="5rating" value="2"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class = "full" for="5star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="5star1half" name="5rating" value="1.5"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class="half" for="5star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="5star1" name="5rating" value="1"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class = "full" for="5star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="5starhalf" name="5rating" value="0.5"  ng-model="autoDetailedNews.data.review.valueForMoneyRating" /><label class="half" for="5starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>
@@ -3191,7 +3269,20 @@
                     Fule Economy:
                 </div>
                 <div class="col">
-                    <ng-review-stars></ng-review-stars>
+                    <div class="row">
+                        <fieldset class="rating">
+                            <input type="radio" id="6star5" name="6rating" value="5" ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class = "full" for="6star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="6star4half" name="6rating" value="4.5"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class="half" for="6star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="6star4" name="6rating" value="4"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class = "full" for="6star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="6star3half" name="6rating" value="3.5"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class="half" for="6star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="6star3" name="6rating" value="3"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class = "full" for="6star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="6star2half" name="6rating" value="2.5"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class="half" for="6star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="6star2" name="6rating" value="2"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class = "full" for="6star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="6star1half" name="6rating" value="1.5"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class="half" for="6star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="6star1" name="6rating" value="1"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class = "full" for="6star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="6starhalf" name="6rating" value="0.5"  ng-model="autoDetailedNews.data.review.fuelEconomyRating" /><label class="half" for="6starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
 	<hr>

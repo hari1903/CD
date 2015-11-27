@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fc98d1e-17c5-4c1d-ad1f-76becc998742" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/event-menu.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/nc-offers-and-dicounts" afterPath="" />
+    <list default="true" id="7fc98d1e-17c5-4c1d-ad1f-76becc998742" name="Default" comment="Compare car over view feature">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sdk_delta.info" afterPath="$PROJECT_DIR$/.sdk_delta.info" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/.manifest.tmp" afterPath="$PROJECT_DIR$/.sign/.manifest.tmp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/author-signature.xml" afterPath="$PROJECT_DIR$/.sign/author-signature.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sign/signature1.xml" afterPath="$PROJECT_DIR$/.sign/signature1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/usedCarDetail.css" afterPath="$PROJECT_DIR$/css/usedCarDetail.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/user-review.css" afterPath="$PROJECT_DIR$/css/user-review.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SampleIonic.iws" />
@@ -31,75 +28,54 @@
     <favorites_list name="SampleIonic" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63143057">
+    <splitter split-orientation="horizontal" split-proportion="0.9">
       <split-first>
         <leaf>
           <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-17.925926">
-                  <caret line="1263" column="14" selection-start-line="1263" selection-start-column="14" selection-end-line="1263" selection-end-column="14" />
+                <state vertical-scroll-proportion="-10.407408">
+                  <caret line="3174" column="64" selection-start-line="3174" selection-start-column="64" selection-end-line="3174" selection-end-column="64" />
                   <folding>
-                    <marker date="1444202914000" expanded="true" signature="44905:44950" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="44967:45005" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78730:78808" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78834:78902" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78943:78957" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="79156:79169" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="81096:81164" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="81220:81234" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108069:108147" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108173:108241" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108282:108296" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108495:108508" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="110435:110503" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="110559:110573" placeholder="..." />
+                    <marker date="1448536155000" expanded="true" signature="54377:54422" placeholder="..." />
+                    <marker date="1448536155000" expanded="true" signature="54439:54477" placeholder="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="event-menu.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/css/event-menu.css">
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+                  <caret line="161" column="1" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.13944224">
-                  <caret line="223" column="56" selection-start-line="223" selection-start-column="56" selection-end-line="223" selection-end-column="56" />
+                <state vertical-scroll-proportion="-15.274509">
+                  <caret line="3284" column="26" selection-start-line="3284" selection-start-column="26" selection-end-line="3284" selection-end-column="26" />
                   <folding>
                     <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="e#1085#1323#0" expanded="false" />
-                    <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="usedCarDetail.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/css/usedCarDetail.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.8739496">
+                  <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -108,26 +84,30 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3243243">
-                  <caret line="1284" column="0" selection-start-line="1284" selection-start-column="0" selection-end-line="1284" selection-end-column="0" />
+                <state vertical-scroll-proportion="-8.185185">
+                  <caret line="1060" column="26" selection-start-line="1060" selection-start-column="19" selection-end-line="1060" selection-end-column="26" />
                   <folding>
-                    <marker date="1444202914000" expanded="true" signature="44905:44950" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="44967:45005" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78730:78808" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78834:78902" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="78943:78957" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="79156:79169" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="81096:81164" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="81220:81234" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108069:108147" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108173:108241" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108282:108296" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="108495:108508" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="110435:110503" placeholder="..." />
-                    <marker date="1444202914000" expanded="true" signature="110559:110573" placeholder="..." />
+                    <marker date="1448536155000" expanded="true" signature="54377:54422" placeholder="..." />
+                    <marker date="1448536155000" expanded="true" signature="54439:54477" placeholder="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.33374536">
+                  <caret line="616" column="35" selection-start-line="616" selection-start-column="35" selection-end-line="616" selection-end-column="35" />
+                  <folding>
+                    <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -151,17 +131,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/css/usedCarFilter.css" />
         <option value="$PROJECT_DIR$/css/nc-upcoming-cars.css" />
         <option value="$PROJECT_DIR$/css/nc_latest-cars.css" />
-        <option value="$PROJECT_DIR$/css/usedCarDetail.css" />
         <option value="$PROJECT_DIR$/css/UsedSingleCarCardView.css" />
-        <option value="$PROJECT_DIR$/css/nc-model-details.css" />
         <option value="$PROJECT_DIR$/css/nc-car-video.css" />
         <option value="$PROJECT_DIR$/css/nc-car-videos.css" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/css/compare-cars.css" />
-        <option value="$PROJECT_DIR$/css/user-review.css" />
         <option value="$PROJECT_DIR$/css/roboto-font.css" />
         <option value="$PROJECT_DIR$/css/auto-news.css" />
         <option value="$PROJECT_DIR$/css/show-compare.css" />
@@ -175,8 +151,15 @@
         <option value="$PROJECT_DIR$/css/nc-latest-cars.css" />
         <option value="$PROJECT_DIR$/css/nc-popular-cars.css" />
         <option value="$PROJECT_DIR$/css/event-menu.css" />
+        <option value="$PROJECT_DIR$/node_modules/angular-youtube-embed.js" />
+        <option value="$PROJECT_DIR$/css/singleCarPage.css" />
+        <option value="$PROJECT_DIR$/css/usedCarFilter.css" />
+        <option value="$PROJECT_DIR$/css/nc-model-details.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/css/user-review.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/usedCarDetail.css" />
       </list>
     </option>
   </component>
@@ -188,10 +171,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1920" />
-    <option name="y" value="259" />
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -216,6 +197,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,28 +227,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SampleIonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,6 +254,7 @@
       <recent name="$PROJECT_DIR$/fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/node_modules" />
     </key>
@@ -474,50 +442,140 @@
       <option name="project" value="LOCAL" />
       <updated>1444050752292</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Compare car over view feature">
+      <created>1445264920222</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1445264920222</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Compare car over view feature">
+      <created>1445414961998</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1445414961998</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Compare car over view feature">
+      <created>1448329411389</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1448329411389</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Filter Screen Options completed and compare cars enable and disable fix.">
+      <created>1448357445826</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1448357445827</updated>
+    </task>
+    <task id="LOCAL-00027" summary="filter Option page without sorting.">
+      <created>1448411078820</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1448411078820</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Filter Screen Changes - complete">
+      <created>1448419859977</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1448419859977</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fixed the next and prev">
+      <created>1448421277327</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1448421277327</updated>
+    </task>
+    <task id="LOCAL-00030" summary="filter in card view page">
+      <created>1448433096570</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1448433096570</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Filter and sorting done.">
+      <created>1448441187344</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1448441187344</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Loading gif like cardekho images&#10;back button white page issue">
+      <created>1448500950023</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1448500950023</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixing the swipe the car on detail new car screen.">
+      <created>1448509816940</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1448509816940</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Get On Raod price city selection">
+      <created>1448522367010</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1448522367010</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Hardware back button fixed to exit the app. still it will do history back.">
+      <created>1448525829516</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1448525829516</updated>
+    </task>
+    <task id="LOCAL-00036" summary="compare screen review and getonroad price linked.">
+      <created>1448528935985</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1448528935985</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fixed the Get On Road Price city and ping code drop down">
+      <created>1448536281065</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1448536281065</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="259" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13142292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.029591836" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16420014" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15732369" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15792646" sideWeight="0.50454545" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23356009" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.093877554" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13142292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.029591836" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15792646" sideWeight="0.50454545" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23356009" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26530612" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2634117" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16395418" sideWeight="0.49545455" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -542,7 +600,20 @@
     <MESSAGE value="Review Landing page CSS by Hari" />
     <MESSAGE value="Road test css applied" />
     <MESSAGE value="Compare car varient issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compare car varient issue" />
+    <MESSAGE value="Compare car over view feature" />
+    <MESSAGE value="Filter Screen Options completed and compare cars enable and disable fix." />
+    <MESSAGE value="filter Option page without sorting." />
+    <MESSAGE value="Filter Screen Changes - complete" />
+    <MESSAGE value="Fixed the next and prev" />
+    <MESSAGE value="filter in card view page" />
+    <MESSAGE value="Filter and sorting done." />
+    <MESSAGE value="Loading gif like cardekho images&#10;back button white page issue" />
+    <MESSAGE value="Fixing the swipe the car on detail new car screen." />
+    <MESSAGE value="Get On Raod price city selection" />
+    <MESSAGE value="Hardware back button fixed to exit the app. still it will do history back." />
+    <MESSAGE value="compare screen review and getonroad price linked." />
+    <MESSAGE value="Fixed the Get On Road Price city and ping code drop down" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the Get On Road Price city and ping code drop down" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -551,13 +622,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/nc-search-cars.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/usedCarDetail.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -606,29 +670,10 @@
           <caret line="1073" column="60" selection-start-line="1073" selection-start-column="49" selection-end-line="1073" selection-end-column="60" />
           <folding>
             <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1085#1323#0" expanded="false" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -638,20 +683,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1686" column="29" selection-start-line="1686" selection-start-column="29" selection-end-line="1686" selection-end-column="29" />
           <folding>
-            <marker date="1444202914000" expanded="true" signature="44905:44950" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="44967:45005" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78730:78808" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78834:78902" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78943:78957" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="79156:79169" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81096:81164" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81220:81234" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108069:108147" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108173:108241" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108282:108296" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108495:108508" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110435:110503" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110559:110573" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54377:54422" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54439:54477" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -669,29 +702,10 @@
           <caret line="1073" column="60" selection-start-line="1073" selection-start-column="49" selection-end-line="1073" selection-end-column="60" />
           <folding>
             <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1085#1323#0" expanded="false" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -701,20 +715,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1686" column="29" selection-start-line="1686" selection-start-column="29" selection-end-line="1686" selection-end-column="29" />
           <folding>
-            <marker date="1444202914000" expanded="true" signature="44905:44950" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="44967:45005" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78730:78808" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78834:78902" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78943:78957" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="79156:79169" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81096:81164" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81220:81234" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108069:108147" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108173:108241" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108282:108296" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108495:108508" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110435:110503" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110559:110573" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54377:54422" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54439:54477" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -732,29 +734,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1085#1323#0" expanded="false" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,51 +748,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1085#1323#0" expanded="false" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/usedCarFilter.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55135137">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.722323">
-          <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/singleCarPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5027223">
-          <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -836,13 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/nc-model-details.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="17" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -874,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/angular-youtube-embed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/nc-car-videos.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18665159">
@@ -907,20 +836,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/used-car-valuation.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/used-car-valuation-details.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.050962627">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/ion.rangeSlider.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -932,13 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18686296">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/usedCarDetail.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="11" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -987,13 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/user-review.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/nc-search-cars.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1012,71 +913,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/event-menu.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.29126215">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/angular-youtube-embed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/used_car_detail_featured.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/used-car-valuation-details.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/used-car-valuation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/singleCarPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="4" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="40" />
+          <folding>
+            <marker date="1445497401000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1445497401000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/usedCarFilter.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70063025">
+          <caret line="86" column="14" selection-start-line="86" selection-start-column="1" selection-end-line="86" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user-review.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31572628">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/nc-model-details.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3697479">
+          <caret line="50" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.925926">
-          <caret line="1263" column="14" selection-start-line="1263" selection-start-column="14" selection-end-line="1263" selection-end-column="14" />
+        <state vertical-scroll-proportion="-10.407408">
+          <caret line="3174" column="64" selection-start-line="3174" selection-start-column="64" selection-end-line="3174" selection-end-column="64" />
           <folding>
-            <marker date="1444202914000" expanded="true" signature="44905:44950" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="44967:45005" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78730:78808" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78834:78902" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="78943:78957" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="79156:79169" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81096:81164" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="81220:81234" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108069:108147" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108173:108241" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108282:108296" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="108495:108508" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110435:110503" placeholder="..." />
-            <marker date="1444202914000" expanded="true" signature="110559:110573" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54377:54422" placeholder="..." />
+            <marker date="1448536155000" expanded="true" signature="54439:54477" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="161" column="1" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13944224">
-          <caret line="223" column="56" selection-start-line="223" selection-start-column="56" selection-end-line="223" selection-end-column="56" />
+        <state vertical-scroll-proportion="-15.274509">
+          <caret line="3284" column="26" selection-start-line="3284" selection-start-column="26" selection-end-line="3284" selection-end-column="26" />
           <folding>
             <element signature="n#meta#1;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1085#1323#0" expanded="false" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#11;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#12;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#13;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#14;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#16;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#17;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#18;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#19;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#20;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#22;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#23;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#25;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#29;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#76;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#77;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#78;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#79;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#80;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/usedCarDetail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8739496">
+          <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

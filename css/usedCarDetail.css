@@ -284,4 +284,7 @@ height:10%;
     z-index: 2;
 }
 
+.subHeaderProperty1 {
+	height: 80px !important;
+}
 

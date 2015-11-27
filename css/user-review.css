@@ -36,16 +36,16 @@
 }
 
 .wordwrap {
-  white-space: normal;      CSS3
-    /*   white-space: -moz-pre-wrap; Firefox
-    white-space: -o-pre-wrap;   Opera 7 */
-    word-wrap: break-word;      /* IE */
+    white-space: normal;      CSS3;
+     /*   white-space: -moz-pre-wrap; Firefox
+     white-space: -o-pre-wrap;   Opera 7 */
+    /*  word-wrap : break-word;      /* IE */
     font-family: Roboto Regular;
     font-size: 14px;
     color: #555555;
 }
 .topPaddingUserView{
-    padding-top: 90px !important;
+    padding-top: 100px !important;
 }
 
 .colProp{
