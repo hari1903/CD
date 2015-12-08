@@ -3816,9 +3816,7 @@ angular
             // }
            //  }
           //  }
-
-
-        }])
+        //}])
     .controller(
     'reviewUserAndRoadTestDetailCtrl',
     [
