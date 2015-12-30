@@ -3554,7 +3554,7 @@
         <ion-item class="my-item item" ng-repeat="item in brandTempObj.brandObj | filter:search" style="
          padding-left: 0px;
          border-left-width: 0px;
-         margin-left: 0px;" ng-click="fn_ncSearchSetMoreBrand('{{item.oemname}}')">
+         margin-left: 0px;" >
             <label class="item item-radio">
                 <input type="radio" name="group" value={{item.oemname}} ng-model="brand"
                        ng-change='newBrand(brand)'>

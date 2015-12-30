@@ -1033,6 +1033,7 @@ angular
                             callBackFun(data);
                         })
                 },
+
                 getDataFromApi: function (apiOption, paramValue, callBackFun) {
                     var urlToSearch = url;
                     switch (apiOption) {
@@ -1053,8 +1054,9 @@ angular
                         .post(urlToSearch)
                         .success(
                         function (data, status) {
-                            console.log("get data from api" + JSON.stringify(data));
+                            //console.log("get data from api" + JSON.stringify(data));
                             objectValue[apiOption] = data;
+                            console.log("get data from api" + JSON.stringify(objectValue.ncBrandDetailsObj));
                             callBackFun(data);
                         })
                 },
@@ -1750,33 +1752,48 @@ angular
         'sharedProperties',
         '$state',
         '$stateParams',
-        function ($scope, sharedProperties, $state, $stateParams) {
+        '$ionicLoading',
+        function ($scope, sharedProperties, $state, $stateParams, $ionicLoading) {
             $scope.brand1 = "...";
             var retunEvent = $stateParams.retunEvent;
-
+            console.log('KK retunEvent'+ retunEvent);
             $scope.brandTempObj = sharedProperties.getObject();
             $scope.clearSearch = function () {
                 $scope.search = '';
             };
             $scope.newBrand = function (brand) {
                 console.log(brand);
-                sharedProperties.setBrand(brand);
+
                 $scope.search = '';
                 if(retunEvent == 'review-user-and-road-test'){
+                    sharedProperties.setBrand(brand);
                     var reviewType = sharedProperties.getReviewType();
                     $state.go('eventmenu.'+retunEvent,{"reviewType":reviewType});
                 }else if(retunEvent == 'compare-cars'){
+                    sharedProperties.setBrand(brand);
                     $state.go('eventmenu.model',{"retunEvent":retunEvent});
+                }
+                else if(retunEvent === 'nc-brand-details'){
+                    console.log('Karthik');
+
+                    $scope.loading = $ionicLoading.show({
+                        template: ''
+                    });
+
+                    sharedProperties
+                        .getDataFromApi('ncBrandDetailsObj',brand, function (data) {
+                            sharedProperties.setBrand(brand);
+                            $ionicLoading.hide();
+                            $state.go('eventmenu.nc-brand-details', {'paramName':brand });
+
+                        })
                 }
                 else {
                     $state.go('eventmenu.'+retunEvent);
                 }
 
             }
-            $scope.fn_ncSearchSetMoreBrand = function(brandName){
-                 $state.go('eventmenu.nc-brand-details', {"paramName":brandName});
 
-            }
         }])
     .controller(
     'yearCtrl',
@@ -2884,7 +2901,7 @@ angular
             }
 
             $scope.nc_sc_getMoreBrand = function () {
-                $state.go('eventmenu.brand1', {"retunEvent":"nc-search-cars"});
+                $state.go('eventmenu.brand1', {"retunEvent":"nc-brand-details"});
             }
             $scope.nc_sc_getByPrice = function () {
                 $state.go('eventmenu.nc-search-cars-by-price');
