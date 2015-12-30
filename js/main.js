@@ -3346,7 +3346,7 @@ angular
             console.log("in nc_upcomingCars");
             cssInjector.add("css/nc-upcoming-cars.css");
 
-            var searchString = "getUpcomingCarListDataWithStatus&startLimit=1&endLimit=40";
+            var searchString = "getUpcomingCarListDataWithStatus&startLimit=1&endLimit=120";
 
             sharedProperties.getData(searchString, function (upcomingCars) {
 
@@ -3821,21 +3821,7 @@ angular
 
     }])
 
-                     //               $scope.loading = $ionicLoading.show({
-                    //                   template: ''
-                   //                });
 
-                 //              sharedProperties
-                //      .getDataFromApi('reviewUserAndRoadTestDetailObj', $scope.reviewType, function () {
-               //        $ionicLoading.hide();
-              //     $state.go('eventmenu.review-user-and-road-test-detail', { 'reviewtype' :$scope.reviewType});
-             // })
-            // }
-           //  }
-          //  }
-
-
-        }])
     .controller(
     'reviewUserAndRoadTestDetailCtrl',
     [
