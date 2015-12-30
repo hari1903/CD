@@ -3808,19 +3808,31 @@ angular
                     if ($scope.reviewType == "user") {
                         $state.go('eventmenu.user-review',{"reviewType":"mostHelpful"});
                     } else {
-
-                        $scope.loading = $ionicLoading.show({
-                            template: ''
-                        });
-
-                        sharedProperties
-                            .getDataFromApi('reviewUserAndRoadTestDetailObj', $scope.reviewType, function () {
-                                $ionicLoading.hide();
-                                $state.go('eventmenu.review-user-and-road-test-detail', { 'reviewtype' :$scope.reviewType});
-                            })
-                    }
+                    	$state.go('eventmenu.gbl-temp-page', {
+                        "paramName": "reviewtype",
+                        "paramValue": $scope.reviewType,
+                        "apiOption": "reviewUserAndRoadTestDetailObj",
+                        "urlToCall": "review-user-and-road-test-detail"
+                    });
                 }
             }
+        }
+
+
+    }])
+
+                     //               $scope.loading = $ionicLoading.show({
+                    //                   template: ''
+                   //                });
+
+                 //              sharedProperties
+                //      .getDataFromApi('reviewUserAndRoadTestDetailObj', $scope.reviewType, function () {
+               //        $ionicLoading.hide();
+              //     $state.go('eventmenu.review-user-and-road-test-detail', { 'reviewtype' :$scope.reviewType});
+             // })
+            // }
+           //  }
+          //  }
 
 
         }])

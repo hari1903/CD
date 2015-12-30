@@ -2019,7 +2019,7 @@
                               ng-class="{active: isGroupShown(onRoadDetail)}"
                               style="padding-top: 7px !important; font-size: 17px !important; font-family: 'Roboto-Regular' !important; border: 1px solid; height: 35px;">
                         <i class="icon "
-                           ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-up'"></i>
+                           ng-class="isGroupShown(onRoadDetail) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                         &nbsp;
                         Group {{onRoadDetail.variantName}}
                     </ion-item>
@@ -2063,6 +2063,24 @@
             </ion-list>
         </div>
     </ion-content>
+    <div class="bar bar-footer " ng-click="fn_getReview()">
+           
+            <div class="ffooter" ng-click="fnGetOnRoadPrice()">
+                    <span> OVERVIEW</span>
+                </div>
+                <div class="ffooter-1">
+              <span>    <img src="images/sort_rs.png" style="height: 15px; width: 15px; margin-left: -40px;"></img>   PRICE</span>
+                </div>
+                <div class="ffooter-2" ng-click="fn_ncGetMoreOptionPopup()">
+                    <div>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div>MORE</div>
+                </div>
+
+        </div>
 
 </script>
 
