@@ -3600,7 +3600,7 @@ angular
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
 
-            cssInjector.removeAll();
+           
             cssInjector.add("css/auto.css");
 
             var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";
