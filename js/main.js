@@ -3388,6 +3388,7 @@ angular
         '$ionicLoading',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams,  $ionicLoading) {
             console.log("in nc_latestCars");
+
             cssInjector.add("css/nc-latest-cars.css");
 
             var searchString = "getLatestCarListDataWithStatus&startLimit=1&endLimit=40";
@@ -3598,7 +3599,8 @@ angular
         'cssInjector',
         '$stateParams',
         function ($scope, sharedProperties, $state, cssInjector, $stateParams) {
-            console.log("in nc_popularCars");
+
+            cssInjector.removeAll();
             cssInjector.add("css/auto.css");
 
             var searchString = "getAutoNewsWithStatus&startLimit=1&endLimit=40";

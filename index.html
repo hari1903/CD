@@ -2145,20 +2145,20 @@
         </div>
 
     </ion-header-bar>
-    <ion-content style="padding-top: 0px !important;">
+    <ion-content style="padding-top: 0px !important;" class="latestCars">
         <ion-item class="item " ng-repeat="latestCar in latestCars.data.latestCarSet.latestCarList"
                   
                   style="padding-bottom: 0px; padding-top: 0px;margin-top: 0px;margin-bottom: 0px;">
-			<div class="list" ng-click="fnUpcomingCar(latestCar)" style="margin-top: 0px; padding-top: 0px;">
+			<div class="list listProp" ng-click="fnUpcomingCar(latestCar)" style="margin-top: 0px; padding-top: 0px;">
             <div ng-click="get_latestCarDetail(latestCar)">
-                <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{latestCar.mobileimage}} onError="this.src='images/ic_error.png';" />
+                <div class="item item-thumbnail-left thumLeftProp">
+                    <img class="latestImgProp" ng-src={{latestCar.mobileimage}} onError="this.src='images/ic_error.png';" />
 
                     <div class="detail" style="padding-top: 10%;">
 
-                        <h2 class="">{{latestCar.displayCarModelName}}</h2>
+                        <h2 class="latesth2Prop">{{latestCar.displayCarModelName}}</h2>
 
-                        <h3 class="">Rs <span class="">{{latestCar.minexshowroomprice | formatPrice  }} - {{latestCar.maxexshowroomprice | formatPrice  }}Lac</span>
+                        <h3 class="latesth3Prop">Rs <span class="latestSpanProp">{{latestCar.minexshowroomprice | formatPrice  }} - {{latestCar.maxexshowroomprice | formatPrice  }}Lac</span>
                         </h3>                       
                     </div>
                 </div>
@@ -2396,24 +2396,24 @@
 </script>
 
 <script id="templates/auto-news.html" type="text/ng-template">
-    <ion-header-bar class=" bar-subheader nc_uc_header_prop">
+    <ion-header-bar class=" bar-subheader nc_uc_header_prop bar-subheaderProp">
         <div class="row nc_lc_header_info">
-            <div class="col ">
+            <div class="col colProp ">
                 Auto News
             </div>
         </div>
     </ion-header-bar>
-    <ion-content style="padding-top: 22px !important;">
-        <ion-item class="item " ng-repeat="singeAutoNews in autoNews.data['Auto News']"
+    <ion-content class="autoNews" style="padding-top: 22px !important;">
+        <ion-item class="item newsItemProp" ng-repeat="singeAutoNews in autoNews.data['Auto News']"
                   ng-click="fnDetailedNews(singeAutoNews)"
                   style="padding-bottom: 0px; padding-top: 4px;margin-top: 1px;margin-bottom: 1px;padding-left: 0px;padding-right: 0px;">
-            <div class="list card ">
+            <div class="list card newsCardProp">
                 <div class="item item-thumbnail-left ">
-                    <img class="" ng-src={{singeAutoNews.carImageThumb}}>
+                    <img class="newsImgProp" ng-src={{singeAutoNews.carImageThumb}}>
 
-                    <h2 class="">{{singeAutoNews.newsTitle}}</h2>
+                    <h2 class="h2Prop">{{singeAutoNews.newsTitle}}</h2>
 
-                    <h3 class="">{{singeAutoNews.datePublished}}</h3>
+                    <h3 class="h3Prop">{{singeAutoNews.datePublished}}</h3>
                 </div>
             </div>
         </ion-item>
@@ -2904,7 +2904,7 @@
     </ion-view>
 </script>
 <script id="templates/auto-detailed-news.html" type="text/ng-template">
-    <ion-content>
+    <ion-content style="margin-top: 45px;">
         <div ng-bind-html="autoDetailedNews"></div>
     </ion-content>
 </script>

@@ -1,7 +1,7 @@
-.col{
+.colProp{
 	font-family: 'Roboto-Regular';
-  font-style: normal;
-  font-weight: 700;
+    font-style: normal;
+    font-weight: 700;
 	font-size: 14px;
 	color:#FFFFFF;
 	 line-height:17.32px;
@@ -9,12 +9,12 @@
 	 padding:0;
 }
 
-.bar-subheader{
+.bar-subheaderProp{
 	max-height:33px;
 	background-color:#EF5A28;
 }
 
-.item h2{
+.h2Prop{
 	font-family: 'Roboto-Bold';
   font-style: normal;
   font-weight: 700;
@@ -26,7 +26,7 @@
 	 white-space:normal;
 }
 
-.item h3{
+.h3Prop{
 font-family: 'Roboto-Regular';
   font-style: normal;
   font-weight: 700;
@@ -38,17 +38,16 @@ font-family: 'Roboto-Regular';
 	 white-space:nowrap;
 }
 
-.item-thumbnail-left > img:first-child{
+.newsImgProp{
 	max-width:78px;
 	max-height:56px;
 }
 
-.has-subheader {
-    top: 56px;
-  
+.autoNews.has-subheader {
+	top: 56px !important;
 }
 
-.item {
+.newsItemProp {
     max-height: 74px;
     overflow: inherit;
 }
@@ -58,18 +57,22 @@ font-family: 'Roboto-Regular';
 	padding:0;
 }
 
+.newsCardProp{
+	margin-top: 0;
+	margin-right: 0;
+}
+
 .card, .list-inset {
   overflow: hidden;
   margin: 0px 0px;
   border-radius: 2px;
   background-color: #fff; }
 
-.card{
-	margin-top: 0;
-    margin-right: 0;
-}
 
+ion-content div.scroll div.list:first-child {
+	padding-top: 0px !important;
+}
 .item-thumbnail-left, .item-thumbnail-left .item-content{
-	min-height:74px;
+
 }
 

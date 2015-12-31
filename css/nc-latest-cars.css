@@ -1,6 +1,3 @@
-.nc_lc_header_info{
-
-}
 
 .nc_lc_alignCenter{
     text-align: center !important;
@@ -16,35 +13,35 @@ ion-header-bar.bar-subheader.nc_uc_header_prop.bar.bar-header{
 
 
 
-ion-content div.scroll div.list{
+.listProp{
   	border-bottom: 2px solid #ccc;
   }
   ion-content div.scroll div.list:first-child{
   	padding-top: 20px;
   }
-  ion-content div.scroll div.list img{
+  .latestImgProp{
   	display:inline-block;
   	margin-right:20px;
   	max-width: 100px;
   	max-height: 80px;
   }
-  ion-content div.scroll div.list div.detail{
+.detaill{
   	margin-left: 15px;
    }
-   ion-content div.scroll div.list div.item.item-thumbnail-left{
+   .thumLeftProp{
    		min-height: 90px;
    }
-  ion-content div.scroll div.list h2 {
+  .latesth2Prop {
   	font-family:'Roboto-Bold' !important;
   	font-size:70% !important;
   	color: #0E0E0E;
   }
-  ion-content div.scroll div.list h3{
+  .latesth3Prop{
   	font-family:'Roboto-Regular' !important;
   	font-size:11px !important;
   	color: #9D9D9D;
   }
-   ion-content div.scroll div.list h3 span{
+   .latestSpanProp{
    	font-size: 13px;
    	color: #F05A28;
    }
@@ -78,7 +75,9 @@ ion-footer-bar .col-25.active{
 	color: #DF5426x;
 }
 
-
+.latestCars.has-subheader {
+	top: 88px !important;
+}
 
 
 /* Rating */
