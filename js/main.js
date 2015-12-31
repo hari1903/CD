@@ -599,7 +599,7 @@ angular
             objectValue.isLoading = true;
             objectValue.city = 'All India';
             objectValue.price = "";
-             objectValue.pincode = "";
+            objectValue.pincode = "";
             objectValue.brand = "";
             objectValue.model = "";
             objectValue.fuel = "";
@@ -1074,6 +1074,19 @@ angular
                         objectValue.pinCodeObj = cityAndPingObjs[1];
                         callBackFun(cityAndPingObjs);
                     });
+
+                },
+                getPinCode: function (callBackFun) {
+                    var urlToSearch = url;
+                    var pinUrl = urlToSearch + "getPincodesForCity&city="+objectValue.city;
+                    $http
+                        .post(pinUrl)
+                        .success(
+                        function (data, status) {
+                            objectValue.pinCodeObj = data;
+                            console.log('PinCode', data);
+                            callBackFun(data);
+                        })
 
                 },
                 setOnRoadRequestObj: function (onRoadDetailRequest) {
@@ -3135,7 +3148,15 @@ angular
             }
              $scope.getUserPincode = function(){
                  setReqParam();
-                $state.go('eventmenu.pincode', {'retunEvent':'nc-get-on-road-price-form'})
+                 $scope.loading = $ionicLoading.show({
+                     template: ''
+                 });
+                 sharedProperties.getPinCode(function(cityAndPingObjs){
+                     $ionicLoading.hide();
+                     $state.go('eventmenu.pincode', {'retunEvent':'nc-get-on-road-price-form'})
+
+                 });
+
             }
 
             $scope.fn_isUserAgreed = function() {
