@@ -19,20 +19,19 @@
     <script src="js/main.js"></script>
     <script src="js/angular-youtube-embed.js"></script>
     <script type="text/javascript">
-        window.addEventListener('tizenhwkey', function (e) {
+         window.addEventListener('tizenhwkey', function (e) {
             if (e.keyName == "back") {
-
                 var str = window.location.href;
                 var patt = new RegExp("#/event/home");
                 var res = patt.test(str);
                 if(res ){
+                	//alert("Press ok again to exit");
                     window.tizen.application.getCurrentApplication().exit();
                 }else {
                     window.history.back();
                 }
-
             }
-        });
+        }); 
     </script>
 
     <style>
@@ -223,7 +222,7 @@
                     <div class="item-accordion innerMenu"
                          ng-show="isGroupShown('Reviews')">
                         <ion-list>
-<a href="#/event/review-user-and-road-test/user/home"
+                              <a href="#/event/review-user-and-road-test/user/home"
                                class="item item-icon-left innerMenu inAnchor" menu-close>User Review
                            <hr> </a>
 
@@ -251,13 +250,13 @@
                                     class="icon"></i>Dealers
                                 <hr>
                             </a>
-<a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor"
+<!-- <a href="#/event/car-road-side-assitance" class="item item-icon-left innerMenu inAnchor"
                                menu-close>Road Side Assistance
                                 <hr>
-                            </a>
-                            <a href="#/event/car-healp-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
+                            </a> -->
+                          <!--  <a href="#/event/car-healp-line" class="item item-icon-left innerMenu inAnchor" menu-close>Helpline
                                 <hr>
-                            </a>
+                            </a>  --> 
                             
                             <a href="#/event/car-loan" class="item item-icon-left innerMenu inAnchor" menu-close>Car
                                 Loan
@@ -277,6 +276,7 @@
         <ion-content class="fillBackground">
             <div class="home_wrapper home_wrapper1">
                 <object data="images/dialer.svg" type="image/svg+xml" class="dialer"></object>
+
             </div>
             <!--img style="width: 100%; height: 100%;" src="images/Home_Screen_Updated_15_jul_2014.png"-->
         </ion-content>
@@ -1148,9 +1148,9 @@
                     </div>
                     <div class="item item-divider item-icon-left footerLine cardFooterHight">
                         <i class="icon"><img src="images/location_icon.png"> </i><span class="footerText">{{detailedItem.city}}, {{detailedItem.state}}</span>
-                        <img style="max-width: 55% !important; position: absolute; right: 10%;"
-                             ng-src="{{ isTrusted == 'trusted' && 'images/Icons/mdpi/trust_mark_logo.png' || ''}}">
-			           <!-- <img style="max-width: 55% !important; position: absolute; right: 10%;" src="images/Icons/mdpi/trust_mark_logo.png"> -->
+                         <img style="max-width: 55% !important; position: absolute; right: 10%;"
+                             ng-src="{{ isTrusted == 'trusted' && 'images/Icons/mdpi/trust_mark_logo.png' || ' '}}">
+			           <!--<img style="max-width: 55% !important; position: absolute; right: 10%;" ng-src="images/Icons/mdpi/trust_mark_logo.png"> -->
                     </div>
                 </div>
             </ion-item>
@@ -1761,8 +1761,8 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
+            <div class="rowtest">
+                <div class="coltest">
                     <div class="rrow5"><span>Mileage</span></div>
                     <div class="rrow6">{{ncModelDetails.ncModelDetailsObj.data.minMilage}} <span class="rrow66"> {{ncModelDetails.ncModelDetailsObj.data.maxMilageunit}}</span>
                     </div>
@@ -1798,8 +1798,8 @@
                 </a>
 
                 <a class="button1 inline-button">
-                    <div><i class="fa fa-picture-o"></i></div>
-                    <div><span>Pictures</span></div>
+                    <div><i class="fa fa-picture-o iconpic"></i></div>
+                    <div><span class="pictext">Pictures</span></div>
                 </a>
             </div>
             <div class="bar bar-calm1" style="margin-top:10px">
@@ -1811,8 +1811,7 @@
                 <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
                                style="padding-top: 0px !important; text-align:center !important;">
                     <ion-slide ng-repeat="modelVarient in ncModelDetails.ncModelDetailsObj.data.modelvariants">
-                        <div class="list card cvCardProp" style="height: 75% !important;"
-                             ">
+                        <div class="list card varientbox cvCardProp" style="height: 50% !important;" ">
                             <div class="item item-body cvItemBodyProp" "fn_ncBrandDetail(ncBrandDetail)">
                                 
                                 <div id="c4vBrand">
@@ -1833,8 +1832,6 @@
                                 </div>
 
                             </div>
-
-                                                       
                  
                                       <div class="bar bar-calm2">
                                 <a href="#/event/compare-cars">
@@ -1850,15 +1847,15 @@
                 </ion-slide-box>
             </div>
 
-            <div class="bar bar-calm1">
+            <div class="bar bar-calm1 barrecommended">
                 <h1 class="heading2">Recommended cars for you</h1>
             </div>
 
             <div style="height: 75%;">
                 <ion-slide-box class="cvCardHeight" show-pager="false" on-slide-changed="slideHasChanged($index)"
-                               style="padding-top: 50px !important; text-align:center !important;">
+                               style="padding-top: 5% !important; text-align:center !important;">
                     <ion-slide ng-repeat="recommendedCars in ncModelDetails.ncModelDetailsObj.data.recommendedcars">
-                        <div class="list card cvCardProp" style="height: 85% !important;">
+                        <div class="list card cvCardProp" style="height: 60% !important;">
                              
                             <div class="item item-body cvItemBodyProp" ng-click="fn_ncRecCarDetail(recommendedCars)">
                                 <div>
@@ -1880,7 +1877,7 @@
 
                             </div>
 
-                             <div class="bar bar-calm2" style="text-align: center !important; margin-top: 50px;" ng-click="fn_modelSelect(recommendedCars.carmodelname)">                           	
+                             <div class="bar bar-calm2" style="text-align: center !important; margin-top: 5%;" ng-click="fn_modelSelect(recommendedCars.carmodelname)">                           	
             			    <img src="images/fill_uncheck.png" width="20px" height="20px" style="margin-left: 35%;" alt="image" onclick="this.src='images/fill_check.png'" /><span style="font-size: 15px !important;">Compare</span>          						
                              </div>
 
@@ -1935,7 +1932,7 @@
                     <span>Name</span>
                 </div>
                 <div class="col-22">
-                    <input type="text" ng-model="sharedObj.userDetails.name">
+                    <input placeholder='Enter Name' type="text" ng-model="sharedObj.userDetails.name">
                 </div>
             </div>
             <div class="row">
@@ -1943,7 +1940,7 @@
                     <span>Email</span>
                 </div>
                 <div class="col-22">
-                    <input type="text" ng-model="sharedObj.userDetails.userEmail">
+                    <input placeholder='Enter Email ID' type="text" ng-model="sharedObj.userDetails.userEmail">
                 </div>
             </div>
             <div class="row">
@@ -1951,14 +1948,14 @@
                     <span>Mobile&nbsp;&nbsp;&nbsp;&nbsp;(+91)</span>
                 </div>
                 <div class="col-22">
-                    <input type="number" ng-model="sharedObj.userDetails.userMobile">
+                    <input placeholder='Enter Phone No.' type="number" ng-model="sharedObj.userDetails.userMobile">
                 </div>
             </div>
             <div class="row">
                 <div class="col-21">
                     <span>City</span>
                 </div>
-               <div style="margin-left: 0px; font-family: 'Roboto-Regular';font-size: 12px; color: #7B7B7B;"class="col-22" ng-click="getUserCity()" >
+               <div style="margin-left: 0px; padding-top: 2%; font-family: 'Roboto-Regular';font-size: 12px; color: #7B7B7B;"class="col-22" ng-click="getUserCity()" >
                      {{sharedObj.city}}
                 </div>
 
@@ -1968,19 +1965,18 @@
                 <div class="col-21">
                     <span>Area/Pin Code</span>
                 </div>
-                  <div style="margin-left: 0px; font-family: 'Roboto-Regular';font-size: 12px; color: #7B7B7B;"class="col-22" ng-click="getUserPincode()">
+                  <div style="margin-left: 0px; padding-top: 2%; font-family: 'Roboto-Regular';font-size: 12px; color: #7B7B7B;"class="col-22" ng-click="getUserPincode()">
                     {{sharedObj.pincode}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-23">
                     <img ng-src="{{isUserAgreed && 'images/tick_selected.png' || 'images/tick_unselected.png'}}"
-                         ng-click="fn_isUserAgreed()"> <span class="col-pad">I Agree to <a> Terms &
+                         ng-click="fn_isUserAgreed()"> <span style="position: absolute; right:16%; top: 82%;" class="col-pad">I Agree to <a> Terms &
                     Conditions</a></span>
                 </div>
             </div>
         </form>
-
 
         <div class="rrow11">
             <div class="rrow-footer" ng-click="fn_getOnRoadPriceDetails(sharedObj.userDetails)">
@@ -2069,7 +2065,7 @@
                     <span> OVERVIEW</span>
                 </div>
                 <div class="ffooter-1">
-              <span>    <img src="images/sort_rs.png" style="height: 15px; width: 15px; margin-left: -40px;"></img>   PRICE</span>
+              <span> <img src="images/sort_rs.png" style="height: 15px; width: 15px; margin-left: -40px;"></img>   PRICE</span>
                 </div>
                 <div class="ffooter-2" ng-click="fn_ncGetMoreOptionPopup()">
                     <div>
@@ -2079,7 +2075,6 @@
                     </div>
                     <div>MORE</div>
                 </div>
-
         </div>
 
 </script>
@@ -2420,7 +2415,7 @@
     </ion-content>
 </script>
 <script id="templates/sell-a-car.html" type="text/ng-template">
-    <ion-header-bar class=" bar-subheader nc_uc_header_prop">
+    <ion-header-bar class="bar-subheader nc_uc_header_prop ">
         <div class="row nc_lc_header_info">
             <div class="col ">
                 Sell Car
@@ -2571,14 +2566,14 @@
             <div><span class="align-hr"><hr></span></div>
             <div class="row" style="height:22px;padding-top:6px;padding-bottom:6px;">
                 <div class="col-50" ng-click="fn_changeOverAndFeatures(true)" style="text-align:center;">
-                    <span style="color:rgb(240,90,40);vertical-align:middle;font-size:10px;font-family:" Arial Bold";">Overview</span>
+                    <span class="tapchange"style="color:rgb(240,90,40);vertical-align:middle;font-size:100%;font-family:" Arial Bold";">Overview</span>
                 </div>
                 <div class="col-50" ng-click="fn_changeOverAndFeatures(false)" style="text-align:center;">
-                    <span style="color:rgb(240,90,40);vertical-align:middle;font-size:10px;font-family:" Arial Bold";">Features</span>
+                    <span class="tapchange"style="color:rgb(240,90,40);vertical-align:middle;font-size:100%;font-family:" Arial Bold";">Features</span>
                 </div>
             </div>
 
-            <div class="row" style="width:100%;">
+          <!--  <div class="row" style="width:100%;">
 
                 <img class="underline-img"
                      ng-src="{{ isShowFirst &&  'images/review_unselected_header.png' || 'images/review_selected_header.png'}}">
@@ -2587,8 +2582,8 @@
                 <img class="underline-img"
                      ng-src="{{ isShowFirst && 'images/review_selected_header.png' || 'images/review_unselected_header.png' }}">
 
-            </div>
-
+            </div> -->
+<hr>
 
             <div ng-show="isOverView" class="ng-hide">
                 <div class="light1" style="height:22px;background-color:#f1f1f1;width:100%;">
@@ -2909,7 +2904,7 @@
     </ion-content>
 </script>
 <script id="templates/review-user-and-road-test.html" type="text/ng-template">
-    <ion-view>
+    
         <div class="bar bar-subheader subHeaderAndFooter ">
             <div ng-show="reviewType == 'user'">
                 <h1>Search User Review </h1>
@@ -2963,7 +2958,7 @@
         <div class="bar bar-footer subHeaderAndFooter " ng-click="fn_getReview()">
             <span class="spanDivCenter"> SEARCH </span>
         </div>
-    </ion-view>
+    
 </script>
 <script id="templates/review-user-and-road-test-detail.html" type="text/ng-template">
     <ion-view>
@@ -3391,6 +3386,7 @@
     </ion-view>
 </script>
 <script id="templates/car-insurance.html" type="text/ng-template">
+ <ion-view view-title="V.3.3.0">
     <ion-header-bar class=" bar-subheader nc_uc_header_prop">
         <div class="row nc_lc_header_info">
             <div class="col ">
